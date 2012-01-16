@@ -1,0 +1,476 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FDAE678114C413EF004488DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678014C413EF004488DC /* UIKit.framework */; };
+		FDAE678314C413EF004488DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678214C413EF004488DC /* Foundation.framework */; };
+		FDAE678514C413EF004488DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678414C413EF004488DC /* CoreGraphics.framework */; };
+		FDAE678B14C413EF004488DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDAE678914C413EF004488DC /* InfoPlist.strings */; };
+		FDAE678D14C413EF004488DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAE678C14C413EF004488DC /* main.m */; };
+		FDAE679114C413EF004488DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAE679014C413EF004488DC /* AppDelegate.m */; };
+		FDAE679414C413EF004488DC /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAE679314C413EF004488DC /* FirstViewController.m */; };
+		FDAE679614C413EF004488DC /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = FDAE679514C413EF004488DC /* first.png */; };
+		FDAE679814C413EF004488DC /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDAE679714C413EF004488DC /* first@2x.png */; };
+		FDAE679B14C413EF004488DC /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAE679A14C413EF004488DC /* SecondViewController.m */; };
+		FDAE679D14C413EF004488DC /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = FDAE679C14C413EF004488DC /* second.png */; };
+		FDAE679F14C413EF004488DC /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDAE679E14C413EF004488DC /* second@2x.png */; };
+		FDAE67A214C413EF004488DC /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67A014C413EF004488DC /* FirstViewController.xib */; };
+		FDAE67A514C413EF004488DC /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67A314C413EF004488DC /* SecondViewController.xib */; };
+		FDAE67AD14C413EF004488DC /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE67AC14C413EF004488DC /* SenTestingKit.framework */; };
+		FDAE67AE14C413EF004488DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678014C413EF004488DC /* UIKit.framework */; };
+		FDAE67AF14C413EF004488DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678214C413EF004488DC /* Foundation.framework */; };
+		FDAE67B714C413EF004488DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67B514C413EF004488DC /* InfoPlist.strings */; };
+		FDAE67BA14C413EF004488DC /* MelbourneGuideDawgTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAE67B914C413EF004488DC /* MelbourneGuideDawgTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FDAE67B014C413EF004488DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDAE677314C413EE004488DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FDAE677B14C413EE004488DC;
+			remoteInfo = MelbourneGuideDawg;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FDAE677C14C413EF004488DC /* MelbourneGuideDawg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MelbourneGuideDawg.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDAE678014C413EF004488DC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FDAE678214C413EF004488DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FDAE678414C413EF004488DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FDAE678814C413EF004488DC /* MelbourneGuideDawg-Info.plist */ = {isa = PBXFileReference; path = "MelbourneGuideDawg-Info.plist"; sourceTree = "<group>"; };
+		FDAE678A14C413EF004488DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FDAE678C14C413EF004488DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FDAE678E14C413EF004488DC /* MelbourneGuideDawg-Prefix.pch */ = {isa = PBXFileReference; path = "MelbourneGuideDawg-Prefix.pch"; sourceTree = "<group>"; };
+		FDAE678F14C413EF004488DC /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		FDAE679014C413EF004488DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FDAE679214C413EF004488DC /* FirstViewController.h */ = {isa = PBXFileReference; path = FirstViewController.h; sourceTree = "<group>"; };
+		FDAE679314C413EF004488DC /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		FDAE679514C413EF004488DC /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		FDAE679714C413EF004488DC /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		FDAE679914C413EF004488DC /* SecondViewController.h */ = {isa = PBXFileReference; path = SecondViewController.h; sourceTree = "<group>"; };
+		FDAE679A14C413EF004488DC /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		FDAE679C14C413EF004488DC /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		FDAE679E14C413EF004488DC /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		FDAE67A114C413EF004488DC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
+		FDAE67A414C413EF004488DC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
+		FDAE67AB14C413EF004488DC /* MelbourneGuideDawgTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MelbourneGuideDawgTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDAE67AC14C413EF004488DC /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		FDAE67B414C413EF004488DC /* MelbourneGuideDawgTests-Info.plist */ = {isa = PBXFileReference; path = "MelbourneGuideDawgTests-Info.plist"; sourceTree = "<group>"; };
+		FDAE67B614C413EF004488DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FDAE67B814C413EF004488DC /* MelbourneGuideDawgTests.h */ = {isa = PBXFileReference; path = MelbourneGuideDawgTests.h; sourceTree = "<group>"; };
+		FDAE67B914C413EF004488DC /* MelbourneGuideDawgTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MelbourneGuideDawgTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FDAE677914C413EE004488DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDAE678114C413EF004488DC /* UIKit.framework in Frameworks */,
+				FDAE678314C413EF004488DC /* Foundation.framework in Frameworks */,
+				FDAE678514C413EF004488DC /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDAE67A714C413EF004488DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDAE67AD14C413EF004488DC /* SenTestingKit.framework in Frameworks */,
+				FDAE67AE14C413EF004488DC /* UIKit.framework in Frameworks */,
+				FDAE67AF14C413EF004488DC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FDAE677114C413EE004488DC = {
+			isa = PBXGroup;
+			children = (
+				FDAE678614C413EF004488DC /* MelbourneGuideDawg */,
+				FDAE67B214C413EF004488DC /* MelbourneGuideDawgTests */,
+				FDAE677F14C413EF004488DC /* Frameworks */,
+				FDAE677D14C413EF004488DC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FDAE677D14C413EF004488DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FDAE677C14C413EF004488DC /* MelbourneGuideDawg.app */,
+				FDAE67AB14C413EF004488DC /* MelbourneGuideDawgTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FDAE677F14C413EF004488DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FDAE678014C413EF004488DC /* UIKit.framework */,
+				FDAE678214C413EF004488DC /* Foundation.framework */,
+				FDAE678414C413EF004488DC /* CoreGraphics.framework */,
+				FDAE67AC14C413EF004488DC /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FDAE678614C413EF004488DC /* MelbourneGuideDawg */ = {
+			isa = PBXGroup;
+			children = (
+				FDAE678F14C413EF004488DC /* AppDelegate.h */,
+				FDAE679014C413EF004488DC /* AppDelegate.m */,
+				FDAE679214C413EF004488DC /* FirstViewController.h */,
+				FDAE679314C413EF004488DC /* FirstViewController.m */,
+				FDAE679514C413EF004488DC /* first.png */,
+				FDAE679714C413EF004488DC /* first@2x.png */,
+				FDAE679914C413EF004488DC /* SecondViewController.h */,
+				FDAE679A14C413EF004488DC /* SecondViewController.m */,
+				FDAE679C14C413EF004488DC /* second.png */,
+				FDAE679E14C413EF004488DC /* second@2x.png */,
+				FDAE67A014C413EF004488DC /* FirstViewController.xib */,
+				FDAE67A314C413EF004488DC /* SecondViewController.xib */,
+				FDAE678714C413EF004488DC /* Supporting Files */,
+			);
+			path = MelbourneGuideDawg;
+			sourceTree = "<group>";
+		};
+		FDAE678714C413EF004488DC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FDAE678814C413EF004488DC /* MelbourneGuideDawg-Info.plist */,
+				FDAE678914C413EF004488DC /* InfoPlist.strings */,
+				FDAE678C14C413EF004488DC /* main.m */,
+				FDAE678E14C413EF004488DC /* MelbourneGuideDawg-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FDAE67B214C413EF004488DC /* MelbourneGuideDawgTests */ = {
+			isa = PBXGroup;
+			children = (
+				FDAE67B814C413EF004488DC /* MelbourneGuideDawgTests.h */,
+				FDAE67B914C413EF004488DC /* MelbourneGuideDawgTests.m */,
+				FDAE67B314C413EF004488DC /* Supporting Files */,
+			);
+			path = MelbourneGuideDawgTests;
+			sourceTree = "<group>";
+		};
+		FDAE67B314C413EF004488DC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FDAE67B414C413EF004488DC /* MelbourneGuideDawgTests-Info.plist */,
+				FDAE67B514C413EF004488DC /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FDAE677B14C413EE004488DC /* MelbourneGuideDawg */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDAE67BD14C413EF004488DC /* Build configuration list for PBXNativeTarget "MelbourneGuideDawg" */;
+			buildPhases = (
+				FDAE677814C413EE004488DC /* Sources */,
+				FDAE677914C413EE004488DC /* Frameworks */,
+				FDAE677A14C413EE004488DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MelbourneGuideDawg;
+			productName = MelbourneGuideDawg;
+			productReference = FDAE677C14C413EF004488DC /* MelbourneGuideDawg.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FDAE67AA14C413EF004488DC /* MelbourneGuideDawgTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDAE67C014C413EF004488DC /* Build configuration list for PBXNativeTarget "MelbourneGuideDawgTests" */;
+			buildPhases = (
+				FDAE67A614C413EF004488DC /* Sources */,
+				FDAE67A714C413EF004488DC /* Frameworks */,
+				FDAE67A814C413EF004488DC /* Resources */,
+				FDAE67A914C413EF004488DC /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FDAE67B114C413EF004488DC /* PBXTargetDependency */,
+			);
+			name = MelbourneGuideDawgTests;
+			productName = MelbourneGuideDawgTests;
+			productReference = FDAE67AB14C413EF004488DC /* MelbourneGuideDawgTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FDAE677314C413EE004488DC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = FDAE677614C413EE004488DC /* Build configuration list for PBXProject "MelbourneGuideDawg" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FDAE677114C413EE004488DC;
+			productRefGroup = FDAE677D14C413EF004488DC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FDAE677B14C413EE004488DC /* MelbourneGuideDawg */,
+				FDAE67AA14C413EF004488DC /* MelbourneGuideDawgTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FDAE677A14C413EE004488DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDAE678B14C413EF004488DC /* InfoPlist.strings in Resources */,
+				FDAE679614C413EF004488DC /* first.png in Resources */,
+				FDAE679814C413EF004488DC /* first@2x.png in Resources */,
+				FDAE679D14C413EF004488DC /* second.png in Resources */,
+				FDAE679F14C413EF004488DC /* second@2x.png in Resources */,
+				FDAE67A214C413EF004488DC /* FirstViewController.xib in Resources */,
+				FDAE67A514C413EF004488DC /* SecondViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDAE67A814C413EF004488DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDAE67B714C413EF004488DC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FDAE67A914C413EF004488DC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FDAE677814C413EE004488DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDAE678D14C413EF004488DC /* main.m in Sources */,
+				FDAE679114C413EF004488DC /* AppDelegate.m in Sources */,
+				FDAE679414C413EF004488DC /* FirstViewController.m in Sources */,
+				FDAE679B14C413EF004488DC /* SecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDAE67A614C413EF004488DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDAE67BA14C413EF004488DC /* MelbourneGuideDawgTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FDAE67B114C413EF004488DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FDAE677B14C413EE004488DC /* MelbourneGuideDawg */;
+			targetProxy = FDAE67B014C413EF004488DC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FDAE678914C413EF004488DC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDAE678A14C413EF004488DC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FDAE67A014C413EF004488DC /* FirstViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDAE67A114C413EF004488DC /* en */,
+			);
+			name = FirstViewController.xib;
+			sourceTree = "<group>";
+		};
+		FDAE67A314C413EF004488DC /* SecondViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDAE67A414C413EF004488DC /* en */,
+			);
+			name = SecondViewController.xib;
+			sourceTree = "<group>";
+		};
+		FDAE67B514C413EF004488DC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDAE67B614C413EF004488DC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FDAE67BB14C413EF004488DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FDAE67BC14C413EF004488DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FDAE67BE14C413EF004488DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MelbourneGuideDawg/MelbourneGuideDawg-Prefix.pch";
+				INFOPLIST_FILE = "MelbourneGuideDawg/MelbourneGuideDawg-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FDAE67BF14C413EF004488DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MelbourneGuideDawg/MelbourneGuideDawg-Prefix.pch";
+				INFOPLIST_FILE = "MelbourneGuideDawg/MelbourneGuideDawg-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		FDAE67C114C413EF004488DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MelbourneGuideDawg.app/MelbourneGuideDawg";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MelbourneGuideDawg/MelbourneGuideDawg-Prefix.pch";
+				INFOPLIST_FILE = "MelbourneGuideDawgTests/MelbourneGuideDawgTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		FDAE67C214C413EF004488DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MelbourneGuideDawg.app/MelbourneGuideDawg";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MelbourneGuideDawg/MelbourneGuideDawg-Prefix.pch";
+				INFOPLIST_FILE = "MelbourneGuideDawgTests/MelbourneGuideDawgTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FDAE677614C413EE004488DC /* Build configuration list for PBXProject "MelbourneGuideDawg" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDAE67BB14C413EF004488DC /* Debug */,
+				FDAE67BC14C413EF004488DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FDAE67BD14C413EF004488DC /* Build configuration list for PBXNativeTarget "MelbourneGuideDawg" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDAE67BE14C413EF004488DC /* Debug */,
+				FDAE67BF14C413EF004488DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FDAE67C014C413EF004488DC /* Build configuration list for PBXNativeTarget "MelbourneGuideDawgTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDAE67C114C413EF004488DC /* Debug */,
+				FDAE67C214C413EF004488DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FDAE677314C413EE004488DC /* Project object */;
+}
