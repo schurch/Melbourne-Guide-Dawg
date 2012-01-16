@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : UIViewController {
+    UIScrollView *_introScrollView;
+    UIView *_introductionView;
+}
+
+@property (nonatomic, retain) IBOutlet UIScrollView *introScrollView;
+@property (nonatomic, retain) IBOutlet UIView *introductionView;
 
 @end

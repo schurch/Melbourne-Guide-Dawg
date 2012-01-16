@@ -8,14 +8,20 @@
 
 #import "FirstViewController.h"
 
+#define INTRO_OFFSET 250
+
 @implementation FirstViewController
+
+@synthesize introScrollView = _introScrollView;
+@synthesize introductionView = _introductionView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"First", @"First");
+        self.title = NSLocalizedString(@"Home", @"Home");
         self.tabBarItem.image = [UIImage imageNamed:@"first"];
+        [[NSBundle mainBundle] loadNibNamed:@"IntroductionView" owner:self options:nil];
     }
     return self;
 }
@@ -31,14 +37,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.introductionView.frame = CGRectMake(20, INTRO_OFFSET, self.introductionView.frame.size.width, self.introductionView.frame.size.height);
+    self.introductionView.backgroundColor = [UIColor clearColor];
+    [self.introScrollView addSubview:self.introductionView];
+    int contentSizeHeight = INTRO_OFFSET + self.introductionView.frame.size.height;
+    self.introScrollView.contentSize = CGSizeMake(320, contentSizeHeight);
+    
+    int paddingYOffset = self.introductionView.frame.origin.y + self.introductionView.frame.size.height;
+    UIView *bottomPadding = [[UIView alloc] initWithFrame:CGRectMake(20, paddingYOffset, 320, 400)];
+    bottomPadding.backgroundColor = [UIColor blackColor];
+    [self.introScrollView addSubview:bottomPadding];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated

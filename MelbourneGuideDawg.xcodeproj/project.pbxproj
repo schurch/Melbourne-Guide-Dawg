@@ -26,6 +26,13 @@
 		FDAE67AF14C413EF004488DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678214C413EF004488DC /* Foundation.framework */; };
 		FDAE67B714C413EF004488DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67B514C413EF004488DC /* InfoPlist.strings */; };
 		FDAE67BA14C413EF004488DC /* MelbourneGuideDawgTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAE67B914C413EF004488DC /* MelbourneGuideDawgTests.m */; };
+		FDAE67C514C414C9004488DC /* home_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67C414C414C9004488DC /* home_photo.png */; };
+		FDAE67CA14C414D3004488DC /* melbourne1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67C614C414D3004488DC /* melbourne1.jpg */; };
+		FDAE67CB14C414D3004488DC /* melbourne2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67C714C414D3004488DC /* melbourne2.jpg */; };
+		FDAE67CC14C414D3004488DC /* melbourne3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67C814C414D3004488DC /* melbourne3.jpg */; };
+		FDAE67CD14C414D3004488DC /* melbourne4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67C914C414D3004488DC /* melbourne4.jpg */; };
+		FDAE67CF14C4234C004488DC /* intro_top.png in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67CE14C4234C004488DC /* intro_top.png */; };
+		FDBC9C7C14C425EF00C56A8C /* IntroductionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDBC9C7B14C425EF00C56A8C /* IntroductionView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,17 +50,17 @@
 		FDAE678014C413EF004488DC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FDAE678214C413EF004488DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FDAE678414C413EF004488DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		FDAE678814C413EF004488DC /* MelbourneGuideDawg-Info.plist */ = {isa = PBXFileReference; path = "MelbourneGuideDawg-Info.plist"; sourceTree = "<group>"; };
+		FDAE678814C413EF004488DC /* MelbourneGuideDawg-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MelbourneGuideDawg-Info.plist"; sourceTree = "<group>"; };
 		FDAE678A14C413EF004488DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FDAE678C14C413EF004488DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FDAE678E14C413EF004488DC /* MelbourneGuideDawg-Prefix.pch */ = {isa = PBXFileReference; path = "MelbourneGuideDawg-Prefix.pch"; sourceTree = "<group>"; };
-		FDAE678F14C413EF004488DC /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		FDAE678E14C413EF004488DC /* MelbourneGuideDawg-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MelbourneGuideDawg-Prefix.pch"; sourceTree = "<group>"; };
+		FDAE678F14C413EF004488DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FDAE679014C413EF004488DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FDAE679214C413EF004488DC /* FirstViewController.h */ = {isa = PBXFileReference; path = FirstViewController.h; sourceTree = "<group>"; };
 		FDAE679314C413EF004488DC /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		FDAE679514C413EF004488DC /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		FDAE679714C413EF004488DC /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		FDAE679914C413EF004488DC /* SecondViewController.h */ = {isa = PBXFileReference; path = SecondViewController.h; sourceTree = "<group>"; };
+		FDAE679914C413EF004488DC /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		FDAE679A14C413EF004488DC /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		FDAE679C14C413EF004488DC /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		FDAE679E14C413EF004488DC /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
@@ -61,10 +68,17 @@
 		FDAE67A414C413EF004488DC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
 		FDAE67AB14C413EF004488DC /* MelbourneGuideDawgTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MelbourneGuideDawgTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDAE67AC14C413EF004488DC /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		FDAE67B414C413EF004488DC /* MelbourneGuideDawgTests-Info.plist */ = {isa = PBXFileReference; path = "MelbourneGuideDawgTests-Info.plist"; sourceTree = "<group>"; };
+		FDAE67B414C413EF004488DC /* MelbourneGuideDawgTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MelbourneGuideDawgTests-Info.plist"; sourceTree = "<group>"; };
 		FDAE67B614C413EF004488DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FDAE67B814C413EF004488DC /* MelbourneGuideDawgTests.h */ = {isa = PBXFileReference; path = MelbourneGuideDawgTests.h; sourceTree = "<group>"; };
+		FDAE67B814C413EF004488DC /* MelbourneGuideDawgTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MelbourneGuideDawgTests.h; sourceTree = "<group>"; };
 		FDAE67B914C413EF004488DC /* MelbourneGuideDawgTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MelbourneGuideDawgTests.m; sourceTree = "<group>"; };
+		FDAE67C414C414C9004488DC /* home_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home_photo.png; path = photos/home_photo.png; sourceTree = "<group>"; };
+		FDAE67C614C414D3004488DC /* melbourne1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne1.jpg; path = photos/melbourne1.jpg; sourceTree = "<group>"; };
+		FDAE67C714C414D3004488DC /* melbourne2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne2.jpg; path = photos/melbourne2.jpg; sourceTree = "<group>"; };
+		FDAE67C814C414D3004488DC /* melbourne3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne3.jpg; path = photos/melbourne3.jpg; sourceTree = "<group>"; };
+		FDAE67C914C414D3004488DC /* melbourne4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne4.jpg; path = photos/melbourne4.jpg; sourceTree = "<group>"; };
+		FDAE67CE14C4234C004488DC /* intro_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = intro_top.png; path = photos/intro_top.png; sourceTree = "<group>"; };
+		FDBC9C7B14C425EF00C56A8C /* IntroductionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroductionView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +150,8 @@
 				FDAE679E14C413EF004488DC /* second@2x.png */,
 				FDAE67A014C413EF004488DC /* FirstViewController.xib */,
 				FDAE67A314C413EF004488DC /* SecondViewController.xib */,
+				FDBC9C7B14C425EF00C56A8C /* IntroductionView.xib */,
+				FDAE67C314C414AC004488DC /* Photos */,
 				FDAE678714C413EF004488DC /* Supporting Files */,
 			);
 			path = MelbourneGuideDawg;
@@ -169,6 +185,19 @@
 				FDAE67B514C413EF004488DC /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FDAE67C314C414AC004488DC /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				FDAE67CE14C4234C004488DC /* intro_top.png */,
+				FDAE67C614C414D3004488DC /* melbourne1.jpg */,
+				FDAE67C714C414D3004488DC /* melbourne2.jpg */,
+				FDAE67C814C414D3004488DC /* melbourne3.jpg */,
+				FDAE67C914C414D3004488DC /* melbourne4.jpg */,
+				FDAE67C414C414C9004488DC /* home_photo.png */,
+			);
+			name = Photos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +277,13 @@
 				FDAE679F14C413EF004488DC /* second@2x.png in Resources */,
 				FDAE67A214C413EF004488DC /* FirstViewController.xib in Resources */,
 				FDAE67A514C413EF004488DC /* SecondViewController.xib in Resources */,
+				FDAE67C514C414C9004488DC /* home_photo.png in Resources */,
+				FDAE67CA14C414D3004488DC /* melbourne1.jpg in Resources */,
+				FDAE67CB14C414D3004488DC /* melbourne2.jpg in Resources */,
+				FDAE67CC14C414D3004488DC /* melbourne3.jpg in Resources */,
+				FDAE67CD14C414D3004488DC /* melbourne4.jpg in Resources */,
+				FDAE67CF14C4234C004488DC /* intro_top.png in Resources */,
+				FDBC9C7C14C425EF00C56A8C /* IntroductionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +497,7 @@
 				FDAE67BF14C413EF004488DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FDAE67C014C413EF004488DC /* Build configuration list for PBXNativeTarget "MelbourneGuideDawgTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +506,7 @@
 				FDAE67C214C413EF004488DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
