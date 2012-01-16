@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "HomeViewController.h"
 
 #define INTRO_OFFSET 250
 
-@implementation FirstViewController
+@implementation HomeViewController
 
 @synthesize introScrollView = _introScrollView;
 @synthesize introductionView = _introductionView;
@@ -20,7 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Home", @"Home");
-        self.tabBarItem.image = [UIImage imageNamed:@"first"];
+        self.tabBarItem.image = [UIImage imageNamed:@"home_tab"];
         [[NSBundle mainBundle] loadNibNamed:@"IntroductionView" owner:self options:nil];
     }
     return self;
