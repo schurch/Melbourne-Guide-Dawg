@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  SitesViewController.h
 //  MelbourneGuideDawg
 //
 //  Created by Stefan Church on 16/01/2012.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SitesViewController : UIViewController
+@interface SitesViewController : UITableViewController
 
 @end

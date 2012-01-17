@@ -14,13 +14,7 @@
 		FDAE678D14C413EF004488DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAE678C14C413EF004488DC /* main.m */; };
 		FDAE679114C413EF004488DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAE679014C413EF004488DC /* AppDelegate.m */; };
 		FDAE679414C413EF004488DC /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAE679314C413EF004488DC /* HomeViewController.m */; };
-		FDAE679614C413EF004488DC /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = FDAE679514C413EF004488DC /* first.png */; };
-		FDAE679814C413EF004488DC /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDAE679714C413EF004488DC /* first@2x.png */; };
-		FDAE679B14C413EF004488DC /* SitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAE679A14C413EF004488DC /* SitesViewController.m */; };
-		FDAE679D14C413EF004488DC /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = FDAE679C14C413EF004488DC /* second.png */; };
-		FDAE679F14C413EF004488DC /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDAE679E14C413EF004488DC /* second@2x.png */; };
 		FDAE67A214C413EF004488DC /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67A014C413EF004488DC /* HomeViewController.xib */; };
-		FDAE67A514C413EF004488DC /* SitesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67A314C413EF004488DC /* SitesViewController.xib */; };
 		FDAE67AD14C413EF004488DC /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE67AC14C413EF004488DC /* SenTestingKit.framework */; };
 		FDAE67AE14C413EF004488DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678014C413EF004488DC /* UIKit.framework */; };
 		FDAE67AF14C413EF004488DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678214C413EF004488DC /* Foundation.framework */; };
@@ -39,6 +33,8 @@
 		FDBC9C8614C43BE400C56A8C /* home_tab.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBC9C8514C43BE400C56A8C /* home_tab.png */; };
 		FDBC9C8914C43CBE00C56A8C /* camera_tab.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBC9C8714C43CBD00C56A8C /* camera_tab.png */; };
 		FDBC9C8A14C43CBE00C56A8C /* map_tab.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBC9C8814C43CBD00C56A8C /* map_tab.png */; };
+		FDBC9C8E14C44A4B00C56A8C /* SitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBC9C8C14C44A4B00C56A8C /* SitesViewController.m */; };
+		FDBC9C8F14C44A4B00C56A8C /* SitesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDBC9C8D14C44A4B00C56A8C /* SitesViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,14 +60,7 @@
 		FDAE679014C413EF004488DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FDAE679214C413EF004488DC /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		FDAE679314C413EF004488DC /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		FDAE679514C413EF004488DC /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		FDAE679714C413EF004488DC /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		FDAE679914C413EF004488DC /* SitesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SitesViewController.h; sourceTree = "<group>"; };
-		FDAE679A14C413EF004488DC /* SitesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SitesViewController.m; sourceTree = "<group>"; };
-		FDAE679C14C413EF004488DC /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		FDAE679E14C413EF004488DC /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		FDAE67A114C413EF004488DC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/HomeViewController.xib; sourceTree = "<group>"; };
-		FDAE67A414C413EF004488DC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SitesViewController.xib; sourceTree = "<group>"; };
 		FDAE67AB14C413EF004488DC /* MelbourneGuideDawgTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MelbourneGuideDawgTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDAE67AC14C413EF004488DC /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		FDAE67B414C413EF004488DC /* MelbourneGuideDawgTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MelbourneGuideDawgTests-Info.plist"; sourceTree = "<group>"; };
@@ -92,6 +81,9 @@
 		FDBC9C8514C43BE400C56A8C /* home_tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_tab.png; sourceTree = "<group>"; };
 		FDBC9C8714C43CBD00C56A8C /* camera_tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_tab.png; sourceTree = "<group>"; };
 		FDBC9C8814C43CBD00C56A8C /* map_tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_tab.png; sourceTree = "<group>"; };
+		FDBC9C8B14C44A4A00C56A8C /* SitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SitesViewController.h; sourceTree = "<group>"; };
+		FDBC9C8C14C44A4B00C56A8C /* SitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SitesViewController.m; sourceTree = "<group>"; };
+		FDBC9C8D14C44A4B00C56A8C /* SitesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SitesViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,23 +147,19 @@
 			children = (
 				FDAE678F14C413EF004488DC /* AppDelegate.h */,
 				FDAE679014C413EF004488DC /* AppDelegate.m */,
+				FDBC9C8B14C44A4A00C56A8C /* SitesViewController.h */,
+				FDBC9C8C14C44A4B00C56A8C /* SitesViewController.m */,
 				FDAE679214C413EF004488DC /* HomeViewController.h */,
 				FDAE679314C413EF004488DC /* HomeViewController.m */,
-				FDAE679914C413EF004488DC /* SitesViewController.h */,
-				FDAE679A14C413EF004488DC /* SitesViewController.m */,
 				FDBC9C7E14C4357B00C56A8C /* MapViewController.h */,
 				FDBC9C7F14C4357B00C56A8C /* MapViewController.m */,
+				FDBC9C8D14C44A4B00C56A8C /* SitesViewController.xib */,
 				FDAE67A014C413EF004488DC /* HomeViewController.xib */,
-				FDAE67A314C413EF004488DC /* SitesViewController.xib */,
 				FDBC9C8014C4357B00C56A8C /* MapViewController.xib */,
 				FDBC9C7B14C425EF00C56A8C /* IntroductionView.xib */,
 				FDBC9C8514C43BE400C56A8C /* home_tab.png */,
 				FDBC9C8714C43CBD00C56A8C /* camera_tab.png */,
 				FDBC9C8814C43CBD00C56A8C /* map_tab.png */,
-				FDAE679514C413EF004488DC /* first.png */,
-				FDAE679714C413EF004488DC /* first@2x.png */,
-				FDAE679C14C413EF004488DC /* second.png */,
-				FDAE679E14C413EF004488DC /* second@2x.png */,
 				FDAE67C314C414AC004488DC /* Photos */,
 				FDAE678714C413EF004488DC /* Supporting Files */,
 			);
@@ -292,12 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDAE678B14C413EF004488DC /* InfoPlist.strings in Resources */,
-				FDAE679614C413EF004488DC /* first.png in Resources */,
-				FDAE679814C413EF004488DC /* first@2x.png in Resources */,
-				FDAE679D14C413EF004488DC /* second.png in Resources */,
-				FDAE679F14C413EF004488DC /* second@2x.png in Resources */,
 				FDAE67A214C413EF004488DC /* HomeViewController.xib in Resources */,
-				FDAE67A514C413EF004488DC /* SitesViewController.xib in Resources */,
 				FDAE67C514C414C9004488DC /* home_photo.png in Resources */,
 				FDAE67CA14C414D3004488DC /* melbourne1.jpg in Resources */,
 				FDAE67CB14C414D3004488DC /* melbourne2.jpg in Resources */,
@@ -309,6 +292,7 @@
 				FDBC9C8614C43BE400C56A8C /* home_tab.png in Resources */,
 				FDBC9C8914C43CBE00C56A8C /* camera_tab.png in Resources */,
 				FDBC9C8A14C43CBE00C56A8C /* map_tab.png in Resources */,
+				FDBC9C8F14C44A4B00C56A8C /* SitesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,8 +330,8 @@
 				FDAE678D14C413EF004488DC /* main.m in Sources */,
 				FDAE679114C413EF004488DC /* AppDelegate.m in Sources */,
 				FDAE679414C413EF004488DC /* HomeViewController.m in Sources */,
-				FDAE679B14C413EF004488DC /* SitesViewController.m in Sources */,
 				FDBC9C8114C4357C00C56A8C /* MapViewController.m in Sources */,
+				FDBC9C8E14C44A4B00C56A8C /* SitesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,14 +368,6 @@
 				FDAE67A114C413EF004488DC /* en */,
 			);
 			name = HomeViewController.xib;
-			sourceTree = "<group>";
-		};
-		FDAE67A314C413EF004488DC /* SitesViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FDAE67A414C413EF004488DC /* en */,
-			);
-			name = SitesViewController.xib;
 			sourceTree = "<group>";
 		};
 		FDAE67B514C413EF004488DC /* InfoPlist.strings */ = {

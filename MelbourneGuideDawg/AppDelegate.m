@@ -28,9 +28,9 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    UIViewController *homeViewController = [[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil] autorelease];
-    UIViewController *sitesViewController = [[[SitesViewController alloc] initWithNibName:@"SitesViewController" bundle:nil] autorelease];
-    UIViewController *mapViewController = [[[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil] autorelease];
+    HomeViewController *homeViewController = [[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil] autorelease];
+    SitesViewController *sitesViewController = [[[SitesViewController alloc] initWithNibName:@"SitesViewController" bundle:nil] autorelease];
+    MapViewController *mapViewController = [[[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil] autorelease];
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:homeViewController, sitesViewController, mapViewController, nil];
     self.window.rootViewController = self.tabBarController;

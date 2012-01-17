@@ -10,6 +10,8 @@
 
 @implementation MapViewController
 
+@synthesize map = _map;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -30,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 }
 
 - (void)viewDidUnload
