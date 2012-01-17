@@ -7,8 +7,13 @@
 //
 
 #import "SitesViewController.h"
+#import "Site.h"
 
 @implementation SitesViewController
+
+@synthesize sites = _sites;
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize tableViewCell = _tableViewCell;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -42,12 +47,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    NSError *error;
+    NSManagedObjectContext *context = self.managedObjectContext;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription 
+                                   entityForName:@"Site" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    self.sites = [context executeFetchRequest:fetchRequest error:&error];
+    
+//    NSManagedObjectContext *context = self.managedObjectContext;
+//    Site *site = [NSEntityDescription insertNewObjectForEntityForName:@"Site" 
+//                             inManagedObjectContext:context];
+//
+//    site.title = @"Bawbag";
+//    site.locationText = @"Melbourne CBD";
+//    NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:@"melbourne1.jpg"]);
+//    site.image = imageData;
+//    site.date = [NSDate date]; 
+//    site.locationPosition = @"-37.812225,144.963055";
+//    site.text = @"This is the text for Bawbag. Yeah, that's right, Bawbag. You think about what you've done. Here is some more text. And a bit more. This is the last text.";
+//    
+//    if (![context save:&error]) {
+//        NSLog(@"Error saving: %@", [error localizedDescription]);
+//    }
 }
 
 - (void)viewDidUnload
@@ -65,6 +88,20 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+//    NSError *error;
+//    NSManagedObjectContext *context = self.managedObjectContext;
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//    NSEntityDescription *entity = [NSEntityDescription 
+//                                   entityForName:@"Site" inManagedObjectContext:context];
+//    [fetchRequest setEntity:entity];
+//    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+//    for (Site *site in fetchedObjects) {
+//        NSLog(@"Title: %@", site.title);
+//        NSLog(@"Location: %@", site.location);
+//        NSLog(@"Text: %@", site.text);
+//    }        
+//    [fetchRequest release];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -87,26 +124,46 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [self.sites count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"SiteIdentifier";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        [[NSBundle mainBundle] loadNibNamed:@"SiteTableCell" owner:self options:nil];
+        cell = self.tableViewCell;
+        self.tableViewCell = nil;
     }
     
-    // Configure the cell...
+    Site *site = [self.sites objectAtIndex:indexPath.row];
+    
+    
+//    UIImageView *image = (UIImageView *)[cell viewWithTag:1];
+//    [image setImage:[UIImage imageWithData:site.image]];
+    
+    UILabel *label;
+    label = (UILabel *)[cell viewWithTag:2];
+    label.text = site.title;
+
+    label = (UILabel *)[cell viewWithTag:3];
+    label.text = site.locationText;
+    
+    label = (UILabel *)[cell viewWithTag:4];
+    label.text = site.text;
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80;
 }
 
 /*
@@ -160,6 +217,11 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+}
+
+- (void)dealloc {
+    [_managedObjectContext release];
+    [_sites release];
 }
 
 @end

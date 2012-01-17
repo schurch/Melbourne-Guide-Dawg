@@ -10,4 +10,8 @@
 
 @interface SitesViewController : UITableViewController
 
+@property (nonatomic, retain) NSArray *sites;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, assign) IBOutlet UITableViewCell *tableViewCell;
+
 @end

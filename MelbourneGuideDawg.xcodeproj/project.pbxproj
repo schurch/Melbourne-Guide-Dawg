@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD26D9DE14C5608D005B8CF6 /* SiteTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD26D9DD14C5608D005B8CF6 /* SiteTableCell.xib */; };
+		FD5D705114C52CE80091CFBF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD5D704F14C52CE80091CFBF /* Model.xcdatamodeld */; };
+		FD5D70A414C534F80091CFBF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5D70A314C534F80091CFBF /* CoreData.framework */; };
+		FD76D97514C637DE00A64843 /* Site.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76D97414C637DD00A64843 /* Site.m */; };
 		FDAE678114C413EF004488DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678014C413EF004488DC /* UIKit.framework */; };
 		FDAE678314C413EF004488DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678214C413EF004488DC /* Foundation.framework */; };
 		FDAE678514C413EF004488DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678414C413EF004488DC /* CoreGraphics.framework */; };
@@ -48,6 +52,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FD26D9DD14C5608D005B8CF6 /* SiteTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SiteTableCell.xib; sourceTree = "<group>"; };
+		FD5D705014C52CE80091CFBF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		FD5D70A314C534F80091CFBF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FD76D97314C637DD00A64843 /* Site.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Site.h; sourceTree = "<group>"; };
+		FD76D97414C637DD00A64843 /* Site.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Site.m; sourceTree = "<group>"; };
 		FDAE677C14C413EF004488DC /* MelbourneGuideDawg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MelbourneGuideDawg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDAE678014C413EF004488DC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FDAE678214C413EF004488DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -91,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD5D70A414C534F80091CFBF /* CoreData.framework in Frameworks */,
 				FDBC9C8414C43A8200C56A8C /* MapKit.framework in Frameworks */,
 				FDAE678114C413EF004488DC /* UIKit.framework in Frameworks */,
 				FDAE678314C413EF004488DC /* Foundation.framework in Frameworks */,
@@ -111,6 +121,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD26D9DC14C55231005B8CF6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FD5D704F14C52CE80091CFBF /* Model.xcdatamodeld */,
+				FD76D97314C637DD00A64843 /* Site.h */,
+				FD76D97414C637DD00A64843 /* Site.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		FDAE677114C413EE004488DC = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +153,7 @@
 		FDAE677F14C413EF004488DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FD5D70A314C534F80091CFBF /* CoreData.framework */,
 				FDBC9C8314C43A8200C56A8C /* MapKit.framework */,
 				FDAE678014C413EF004488DC /* UIKit.framework */,
 				FDAE678214C413EF004488DC /* Foundation.framework */,
@@ -145,6 +166,7 @@
 		FDAE678614C413EF004488DC /* MelbourneGuideDawg */ = {
 			isa = PBXGroup;
 			children = (
+				FD26D9DC14C55231005B8CF6 /* Model */,
 				FDAE678F14C413EF004488DC /* AppDelegate.h */,
 				FDAE679014C413EF004488DC /* AppDelegate.m */,
 				FDBC9C8B14C44A4A00C56A8C /* SitesViewController.h */,
@@ -153,6 +175,7 @@
 				FDAE679314C413EF004488DC /* HomeViewController.m */,
 				FDBC9C7E14C4357B00C56A8C /* MapViewController.h */,
 				FDBC9C7F14C4357B00C56A8C /* MapViewController.m */,
+				FD26D9DD14C5608D005B8CF6 /* SiteTableCell.xib */,
 				FDBC9C8D14C44A4B00C56A8C /* SitesViewController.xib */,
 				FDAE67A014C413EF004488DC /* HomeViewController.xib */,
 				FDBC9C8014C4357B00C56A8C /* MapViewController.xib */,
@@ -293,6 +316,7 @@
 				FDBC9C8914C43CBE00C56A8C /* camera_tab.png in Resources */,
 				FDBC9C8A14C43CBE00C56A8C /* map_tab.png in Resources */,
 				FDBC9C8F14C44A4B00C56A8C /* SitesViewController.xib in Resources */,
+				FD26D9DE14C5608D005B8CF6 /* SiteTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +356,8 @@
 				FDAE679414C413EF004488DC /* HomeViewController.m in Sources */,
 				FDBC9C8114C4357C00C56A8C /* MapViewController.m in Sources */,
 				FDBC9C8E14C44A4B00C56A8C /* SitesViewController.m in Sources */,
+				FD5D705114C52CE80091CFBF /* Model.xcdatamodeld in Sources */,
+				FD76D97514C637DE00A64843 /* Site.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +537,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FD5D704F14C52CE80091CFBF /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FD5D705014C52CE80091CFBF /* Model.xcdatamodel */,
+			);
+			currentVersion = FD5D705014C52CE80091CFBF /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FDAE677314C413EE004488DC /* Project object */;
 }
