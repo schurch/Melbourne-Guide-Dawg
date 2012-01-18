@@ -8,9 +8,12 @@
 
 #import "SitesViewController.h"
 #import "Site.h"
+#import "SiteDetail.h"
+#import "SiteDetailViewController.h"
 
 @implementation SitesViewController
 
+@synthesize navigationController = _navigationController;
 @synthesize sites = _sites;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize tableViewCell = _tableViewCell;
@@ -36,10 +39,33 @@
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
+}
+
+- (void)addDummyDataWithImage:(NSString *)imageName context:(NSManagedObjectContext *)context{
+    Site *site = [NSEntityDescription insertNewObjectForEntityForName:@"Site" inManagedObjectContext:context];
     
-    // Release any cached data, images, etc that aren't in use.
+    site.title = @"Something Awesome";
+    site.locationText = @"6 Warburton St, Brunswick";
+    NSString *thumbImageName = [NSString stringWithFormat:@"%@_thumb.jpg", imageName];
+    NSString *fullImageName = [NSString stringWithFormat:@"%@.jpg", imageName];
+
+    NSData *imageThumbData = UIImagePNGRepresentation([UIImage imageNamed:thumbImageName]);
+    NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:fullImageName]);
+    site.imageThumb = imageThumbData;
+    
+    SiteDetail *siteDetails = [NSEntityDescription insertNewObjectForEntityForName:@"SiteDetail" inManagedObjectContext:context];
+    siteDetails.image = imageData;
+    site.detail = siteDetails;
+    
+    site.date = [NSDate date]; 
+    site.locationPosition = @"-37.812225,144.963055";
+    site.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan leo eu felis pharetra ut semper ipsum pellentesque. Sed sed erat ut mi ullamcorper auctor. Nunc faucibus volutpat metus. Suspendisse quis purus at sem laoreet fringilla rhoncus sed leo. Maecenas purus odio, suscipit ac rhoncus id, ultrices eget nisl. Pellentesque tempus nisl eget leo volutpat scelerisque. Nam pretium odio vel enim adipiscing sit amet tristique nisl ultricies. \r\n \r\n Aenean et urna enim, a tincidunt dui. Curabitur rutrum ligula ut nisl viverra gravida ut et mauris. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque suscipit lobortis auctor. Integer dignissim sem quis eros tempor et elementum leo fringilla. Duis pulvinar dictum neque, ut aliquet lacus porttitor malesuada. Vivamus sed arcu quis dolor elementum rhoncus. Nam aliquam semper diam, consequat faucibus erat varius sed. Nulla facilisi.";
+    
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Error saving: %@", [error localizedDescription]);
+    }
 }
 
 #pragma mark - View lifecycle
@@ -47,6 +73,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
     
     NSError *error;
     NSManagedObjectContext *context = self.managedObjectContext;
@@ -56,21 +87,9 @@
     [fetchRequest setEntity:entity];
     self.sites = [context executeFetchRequest:fetchRequest error:&error];
     
-//    NSManagedObjectContext *context = self.managedObjectContext;
-//    Site *site = [NSEntityDescription insertNewObjectForEntityForName:@"Site" 
-//                             inManagedObjectContext:context];
-//
-//    site.title = @"Bawbag";
-//    site.locationText = @"Melbourne CBD";
-//    NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:@"melbourne1.jpg"]);
-//    site.image = imageData;
-//    site.date = [NSDate date]; 
-//    site.locationPosition = @"-37.812225,144.963055";
-//    site.text = @"This is the text for Bawbag. Yeah, that's right, Bawbag. You think about what you've done. Here is some more text. And a bit more. This is the last text.";
-//    
-//    if (![context save:&error]) {
-//        NSLog(@"Error saving: %@", [error localizedDescription]);
-//    }
+//    [self addDummyDataWithImage:@"melbourne1" context:context];
+//    [self addDummyDataWithImage:@"melbourne2" context:context];
+//    [self addDummyDataWithImage:@"melbourne3" context:context];
 }
 
 - (void)viewDidUnload
@@ -143,11 +162,12 @@
         self.tableViewCell = nil;
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     Site *site = [self.sites objectAtIndex:indexPath.row];
     
-    
-//    UIImageView *image = (UIImageView *)[cell viewWithTag:1];
-//    [image setImage:[UIImage imageWithData:site.image]];
+    UIImageView *image = (UIImageView *)[cell viewWithTag:1];
+    [image setImage:[UIImage imageWithData:site.imageThumb]];
     
     UILabel *label;
     label = (UILabel *)[cell viewWithTag:2];
@@ -208,15 +228,12 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+{    
+    SiteDetailViewController *detailViewController = [[SiteDetailViewController alloc] initWithNibName:@"SiteDetailViewController" bundle:nil];
+    detailViewController.site = [self.sites objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
+     
 }
 
 - (void)dealloc {

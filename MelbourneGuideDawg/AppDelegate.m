@@ -33,13 +33,23 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
+    
     HomeViewController *homeViewController = [[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil] autorelease];
+
     SitesViewController *sitesViewController = [[[SitesViewController alloc] initWithNibName:@"SitesViewController" bundle:nil] autorelease];
     sitesViewController.managedObjectContext = self.managedObjectContext;
+    
+    UINavigationController *sitesNavigationController = [[[UINavigationController alloc] initWithRootViewController:sitesViewController] autorelease];
+    sitesNavigationController.navigationBarHidden = YES;
+    sitesNavigationController.navigationBar.tintColor = [UIColor colorWithRed:(30.0/255.0 ) green:(30.0/255.0) blue:(30.0/255.0) alpha:1.0];
+    sitesViewController.navigationController = sitesNavigationController;
+
+    
     MapViewController *mapViewController = [[[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil] autorelease];
+    
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:homeViewController, sitesViewController, mapViewController, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:homeViewController, sitesNavigationController, mapViewController, nil];
+    
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
@@ -134,14 +144,14 @@
     
     NSError *error = nil;
     
-    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys: 
-                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, 
-                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+//    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys: 
+//                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, 
+//                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Model.sqlite"];
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     
-    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error])
+    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
     {
         /*
          Replace this implementation with code to handle the error appropriately.

@@ -10,7 +10,13 @@
 		FD26D9DE14C5608D005B8CF6 /* SiteTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD26D9DD14C5608D005B8CF6 /* SiteTableCell.xib */; };
 		FD5D705114C52CE80091CFBF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD5D704F14C52CE80091CFBF /* Model.xcdatamodeld */; };
 		FD5D70A414C534F80091CFBF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5D70A314C534F80091CFBF /* CoreData.framework */; };
-		FD76D97514C637DE00A64843 /* Site.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76D97414C637DD00A64843 /* Site.m */; };
+		FD76D97A14C63D2E00A64843 /* melbourne1_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD76D97714C63D2E00A64843 /* melbourne1_thumb.jpg */; };
+		FD76D97B14C63D2E00A64843 /* melbourne2_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD76D97814C63D2E00A64843 /* melbourne2_thumb.jpg */; };
+		FD76D97C14C63D2E00A64843 /* melbourne3_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD76D97914C63D2E00A64843 /* melbourne3_thumb.jpg */; };
+		FD76D97F14C63F4B00A64843 /* SiteDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76D97E14C63F4B00A64843 /* SiteDetail.m */; };
+		FD76D98214C63F5F00A64843 /* Site.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76D98114C63F5F00A64843 /* Site.m */; };
+		FD76D98614C652F200A64843 /* SiteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76D98414C652EF00A64843 /* SiteDetailViewController.m */; };
+		FD76D98714C652F200A64843 /* SiteDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD76D98514C652F000A64843 /* SiteDetailViewController.xib */; };
 		FDAE678114C413EF004488DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678014C413EF004488DC /* UIKit.framework */; };
 		FDAE678314C413EF004488DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678214C413EF004488DC /* Foundation.framework */; };
 		FDAE678514C413EF004488DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678414C413EF004488DC /* CoreGraphics.framework */; };
@@ -55,8 +61,16 @@
 		FD26D9DD14C5608D005B8CF6 /* SiteTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SiteTableCell.xib; sourceTree = "<group>"; };
 		FD5D705014C52CE80091CFBF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FD5D70A314C534F80091CFBF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		FD76D97314C637DD00A64843 /* Site.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Site.h; sourceTree = "<group>"; };
-		FD76D97414C637DD00A64843 /* Site.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Site.m; sourceTree = "<group>"; };
+		FD76D97714C63D2E00A64843 /* melbourne1_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne1_thumb.jpg; path = photos/melbourne1_thumb.jpg; sourceTree = "<group>"; };
+		FD76D97814C63D2E00A64843 /* melbourne2_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne2_thumb.jpg; path = photos/melbourne2_thumb.jpg; sourceTree = "<group>"; };
+		FD76D97914C63D2E00A64843 /* melbourne3_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne3_thumb.jpg; path = photos/melbourne3_thumb.jpg; sourceTree = "<group>"; };
+		FD76D97D14C63F4B00A64843 /* SiteDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiteDetail.h; sourceTree = "<group>"; };
+		FD76D97E14C63F4B00A64843 /* SiteDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiteDetail.m; sourceTree = "<group>"; };
+		FD76D98014C63F5F00A64843 /* Site.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Site.h; sourceTree = "<group>"; };
+		FD76D98114C63F5F00A64843 /* Site.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Site.m; sourceTree = "<group>"; };
+		FD76D98314C652EB00A64843 /* SiteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiteDetailViewController.h; sourceTree = "<group>"; };
+		FD76D98414C652EF00A64843 /* SiteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiteDetailViewController.m; sourceTree = "<group>"; };
+		FD76D98514C652F000A64843 /* SiteDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SiteDetailViewController.xib; sourceTree = "<group>"; };
 		FDAE677C14C413EF004488DC /* MelbourneGuideDawg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MelbourneGuideDawg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDAE678014C413EF004488DC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FDAE678214C413EF004488DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -125,8 +139,10 @@
 			isa = PBXGroup;
 			children = (
 				FD5D704F14C52CE80091CFBF /* Model.xcdatamodeld */,
-				FD76D97314C637DD00A64843 /* Site.h */,
-				FD76D97414C637DD00A64843 /* Site.m */,
+				FD76D98014C63F5F00A64843 /* Site.h */,
+				FD76D98114C63F5F00A64843 /* Site.m */,
+				FD76D97D14C63F4B00A64843 /* SiteDetail.h */,
+				FD76D97E14C63F4B00A64843 /* SiteDetail.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -166,7 +182,6 @@
 		FDAE678614C413EF004488DC /* MelbourneGuideDawg */ = {
 			isa = PBXGroup;
 			children = (
-				FD26D9DC14C55231005B8CF6 /* Model */,
 				FDAE678F14C413EF004488DC /* AppDelegate.h */,
 				FDAE679014C413EF004488DC /* AppDelegate.m */,
 				FDBC9C8B14C44A4A00C56A8C /* SitesViewController.h */,
@@ -175,14 +190,18 @@
 				FDAE679314C413EF004488DC /* HomeViewController.m */,
 				FDBC9C7E14C4357B00C56A8C /* MapViewController.h */,
 				FDBC9C7F14C4357B00C56A8C /* MapViewController.m */,
+				FD76D98314C652EB00A64843 /* SiteDetailViewController.h */,
+				FD76D98414C652EF00A64843 /* SiteDetailViewController.m */,
 				FD26D9DD14C5608D005B8CF6 /* SiteTableCell.xib */,
 				FDBC9C8D14C44A4B00C56A8C /* SitesViewController.xib */,
 				FDAE67A014C413EF004488DC /* HomeViewController.xib */,
 				FDBC9C8014C4357B00C56A8C /* MapViewController.xib */,
 				FDBC9C7B14C425EF00C56A8C /* IntroductionView.xib */,
+				FD76D98514C652F000A64843 /* SiteDetailViewController.xib */,
 				FDBC9C8514C43BE400C56A8C /* home_tab.png */,
 				FDBC9C8714C43CBD00C56A8C /* camera_tab.png */,
 				FDBC9C8814C43CBD00C56A8C /* map_tab.png */,
+				FD26D9DC14C55231005B8CF6 /* Model */,
 				FDAE67C314C414AC004488DC /* Photos */,
 				FDAE678714C413EF004488DC /* Supporting Files */,
 			);
@@ -222,6 +241,9 @@
 		FDAE67C314C414AC004488DC /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				FD76D97714C63D2E00A64843 /* melbourne1_thumb.jpg */,
+				FD76D97814C63D2E00A64843 /* melbourne2_thumb.jpg */,
+				FD76D97914C63D2E00A64843 /* melbourne3_thumb.jpg */,
 				FDAE67CE14C4234C004488DC /* intro_top.png */,
 				FDAE67C614C414D3004488DC /* melbourne1.jpg */,
 				FDAE67C714C414D3004488DC /* melbourne2.jpg */,
@@ -317,6 +339,10 @@
 				FDBC9C8A14C43CBE00C56A8C /* map_tab.png in Resources */,
 				FDBC9C8F14C44A4B00C56A8C /* SitesViewController.xib in Resources */,
 				FD26D9DE14C5608D005B8CF6 /* SiteTableCell.xib in Resources */,
+				FD76D97A14C63D2E00A64843 /* melbourne1_thumb.jpg in Resources */,
+				FD76D97B14C63D2E00A64843 /* melbourne2_thumb.jpg in Resources */,
+				FD76D97C14C63D2E00A64843 /* melbourne3_thumb.jpg in Resources */,
+				FD76D98714C652F200A64843 /* SiteDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,7 +383,9 @@
 				FDBC9C8114C4357C00C56A8C /* MapViewController.m in Sources */,
 				FDBC9C8E14C44A4B00C56A8C /* SitesViewController.m in Sources */,
 				FD5D705114C52CE80091CFBF /* Model.xcdatamodeld in Sources */,
-				FD76D97514C637DE00A64843 /* Site.m in Sources */,
+				FD76D97F14C63F4B00A64843 /* SiteDetail.m in Sources */,
+				FD76D98214C63F5F00A64843 /* Site.m in Sources */,
+				FD76D98614C652F200A64843 /* SiteDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,17 +7,18 @@
 //
 
 #import "Site.h"
+#import "SiteDetail.h"
 
 
 @implementation Site
 
 @dynamic date;
 @dynamic id;
-@dynamic image;
 @dynamic locationPosition;
 @dynamic locationText;
 @dynamic text;
 @dynamic title;
 @dynamic imageThumb;
+@dynamic detail;
 
 @end
