@@ -12,14 +12,14 @@
 @implementation Site
 
 @dynamic date;
-@dynamic siteId;
+@dynamic imageFileName;
 @dynamic imageThumbData;
 @dynamic lat;
 @dynamic lng;
 @dynamic location;
 @dynamic name;
+@dynamic siteId;
 @dynamic text;
-@dynamic imageFileName;
-@dynamic detail;
+@dynamic imageTinyData;
 
 @end

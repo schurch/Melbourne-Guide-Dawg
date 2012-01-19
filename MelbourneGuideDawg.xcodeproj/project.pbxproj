@@ -7,15 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD2206DC14C8331A0011BF2A /* melbourne1_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206C414C8331A0011BF2A /* melbourne1_thumb.jpg */; };
+		FD2206DD14C8331A0011BF2A /* melbourne1_tiny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206C514C8331A0011BF2A /* melbourne1_tiny.jpg */; };
+		FD2206DE14C8331A0011BF2A /* melbourne1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206C614C8331A0011BF2A /* melbourne1.jpg */; };
+		FD2206DF14C8331A0011BF2A /* melbourne2_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206C714C8331A0011BF2A /* melbourne2_thumb.jpg */; };
+		FD2206E014C8331A0011BF2A /* melbourne2_tiny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206C814C8331A0011BF2A /* melbourne2_tiny.jpg */; };
+		FD2206E114C8331A0011BF2A /* melbourne2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206C914C8331A0011BF2A /* melbourne2.jpg */; };
+		FD2206E214C8331A0011BF2A /* melbourne3_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206CA14C8331A0011BF2A /* melbourne3_thumb.jpg */; };
+		FD2206E314C8331A0011BF2A /* melbourne3_tiny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206CB14C8331A0011BF2A /* melbourne3_tiny.jpg */; };
+		FD2206E414C8331A0011BF2A /* melbourne3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206CC14C8331A0011BF2A /* melbourne3.jpg */; };
+		FD2206E514C8331A0011BF2A /* melbourne4_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206CD14C8331A0011BF2A /* melbourne4_thumb.jpg */; };
+		FD2206E614C8331A0011BF2A /* melbourne4_tiny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206CE14C8331A0011BF2A /* melbourne4_tiny.jpg */; };
+		FD2206E714C8331A0011BF2A /* melbourne4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206CF14C8331A0011BF2A /* melbourne4.jpg */; };
+		FD2206E814C8331A0011BF2A /* melbourne5_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206D014C8331A0011BF2A /* melbourne5_thumb.jpg */; };
+		FD2206E914C8331A0011BF2A /* melbourne5_tiny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206D114C8331A0011BF2A /* melbourne5_tiny.jpg */; };
+		FD2206EA14C8331A0011BF2A /* melbourne5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206D214C8331A0011BF2A /* melbourne5.jpg */; };
+		FD2206EB14C8331A0011BF2A /* melbourne6_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206D314C8331A0011BF2A /* melbourne6_thumb.jpg */; };
+		FD2206EC14C8331A0011BF2A /* melbourne6_tiny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206D414C8331A0011BF2A /* melbourne6_tiny.jpg */; };
+		FD2206ED14C8331A0011BF2A /* melbourne6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206D514C8331A0011BF2A /* melbourne6.jpg */; };
+		FD2206EE14C8331A0011BF2A /* melbourne7_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206D614C8331A0011BF2A /* melbourne7_thumb.jpg */; };
+		FD2206EF14C8331A0011BF2A /* melbourne7_tiny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206D714C8331A0011BF2A /* melbourne7_tiny.jpg */; };
+		FD2206F014C8331A0011BF2A /* melbourne7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206D814C8331A0011BF2A /* melbourne7.jpg */; };
+		FD2206F114C8331A0011BF2A /* melbourne8_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206D914C8331A0011BF2A /* melbourne8_thumb.jpg */; };
+		FD2206F214C8331A0011BF2A /* melbourne8_tiny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206DA14C8331A0011BF2A /* melbourne8_tiny.jpg */; };
+		FD2206F314C8331A0011BF2A /* melbourne8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD2206DB14C8331A0011BF2A /* melbourne8.jpg */; };
+		FD2206F714C833A90011BF2A /* Site.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2206F614C833A90011BF2A /* Site.m */; };
 		FD26D9DE14C5608D005B8CF6 /* SiteTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD26D9DD14C5608D005B8CF6 /* SiteTableCell.xib */; };
 		FD580E0614C704BE0058293D /* Site+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FD580E0514C704BE0058293D /* Site+Extensions.m */; };
 		FD580E1514C78CF00058293D /* UIViewController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = FD580E1414C78CF00058293D /* UIViewController+Utils.m */; };
-		FD580E3814C7D6230058293D /* Site.m in Sources */ = {isa = PBXBuildFile; fileRef = FD580E3714C7D6230058293D /* Site.m */; };
 		FD5D705114C52CE80091CFBF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD5D704F14C52CE80091CFBF /* Model.xcdatamodeld */; };
 		FD5D70A414C534F80091CFBF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5D70A314C534F80091CFBF /* CoreData.framework */; };
-		FD76D97A14C63D2E00A64843 /* melbourne1_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD76D97714C63D2E00A64843 /* melbourne1_thumb.jpg */; };
-		FD76D97B14C63D2E00A64843 /* melbourne2_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD76D97814C63D2E00A64843 /* melbourne2_thumb.jpg */; };
-		FD76D97C14C63D2E00A64843 /* melbourne3_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD76D97914C63D2E00A64843 /* melbourne3_thumb.jpg */; };
 		FD76D98614C652F200A64843 /* SiteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76D98414C652EF00A64843 /* SiteDetailViewController.m */; };
 		FD76D98714C652F200A64843 /* SiteDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD76D98514C652F000A64843 /* SiteDetailViewController.xib */; };
 		FDAE678114C413EF004488DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678014C413EF004488DC /* UIKit.framework */; };
@@ -32,10 +53,6 @@
 		FDAE67B714C413EF004488DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67B514C413EF004488DC /* InfoPlist.strings */; };
 		FDAE67BA14C413EF004488DC /* MelbourneGuideDawgTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAE67B914C413EF004488DC /* MelbourneGuideDawgTests.m */; };
 		FDAE67C514C414C9004488DC /* home_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67C414C414C9004488DC /* home_photo.png */; };
-		FDAE67CA14C414D3004488DC /* melbourne1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67C614C414D3004488DC /* melbourne1.jpg */; };
-		FDAE67CB14C414D3004488DC /* melbourne2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67C714C414D3004488DC /* melbourne2.jpg */; };
-		FDAE67CC14C414D3004488DC /* melbourne3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67C814C414D3004488DC /* melbourne3.jpg */; };
-		FDAE67CD14C414D3004488DC /* melbourne4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67C914C414D3004488DC /* melbourne4.jpg */; };
 		FDAE67CF14C4234C004488DC /* intro_top.png in Resources */ = {isa = PBXBuildFile; fileRef = FDAE67CE14C4234C004488DC /* intro_top.png */; };
 		FDBC9C7C14C425EF00C56A8C /* IntroductionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDBC9C7B14C425EF00C56A8C /* IntroductionView.xib */; };
 		FDBC9C8114C4357C00C56A8C /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBC9C7F14C4357B00C56A8C /* MapViewController.m */; };
@@ -59,18 +76,39 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FD2206C414C8331A0011BF2A /* melbourne1_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne1_thumb.jpg; path = photos/melbourne1_thumb.jpg; sourceTree = "<group>"; };
+		FD2206C514C8331A0011BF2A /* melbourne1_tiny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne1_tiny.jpg; path = photos/melbourne1_tiny.jpg; sourceTree = "<group>"; };
+		FD2206C614C8331A0011BF2A /* melbourne1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne1.jpg; path = photos/melbourne1.jpg; sourceTree = "<group>"; };
+		FD2206C714C8331A0011BF2A /* melbourne2_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne2_thumb.jpg; path = photos/melbourne2_thumb.jpg; sourceTree = "<group>"; };
+		FD2206C814C8331A0011BF2A /* melbourne2_tiny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne2_tiny.jpg; path = photos/melbourne2_tiny.jpg; sourceTree = "<group>"; };
+		FD2206C914C8331A0011BF2A /* melbourne2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne2.jpg; path = photos/melbourne2.jpg; sourceTree = "<group>"; };
+		FD2206CA14C8331A0011BF2A /* melbourne3_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne3_thumb.jpg; path = photos/melbourne3_thumb.jpg; sourceTree = "<group>"; };
+		FD2206CB14C8331A0011BF2A /* melbourne3_tiny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne3_tiny.jpg; path = photos/melbourne3_tiny.jpg; sourceTree = "<group>"; };
+		FD2206CC14C8331A0011BF2A /* melbourne3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne3.jpg; path = photos/melbourne3.jpg; sourceTree = "<group>"; };
+		FD2206CD14C8331A0011BF2A /* melbourne4_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne4_thumb.jpg; path = photos/melbourne4_thumb.jpg; sourceTree = "<group>"; };
+		FD2206CE14C8331A0011BF2A /* melbourne4_tiny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne4_tiny.jpg; path = photos/melbourne4_tiny.jpg; sourceTree = "<group>"; };
+		FD2206CF14C8331A0011BF2A /* melbourne4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne4.jpg; path = photos/melbourne4.jpg; sourceTree = "<group>"; };
+		FD2206D014C8331A0011BF2A /* melbourne5_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne5_thumb.jpg; path = photos/melbourne5_thumb.jpg; sourceTree = "<group>"; };
+		FD2206D114C8331A0011BF2A /* melbourne5_tiny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne5_tiny.jpg; path = photos/melbourne5_tiny.jpg; sourceTree = "<group>"; };
+		FD2206D214C8331A0011BF2A /* melbourne5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne5.jpg; path = photos/melbourne5.jpg; sourceTree = "<group>"; };
+		FD2206D314C8331A0011BF2A /* melbourne6_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne6_thumb.jpg; path = photos/melbourne6_thumb.jpg; sourceTree = "<group>"; };
+		FD2206D414C8331A0011BF2A /* melbourne6_tiny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne6_tiny.jpg; path = photos/melbourne6_tiny.jpg; sourceTree = "<group>"; };
+		FD2206D514C8331A0011BF2A /* melbourne6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne6.jpg; path = photos/melbourne6.jpg; sourceTree = "<group>"; };
+		FD2206D614C8331A0011BF2A /* melbourne7_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne7_thumb.jpg; path = photos/melbourne7_thumb.jpg; sourceTree = "<group>"; };
+		FD2206D714C8331A0011BF2A /* melbourne7_tiny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne7_tiny.jpg; path = photos/melbourne7_tiny.jpg; sourceTree = "<group>"; };
+		FD2206D814C8331A0011BF2A /* melbourne7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne7.jpg; path = photos/melbourne7.jpg; sourceTree = "<group>"; };
+		FD2206D914C8331A0011BF2A /* melbourne8_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne8_thumb.jpg; path = photos/melbourne8_thumb.jpg; sourceTree = "<group>"; };
+		FD2206DA14C8331A0011BF2A /* melbourne8_tiny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne8_tiny.jpg; path = photos/melbourne8_tiny.jpg; sourceTree = "<group>"; };
+		FD2206DB14C8331A0011BF2A /* melbourne8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne8.jpg; path = photos/melbourne8.jpg; sourceTree = "<group>"; };
+		FD2206F514C833A90011BF2A /* Site.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Site.h; sourceTree = "<group>"; };
+		FD2206F614C833A90011BF2A /* Site.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Site.m; sourceTree = "<group>"; };
 		FD26D9DD14C5608D005B8CF6 /* SiteTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SiteTableCell.xib; sourceTree = "<group>"; };
 		FD580E0414C704BE0058293D /* Site+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Site+Extensions.h"; sourceTree = "<group>"; };
 		FD580E0514C704BE0058293D /* Site+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Site+Extensions.m"; sourceTree = "<group>"; };
 		FD580E1314C78CEF0058293D /* UIViewController+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Utils.h"; sourceTree = "<group>"; };
 		FD580E1414C78CF00058293D /* UIViewController+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Utils.m"; sourceTree = "<group>"; };
-		FD580E3614C7D6230058293D /* Site.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Site.h; sourceTree = "<group>"; };
-		FD580E3714C7D6230058293D /* Site.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Site.m; sourceTree = "<group>"; };
 		FD5D705014C52CE80091CFBF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FD5D70A314C534F80091CFBF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		FD76D97714C63D2E00A64843 /* melbourne1_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne1_thumb.jpg; path = photos/melbourne1_thumb.jpg; sourceTree = "<group>"; };
-		FD76D97814C63D2E00A64843 /* melbourne2_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne2_thumb.jpg; path = photos/melbourne2_thumb.jpg; sourceTree = "<group>"; };
-		FD76D97914C63D2E00A64843 /* melbourne3_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne3_thumb.jpg; path = photos/melbourne3_thumb.jpg; sourceTree = "<group>"; };
 		FD76D98314C652EB00A64843 /* SiteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiteDetailViewController.h; sourceTree = "<group>"; };
 		FD76D98414C652EF00A64843 /* SiteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiteDetailViewController.m; sourceTree = "<group>"; };
 		FD76D98514C652F000A64843 /* SiteDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SiteDetailViewController.xib; sourceTree = "<group>"; };
@@ -94,10 +132,6 @@
 		FDAE67B814C413EF004488DC /* MelbourneGuideDawgTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MelbourneGuideDawgTests.h; sourceTree = "<group>"; };
 		FDAE67B914C413EF004488DC /* MelbourneGuideDawgTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MelbourneGuideDawgTests.m; sourceTree = "<group>"; };
 		FDAE67C414C414C9004488DC /* home_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home_photo.png; path = photos/home_photo.png; sourceTree = "<group>"; };
-		FDAE67C614C414D3004488DC /* melbourne1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne1.jpg; path = photos/melbourne1.jpg; sourceTree = "<group>"; };
-		FDAE67C714C414D3004488DC /* melbourne2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne2.jpg; path = photos/melbourne2.jpg; sourceTree = "<group>"; };
-		FDAE67C814C414D3004488DC /* melbourne3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne3.jpg; path = photos/melbourne3.jpg; sourceTree = "<group>"; };
-		FDAE67C914C414D3004488DC /* melbourne4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = melbourne4.jpg; path = photos/melbourne4.jpg; sourceTree = "<group>"; };
 		FDAE67CE14C4234C004488DC /* intro_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = intro_top.png; path = photos/intro_top.png; sourceTree = "<group>"; };
 		FDBC9C7B14C425EF00C56A8C /* IntroductionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroductionView.xib; sourceTree = "<group>"; };
 		FDBC9C7E14C4357B00C56A8C /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -141,9 +175,9 @@
 		FD26D9DC14C55231005B8CF6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FD2206F514C833A90011BF2A /* Site.h */,
+				FD2206F614C833A90011BF2A /* Site.m */,
 				FD5D704F14C52CE80091CFBF /* Model.xcdatamodeld */,
-				FD580E3614C7D6230058293D /* Site.h */,
-				FD580E3714C7D6230058293D /* Site.m */,
 				FD580E0414C704BE0058293D /* Site+Extensions.h */,
 				FD580E0514C704BE0058293D /* Site+Extensions.m */,
 			);
@@ -246,14 +280,31 @@
 		FDAE67C314C414AC004488DC /* Photos */ = {
 			isa = PBXGroup;
 			children = (
-				FD76D97714C63D2E00A64843 /* melbourne1_thumb.jpg */,
-				FD76D97814C63D2E00A64843 /* melbourne2_thumb.jpg */,
-				FD76D97914C63D2E00A64843 /* melbourne3_thumb.jpg */,
+				FD2206C414C8331A0011BF2A /* melbourne1_thumb.jpg */,
+				FD2206C514C8331A0011BF2A /* melbourne1_tiny.jpg */,
+				FD2206C614C8331A0011BF2A /* melbourne1.jpg */,
+				FD2206C714C8331A0011BF2A /* melbourne2_thumb.jpg */,
+				FD2206C814C8331A0011BF2A /* melbourne2_tiny.jpg */,
+				FD2206C914C8331A0011BF2A /* melbourne2.jpg */,
+				FD2206CA14C8331A0011BF2A /* melbourne3_thumb.jpg */,
+				FD2206CB14C8331A0011BF2A /* melbourne3_tiny.jpg */,
+				FD2206CC14C8331A0011BF2A /* melbourne3.jpg */,
+				FD2206CD14C8331A0011BF2A /* melbourne4_thumb.jpg */,
+				FD2206CE14C8331A0011BF2A /* melbourne4_tiny.jpg */,
+				FD2206CF14C8331A0011BF2A /* melbourne4.jpg */,
+				FD2206D014C8331A0011BF2A /* melbourne5_thumb.jpg */,
+				FD2206D114C8331A0011BF2A /* melbourne5_tiny.jpg */,
+				FD2206D214C8331A0011BF2A /* melbourne5.jpg */,
+				FD2206D314C8331A0011BF2A /* melbourne6_thumb.jpg */,
+				FD2206D414C8331A0011BF2A /* melbourne6_tiny.jpg */,
+				FD2206D514C8331A0011BF2A /* melbourne6.jpg */,
+				FD2206D614C8331A0011BF2A /* melbourne7_thumb.jpg */,
+				FD2206D714C8331A0011BF2A /* melbourne7_tiny.jpg */,
+				FD2206D814C8331A0011BF2A /* melbourne7.jpg */,
+				FD2206D914C8331A0011BF2A /* melbourne8_thumb.jpg */,
+				FD2206DA14C8331A0011BF2A /* melbourne8_tiny.jpg */,
+				FD2206DB14C8331A0011BF2A /* melbourne8.jpg */,
 				FDAE67CE14C4234C004488DC /* intro_top.png */,
-				FDAE67C614C414D3004488DC /* melbourne1.jpg */,
-				FDAE67C714C414D3004488DC /* melbourne2.jpg */,
-				FDAE67C814C414D3004488DC /* melbourne3.jpg */,
-				FDAE67C914C414D3004488DC /* melbourne4.jpg */,
 				FDAE67C414C414C9004488DC /* home_photo.png */,
 			);
 			name = Photos;
@@ -332,10 +383,6 @@
 				FDAE678B14C413EF004488DC /* InfoPlist.strings in Resources */,
 				FDAE67A214C413EF004488DC /* HomeViewController.xib in Resources */,
 				FDAE67C514C414C9004488DC /* home_photo.png in Resources */,
-				FDAE67CA14C414D3004488DC /* melbourne1.jpg in Resources */,
-				FDAE67CB14C414D3004488DC /* melbourne2.jpg in Resources */,
-				FDAE67CC14C414D3004488DC /* melbourne3.jpg in Resources */,
-				FDAE67CD14C414D3004488DC /* melbourne4.jpg in Resources */,
 				FDAE67CF14C4234C004488DC /* intro_top.png in Resources */,
 				FDBC9C7C14C425EF00C56A8C /* IntroductionView.xib in Resources */,
 				FDBC9C8214C4357C00C56A8C /* MapViewController.xib in Resources */,
@@ -344,10 +391,31 @@
 				FDBC9C8A14C43CBE00C56A8C /* map_tab.png in Resources */,
 				FDBC9C8F14C44A4B00C56A8C /* SitesViewController.xib in Resources */,
 				FD26D9DE14C5608D005B8CF6 /* SiteTableCell.xib in Resources */,
-				FD76D97A14C63D2E00A64843 /* melbourne1_thumb.jpg in Resources */,
-				FD76D97B14C63D2E00A64843 /* melbourne2_thumb.jpg in Resources */,
-				FD76D97C14C63D2E00A64843 /* melbourne3_thumb.jpg in Resources */,
 				FD76D98714C652F200A64843 /* SiteDetailViewController.xib in Resources */,
+				FD2206DC14C8331A0011BF2A /* melbourne1_thumb.jpg in Resources */,
+				FD2206DD14C8331A0011BF2A /* melbourne1_tiny.jpg in Resources */,
+				FD2206DE14C8331A0011BF2A /* melbourne1.jpg in Resources */,
+				FD2206DF14C8331A0011BF2A /* melbourne2_thumb.jpg in Resources */,
+				FD2206E014C8331A0011BF2A /* melbourne2_tiny.jpg in Resources */,
+				FD2206E114C8331A0011BF2A /* melbourne2.jpg in Resources */,
+				FD2206E214C8331A0011BF2A /* melbourne3_thumb.jpg in Resources */,
+				FD2206E314C8331A0011BF2A /* melbourne3_tiny.jpg in Resources */,
+				FD2206E414C8331A0011BF2A /* melbourne3.jpg in Resources */,
+				FD2206E514C8331A0011BF2A /* melbourne4_thumb.jpg in Resources */,
+				FD2206E614C8331A0011BF2A /* melbourne4_tiny.jpg in Resources */,
+				FD2206E714C8331A0011BF2A /* melbourne4.jpg in Resources */,
+				FD2206E814C8331A0011BF2A /* melbourne5_thumb.jpg in Resources */,
+				FD2206E914C8331A0011BF2A /* melbourne5_tiny.jpg in Resources */,
+				FD2206EA14C8331A0011BF2A /* melbourne5.jpg in Resources */,
+				FD2206EB14C8331A0011BF2A /* melbourne6_thumb.jpg in Resources */,
+				FD2206EC14C8331A0011BF2A /* melbourne6_tiny.jpg in Resources */,
+				FD2206ED14C8331A0011BF2A /* melbourne6.jpg in Resources */,
+				FD2206EE14C8331A0011BF2A /* melbourne7_thumb.jpg in Resources */,
+				FD2206EF14C8331A0011BF2A /* melbourne7_tiny.jpg in Resources */,
+				FD2206F014C8331A0011BF2A /* melbourne7.jpg in Resources */,
+				FD2206F114C8331A0011BF2A /* melbourne8_thumb.jpg in Resources */,
+				FD2206F214C8331A0011BF2A /* melbourne8_tiny.jpg in Resources */,
+				FD2206F314C8331A0011BF2A /* melbourne8.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,7 +459,7 @@
 				FD76D98614C652F200A64843 /* SiteDetailViewController.m in Sources */,
 				FD580E0614C704BE0058293D /* Site+Extensions.m in Sources */,
 				FD580E1514C78CF00058293D /* UIViewController+Utils.m in Sources */,
-				FD580E3814C7D6230058293D /* Site.m in Sources */,
+				FD2206F714C833A90011BF2A /* Site.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

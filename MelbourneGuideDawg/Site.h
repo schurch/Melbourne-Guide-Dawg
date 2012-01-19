@@ -13,14 +13,14 @@
 @interface Site : NSManagedObject
 
 @property (nonatomic, retain) NSDate * date;
-@property (nonatomic, retain) NSNumber * siteId;
+@property (nonatomic, retain) NSString * imageFileName;
 @property (nonatomic, retain) NSData * imageThumbData;
 @property (nonatomic, retain) NSNumber * lat;
 @property (nonatomic, retain) NSNumber * lng;
 @property (nonatomic, retain) NSString * location;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * siteId;
 @property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) NSString * imageFileName;
-@property (nonatomic, retain) NSManagedObject *detail;
+@property (nonatomic, retain) NSData * imageTinyData;
 
 @end
