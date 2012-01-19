@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SitesViewController : UITableViewController
+@interface SitesViewController : UITableViewController<NSFetchedResultsControllerDelegate>
 
-@property (nonatomic, retain) UINavigationController *navigationController;
-@property (nonatomic, retain) NSArray *sites;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, assign) IBOutlet UITableViewCell *tableViewCell;
 

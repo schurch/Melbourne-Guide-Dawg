@@ -2,24 +2,25 @@
 //  Site.h
 //  MelbourneGuideDawg
 //
-//  Created by Stefan Church on 17/01/2012.
+//  Created by Stefan Church on 19/01/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class SiteDetail;
 
 @interface Site : NSManagedObject
 
 @property (nonatomic, retain) NSDate * date;
-@property (nonatomic, retain) NSNumber * id;
-@property (nonatomic, retain) NSString * locationPosition;
-@property (nonatomic, retain) NSString * locationText;
+@property (nonatomic, retain) NSNumber * siteId;
+@property (nonatomic, retain) NSData * imageThumbData;
+@property (nonatomic, retain) NSNumber * lat;
+@property (nonatomic, retain) NSNumber * lng;
+@property (nonatomic, retain) NSString * location;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSData * imageThumb;
-@property (nonatomic, retain) SiteDetail *detail;
+@property (nonatomic, retain) NSString * imageFileName;
+@property (nonatomic, retain) NSManagedObject *detail;
 
 @end

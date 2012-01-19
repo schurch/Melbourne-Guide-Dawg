@@ -48,6 +48,7 @@
     UIView *bottomPadding = [[UIView alloc] initWithFrame:CGRectMake(20, paddingYOffset, 320, 400)];
     bottomPadding.backgroundColor = [UIColor blackColor];
     [self.introScrollView addSubview:bottomPadding];
+    [bottomPadding release];
 }
 
 - (void)viewDidUnload

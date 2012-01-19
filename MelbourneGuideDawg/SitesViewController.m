@@ -8,13 +8,11 @@
 
 #import "SitesViewController.h"
 #import "Site.h"
-#import "SiteDetail.h"
 #import "SiteDetailViewController.h"
 
 @implementation SitesViewController
 
-@synthesize navigationController = _navigationController;
-@synthesize sites = _sites;
+@synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize tableViewCell = _tableViewCell;
 
@@ -37,35 +35,69 @@
     return self;
 }
 
+- (NSFetchedResultsController *)fetchedResultsController {
+    
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Site" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+    [fetchRequest setFetchBatchSize:10];
+    
+    NSFetchedResultsController *theFetchedResultsController = 
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest 
+                                        managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil 
+                                                   cacheName:@"Root"];
+    self.fetchedResultsController = theFetchedResultsController;
+    _fetchedResultsController.delegate = self;
+    
+    [sort release];
+    [fetchRequest release];
+    [theFetchedResultsController release];
+    
+    return _fetchedResultsController;    
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
 
-- (void)addDummyDataWithImage:(NSString *)imageName context:(NSManagedObjectContext *)context{
+- (void)addDummyDataWithImage:(NSString *)imageName context:(NSManagedObjectContext *)context {
     Site *site = [NSEntityDescription insertNewObjectForEntityForName:@"Site" inManagedObjectContext:context];
     
-    site.title = @"Something Awesome";
-    site.locationText = @"6 Warburton St, Brunswick";
+    static int siteId = 1;
+    
+    site.siteId = [NSNumber numberWithInt:siteId];
+    site.name = @"NSG Gallery";
+    site.location = @"6 Warburton St, Brunswick";
     NSString *thumbImageName = [NSString stringWithFormat:@"%@_thumb.jpg", imageName];
     NSString *fullImageName = [NSString stringWithFormat:@"%@.jpg", imageName];
 
     NSData *imageThumbData = UIImagePNGRepresentation([UIImage imageNamed:thumbImageName]);
-    NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:fullImageName]);
-    site.imageThumb = imageThumbData;
+
+    site.imageThumbData = imageThumbData;
+    site.imageFileName = fullImageName;
     
-    SiteDetail *siteDetails = [NSEntityDescription insertNewObjectForEntityForName:@"SiteDetail" inManagedObjectContext:context];
-    siteDetails.image = imageData;
-    site.detail = siteDetails;
+    site.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan leo eu felis pharetra ut semper ipsum pellentesque. Sed sed erat ut mi ullamcorper auctor. Nunc faucibus volutpat metus. Suspendisse quis purus at sem laoreet fringilla rhoncus sed leo. Maecenas purus odio, suscipit ac rhoncus id, ultrices eget nisl. Pellentesque tempus nisl eget leo volutpat scelerisque. Nam pretium odio vel enim adipiscing sit amet tristique nisl ultricies. \r\n \r\nAenean et urna enim, a tincidunt dui. Curabitur rutrum ligula ut nisl viverra gravida ut et mauris. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque suscipit lobortis auctor. Integer dignissim sem quis eros tempor et elementum leo fringilla. Duis pulvinar dictum neque, ut aliquet lacus porttitor malesuada. Vivamus sed arcu quis dolor elementum rhoncus. Nam aliquam semper diam, consequat faucibus erat varius sed. Nulla facilisi.";
     
     site.date = [NSDate date]; 
-    site.locationPosition = @"-37.812225,144.963055";
-    site.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan leo eu felis pharetra ut semper ipsum pellentesque. Sed sed erat ut mi ullamcorper auctor. Nunc faucibus volutpat metus. Suspendisse quis purus at sem laoreet fringilla rhoncus sed leo. Maecenas purus odio, suscipit ac rhoncus id, ultrices eget nisl. Pellentesque tempus nisl eget leo volutpat scelerisque. Nam pretium odio vel enim adipiscing sit amet tristique nisl ultricies. \r\n \r\n Aenean et urna enim, a tincidunt dui. Curabitur rutrum ligula ut nisl viverra gravida ut et mauris. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque suscipit lobortis auctor. Integer dignissim sem quis eros tempor et elementum leo fringilla. Duis pulvinar dictum neque, ut aliquet lacus porttitor malesuada. Vivamus sed arcu quis dolor elementum rhoncus. Nam aliquam semper diam, consequat faucibus erat varius sed. Nulla facilisi.";
+    site.lat = [NSNumber numberWithDouble:-37.812225];
+    site.lng = [NSNumber numberWithDouble:144.963055];
+
     
     NSError *error;
     if (![context save:&error]) {
         NSLog(@"Error saving: %@", [error localizedDescription]);
     }
+    
+    siteId++;
 }
 
 #pragma mark - View lifecycle
@@ -73,20 +105,39 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back"
-                                      style:UIBarButtonItemStyleBordered
-                                     target:nil
-                                     action:nil] autorelease];
-    
+
     NSError *error;
-    NSManagedObjectContext *context = self.managedObjectContext;
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription 
-                                   entityForName:@"Site" inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    self.sites = [context executeFetchRequest:fetchRequest error:&error];
+	if (![[self fetchedResultsController] performFetch:&error]) {
+		// Update to handle the error appropriately.
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		exit(-1);
+	}
+ 
     
+//    NSError *error;
+//    NSManagedObjectContext *context = self.managedObjectContext;
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//    NSEntityDescription *entity = [NSEntityDescription 
+//                                   entityForName:@"Site" inManagedObjectContext:context];
+//    [fetchRequest setEntity:entity];
+//    self.sites = [context executeFetchRequest:fetchRequest error:&error];
+//    [fetchRequest release];
+    
+//    [self addDummyDataWithImage:@"melbourne1" context:context];
+//    [self addDummyDataWithImage:@"melbourne2" context:context];
+//    [self addDummyDataWithImage:@"melbourne3" context:context];
+//    [self addDummyDataWithImage:@"melbourne1" context:context];
+//    [self addDummyDataWithImage:@"melbourne2" context:context];
+//    [self addDummyDataWithImage:@"melbourne3" context:context];
+//    [self addDummyDataWithImage:@"melbourne1" context:context];
+//    [self addDummyDataWithImage:@"melbourne2" context:context];
+//    [self addDummyDataWithImage:@"melbourne3" context:context];
+//    [self addDummyDataWithImage:@"melbourne1" context:context];
+//    [self addDummyDataWithImage:@"melbourne2" context:context];
+//    [self addDummyDataWithImage:@"melbourne3" context:context];
+//    [self addDummyDataWithImage:@"melbourne1" context:context];
+//    [self addDummyDataWithImage:@"melbourne2" context:context];
+//    [self addDummyDataWithImage:@"melbourne3" context:context];
 //    [self addDummyDataWithImage:@"melbourne1" context:context];
 //    [self addDummyDataWithImage:@"melbourne2" context:context];
 //    [self addDummyDataWithImage:@"melbourne3" context:context];
@@ -95,8 +146,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.fetchedResultsController = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -135,7 +185,6 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
@@ -143,12 +192,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return [[self.fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.sites count];
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -164,17 +214,17 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    Site *site = [self.sites objectAtIndex:indexPath.row];
+    Site *site = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     UIImageView *image = (UIImageView *)[cell viewWithTag:1];
-    [image setImage:[UIImage imageWithData:site.imageThumb]];
+    [image setImage:[UIImage imageWithData:site.imageThumbData]];
     
     UILabel *label;
     label = (UILabel *)[cell viewWithTag:2];
-    label.text = site.title;
+    label.text = site.name;
 
     label = (UILabel *)[cell viewWithTag:3];
-    label.text = site.locationText;
+    label.text = site.location;
     
     label = (UILabel *)[cell viewWithTag:4];
     label.text = site.text;
@@ -186,59 +236,27 @@
     return 80;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     SiteDetailViewController *detailViewController = [[SiteDetailViewController alloc] initWithNibName:@"SiteDetailViewController" bundle:nil];
-    detailViewController.site = [self.sites objectAtIndex:indexPath.row];
+    detailViewController.site = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
-     
+    [detailViewController release];     
 }
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView beginUpdates];
+}
+
+#pragma mark memory management
 
 - (void)dealloc {
     [_managedObjectContext release];
-    [_sites release];
+    self.fetchedResultsController.delegate = nil;
+    self.fetchedResultsController = nil;
 }
 
 @end

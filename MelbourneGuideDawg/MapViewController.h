@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface MapViewController : UIViewController {
-    MKMapView *_map;
-}
+#define METERS_PER_MILE 1609.344
+
+@interface MapViewController : UIViewController<MKMapViewDelegate>
 
 @property (nonatomic, retain) IBOutlet MKMapView *map;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) NSArray *sites;
 
 @end

@@ -11,6 +11,7 @@
 #import "HomeViewController.h"
 #import "SitesViewController.h"
 #import "MapViewController.h"
+#import "UIViewController+Utils.h"
 
 @implementation AppDelegate
 
@@ -38,17 +39,14 @@
 
     SitesViewController *sitesViewController = [[[SitesViewController alloc] initWithNibName:@"SitesViewController" bundle:nil] autorelease];
     sitesViewController.managedObjectContext = self.managedObjectContext;
-    
-    UINavigationController *sitesNavigationController = [[[UINavigationController alloc] initWithRootViewController:sitesViewController] autorelease];
-    sitesNavigationController.navigationBarHidden = YES;
-    sitesNavigationController.navigationBar.tintColor = [UIColor colorWithRed:(30.0/255.0 ) green:(30.0/255.0) blue:(30.0/255.0) alpha:1.0];
-    sitesViewController.navigationController = sitesNavigationController;
-
+    UINavigationController *sitesNavigationController = [UIViewController createNavControllerWithRootViewController:sitesViewController];
     
     MapViewController *mapViewController = [[[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil] autorelease];
+    mapViewController.managedObjectContext = self.managedObjectContext;
+    UINavigationController *mapNavigationController = [UIViewController createNavControllerWithRootViewController:mapViewController];
     
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:homeViewController, sitesNavigationController, mapViewController, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:homeViewController, sitesNavigationController, mapNavigationController, nil];
     
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
@@ -143,10 +141,6 @@
     }
     
     NSError *error = nil;
-    
-//    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys: 
-//                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, 
-//                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Model.sqlite"];
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
