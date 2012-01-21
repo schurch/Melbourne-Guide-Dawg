@@ -23,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MelbourneGuideDawg/SitesViewController.m"
-         timestampString = "348665644.715831"
+         timestampString = "348819856.399688"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "226"
-         endingLineNumber = "226"
+         startingLineNumber = "237"
+         endingLineNumber = "237"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -37,12 +37,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MelbourneGuideDawg/SitesViewController.m"
-         timestampString = "348665644.715831"
+         timestampString = "348819607.491763"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "85"
-         endingLineNumber = "85"
-         landmarkName = "-addDummyDataWithImage:context:"
+         startingLineNumber = "87"
+         endingLineNumber = "87"
+         landmarkName = "-addDummyDataWithImage:context:lat:lng:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -51,12 +51,40 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MelbourneGuideDawg/MapViewController.m"
-         timestampString = "348642974.478754"
+         timestampString = "348834852.354823"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "67"
-         endingLineNumber = "67"
+         startingLineNumber = "68"
+         endingLineNumber = "68"
          landmarkName = "-mapView:annotationView:calloutAccessoryControlTapped:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "MelbourneGuideDawg/MapViewController.m"
+         timestampString = "348834027.262148"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "84"
+         endingLineNumber = "84"
+         landmarkName = "-resetMapLocationWithAnimation:location:zoom:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "MelbourneGuideDawg/MapViewController.m"
+         timestampString = "348835237.009625"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "90"
+         endingLineNumber = "90"
+         landmarkName = "-zoomToSiteWidthId"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

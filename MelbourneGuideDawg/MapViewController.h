@@ -16,5 +16,8 @@
 @property (nonatomic, retain) IBOutlet MKMapView *map;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSArray *sites;
+@property (nonatomic, assign) CLLocationCoordinate2D location;
+
+- (void)zoomToSite;
 
 @end

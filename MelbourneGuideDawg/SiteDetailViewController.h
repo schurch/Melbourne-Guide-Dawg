@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Site.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface SiteDetailViewController : UIViewController
+@interface SiteDetailViewController : UIViewController<AVAudioPlayerDelegate> {
+    AVAudioPlayer *_audioPlayer;
+}
 
 @property (nonatomic, retain) Site *site;
 @property (nonatomic, retain) IBOutlet UIButton *imageButton;
@@ -17,7 +20,11 @@
 @property (nonatomic, retain) IBOutlet UILabel *locationLabel;
 @property (nonatomic, retain) IBOutlet UILabel *textLabel;
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, retain) IBOutlet UIButton *viewOnMapButton;
+@property (nonatomic, retain) IBOutlet UIButton *playPauseButton;
 
 - (IBAction)showImage:(id)sender;
+- (IBAction)viewMap:(id)sender;
+- (IBAction)playPauseCommentry:(id)sender;
 
 @end

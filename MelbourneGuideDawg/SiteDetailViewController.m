@@ -7,6 +7,8 @@
 //
 
 #import "SiteDetailViewController.h"
+#import "Image.h"
+#import "MapViewController.h"
 
 @implementation SiteDetailViewController
 
@@ -16,12 +18,13 @@
 @synthesize locationLabel = _locationLabel;
 @synthesize textLabel = _textLabel;
 @synthesize scrollView = _scrollView;
+@synthesize viewOnMapButton = _viewOnMapButton;
+@synthesize playPauseButton = _playPauseButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
     }
     return self;
 }
@@ -35,12 +38,32 @@
     
     [super viewWillAppear:animated];
     
-    self.title = self.site.name;
+    if ([[self.navigationController.viewControllers objectAtIndex:0] isKindOfClass:[MapViewController class]]) 
+    {
+        self.viewOnMapButton.hidden = YES;
+    } else 
+    {
+        self.viewOnMapButton.hidden = NO;
+    }
     
+    //load with core data driven file
+    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"laughter-2" ofType:@"mp3"]];
+    NSError *error;
+    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    if (error)
+    {
+        NSLog(@"Error in audioPlayer: %@", [error localizedDescription]);
+    } else {
+        _audioPlayer.delegate = self;
+    }
+    
+    [self.playPauseButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+    
+    self.title = self.site.name;
     self.imageButton.adjustsImageWhenHighlighted = NO;
-    [self.imageButton setImage:[UIImage imageNamed:self.site.imageFileName]
+    Image *image = (Image *)[[self.site.images allObjects] objectAtIndex:0];
+    [self.imageButton setImage:[UIImage imageNamed:image.smallFileName]
                  forState:UIControlStateNormal];
-//    [self.image setImage:[UIImage imageNamed:self.site.imageFileName]];
     
     self.titleLabel.text = self.site.name;
     self.locationLabel.text = self.site.location;
@@ -64,6 +87,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [_audioPlayer stop];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
@@ -77,6 +101,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    _audioPlayer = nil;
 }
 
 - (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context 
@@ -98,7 +123,8 @@
 - (IBAction)showImage:(id)sender 
 {    
     UIButton *largeImage = [UIButton buttonWithType:UIButtonTypeCustom];
-    [largeImage setImage:[UIImage imageNamed:self.site.imageFileName] forState:UIControlStateNormal];
+    Image *image = (Image *)[[self.site.images allObjects] objectAtIndex:0];
+    [largeImage setImage:[UIImage imageNamed:image.imageFileName] forState:UIControlStateNormal];
     largeImage.alpha = 0;
     largeImage.adjustsImageWhenHighlighted = NO;
     [largeImage addTarget:self action:@selector(hideImage:) forControlEvents:UIControlEventTouchUpInside];
@@ -113,6 +139,29 @@
     [UIView setAnimationDuration:0.5];
     [largeImage setAlpha:1.0];
     [UIView commitAnimations];    
+}
+
+- (IBAction)viewMap:(id)sender {
+    UINavigationController *mapViewNavigationController = (UINavigationController *)[self.tabBarController.viewControllers objectAtIndex:2];
+    [mapViewNavigationController popToRootViewControllerAnimated:NO];
+    MapViewController *mapViewController = [mapViewNavigationController.viewControllers objectAtIndex:0];        
+    [self.tabBarController setSelectedIndex:2];
+    mapViewController.location = CLLocationCoordinate2DMake([self.site.lat doubleValue], [self.site.lng doubleValue]);
+    [mapViewController zoomToSite];
+}
+
+- (IBAction)playPauseCommentry:(id)sender {
+    if (_audioPlayer.isPlaying) {
+        [_audioPlayer stop];
+        [self.playPauseButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+    } else {
+        [_audioPlayer play];
+        [self.playPauseButton setImage:[UIImage imageNamed:@"pause.png"] forState:UIControlStateNormal];
+    }
+}
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    [self.playPauseButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -136,6 +185,9 @@
     
     [_textLabel release];
     _textLabel = nil;
+    
+    [_audioPlayer release];
+    _audioPlayer = nil;
     
     [super dealloc];
 }

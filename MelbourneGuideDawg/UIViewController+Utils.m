@@ -14,12 +14,14 @@
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     navigationController.navigationBarHidden = YES;
-    navigationController.navigationBar.tintColor = [UIColor colorWithRed:(64.0/255.0 ) green:(49.0/255.0) blue:(115.0/255.0) alpha:1.0];
+//    navigationController.navigationBar.tintColor = [UIColor colorWithRed:(64.0/255.0 ) green:(49.0/255.0) blue:(115.0/255.0) alpha:1.0];
     
-    rootViewController.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back"
-                                                               style:UIBarButtonItemStyleBordered
-                                                               target:nil
-                                                               action:nil] autorelease];
+    navigationController.navigationBar.tintColor = [UIColor colorWithRed:(0.0/255.0 ) green:(0.0/255.0) blue:(0.0/255.0) alpha:1.0];
+    
+//    rootViewController.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back"
+//                                                               style:UIBarButtonItemStyleBordered
+//                                                               target:nil
+//                                                               action:nil] autorelease];
     
     return [navigationController autorelease];
 }

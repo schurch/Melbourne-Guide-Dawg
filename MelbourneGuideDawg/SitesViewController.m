@@ -8,6 +8,7 @@
 
 #import "SitesViewController.h"
 #import "Site.h"
+#import "Image.h"
 #import "SiteDetailViewController.h"
 
 @implementation SitesViewController
@@ -80,6 +81,7 @@
     
     NSString *tinyImageName = [NSString stringWithFormat:@"%@_tiny.jpg", imageName];
     NSString *thumbImageName = [NSString stringWithFormat:@"%@_thumb.jpg", imageName];
+    NSString *smallImageName = [NSString stringWithFormat:@"%@_small.jpg", imageName];
     NSString *fullImageName = [NSString stringWithFormat:@"%@.jpg", imageName];
 
     NSData *imageThumbData = UIImagePNGRepresentation([UIImage imageNamed:thumbImageName]);
@@ -87,7 +89,12 @@
 
     site.imageTinyData = imageTinyData;
     site.imageThumbData = imageThumbData;
-    site.imageFileName = fullImageName;
+    
+    Image *image = [NSEntityDescription insertNewObjectForEntityForName:@"Image" inManagedObjectContext:context];
+    image.smallFileName = smallImageName;
+    image.imageFileName = fullImageName;
+    
+    [site addImages:[NSSet setWithObjects:image, nil]];
     
     site.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan leo eu felis pharetra ut semper ipsum pellentesque. Sed sed erat ut mi ullamcorper auctor. Nunc faucibus volutpat metus. Suspendisse quis purus at sem laoreet fringilla rhoncus sed leo. Maecenas purus odio, suscipit ac rhoncus id, ultrices eget nisl. Pellentesque tempus nisl eget leo volutpat scelerisque. Nam pretium odio vel enim adipiscing sit amet tristique nisl ultricies. \r\n \r\nAenean et urna enim, a tincidunt dui. Curabitur rutrum ligula ut nisl viverra gravida ut et mauris. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque suscipit lobortis auctor. Integer dignissim sem quis eros tempor et elementum leo fringilla. Duis pulvinar dictum neque, ut aliquet lacus porttitor malesuada. Vivamus sed arcu quis dolor elementum rhoncus. Nam aliquam semper diam, consequat faucibus erat varius sed. Nulla facilisi.";
     
@@ -136,14 +143,18 @@
 //    -37.81941	144.97516
 //    -37.81575	144.96263
     
-//    [self addDummyDataWithImage:@"melbourne1" context:context lat:-37.812225 lng:144.963055];
-//    [self addDummyDataWithImage:@"melbourne2" context:context lat:-37.80490 lng:144.97121];    
-//    [self addDummyDataWithImage:@"melbourne3" context:context lat:-37.82036 lng:144.94477];    
-//    [self addDummyDataWithImage:@"melbourne4" context:context lat:-37.81290 lng:144.95190];    
-//    [self addDummyDataWithImage:@"melbourne5" context:context lat:-37.81507 lng:144.97396];    
-//    [self addDummyDataWithImage:@"melbourne6" context:context lat:-37.82423 lng:144.96958];    
-//    [self addDummyDataWithImage:@"melbourne7" context:context lat:-37.81941 lng:144.97516];    
-//    [self addDummyDataWithImage:@"melbourne8" context:context lat:-37.81575 lng:144.96263];    
+//    for (int i = 0; i < 10; i++) {
+//        [self addDummyDataWithImage:@"melbourne1" context:context lat:-37.812225 lng:144.963055];
+//        [self addDummyDataWithImage:@"melbourne2" context:context lat:-37.80490 lng:144.97121];    
+//        [self addDummyDataWithImage:@"melbourne3" context:context lat:-37.82036 lng:144.94477];    
+//        [self addDummyDataWithImage:@"melbourne4" context:context lat:-37.81290 lng:144.95190];    
+//        [self addDummyDataWithImage:@"melbourne5" context:context lat:-37.81507 lng:144.97396];    
+//        [self addDummyDataWithImage:@"melbourne6" context:context lat:-37.82423 lng:144.96958];    
+//        [self addDummyDataWithImage:@"melbourne7" context:context lat:-37.81941 lng:144.97516];    
+//        [self addDummyDataWithImage:@"melbourne8" context:context lat:-37.81575 lng:144.96263];  
+//    }
+      
+    
 }
 
 - (void)viewDidUnload

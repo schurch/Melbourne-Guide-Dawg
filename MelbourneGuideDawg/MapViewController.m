@@ -16,6 +16,7 @@
 @synthesize map = _map;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize sites = _sites;
+@synthesize location = _location;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -79,16 +80,22 @@
 
 #pragma mark - View lifecycle
 
+- (void)resetMapLocationWithAnimation:(BOOL)animate location:(CLLocationCoordinate2D)location zoom:(double)zoom {
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(location, zoom * METERS_PER_MILE, zoom * METERS_PER_MILE);
+    MKCoordinateRegion adjustedRegion = [self.map regionThatFits:viewRegion];    
+    [self.map setRegion:adjustedRegion animated:animate];
+}
+
+- (void)zoomToSite {
+    if (self.location.latitude != 0 && self.location.longitude != 0) {
+        [self resetMapLocationWithAnimation:YES location:self.location zoom:0.2];   
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    CLLocationCoordinate2D zoomLocation;
-    zoomLocation.latitude = -37.812225;
-    zoomLocation.longitude = 144.963055;
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 1.9 * METERS_PER_MILE, 1.9 * METERS_PER_MILE);
-    MKCoordinateRegion adjustedRegion = [self.map regionThatFits:viewRegion];    
-    [self.map setRegion:adjustedRegion animated:NO];
-    
+
+    [self resetMapLocationWithAnimation:NO location:CLLocationCoordinate2DMake(-37.812225, 144.963055) zoom:2.0];
     
     NSError *error;
     NSManagedObjectContext *context = self.managedObjectContext;
@@ -103,7 +110,11 @@
     for (Site *site in self.sites) {
         [self.map addAnnotation:site];
     }
+    
+    [self zoomToSite];
 }
+
+
 
 - (void)viewDidUnload
 {
