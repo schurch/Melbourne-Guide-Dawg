@@ -29,7 +29,7 @@
     if (self) 
     {
         self.title = NSLocalizedString(@"Places", @"Places");
-        self.tabBarItem.image = [UIImage imageNamed:@"camera_tab"];
+        self.tabBarItem.image = [UIImage imageNamed:@"places_tab"];
     }
     return self;
 }
@@ -40,7 +40,7 @@
     if (self) 
     {
         self.title = NSLocalizedString(@"Places", @"Places");
-        self.tabBarItem.image = [UIImage imageNamed:@"camera_tab"];
+        self.tabBarItem.image = [UIImage imageNamed:@"places_tab"];
     }
     return self;
 }
@@ -68,8 +68,7 @@
 		exit(-1);
 	}
  
-    
-//    NSManagedObjectContext *context = self.managedObjectContext;
+
 //    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 //    NSEntityDescription *entity = [NSEntityDescription 
 //                                   entityForName:@"Site" inManagedObjectContext:context];
@@ -86,6 +85,8 @@
 //    -37.81941	144.97516
 //    -37.81575	144.96263
     
+//    NSManagedObjectContext *context = self.managedObjectContext;
+//    
 //    for (int i = 0; i < 10; i++) {
 //        [self addDummyDataWithImage:@"melbourne1" context:context lat:-37.812225 lng:144.963055];
 //        [self addDummyDataWithImage:@"melbourne2" context:context lat:-37.80490 lng:144.97121];    

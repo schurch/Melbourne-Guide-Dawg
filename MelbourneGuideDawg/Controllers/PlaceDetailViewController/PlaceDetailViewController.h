@@ -23,6 +23,7 @@
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, retain) IBOutlet UIButton *viewOnMapButton;
 @property (nonatomic, retain) IBOutlet UIButton *playPauseButton;
+@property (nonatomic, retain) IBOutlet UIView *detailActionsView;
 
 - (IBAction)showImage:(id)sender;
 - (IBAction)viewMap:(id)sender;

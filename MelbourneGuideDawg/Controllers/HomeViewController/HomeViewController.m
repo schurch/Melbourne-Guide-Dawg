@@ -14,6 +14,7 @@
 
 @synthesize introScrollView = _introScrollView;
 @synthesize introductionView = _introductionView;
+@synthesize introHeaderLabel = _introHeaderLabel;
 
 #pragma mark - Init -
 
@@ -33,6 +34,7 @@
 
 - (void)dealloc 
 {
+    [_introHeaderLabel release];
     [_introScrollView release];
     [_introductionView release];
     [super dealloc];
@@ -55,6 +57,40 @@
     bottomPadding.backgroundColor = [UIColor blackColor];
     [self.introScrollView addSubview:bottomPadding];
     [bottomPadding release];
+}
+
+#pragma mark - UI Actions -
+
+- (IBAction)emailFeedback:(id)sender 
+{
+    if (![MFMailComposeViewController canSendMail]) 
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Unable to send email" 
+                                                        message:@"Email is not correctly configured on this device." 
+                                                       delegate:self 
+                                              cancelButtonTitle:@"OK" 
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+        return;
+    }
+    
+    MFMailComposeViewController *composer = [[MFMailComposeViewController alloc] init];
+    composer.navigationBar.tintColor = [UIColor colorWithWhite:0.1 alpha:1.0];
+    composer.mailComposeDelegate = self;
+    
+    [composer setToRecipients:[NSArray arrayWithObject:@"feedback@melbourneguidedawg.com"]];
+    [composer setSubject:@"Feedback"];
+    
+    [self presentModalViewController:composer animated:YES];
+    [composer release];  
+}
+
+#pragma mark - Mail delegates -
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
+{    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

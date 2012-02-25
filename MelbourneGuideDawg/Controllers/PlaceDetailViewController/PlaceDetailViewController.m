@@ -20,6 +20,7 @@
 @synthesize scrollView = _scrollView;
 @synthesize viewOnMapButton = _viewOnMapButton;
 @synthesize playPauseButton = _playPauseButton;
+@synthesize detailActionsView = _detailActionsView;
 
 #pragma mark - Init -
 
@@ -42,6 +43,8 @@
     [_locationLabel release];
     [_textLabel release];
     [_audioPlayer release];
+    [_detailActionsView release];
+    
     [super dealloc];
 }
 
@@ -55,9 +58,12 @@
     if ([[self.navigationController.viewControllers objectAtIndex:0] isKindOfClass:[MapViewController class]]) 
     {
         self.viewOnMapButton.hidden = YES;
-    } else 
+        self.detailActionsView.hidden = YES;
+    } 
+    else 
     {
         self.viewOnMapButton.hidden = NO;
+        self.detailActionsView.hidden = NO;
     }
     
     //load with core data driven file
