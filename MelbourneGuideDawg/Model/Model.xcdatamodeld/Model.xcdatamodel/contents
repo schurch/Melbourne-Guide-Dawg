@@ -3,9 +3,9 @@
     <entity name="Image" representedClassName="Image" syncable="YES">
         <attribute name="imageFileName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="smallFileName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="site" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Site" inverseName="images" inverseEntity="Site" syncable="YES"/>
+        <relationship name="place" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="images" inverseEntity="Place" syncable="YES"/>
     </entity>
-    <entity name="Site" representedClassName="Site" syncable="YES">
+    <entity name="Place" representedClassName="Place" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="imageThumbData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="imageTinyData" optional="YES" attributeType="Binary" syncable="YES"/>
@@ -13,12 +13,12 @@
         <attribute name="lng" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="siteId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="placeId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Image" inverseName="site" inverseEntity="Image" syncable="YES"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Image" inverseName="place" inverseEntity="Image" syncable="YES"/>
     </entity>
     <elements>
         <element name="Image" positionX="160" positionY="192" width="128" height="90"/>
-        <element name="Site" positionX="160" positionY="72" width="128" height="195"/>
+        <element name="Place" positionX="160" positionY="72" width="128" height="195"/>
     </elements>
 </model>

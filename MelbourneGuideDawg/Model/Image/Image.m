@@ -7,13 +7,13 @@
 //
 
 #import "Image.h"
-#import "Site.h"
+#import "Place.h"
 
 
 @implementation Image
 
 @dynamic imageFileName;
 @dynamic smallFileName;
-@dynamic site;
+@dynamic place;
 
 @end

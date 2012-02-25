@@ -6,22 +6,25 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Site+Extensions.h"
+#import "Place+Extensions.h"
 
-@implementation Site(Extensions)
+@implementation Place(Extensions)
 
-- (CLLocationCoordinate2D)coordinate {
+- (CLLocationCoordinate2D)coordinate 
+{
     CLLocationCoordinate2D coords;
     coords.latitude = [self.lat doubleValue];
     coords.longitude = [self.lng doubleValue];
     return coords;
 }
 
-- (NSString *)title {
+- (NSString *)title 
+{
     return self.name;
 }
 
-- (NSString *)subtitle {
+- (NSString *)subtitle 
+{
     return self.location;
 }
 

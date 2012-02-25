@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Site.h"
+#import "Place.h"
 #import <MapKit/MapKit.h>
 
-@interface Site(Extensions) <MKAnnotation>
+@interface Place(Extensions) <MKAnnotation>
 
 @end

@@ -11,7 +11,7 @@
 
 @class Image;
 
-@interface Site : NSManagedObject
+@interface Place : NSManagedObject
 
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSData * imageTinyData;
@@ -19,13 +19,13 @@
 @property (nonatomic, retain) NSNumber * lng;
 @property (nonatomic, retain) NSString * location;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * siteId;
+@property (nonatomic, retain) NSNumber * placeId;
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSData * imageThumbData;
 @property (nonatomic, retain) NSSet *images;
 @end
 
-@interface Site (CoreDataGeneratedAccessors)
+@interface Place (CoreDataGeneratedAccessors)
 
 - (void)addImagesObject:(Image *)value;
 - (void)removeImagesObject:(Image *)value;

@@ -15,20 +15,27 @@
 @synthesize introScrollView = _introScrollView;
 @synthesize introductionView = _introductionView;
 
+#pragma mark - Init -
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self) 
+    {
         self.title = NSLocalizedString(@"Home", @"Home");
         self.tabBarItem.image = [UIImage imageNamed:@"home_tab"];
         [[NSBundle mainBundle] loadNibNamed:@"IntroductionView" owner:self options:nil];
     }
     return self;
 }
-							
-- (void)didReceiveMemoryWarning
+
+#pragma mark - Memory management -
+
+- (void)dealloc 
 {
-    [super didReceiveMemoryWarning];
+    [_introScrollView release];
+    [_introductionView release];
+    [super dealloc];
 }
 
 #pragma mark - View lifecycle
@@ -48,36 +55,6 @@
     bottomPadding.backgroundColor = [UIColor blackColor];
     [self.introScrollView addSubview:bottomPadding];
     [bottomPadding release];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 @end

@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SitesViewController : UITableViewController<NSFetchedResultsControllerDelegate>
+@interface PlacesViewController : UITableViewController<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, assign) IBOutlet UITableViewCell *tableViewCell;
 
 @end

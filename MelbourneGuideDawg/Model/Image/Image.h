@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Site;
+@class Place;
 
 @interface Image : NSManagedObject
 
 @property (nonatomic, retain) NSString * imageFileName;
 @property (nonatomic, retain) NSString * smallFileName;
-@property (nonatomic, retain) Site *site;
+@property (nonatomic, retain) Place *place;
 
 @end

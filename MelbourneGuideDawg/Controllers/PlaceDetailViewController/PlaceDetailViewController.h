@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Site.h"
+#import "Place.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface SiteDetailViewController : UIViewController<AVAudioPlayerDelegate> {
+@interface PlaceDetailViewController : UIViewController<AVAudioPlayerDelegate> 
+{
     AVAudioPlayer *_audioPlayer;
 }
 
-@property (nonatomic, retain) Site *site;
+@property (nonatomic, retain) Place *place;
 @property (nonatomic, retain) IBOutlet UIButton *imageButton;
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
 @property (nonatomic, retain) IBOutlet UILabel *locationLabel;

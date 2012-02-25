@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UIViewController {
+@interface HomeViewController : UIViewController 
+{
     UIScrollView *_introScrollView;
     UIView *_introductionView;
 }

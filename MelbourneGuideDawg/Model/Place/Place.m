@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Site.h"
+#import "Place.h"
 #import "Image.h"
 
 
-@implementation Site
+@implementation Place
 
 @dynamic date;
 @dynamic imageTinyData;
@@ -18,7 +18,7 @@
 @dynamic lng;
 @dynamic location;
 @dynamic name;
-@dynamic siteId;
+@dynamic placeId;
 @dynamic text;
 @dynamic imageThumbData;
 @dynamic images;
