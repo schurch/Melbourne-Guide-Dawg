@@ -31,6 +31,7 @@
     {
         self.title = NSLocalizedString(@"Map", @"Map");
         self.tabBarItem.image = [UIImage imageNamed:@"map_tab"];
+        self.managedObjectContext = [NSManagedObjectContext sharedInstance];
     }
     return self;
 }
@@ -108,7 +109,7 @@
             annotationView.rightCalloutAccessoryView = rightButton;
             
             
-            UIImageView *thumbImageView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:place.imageThumbData]];
+            UIImageView *thumbImageView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:place.imageTinyData]];
             thumbImageView.frame = CGRectMake(0,0,30,30); // Change the size of the image to fit the callout
             annotationView.leftCalloutAccessoryView = thumbImageView;
             [thumbImageView release];

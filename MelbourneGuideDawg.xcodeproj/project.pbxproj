@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD37091614FFAA3D000CA759 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = FD37091514FFAA3D000CA759 /* Category.m */; };
+		FD4ED4E615030585004AC3B5 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4ED4E415030584004AC3B5 /* CategoryViewController.m */; };
+		FD4ED4E715030585004AC3B5 /* CategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD4ED4E515030585004AC3B5 /* CategoryView.xib */; };
+		FD4ED4EA150305CF004AC3B5 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD4ED4E9150305CF004AC3B5 /* CategoryCell.xib */; };
+		FD4ED4ED15031014004AC3B5 /* Category+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4ED4EC15031014004AC3B5 /* Category+Extensions.m */; };
 		FD54EE7014F862E000EC9BAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD54EE1D14F862E000EC9BAE /* AppDelegate.m */; };
 		FD54EE7114F862E000EC9BAE /* UIViewController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = FD54EE2114F862E000EC9BAE /* UIViewController+Utils.m */; };
 		FD54EE7214F862E000EC9BAE /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD54EE2514F862E000EC9BAE /* HomeViewController.m */; };
@@ -62,16 +67,16 @@
 		FD54EEAB14F862E000EC9BAE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD54EE6D14F862E000EC9BAE /* main.m */; };
 		FD54EEAF14F8637C00EC9BAE /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD54EEAD14F8637C00EC9BAE /* HomeView.xib */; };
 		FD54EEB014F8637C00EC9BAE /* IntroductionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD54EEAE14F8637C00EC9BAE /* IntroductionView.xib */; };
-		FD54EEBC14F8741A00EC9BAE /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = FD54EEB414F8741A00EC9BAE /* Image.m */; };
-		FD54EEBD14F8741A00EC9BAE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD54EEB514F8741A00EC9BAE /* Model.xcdatamodeld */; };
 		FD54EEBE14F8741A00EC9BAE /* Place+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FD54EEB914F8741A00EC9BAE /* Place+Extensions.m */; };
-		FD54EEBF14F8741A00EC9BAE /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = FD54EEBB14F8741A00EC9BAE /* Place.m */; };
 		FD54EEC214F87AF700EC9BAE /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = FD54EEC014F87AF700EC9BAE /* email.png */; };
 		FD54EEC314F87AF700EC9BAE /* places_tab.png in Resources */ = {isa = PBXBuildFile; fileRef = FD54EEC114F87AF700EC9BAE /* places_tab.png */; };
 		FD54EEC914F87E8800EC9BAE /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD54EEC814F87E8800EC9BAE /* MessageUI.framework */; };
+		FD592105150062C10067C5A0 /* NSManagedObjectContext+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = FD592104150062C10067C5A0 /* NSManagedObjectContext+Utils.m */; };
 		FD5D3FBD14CACBFE00CC7C76 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5D3FBC14CACBFE00CC7C76 /* CoreLocation.framework */; };
 		FD5D3FBF14CACD1600CC7C76 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5D3FBE14CACD1600CC7C76 /* AVFoundation.framework */; };
 		FD5D70A414C534F80091CFBF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5D70A314C534F80091CFBF /* CoreData.framework */; };
+		FD6074F114FCFE4500932405 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD6074EF14FCFE4500932405 /* Model.xcdatamodeld */; };
+		FD8FDE6114FCEE1500E7003A /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8FDE6014FCEE1500E7003A /* Place.m */; };
 		FDAE678114C413EF004488DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678014C413EF004488DC /* UIKit.framework */; };
 		FDAE678314C413EF004488DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678214C413EF004488DC /* Foundation.framework */; };
 		FDAE678514C413EF004488DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678414C413EF004488DC /* CoreGraphics.framework */; };
@@ -94,6 +99,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FD37091414FFAA3D000CA759 /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Category.h; path = Category/Category.h; sourceTree = "<group>"; };
+		FD37091514FFAA3D000CA759 /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Category.m; path = Category/Category.m; sourceTree = "<group>"; };
+		FD4ED4E315030584004AC3B5 /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryViewController.h; path = CategoryViewController/CategoryViewController.h; sourceTree = "<group>"; };
+		FD4ED4E415030584004AC3B5 /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryViewController.m; path = CategoryViewController/CategoryViewController.m; sourceTree = "<group>"; };
+		FD4ED4E515030585004AC3B5 /* CategoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryView.xib; path = CategoryViewController/CategoryView.xib; sourceTree = "<group>"; };
+		FD4ED4E9150305CF004AC3B5 /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryCell.xib; path = CategoryViewController/CategoryCell.xib; sourceTree = "<group>"; };
+		FD4ED4EB15031014004AC3B5 /* Category+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Category+Extensions.h"; path = "Category/Category+Extensions.h"; sourceTree = "<group>"; };
+		FD4ED4EC15031014004AC3B5 /* Category+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Category+Extensions.m"; path = "Category/Category+Extensions.m"; sourceTree = "<group>"; };
 		FD54EE1C14F862E000EC9BAE /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FD54EE1D14F862E000EC9BAE /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FD54EE2014F862E000EC9BAE /* UIViewController+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Utils.h"; sourceTree = "<group>"; };
@@ -157,19 +170,19 @@
 		FD54EE6F14F862E000EC9BAE /* MelbourneGuideDawg-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MelbourneGuideDawg-Prefix.pch"; sourceTree = "<group>"; };
 		FD54EEAD14F8637C00EC9BAE /* HomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
 		FD54EEAE14F8637C00EC9BAE /* IntroductionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroductionView.xib; sourceTree = "<group>"; };
-		FD54EEB314F8741A00EC9BAE /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
-		FD54EEB414F8741A00EC9BAE /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
-		FD54EEB614F8741A00EC9BAE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FD54EEB814F8741A00EC9BAE /* Place+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Place+Extensions.h"; sourceTree = "<group>"; };
 		FD54EEB914F8741A00EC9BAE /* Place+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Place+Extensions.m"; sourceTree = "<group>"; };
-		FD54EEBA14F8741A00EC9BAE /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
-		FD54EEBB14F8741A00EC9BAE /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
 		FD54EEC014F87AF700EC9BAE /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
 		FD54EEC114F87AF700EC9BAE /* places_tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = places_tab.png; sourceTree = "<group>"; };
 		FD54EEC814F87E8800EC9BAE /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		FD592103150062C10067C5A0 /* NSManagedObjectContext+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Utils.h"; sourceTree = "<group>"; };
+		FD592104150062C10067C5A0 /* NSManagedObjectContext+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+Utils.m"; sourceTree = "<group>"; };
 		FD5D3FBC14CACBFE00CC7C76 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FD5D3FBE14CACD1600CC7C76 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FD5D70A314C534F80091CFBF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FD6074F014FCFE4500932405 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		FD8FDE5F14FCEE1500E7003A /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		FD8FDE6014FCEE1500E7003A /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
 		FDAE677C14C413EF004488DC /* MelbourneGuideDawg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MelbourneGuideDawg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDAE678014C413EF004488DC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FDAE678214C413EF004488DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -212,6 +225,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD4ED4E81503058B004AC3B5 /* CategoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FD4ED4E315030584004AC3B5 /* CategoryViewController.h */,
+				FD4ED4E415030584004AC3B5 /* CategoryViewController.m */,
+				FD4ED4E515030585004AC3B5 /* CategoryView.xib */,
+				FD4ED4E9150305CF004AC3B5 /* CategoryCell.xib */,
+			);
+			name = CategoryViewController;
+			sourceTree = "<group>";
+		};
 		FD54EE1B14F862E000EC9BAE /* MelbourneGuideDawg */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +264,8 @@
 			children = (
 				FD54EE2014F862E000EC9BAE /* UIViewController+Utils.h */,
 				FD54EE2114F862E000EC9BAE /* UIViewController+Utils.m */,
+				FD592103150062C10067C5A0 /* NSManagedObjectContext+Utils.h */,
+				FD592104150062C10067C5A0 /* NSManagedObjectContext+Utils.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -251,6 +277,7 @@
 				FD54EE2814F862E000EC9BAE /* MapViewController */,
 				FD54EE2C14F862E000EC9BAE /* PlaceDetailViewController */,
 				FD54EE3014F862E000EC9BAE /* PlacesViewController */,
+				FD4ED4E81503058B004AC3B5 /* CategoryViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -368,31 +395,33 @@
 		FD54EEB114F8741A00EC9BAE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FD54EEB514F8741A00EC9BAE /* Model.xcdatamodeld */,
-				FD54EEB214F8741A00EC9BAE /* Image */,
+				FD6074EF14FCFE4500932405 /* Model.xcdatamodeld */,
+				FD8FDE5B14FCEDD900E7003A /* Category */,
 				FD54EEB714F8741A00EC9BAE /* Place */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		FD54EEB214F8741A00EC9BAE /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				FD54EEB314F8741A00EC9BAE /* Image.h */,
-				FD54EEB414F8741A00EC9BAE /* Image.m */,
-			);
-			path = Image;
-			sourceTree = "<group>";
-		};
 		FD54EEB714F8741A00EC9BAE /* Place */ = {
 			isa = PBXGroup;
 			children = (
+				FD8FDE5F14FCEE1500E7003A /* Place.h */,
+				FD8FDE6014FCEE1500E7003A /* Place.m */,
 				FD54EEB814F8741A00EC9BAE /* Place+Extensions.h */,
 				FD54EEB914F8741A00EC9BAE /* Place+Extensions.m */,
-				FD54EEBA14F8741A00EC9BAE /* Place.h */,
-				FD54EEBB14F8741A00EC9BAE /* Place.m */,
 			);
 			path = Place;
+			sourceTree = "<group>";
+		};
+		FD8FDE5B14FCEDD900E7003A /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				FD37091414FFAA3D000CA759 /* Category.h */,
+				FD37091514FFAA3D000CA759 /* Category.m */,
+				FD4ED4EB15031014004AC3B5 /* Category+Extensions.h */,
+				FD4ED4EC15031014004AC3B5 /* Category+Extensions.m */,
+			);
+			name = Category;
 			sourceTree = "<group>";
 		};
 		FDAE677114C413EE004488DC = {
@@ -569,6 +598,8 @@
 				FD54EEB014F8637C00EC9BAE /* IntroductionView.xib in Resources */,
 				FD54EEC214F87AF700EC9BAE /* email.png in Resources */,
 				FD54EEC314F87AF700EC9BAE /* places_tab.png in Resources */,
+				FD4ED4E715030585004AC3B5 /* CategoryView.xib in Resources */,
+				FD4ED4EA150305CF004AC3B5 /* CategoryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,10 +641,13 @@
 				FD54EE7714F862E000EC9BAE /* PlaceDetailViewController.m in Sources */,
 				FD54EE7914F862E000EC9BAE /* PlacesViewController.m in Sources */,
 				FD54EEAB14F862E000EC9BAE /* main.m in Sources */,
-				FD54EEBC14F8741A00EC9BAE /* Image.m in Sources */,
-				FD54EEBD14F8741A00EC9BAE /* Model.xcdatamodeld in Sources */,
 				FD54EEBE14F8741A00EC9BAE /* Place+Extensions.m in Sources */,
-				FD54EEBF14F8741A00EC9BAE /* Place.m in Sources */,
+				FD8FDE6114FCEE1500E7003A /* Place.m in Sources */,
+				FD6074F114FCFE4500932405 /* Model.xcdatamodeld in Sources */,
+				FD37091614FFAA3D000CA759 /* Category.m in Sources */,
+				FD592105150062C10067C5A0 /* NSManagedObjectContext+Utils.m in Sources */,
+				FD4ED4E615030585004AC3B5 /* CategoryViewController.m in Sources */,
+				FD4ED4ED15031014004AC3B5 /* Category+Extensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,11 +736,13 @@
 		FDAE67BE14C413EF004488DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Stefan Church (N8V73QMGL4)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MelbourneGuideDawg/Supporting Files/MelbourneGuideDawg-Prefix.pch";
 				INFOPLIST_FILE = "MelbourneGuideDawg/Supporting Files/MelbourneGuideDawg-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9E10F8A6-20EC-4B9C-A7AE-638DD5452924";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -714,11 +750,13 @@
 		FDAE67BF14C413EF004488DC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Stefan Church";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MelbourneGuideDawg/Supporting Files/MelbourneGuideDawg-Prefix.pch";
 				INFOPLIST_FILE = "MelbourneGuideDawg/Supporting Files/MelbourneGuideDawg-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C71A9B5-4849-4D7E-A3AA-16B7775CC98E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -790,12 +828,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FD54EEB514F8741A00EC9BAE /* Model.xcdatamodeld */ = {
+		FD6074EF14FCFE4500932405 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				FD54EEB614F8741A00EC9BAE /* Model.xcdatamodel */,
+				FD6074F014FCFE4500932405 /* Model.xcdatamodel */,
 			);
-			currentVersion = FD54EEB614F8741A00EC9BAE /* Model.xcdatamodel */;
+			currentVersion = FD6074F014FCFE4500932405 /* Model.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

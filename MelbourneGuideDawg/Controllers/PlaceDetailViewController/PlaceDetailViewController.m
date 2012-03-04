@@ -7,7 +7,6 @@
 //
 
 #import "PlaceDetailViewController.h"
-#import "Image.h"
 #import "MapViewController.h"
 
 @implementation PlaceDetailViewController
@@ -29,6 +28,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
+
     }
     return self;
 }
@@ -81,12 +81,12 @@
     
     self.title = self.place.name;
     self.imageButton.adjustsImageWhenHighlighted = NO;
-    Image *image = (Image *)[[self.place.images allObjects] objectAtIndex:0];
-    [self.imageButton setImage:[UIImage imageNamed:image.smallFileName]
-                 forState:UIControlStateNormal];
+//    Image *image = (Image *)[[self.place.images allObjects] objectAtIndex:0];
+//    [self.imageButton setImage:[UIImage imageNamed:image.smallFileName]
+//                 forState:UIControlStateNormal];
     
     self.titleLabel.text = self.place.name;
-    self.locationLabel.text = self.place.location;
+    self.locationLabel.text = self.place.address;
     self.textLabel.text = self.place.text;
     
     //resize text label to text content size
@@ -117,8 +117,8 @@
 - (IBAction)showImage:(id)sender 
 {    
     UIButton *largeImage = [UIButton buttonWithType:UIButtonTypeCustom];
-    Image *image = (Image *)[[self.place.images allObjects] objectAtIndex:0];
-    [largeImage setImage:[UIImage imageNamed:image.imageFileName] forState:UIControlStateNormal];
+//    Image *image = (Image *)[[self.place.images allObjects] objectAtIndex:0];
+//    [largeImage setImage:[UIImage imageNamed:image.imageFileName] forState:UIControlStateNormal];
     largeImage.alpha = 0;
     largeImage.adjustsImageWhenHighlighted = NO;
     [largeImage addTarget:self action:@selector(hideImage:) forControlEvents:UIControlEventTouchUpInside];

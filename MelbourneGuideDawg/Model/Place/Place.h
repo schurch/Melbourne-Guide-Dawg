@@ -1,15 +1,15 @@
 //
-//  Site.h
+//  Place.h
 //  MelbourneGuideDawg
 //
-//  Created by Stefan Church on 21/01/2012.
+//  Created by Stefan Church on 28/02/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Image;
+@class Category;
 
 @interface Place : NSManagedObject
 
@@ -17,18 +17,12 @@
 @property (nonatomic, retain) NSData * imageTinyData;
 @property (nonatomic, retain) NSNumber * lat;
 @property (nonatomic, retain) NSNumber * lng;
-@property (nonatomic, retain) NSString * location;
+@property (nonatomic, retain) NSString * address;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * placeId;
 @property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) NSData * imageThumbData;
-@property (nonatomic, retain) NSSet *images;
-@end
+@property (nonatomic, retain) NSString * imageFileName;
+@property (nonatomic, retain) NSString * smallImageFileName;
+@property (nonatomic, retain) Category *categories;
 
-@interface Place (CoreDataGeneratedAccessors)
-
-- (void)addImagesObject:(Image *)value;
-- (void)removeImagesObject:(Image *)value;
-- (void)addImages:(NSSet *)values;
-- (void)removeImages:(NSSet *)values;
 @end

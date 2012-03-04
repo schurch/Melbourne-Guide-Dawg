@@ -1,13 +1,13 @@
 //
-//  Site.m
+//  Place.m
 //  MelbourneGuideDawg
 //
-//  Created by Stefan Church on 21/01/2012.
+//  Created by Stefan Church on 28/02/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "Place.h"
-#import "Image.h"
+#import "Category.h"
 
 
 @implementation Place
@@ -16,11 +16,12 @@
 @dynamic imageTinyData;
 @dynamic lat;
 @dynamic lng;
-@dynamic location;
+@dynamic address;
 @dynamic name;
 @dynamic placeId;
 @dynamic text;
-@dynamic imageThumbData;
-@dynamic images;
+@dynamic imageFileName;
+@dynamic smallImageFileName;
+@dynamic categories;
 
 @end

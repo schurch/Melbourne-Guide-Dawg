@@ -11,4 +11,10 @@
 
 @interface Place(Extensions) <MKAnnotation>
 
++ (void)addDummyData;
++ (Place *)place;
++ (NSArray *)allPlaces;
++ (void)savePlace:(Place *)place;
++ (void)deletePlace:(Place *)place;
+
 @end
