@@ -109,11 +109,11 @@
             annotationView.rightCalloutAccessoryView = rightButton;
             
             
-            UIImageView *thumbImageView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:place.imageTinyData]];
-            thumbImageView.frame = CGRectMake(0,0,30,30); // Change the size of the image to fit the callout
-            annotationView.leftCalloutAccessoryView = thumbImageView;
-            [thumbImageView release];
-            thumbImageView = nil;            
+//            UIImageView *thumbImageView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:place.imageTinyData]];
+//            thumbImageView.frame = CGRectMake(0,0,30,30); // Change the size of the image to fit the callout
+//            annotationView.leftCalloutAccessoryView = thumbImageView;
+//            [thumbImageView release];
+//            thumbImageView = nil;            
         } 
         else 
         {

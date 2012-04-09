@@ -24,7 +24,9 @@
 @property (nonatomic, retain) IBOutlet UIButton *viewOnMapButton;
 @property (nonatomic, retain) IBOutlet UIButton *playPauseButton;
 @property (nonatomic, retain) IBOutlet UIView *detailActionsView;
+@property (nonatomic, retain) IBOutlet UIButton *viewWebsiteButton;
 
+- (IBAction)visitWebSite:(id)sender;
 - (IBAction)showImage:(id)sender;
 - (IBAction)viewMap:(id)sender;
 - (IBAction)playPauseCommentry:(id)sender;

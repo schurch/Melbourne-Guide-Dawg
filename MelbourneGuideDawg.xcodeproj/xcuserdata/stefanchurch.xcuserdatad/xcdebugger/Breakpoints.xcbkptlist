@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MelbourneGuideDawg/Controllers/CategoryViewController/CategoryViewController.m"
-         timestampString = "352523658.501583"
+         timestampString = "355449930.541445"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "41"
-         endingLineNumber = "41"
+         startingLineNumber = "43"
+         endingLineNumber = "43"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -36,13 +36,55 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "MelbourneGuideDawg/Controllers/CategoryViewController/CategoryViewController.m"
-         timestampString = "352525129.546379"
+         filePath = "MelbourneGuideDawg/Model/Place/Place+Extensions.m"
+         timestampString = "355404120.023456"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "74"
-         endingLineNumber = "74"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         startingLineNumber = "39"
+         endingLineNumber = "39"
+         landmarkName = "+createDummyPlaceWithImage:lat:lng:category:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "MelbourneGuideDawg/Codebase/Categories/NSMangedObjectContext+Utils/NSManagedObjectContext+Extras.m"
+         timestampString = "355406286.22091"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "31"
+         endingLineNumber = "31"
+         landmarkName = "+sharedInstance"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "MelbourneGuideDawg/Controllers/CategoryViewController/CategoryViewController.m"
+         timestampString = "355646025.815334"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "99"
+         endingLineNumber = "99"
+         landmarkName = "-tableView:didSelectRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "MelbourneGuideDawg/Codebase/SyncManager/SyncManager.m"
+         timestampString = "355656227.32727"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "101"
+         endingLineNumber = "101"
+         landmarkName = "-syncWithCompletionBlock:errorBlock:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

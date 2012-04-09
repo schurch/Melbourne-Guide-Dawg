@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlacesViewController.h"
 #import "Category.h"
 #import "Category+Extensions.h"
 
@@ -15,5 +16,6 @@
 @property (nonatomic, assign) IBOutlet UITableViewCell *tableViewCell;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSArray *categories;
+@property (nonatomic, retain) PlacesViewController *placesViewController;
 
 @end

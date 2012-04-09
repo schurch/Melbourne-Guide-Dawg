@@ -7,6 +7,10 @@
 //
 
 #import "Category+Extensions.h"
+#import "NSManagedObject+Entity.h"
+#import "NSManagedObjectContext+Extras.h"
+#import "Place.h"
+#import "Place+Extensions.h"
 
 @implementation Category (Extensions)
 
@@ -18,14 +22,30 @@
     {
         Category *category = [self category];
         category.name = categoryName;
-        [self saveCategory:category];
+        
+        NSMutableArray *places = [[NSMutableArray alloc] init];
+        for (int i = 0; i < 10; i++) {
+            [Place createDummyPlaceWithImage:@"melbourne1" lat:-37.812225 lng:144.963055 category:category];
+            [Place createDummyPlaceWithImage:@"melbourne2" lat:-37.80490 lng:144.97121 category:category];    
+            [Place createDummyPlaceWithImage:@"melbourne3" lat:-37.82036 lng:144.94477 category:category];    
+            [Place createDummyPlaceWithImage:@"melbourne4" lat:-37.81290 lng:144.95190 category:category];    
+            [Place createDummyPlaceWithImage:@"melbourne5" lat:-37.81507 lng:144.97396 category:category];    
+            [Place createDummyPlaceWithImage:@"melbourne6" lat:-37.82423 lng:144.96958 category:category];    
+            [Place createDummyPlaceWithImage:@"melbourne7" lat:-37.81941 lng:144.97516 category:category];    
+            [Place createDummyPlaceWithImage:@"melbourne8" lat:-37.81575 lng:144.96263 category:category];  
+        }
+        
+        [category addPlaces:[[NSSet alloc] initWithArray:places]];
+        
+        [places release];   
     }
+    
+    [[NSManagedObjectContext sharedInstance] save];
 }
 
 + (Category *)category
 {
-    NSManagedObjectContext *context = [NSManagedObjectContext sharedInstance];
-    return [NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:context];   
+    return [self entityWithContext:[NSManagedObjectContext sharedInstance]];
 }
 
 + (NSArray *)allCategories 
@@ -41,16 +61,16 @@
     return [[NSManagedObjectContext sharedInstance] executeFetchRequest:request error:nil];
 }
 
-+ (void)saveCategory:(Category *)category
++ (Category *)categoryWithId:(NSNumber *)categoryId
 {
-    [[NSManagedObjectContext sharedInstance] insertObject:category];
-    [[NSManagedObjectContext sharedInstance] save:nil];   
-}
-
-+ (void)deleteCategory:(Category *)category
-{
-    [[NSManagedObjectContext sharedInstance] deleteObject:category];
-    [[NSManagedObjectContext sharedInstance] save:nil];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Category" inManagedObjectContext:[NSManagedObjectContext sharedInstance]];
+    
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    [request setEntity:entity];
+    [request setFetchLimit:1];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"categoryId == %@", categoryId]];
+    
+    return [[[NSManagedObjectContext sharedInstance] executeFetchRequest:request error:nil] objectAtIndex:0];
 }
 
 @end

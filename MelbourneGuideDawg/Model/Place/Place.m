@@ -2,7 +2,7 @@
 //  Place.m
 //  MelbourneGuideDawg
 //
-//  Created by Stefan Church on 28/02/2012.
+//  Created by Stefan Church on 09/04/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -12,16 +12,18 @@
 
 @implementation Place
 
+@dynamic address;
 @dynamic date;
-@dynamic imageTinyData;
+@dynamic imageFileName;
+@dynamic cellImageFileName;
 @dynamic lat;
 @dynamic lng;
-@dynamic address;
 @dynamic name;
 @dynamic placeId;
-@dynamic text;
-@dynamic imageFileName;
 @dynamic smallImageFileName;
-@dynamic categories;
+@dynamic text;
+@dynamic url;
+@dynamic retinaImageFileName;
+@dynamic category;
 
 @end

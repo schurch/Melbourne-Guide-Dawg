@@ -11,10 +11,9 @@
 
 @interface Place(Extensions) <MKAnnotation>
 
-+ (void)addDummyData;
++ (Place *)createDummyPlaceWithImage:(NSString *)imageName lat:(double)lat lng:(double)lng category:(Category *)category;
+
 + (Place *)place;
 + (NSArray *)allPlaces;
-+ (void)savePlace:(Place *)place;
-+ (void)deletePlace:(Place *)place;
 
 @end

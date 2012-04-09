@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Category.h"
 
-@interface PlacesViewController : UITableViewController<NSFetchedResultsControllerDelegate>
+@interface PlacesViewController : UITableViewController
 
-@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) NSArray *places;
+@property (nonatomic, retain) Category *category;
+
 @property (nonatomic, assign) IBOutlet UITableViewCell *tableViewCell;
 
 @end

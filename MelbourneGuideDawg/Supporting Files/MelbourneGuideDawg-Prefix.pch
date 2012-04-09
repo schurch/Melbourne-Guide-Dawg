@@ -12,5 +12,6 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
-    #import "NSManagedObjectContext+Utils.h"
+    #import "NSManagedObjectContext+Extras.h"
+    #import "NSObject+SBJson.h"
 #endif

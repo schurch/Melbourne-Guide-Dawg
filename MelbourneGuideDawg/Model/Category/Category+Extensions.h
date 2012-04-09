@@ -13,7 +13,6 @@
 + (void)addDummyData;
 + (Category *)category;
 + (NSArray *)allCategories;
-+ (void)saveCategory:(Category *)category;
-+ (void)deleteCategory:(Category *)category;
++ (Category *)categoryWithId:(NSNumber *)categoryId;
 
 @end

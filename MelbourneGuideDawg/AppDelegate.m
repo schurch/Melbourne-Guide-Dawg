@@ -32,7 +32,8 @@
     HomeViewController *homeViewController = [[[HomeViewController alloc] initWithNibName:@"HomeView" bundle:nil] autorelease];
 
     CategoryViewController *categoryViewController = [[[CategoryViewController alloc] initWithNibName:@"CategoryView" bundle:nil] autorelease];
-    UINavigationController *placesNavigationController = [UIViewController createNavControllerWithRootViewController:categoryViewController];
+    UINavigationController *placesNavigationController = [[UINavigationController alloc] initWithRootViewController:categoryViewController];
+    placesNavigationController.navigationBar.tintColor = [UIColor blackColor];
     
     MapViewController *mapViewController = [[[MapViewController alloc] initWithNibName:@"MapView" bundle:nil] autorelease];
     UINavigationController *mapNavigationController = [UIViewController createNavControllerWithRootViewController:mapViewController];

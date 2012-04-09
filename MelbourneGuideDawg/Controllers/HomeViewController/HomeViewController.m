@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "MBProgressHUD.h"
 
 #define INTRO_OFFSET 250
 
@@ -15,6 +16,8 @@
 @synthesize introScrollView = _introScrollView;
 @synthesize introductionView = _introductionView;
 @synthesize introHeaderLabel = _introHeaderLabel;
+@synthesize syncButton = _syncButton;
+@synthesize syncManager = _syncManager;
 
 #pragma mark - Init -
 
@@ -37,6 +40,9 @@
     [_introHeaderLabel release];
     [_introScrollView release];
     [_introductionView release];
+    [_syncButton release];
+    [_syncManager release];
+    
     [super dealloc];
 }
 
@@ -57,6 +63,8 @@
     bottomPadding.backgroundColor = [UIColor blackColor];
     [self.introScrollView addSubview:bottomPadding];
     [bottomPadding release];
+    
+    self.syncManager = [[SyncManager alloc] init];
 }
 
 #pragma mark - UI Actions -
@@ -84,6 +92,30 @@
     
     [self presentModalViewController:composer animated:YES];
     [composer release];  
+}
+
+- (IBAction)sync:(id)sender
+{
+    NSLog(@"Syncing..");
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Downloading...";
+    
+    [self.syncManager syncWithCompletionBlock:^{
+        NSLog(@"Success syncing the data.");
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    } errorBlock:^(NSError *error){
+        NSLog(@"There was an error syncing the data.");
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if (error) {
+            NSLog(@"Unresolved error when downloading data: %@, %@", error, [error userInfo]);
+#if DEBUG
+            abort();
+#endif
+        }
+    }];
+    
 }
 
 #pragma mark - Mail delegates -

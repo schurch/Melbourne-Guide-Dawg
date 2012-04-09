@@ -20,6 +20,7 @@
 @synthesize viewOnMapButton = _viewOnMapButton;
 @synthesize playPauseButton = _playPauseButton;
 @synthesize detailActionsView = _detailActionsView;
+@synthesize viewWebsiteButton = _viewWebsiteButton;
 
 #pragma mark - Init -
 
@@ -44,6 +45,7 @@
     [_textLabel release];
     [_audioPlayer release];
     [_detailActionsView release];
+    [_viewWebsiteButton release];
     
     [super dealloc];
 }
@@ -99,6 +101,16 @@
     
     int scrollViewHeight = self.imageButton.frame.size.height + self.titleLabel.frame.size.height + self.locationLabel.frame.size.height + self.textLabel.frame.size.height + 30;
     
+    if (self.place.url) {
+        [self.viewWebsiteButton setTitle:self.place.url forState:UIControlStateNormal];
+        self.viewWebsiteButton.hidden = NO;
+        self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x, 286, self.textLabel.frame.size.width, self.textLabel.frame.size.height);
+        scrollViewHeight += 20;
+    } else {
+        self.viewWebsiteButton.hidden = YES;
+        self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x, 265, self.textLabel.frame.size.width, self.textLabel.frame.size.height);
+    }
+    
     self.scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, scrollViewHeight);
     
     [self.navigationController setNavigationBarHidden:NO animated:animated];
@@ -109,7 +121,7 @@
     [super viewWillAppear:animated];
     
     [_audioPlayer stop];
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
+//    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 # pragma mark - UI actions - 
@@ -133,6 +145,12 @@
     {
         largeImage.alpha = 1.0;
     }];
+}
+
+- (IBAction)visitWebSite:(id)sender
+{
+    NSLog(@"Visit URL at: %@", self.place.url);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.place.url]];
 }
 
 - (IBAction)viewMap:(id)sender 

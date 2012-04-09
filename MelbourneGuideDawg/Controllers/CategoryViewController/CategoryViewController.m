@@ -10,14 +10,14 @@
 
 @implementation CategoryViewController
 
-@synthesize tableViewCell = _tableViewCell, managedObjectContext = _managedObjectContext, categories = _categories;
+@synthesize tableViewCell = _tableViewCell, managedObjectContext = _managedObjectContext, categories = _categories, placesViewController = _placesViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.title = NSLocalizedString(@"Places", @"Places");
+        self.title = NSLocalizedString(@"Category", @"Category");
         self.tabBarItem.image = [UIImage imageNamed:@"places_tab"];
         self.managedObjectContext = [NSManagedObjectContext sharedInstance];
     }
@@ -28,6 +28,7 @@
 {
     [_managedObjectContext release];
     [_categories release];
+    [_placesViewController release];
     [super dealloc];
 }
 
@@ -37,19 +38,19 @@
 {
     [super viewDidLoad];
     
+    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];
+    
+    self.placesViewController = [[[PlacesViewController alloc] initWithNibName:@"PlacesView" bundle:nil] autorelease];
+    
 #if DEBUG
     if ([[Category allCategories] count] == 0) 
     {
         [Category addDummyData];
-        self.categories = [Category allCategories];
-        [self.tableView reloadData];
-    }
-    else
-    {
-        self.categories = [Category allCategories];
     }
 #endif
     
+    self.categories = [Category allCategories];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -71,16 +72,20 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) 
     {
-        [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
-        cell = self.tableViewCell;
-        self.tableViewCell = nil;
+//        [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+//        cell = self.tableViewCell;
+//        self.tableViewCell = nil;
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     Category *category = [self.categories objectAtIndex:indexPath.row];
     
-    UILabel *label;
-    label = (UILabel *)[cell viewWithTag:1];
-    label.text = category.name;
+//    UILabel *label;
+//    label = (UILabel *)[cell viewWithTag:1];
+//    label.text = category.name;
+    
+    cell.textLabel.text = category.name;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
@@ -91,7 +96,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //show accociated place's 
+    self.placesViewController.category = [self.categories objectAtIndex:indexPath.row];
+    self.placesViewController.places = [((Category *)[self.categories objectAtIndex:indexPath.row]).places allObjects];
+    [self.navigationController pushViewController:self.placesViewController animated:YES];    
 }
 
 @end
