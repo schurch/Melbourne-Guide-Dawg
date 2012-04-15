@@ -9,11 +9,25 @@
 #import "Place.h"
 #import <MapKit/MapKit.h>
 
+
+typedef enum {
+    kPlaceImageTypeCell,
+    kPlaceImageTypeSmall,
+    kPlaceImageTypeNormal,
+    kPlaceImageTypeRetina
+} PlaceImageType;
+
+
 @interface Place(Extensions) <MKAnnotation>
 
++ (NSString *)applicationPhotosDir;
 + (Place *)createDummyPlaceWithImage:(NSString *)imageName lat:(double)lat lng:(double)lng category:(Category *)category;
 
 + (Place *)place;
 + (NSArray *)allPlaces;
+
+- (NSString *)imageTypeStringForType:(PlaceImageType)imageType;
+- (NSString *)imagePathForType:(PlaceImageType)imageType;
+- (NSString *)imagesDir;
 
 @end

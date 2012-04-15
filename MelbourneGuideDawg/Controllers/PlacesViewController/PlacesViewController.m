@@ -8,6 +8,7 @@
 
 #import "PlacesViewController.h"
 #import "Place.h"
+#import "Place+Extensions.h"
 #import "PlaceDetailViewController.h"
 
 @interface PlacesViewController()
@@ -83,7 +84,8 @@
     Place *place = [self.places objectAtIndex:indexPath.row];
     
     UIImageView *image = (UIImageView *)[cell viewWithTag:1];
-//    [image setImage:[UIImage imageWithData:place.imageTinyData]];
+    NSString *imageFilePath = [place imagePathForType:kPlaceImageTypeSmall];
+    [image setImage:[UIImage imageWithContentsOfFile:imageFilePath]];
     
     UILabel *label;
     label = (UILabel *)[cell viewWithTag:2];

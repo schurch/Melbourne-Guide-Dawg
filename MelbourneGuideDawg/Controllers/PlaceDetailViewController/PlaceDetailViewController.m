@@ -8,6 +8,7 @@
 
 #import "PlaceDetailViewController.h"
 #import "MapViewController.h"
+#import "Place+Extensions.h"
 
 @implementation PlaceDetailViewController
 
@@ -83,9 +84,7 @@
     
     self.title = self.place.name;
     self.imageButton.adjustsImageWhenHighlighted = NO;
-//    Image *image = (Image *)[[self.place.images allObjects] objectAtIndex:0];
-//    [self.imageButton setImage:[UIImage imageNamed:image.smallFileName]
-//                 forState:UIControlStateNormal];
+    [self.imageButton setImage:[UIImage imageWithContentsOfFile:[self.place imagePathForType:kPlaceImageTypeNormal]] forState:UIControlStateNormal];
     
     self.titleLabel.text = self.place.name;
     self.locationLabel.text = self.place.address;
@@ -129,8 +128,7 @@
 - (IBAction)showImage:(id)sender 
 {    
     UIButton *largeImage = [UIButton buttonWithType:UIButtonTypeCustom];
-//    Image *image = (Image *)[[self.place.images allObjects] objectAtIndex:0];
-//    [largeImage setImage:[UIImage imageNamed:image.imageFileName] forState:UIControlStateNormal];
+    [largeImage setImage:[UIImage imageWithContentsOfFile:[self.place imagePathForType:kPlaceImageTypeNormal]] forState:UIControlStateNormal];
     largeImage.alpha = 0;
     largeImage.adjustsImageWhenHighlighted = NO;
     [largeImage addTarget:self action:@selector(hideImage:) forControlEvents:UIControlEventTouchUpInside];

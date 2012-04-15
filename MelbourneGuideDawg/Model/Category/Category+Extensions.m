@@ -41,6 +41,7 @@
     }
     
     [[NSManagedObjectContext sharedInstance] save];
+    [categories release];
 }
 
 + (Category *)category

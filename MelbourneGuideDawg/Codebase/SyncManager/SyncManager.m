@@ -18,25 +18,27 @@
 #define BASE_IMAGE_URL @"http://s3.amazonaws.com/melbourne_guide_dawg/images"
 
 @interface SyncManager()
-+ (NSURL *)applicationPhotosDir;
-- (AFImageRequestOperation *)generateImageFetchOperationWithType:(NSString *)imageType placeId:(NSString *)placeId imageFileName:(NSString *)imageFileName imagePath:(NSString *)imagePath;
+- (AFImageRequestOperation *)generateImageFetchOperationWithType:(PlaceImageType)imageType place:(Place *)place;
 @end
 
 @implementation SyncManager
 
-+ (NSURL *)applicationPhotosDir
-{
-    NSString *documentsDir = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    return [NSString stringWithFormat:@"%@photos", documentsDir];
-}
-
 #pragma mark - Public methods -
 
-- (void)syncWithCompletionBlock:(void (^)())completionBlock errorBlock:(void (^)(NSError *))errorBlock
+- (void)syncWithCompletionBlock:(void (^)())completionBlock errorBlock:(void (^)(NSError *))errorBlock progressBlock:(void (^)(NSString *))progressBlock
 {    
     NSURLRequest *categoryRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:CATEGORIES_URL]];
     AFJSONRequestOperation *categoryOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:categoryRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) 
     {
+        progressBlock(@"Downloading categories..");
+        
+        for (Place *place in [Place allPlaces]) {
+            [[NSManagedObjectContext sharedInstance] deleteObject:place];
+        }
+        
+        //save the deletes
+        [[NSManagedObjectContext sharedInstance] save]; 
+        
         for (Category *category in [Category allCategories]) {
             [[NSManagedObjectContext sharedInstance] deleteObject:category];
         }
@@ -58,18 +60,14 @@
         //save the inserts
         [[NSManagedObjectContext sharedInstance] save];  
         
-        //fetch places
         NSURLRequest *placesRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:PLACES_URL]];
         AFJSONRequestOperation *placesOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:placesRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) 
-        {
-            for (Place *place in [Place allPlaces]) {
-                [[NSManagedObjectContext sharedInstance] deleteObject:place];
-            }
-            
-            //save the deletes
-            [[NSManagedObjectContext sharedInstance] save]; 
+        {            
             
             for (int i = 0; i < [JSON count]; i++) {
+                
+                progressBlock([NSString stringWithFormat:@"Downloading place %i of %i..", i + 1, [JSON count]]);
+                
                 NSDictionary *downloadedPlace = [JSON objectAtIndex:i];
                 
                 NSString *placeId = [downloadedPlace valueForKey:@"id"];
@@ -86,8 +84,8 @@
                 place.placeId = [NSNumber numberWithInt:[placeId intValue]];
                 place.name = name;            
                 place.address = address;
-                place.lat = [NSNumber numberWithInt:[lat intValue]];
-                place.lng = [NSNumber numberWithInt:[lng intValue]];
+                place.lat = [NSNumber numberWithDouble:[lat doubleValue]];
+                place.lng = [NSNumber numberWithDouble:[lng doubleValue]];
                 place.text = text;
                 place.url = url;
                 place.imageFileName = imageFileName;
@@ -99,57 +97,46 @@
                 NSLog(@"Create place with: id = %@, category id = %@, name = %@, address = %@, lat = %@, lng = %@, image name = %@, text = %@, url = %@", placeId, categoryId, name, address, lat, lng, imageFileName, text, url);
                 
                 [[NSManagedObjectContext sharedInstance] save];  
-                
-                //make sure photo dir exists
-                NSFileManager *fileManager = [NSFileManager defaultManager];
-
-                NSString *photosDir = [NSString stringWithFormat:@"%@/%@/", [SyncManager applicationPhotosDir], placeId];
-                NSLog(@"Place photos DIR: %@", photosDir);
-                
-                NSError *error;
-                if (![fileManager createDirectoryAtPath:photosDir withIntermediateDirectories:YES attributes:nil error:&error]) 
-                {
-                    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-#if DEBUG
-                    abort();
-#endif
-                }; 
-                
-                //download images
-                NSMutableArray *imageDownloadOperations = [[NSMutableArray alloc] initWithCapacity:3];
-                
+            }
+            
+            NSMutableArray *imageDownloadOperations = [[NSMutableArray alloc] initWithCapacity:3];
+            
+            NSArray *places = [Place allPlaces];
+            for (Place *place in places) {                
                 //retina image
                 
-                //normal
-                AFImageRequestOperation *imageRequest = [self generateImageFetchOperationWithType:@"normal" placeId:placeId imageFileName:imageFileName imagePath:photosDir];
+                //normal image
+                AFImageRequestOperation *imageRequest = [self generateImageFetchOperationWithType:kPlaceImageTypeNormal place:place];
                 [imageDownloadOperations addObject:imageRequest];
                 
                 //small image
-                AFImageRequestOperation *smallImageRequest = [self generateImageFetchOperationWithType:@"small" placeId:placeId imageFileName:imageFileName imagePath:photosDir];
+                AFImageRequestOperation *smallImageRequest = [self generateImageFetchOperationWithType:kPlaceImageTypeSmall place:place];
                 [imageDownloadOperations addObject:smallImageRequest];
                 
                 //cell image
-                AFImageRequestOperation *cellImageRequest = [self generateImageFetchOperationWithType:@"cell" placeId:placeId imageFileName:imageFileName imagePath:photosDir];
-                [imageDownloadOperations addObject:cellImageRequest];
-                
-                AFHTTPClient *imageFetchClient = [[AFHTTPClient alloc] init];
-                //report progress..
-                [imageFetchClient enqueueBatchOfHTTPRequestOperations:imageDownloadOperations progressBlock:nil completionBlock:^(NSArray *operations)
-                {
-                    //if last image donwload, then complete
-                    if (i == ([JSON count] - 1)) {
-                         completionBlock();   
-                    }
-                }];
-                
-                [imageFetchClient release];
-                [imageDownloadOperations release];
+                AFImageRequestOperation *cellImageRequest = [self generateImageFetchOperationWithType:kPlaceImageTypeCell place:place];
+                [imageDownloadOperations addObject:cellImageRequest];   
             }
+
+            AFHTTPClient *imageFetchClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:BASE_IMAGE_URL ]];
+            //report progress..
+            [imageFetchClient enqueueBatchOfHTTPRequestOperations:imageDownloadOperations progressBlock:^(NSUInteger numberOfCompletedOperations, NSUInteger totalNumberOfOperations) {
+                progressBlock([NSString stringWithFormat:@"Downloading image %i of %i..", numberOfCompletedOperations, totalNumberOfOperations]);
+            } completionBlock:^(NSArray *operations) {
+                    completionBlock();   
+            }];
+            
+            
+            [imageDownloadOperations release];
+            [imageFetchClient release];
+
+            
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
              errorBlock(error);
-        }];
+        }];   
         
         [placesOperation start];
+        
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         errorBlock(error);
     }];
@@ -159,24 +146,38 @@
 
 #pragma mark - Private methods -
 
-- (AFImageRequestOperation *)generateImageFetchOperationWithType:(NSString *)imageType placeId:(NSString *)placeId imageFileName:(NSString *)imageFileName imagePath:(NSString *)imagePath
+- (AFImageRequestOperation *)generateImageFetchOperationWithType:(PlaceImageType)imageType place:(Place *)place
 {
-    NSString *cellImageUrl = [NSString stringWithFormat:@"%@/%@/%@/%@", BASE_IMAGE_URL, placeId, imageType, imageFileName];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:cellImageUrl]];
-    AFImageRequestOperation *imageRequest = [AFImageRequestOperation imageRequestOperationWithRequest:urlRequest success:^(UIImage *image)
-     {
-         NSLog(@"Success downloading %@ image for place ID %@ ..", imageType, placeId);
-         
-         NSString *filename = [[imageFileName componentsSeparatedByString:@"."] objectAtIndex:0];
-         NSString *newFileName = [NSString stringWithFormat:@"%@_%@.jpg", filename, imageType];
-         
-         NSString *imagePath = [NSString stringWithFormat:@"%@%@", imagePath, newFileName];
-         
-         NSLog(@"Saving image to %@.", imagePath);
-         
-         NSData *imageData = UIImageJPEGRepresentation(image, 0.7);
-         [imageData writeToFile:imagePath atomically:YES];
-     }];
+    NSString *placeId = [NSString stringWithFormat:@"%@", place.placeId];
+    NSString *imageURL = [NSString stringWithFormat:@"%@/%@/%@/%@", BASE_IMAGE_URL, placeId, [place imageTypeStringForType:imageType], place.imageFileName];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:imageURL]];
+    
+    AFImageRequestOperation *imageRequest = [AFImageRequestOperation imageRequestOperationWithRequest:urlRequest imageProcessingBlock:nil cacheName:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        NSLog(@"Success downloading %@ image for place ID %@ ..", [place imageTypeStringForType:imageType], placeId);
+        
+        //make sure photos place dir exsists
+        NSFileManager *fileManager = [NSFileManager defaultManager];        
+        NSError *error;
+        if (![fileManager createDirectoryAtPath:[place imagesDir] withIntermediateDirectories:YES attributes:nil error:&error]) 
+        {
+            NSLog(@"Unresolved error creating place photos dir %@, %@", error, [error userInfo]);
+#if DEBUG
+            abort();
+#endif
+        }; 
+        
+        NSString *imagePath = [place imagePathForType:imageType];
+        
+        NSLog(@"Saving image to %@.", imagePath);       
+        NSData *imageData = UIImageJPEGRepresentation(image, 0.7);
+        BOOL didWriteSuccessfully = [imageData writeToFile:imagePath atomically:YES];
+        if (!didWriteSuccessfully) {
+            abort();
+        }
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        NSLog(@"Unresolved error fetching image for place %@, %@", error, [error userInfo]);
+    }];
     
     return imageRequest;
 }

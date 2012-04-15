@@ -10,6 +10,6 @@
 
 @interface SyncManager : NSObject
 
-- (void)syncWithCompletionBlock:(void (^)())completionBlock errorBlock:(void (^)(NSError *))errorBlock;
+- (void)syncWithCompletionBlock:(void (^)())completionBlock errorBlock:(void (^)(NSError *))errorBlock progressBlock:(void (^)(NSString *))progressBlock;
 
 @end

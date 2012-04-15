@@ -34,23 +34,20 @@
 
 #pragma mark - View lifecycle -
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.categories = [Category allCategories];
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];
-    
-    self.placesViewController = [[[PlacesViewController alloc] initWithNibName:@"PlacesView" bundle:nil] autorelease];
-    
-#if DEBUG
-    if ([[Category allCategories] count] == 0) 
-    {
-        [Category addDummyData];
-    }
-#endif
-    
-    self.categories = [Category allCategories];
-    [self.tableView reloadData];
+    self.placesViewController = [[[PlacesViewController alloc] initWithNibName:@"PlacesView" bundle:nil] autorelease];    
 }
 
 #pragma mark - Table view data source
@@ -72,17 +69,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) 
     {
-//        [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
-//        cell = self.tableViewCell;
-//        self.tableViewCell = nil;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     Category *category = [self.categories objectAtIndex:indexPath.row];
-    
-//    UILabel *label;
-//    label = (UILabel *)[cell viewWithTag:1];
-//    label.text = category.name;
     
     cell.textLabel.text = category.name;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

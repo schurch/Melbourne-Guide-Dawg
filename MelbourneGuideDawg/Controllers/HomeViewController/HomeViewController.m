@@ -64,7 +64,7 @@
     [self.introScrollView addSubview:bottomPadding];
     [bottomPadding release];
     
-    self.syncManager = [[SyncManager alloc] init];
+    self.syncManager = [[[SyncManager alloc] init] autorelease];
 }
 
 #pragma mark - UI Actions -
@@ -98,12 +98,15 @@
 {
     NSLog(@"Syncing..");
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Downloading...";
+    __block MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Initialising download..";
     
     [self.syncManager syncWithCompletionBlock:^{
         NSLog(@"Success syncing the data.");
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sync completed successfully." message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [av show];
+        [av release];
     } errorBlock:^(NSError *error){
         NSLog(@"There was an error syncing the data.");
         [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -113,6 +116,12 @@
 #if DEBUG
             abort();
 #endif
+        }
+    } progressBlock:^(NSString *progressMessage){
+        if (hud) {
+             hud.labelText = progressMessage;   
+        } else {
+            NSLog(@"HUD released.");
         }
     }];
     
