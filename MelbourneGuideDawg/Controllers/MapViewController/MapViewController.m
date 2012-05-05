@@ -17,6 +17,7 @@
 
 @implementation MapViewController
 
+@synthesize selectedPlaceId = _selectedPlaceId;
 @synthesize map = _map;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize places = _places;
@@ -30,8 +31,10 @@
     if (self) 
     {
         self.title = NSLocalizedString(@"Map", @"Map");
-        self.tabBarItem.image = [UIImage imageNamed:@"map_tab"];
+        self.tabBarItem.image = [UIImage imageNamed:@"map_tab.png"];
         self.managedObjectContext = [NSManagedObjectContext sharedInstance];
+        
+        _animatingToAnnotation = NO;
     }
     return self;
 }
@@ -40,6 +43,7 @@
 
 - (void)dealloc 
 {
+    [_selectedPlaceId release];
     [_map release];
     [_managedObjectContext release];
     [_places release];
@@ -57,8 +61,9 @@
 
 - (void)zoomToSite 
 {
-    if (self.location.latitude != 0 && self.location.longitude != 0) 
+    if (self.selectedPlaceId && self.map.annotations && (self.map.annotations.count > 0)) 
     {
+        _animatingToAnnotation = YES;
         [self resetMapLocationWithAnimation:YES location:self.location zoom:0.2];   
     }
 }
@@ -71,21 +76,16 @@
     
     [self resetMapLocationWithAnimation:NO location:CLLocationCoordinate2DMake(-37.812225, 144.963055) zoom:2.0];
     
-    NSError *error;
-    NSManagedObjectContext *context = self.managedObjectContext;
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Place" inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    
-    self.places = [context executeFetchRequest:fetchRequest error:&error];
-    [fetchRequest release];
-    
+    self.places = [Place allPlaces];
     for (Place *place in self.places) 
     {
         [self.map addAnnotation:place];
     }
-    
-    [self zoomToSite];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 #pragma mark - Map view delegates
@@ -136,6 +136,25 @@
         placeDetailViewController.place = view.annotation;
         [self.navigationController pushViewController:placeDetailViewController animated:YES];
         [placeDetailViewController release];     
+    }
+}
+
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
+{
+    [self zoomToSite];
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated 
+{
+    if (_animatingToAnnotation) {
+        for (Place *place in self.places) {
+            if ([place.placeId intValue] == [self.selectedPlaceId intValue]) {
+                [self.map selectAnnotation:place animated:YES];
+            }
+        }
+        
+        _animatingToAnnotation = NO;
+        self.selectedPlaceId = nil;
     }
 }
 

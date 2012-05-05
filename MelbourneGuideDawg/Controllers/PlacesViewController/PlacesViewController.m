@@ -46,7 +46,15 @@
 
 - (void)viewDidLoad
 {
-    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];
+    [super viewDidLoad];
+    
+    UIImage *backButtonImage = [UIImage imageNamed:@"back-btn.png"];
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setFrame:CGRectMake(0.0f, 0.0f, backButtonImage.size.width, backButtonImage.size.height)];
+    [backButton setImage:backButtonImage forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:backButton] autorelease];
+    self.navigationItem.leftBarButtonItem = backButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -54,6 +62,13 @@
     [super viewWillAppear:animated];
     self.title = self.category.name;
     [self.tableView reloadData];
+}
+
+#pragma mark - Methods -
+
+- (void)back:(id)sender 
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source delegates -

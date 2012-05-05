@@ -42,35 +42,6 @@
     return [documentsDirectory stringByAppendingPathComponent:@"photos"];
 }
 
-+ (Place *)createDummyPlaceWithImage:(NSString *)imageName lat:(double)lat lng:(double)lng category:(Category *)category
-{
-    Place *place = [self place];
-    [place setCategory:category];
-    
-    static int placeId = 1;
-    
-    place.placeId = [NSNumber numberWithInt:placeId];
-    place.name = @"VIC Nat Gallery";
-    place.address = @"6 Warburton St, Brunswick, 3006";
-    
-//    NSString *tinyImageName = [NSString stringWithFormat:@"%@_tiny.jpg", imageName];
-//    NSString *thumbImageName = [NSString stringWithFormat:@"%@_thumb.jpg", imageName];
-    
-//    NSData *imageTinyData = UIImagePNGRepresentation([UIImage imageNamed:tinyImageName]);
-//    place.imageTinyData = imageTinyData;
-    
-    place.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan leo eu felis pharetra ut semper ipsum pellentesque. Sed sed erat ut mi ullamcorper auctor. Nunc faucibus volutpat metus. Suspendisse quis purus at sem laoreet fringilla rhoncus sed leo. Maecenas purus odio, suscipit ac rhoncus id, ultrices eget nisl. Pellentesque tempus nisl eget leo volutpat scelerisque. Nam pretium odio vel enim adipiscing sit amet tristique nisl ultricies. \r\n \r\nAenean et urna enim, a tincidunt dui. Curabitur rutrum ligula ut nisl viverra gravida ut et mauris. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque suscipit lobortis auctor. Integer dignissim sem quis eros tempor et elementum leo fringilla. Duis pulvinar dictum neque, ut aliquet lacus porttitor malesuada. Vivamus sed arcu quis dolor elementum rhoncus. Nam aliquam semper diam, consequat faucibus erat varius sed. Nulla facilisi.";
-    
-    place.date = [NSDate date]; 
-    place.lat = [NSNumber numberWithDouble:lat];
-    place.lng = [NSNumber numberWithDouble:lng];
-    
-    placeId++;  
-    
-    return place;
-}
-
-
 + (Place *)place
 {
     return [self entityWithContext:[NSManagedObjectContext sharedInstance]];
@@ -85,6 +56,8 @@
     
     return [[NSManagedObjectContext sharedInstance] executeFetchRequest:request error:nil];
 }
+
+#pragma mark - Methods -
 
 - (NSString *)imagePathForType:(PlaceImageType)imageType
 {

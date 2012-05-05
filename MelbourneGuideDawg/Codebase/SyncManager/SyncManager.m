@@ -36,14 +36,12 @@
             [[NSManagedObjectContext sharedInstance] deleteObject:place];
         }
         
-        //save the deletes
         [[NSManagedObjectContext sharedInstance] save]; 
         
         for (Category *category in [Category allCategories]) {
             [[NSManagedObjectContext sharedInstance] deleteObject:category];
         }
         
-        //save the deletes
         [[NSManagedObjectContext sharedInstance] save];  
         
         for (NSDictionary *downloadedCategory in JSON) {
@@ -57,7 +55,6 @@
             category.name = categoryName;            
         }
 
-        //save the inserts
         [[NSManagedObjectContext sharedInstance] save];  
         
         NSURLRequest *placesRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:PLACES_URL]];

@@ -10,7 +10,6 @@
 
 @interface Category (Extensions)
 
-+ (void)addDummyData;
 + (Category *)category;
 + (NSArray *)allCategories;
 + (Category *)categoryWithId:(NSNumber *)categoryId;

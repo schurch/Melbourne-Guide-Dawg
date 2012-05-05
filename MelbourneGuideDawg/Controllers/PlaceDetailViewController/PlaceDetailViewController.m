@@ -19,7 +19,6 @@
 @synthesize textLabel = _textLabel;
 @synthesize scrollView = _scrollView;
 @synthesize viewOnMapButton = _viewOnMapButton;
-@synthesize playPauseButton = _playPauseButton;
 @synthesize detailActionsView = _detailActionsView;
 @synthesize viewWebsiteButton = _viewWebsiteButton;
 
@@ -44,7 +43,6 @@
     [_titleLabel release];
     [_locationLabel release];
     [_textLabel release];
-    [_audioPlayer release];
     [_detailActionsView release];
     [_viewWebsiteButton release];
     
@@ -52,6 +50,19 @@
 }
 
 #pragma mark - View lifecycle -
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    UIImage *backButtonImage = [UIImage imageNamed:@"back-btn.png"];
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setFrame:CGRectMake(0.0f, 0.0f, backButtonImage.size.width, backButtonImage.size.height)];
+    [backButton setImage:backButtonImage forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:backButton] autorelease];
+    self.navigationItem.leftBarButtonItem = backButtonItem;
+}
 
 - (void)viewWillAppear:(BOOL)animated 
 {
@@ -68,19 +79,6 @@
         self.viewOnMapButton.hidden = NO;
         self.detailActionsView.hidden = NO;
     }
-    
-    //load with core data driven file
-//    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"laughter-2" ofType:@"mp3"]];
-    NSError *error;
-    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:nil error:&error];
-    if (error)
-    {
-        NSLog(@"Error in audioPlayer: %@", [error localizedDescription]);
-    } else {
-        _audioPlayer.delegate = self;
-    }
-    
-    [self.playPauseButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
     
     self.title = self.place.name;
     self.imageButton.adjustsImageWhenHighlighted = NO;
@@ -99,18 +97,13 @@
     self.textLabel.frame = textLabelFrame;
     
     int scrollViewHeight = self.imageButton.frame.size.height + self.titleLabel.frame.size.height + self.locationLabel.frame.size.height + self.textLabel.frame.size.height + 30;
+    self.scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, scrollViewHeight);
     
-    if (self.place.url) {
-        [self.viewWebsiteButton setTitle:self.place.url forState:UIControlStateNormal];
+    if (self.place.url && self.place.url.length > 0) {
         self.viewWebsiteButton.hidden = NO;
-        self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x, 286, self.textLabel.frame.size.width, self.textLabel.frame.size.height);
-        scrollViewHeight += 20;
     } else {
         self.viewWebsiteButton.hidden = YES;
-        self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x, 265, self.textLabel.frame.size.width, self.textLabel.frame.size.height);
     }
-    
-    self.scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, scrollViewHeight);
     
     [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
@@ -118,9 +111,6 @@
 - (void)viewWillDisappear:(BOOL)animated 
 {
     [super viewWillAppear:animated];
-    
-    [_audioPlayer stop];
-//    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 # pragma mark - UI actions - 
@@ -156,27 +146,18 @@
     UINavigationController *mapViewNavigationController = (UINavigationController *)[self.tabBarController.viewControllers objectAtIndex:2];
     [mapViewNavigationController popToRootViewControllerAnimated:NO];
     MapViewController *mapViewController = [mapViewNavigationController.viewControllers objectAtIndex:0];        
-    [self.tabBarController setSelectedIndex:2];
+    mapViewController.selectedPlaceId = self.place.placeId;
     mapViewController.location = CLLocationCoordinate2DMake([self.place.lat doubleValue], [self.place.lng doubleValue]);
+    [self.tabBarController setSelectedIndex:2];
     [mapViewController zoomToSite];
 }
 
-- (IBAction)playPauseCommentry:(id)sender 
-{
-    if (_audioPlayer.isPlaying) 
-    {
-        [_audioPlayer stop];
-        [self.playPauseButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
-    } 
-    else 
-    {
-        [_audioPlayer play];
-        [self.playPauseButton setImage:[UIImage imageNamed:@"pause.png"] forState:UIControlStateNormal];
-    }
-}
-
-
 #pragma mark - Methods -
+
+- (void)back:(id)sender 
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)hideImage:(id)sender 
 {
@@ -187,13 +168,6 @@
      }];
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-}
-
-#pragma mark - Audio player delegates - 
-
-- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag 
-{
-    [self.playPauseButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
 }
 
 @end

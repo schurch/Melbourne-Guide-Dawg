@@ -13,6 +13,15 @@
 #import "MapViewController.h"
 #import "UIViewController+Utils.h"
 
+@implementation UINavigationBar (UINavigationBarCategory)
+
+- (void)drawRect:(CGRect)rect {
+    UIImage *img  = [UIImage imageNamed: @"nav-bar.png"];
+    [img drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];    
+}
+
+@end
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -27,12 +36,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    application.statusBarHidden = NO;
+    
+    if ([[UINavigationBar class]respondsToSelector:@selector(appearance)]) {
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"nav-bar.png"] forBarMetrics:UIBarMetricsDefault];
+    }
+    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
     HomeViewController *homeViewController = [[[HomeViewController alloc] initWithNibName:@"HomeView" bundle:nil] autorelease];
 
     CategoryViewController *categoryViewController = [[[CategoryViewController alloc] initWithNibName:@"CategoryView" bundle:nil] autorelease];
-    UINavigationController *placesNavigationController = [[[UINavigationController alloc] initWithRootViewController:categoryViewController] autorelease];
+    UINavigationController *placesNavigationController = [[[UINavigationController alloc] initWithRootViewController:categoryViewController] autorelease];    
     placesNavigationController.navigationBar.tintColor = [UIColor blackColor];
     
     MapViewController *mapViewController = [[[MapViewController alloc] initWithNibName:@"MapView" bundle:nil] autorelease];
