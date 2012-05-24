@@ -31,7 +31,7 @@
     NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
     [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"places.@count != 0"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"places.@count != 0 && name !=[cd] %@", @"Toilets"];
     [request setPredicate:predicate];
     
     return [[NSManagedObjectContext sharedInstance] executeFetchRequest:request error:nil];

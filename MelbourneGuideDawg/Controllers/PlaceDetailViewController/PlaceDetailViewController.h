@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Place.h"
 #import <AVFoundation/AVFoundation.h>
+#import "WebViewController.h"
 
 @interface PlaceDetailViewController : UIViewController 
+
+@property (nonatomic, retain) WebViewController *webViewController;
 
 @property (nonatomic, retain) Place *place;
 @property (nonatomic, retain) IBOutlet UIButton *imageButton;

@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SyncManager : NSObject
+@interface SyncManager : NSObject 
+{
+    BOOL _syncInProgress;
+}
 
 - (void)syncWithCompletionBlock:(void (^)())completionBlock errorBlock:(void (^)(NSError *))errorBlock progressBlock:(void (^)(NSString *))progressBlock;
 

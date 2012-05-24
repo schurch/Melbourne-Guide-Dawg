@@ -10,9 +10,14 @@
 #import "Place.h"
 #import "Place+Extensions.h"
 #import "PlaceDetailViewController.h"
+#import "Category.h"
+#import "Category+Extensions.h"
 
 @interface MapViewController()
 - (void)resetMapLocationWithAnimation:(BOOL)animate location:(CLLocationCoordinate2D)location zoom:(double)zoom;
+- (void)refreshView;
+- (void)filter:(id)sender;
+- (void)locate:(id)sender;
 @end
 
 @implementation MapViewController
@@ -43,14 +48,93 @@
 
 - (void)dealloc 
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];  
+    [self.map.userLocation removeObserver:self forKeyPath:@"location"];
+
+    
     [_selectedPlaceId release];
     [_map release];
     [_managedObjectContext release];
     [_places release];
+    
     [super dealloc];
 }
 
+#pragma mark - View lifecycle -
+
+- (void)viewDidLoad 
+{
+    [super viewDidLoad];
+    
+    UIImage *locateBtnImage = [UIImage imageNamed:@"locate-btn.png"];
+    UIButton *locateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [locateBtn setFrame:CGRectMake(0.0f, 0.0f, locateBtnImage.size.width, locateBtnImage.size.height)];
+    [locateBtn setImage:locateBtnImage forState:UIControlStateNormal];
+    [locateBtn addTarget:self action:@selector(locate:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *locateBtnItem = [[[UIBarButtonItem alloc] initWithCustomView:locateBtn] autorelease];
+    self.navigationItem.leftBarButtonItem = locateBtnItem;
+    
+    UIImage *filterBtnImage = [UIImage imageNamed:@"filter-btn.png"];
+    UIButton *filterBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [filterBtn setFrame:CGRectMake(0.0f, 0.0f, filterBtnImage.size.width, filterBtnImage.size.height)];
+    [filterBtn setImage:filterBtnImage forState:UIControlStateNormal];
+    [filterBtn addTarget:self action:@selector(filter:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *filterBtnItem = [[[UIBarButtonItem alloc] initWithCustomView:filterBtn] autorelease];
+    self.navigationItem.rightBarButtonItem = filterBtnItem;
+    
+    [self resetMapLocationWithAnimation:NO location:CLLocationCoordinate2DMake(-37.812225, 144.963055) zoom:2.0];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshView) 
+                                                 name:kSyncCompleteNotificaton
+                                               object:nil];
+    
+    [self.map.userLocation addObserver:self 
+                                forKeyPath:@"location" 
+                                   options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) 
+                                   context:nil];
+
+    
+    [self refreshView];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
 #pragma mark - Methods - 
+
+- (void)refreshView
+{
+    [self.map removeAnnotations:self.places];
+    
+    self.places = [Place allPlaces];
+    for (Place *place in self.places) 
+    {
+        [self.map addAnnotation:place];
+    }
+}
+
+- (void)locate:(id)sender 
+{
+    if (!self.map.showsUserLocation) {
+        self.map.showsUserLocation = YES;
+    } else {
+         [self resetMapLocationWithAnimation:YES location:self.map.userLocation.coordinate zoom:0.2];    
+    }
+}
+
+- (void)filter:(id)sender 
+{
+    //show filter view
+}
 
 - (void)resetMapLocationWithAnimation:(BOOL)animate location:(CLLocationCoordinate2D)location zoom:(double)zoom 
 {
@@ -68,25 +152,14 @@
     }
 }
 
-#pragma mark - View lifecycle -
+#pragma mark - Map view KVC - 
 
-- (void)viewDidLoad 
-{
-    [super viewDidLoad];
-    
-    [self resetMapLocationWithAnimation:NO location:CLLocationCoordinate2DMake(-37.812225, 144.963055) zoom:2.0];
-    
-    self.places = [Place allPlaces];
-    for (Place *place in self.places) 
-    {
-        [self.map addAnnotation:place];
-    }
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context 
+{           
+    [self resetMapLocationWithAnimation:YES location:self.map.userLocation.coordinate zoom:0.2]; 
+    [self.map.userLocation removeObserver:self forKeyPath:@"location"];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
 
 #pragma mark - Map view delegates
 
@@ -104,15 +177,8 @@
         {
             annotationView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
             
-            UIButton* rightButton = [UIButton buttonWithType:
-                                     UIButtonTypeDetailDisclosure];
+            UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
             annotationView.rightCalloutAccessoryView = rightButton;
-            
-            
-            UIImageView *thumbImageView = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:[place imagePathForType:kPlaceImageTypeCell]]];
-            thumbImageView.frame = CGRectMake(0,0,30,30);
-            annotationView.leftCalloutAccessoryView = thumbImageView;
-            [thumbImageView release];
         } 
         else 
         {
@@ -121,6 +187,20 @@
         
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
+        
+        UIImageView *thumbImageView = nil;
+        if ([place.category.name isEqualToString:@"Toilets"]) {
+            annotationView.pinColor = MKPinAnnotationColorGreen;
+            thumbImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toilet-cell.png"]];
+        } else {
+            annotationView.pinColor = MKPinAnnotationColorRed;
+            thumbImageView = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:[place imagePathForType:kPlaceImageTypeCell]]];
+
+        }
+    
+        thumbImageView.frame = CGRectMake(0,0,30,30);
+        annotationView.leftCalloutAccessoryView = thumbImageView;
+        [thumbImageView release];
         
         return annotationView;
     }

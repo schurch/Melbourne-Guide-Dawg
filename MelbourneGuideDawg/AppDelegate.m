@@ -13,9 +13,18 @@
 #import "MapViewController.h"
 #import "UIViewController+Utils.h"
 
+//Get flurry to report uncaught exceptions
+void uncaughtExceptionHandler(NSException *exception);
+void uncaughtExceptionHandler(NSException *exception) {
+    [FlurryAnalytics logError:@"ERROR: Uncaught Exception." message:@"Application crash occured!" exception:exception];
+}
+
+//add custom nav bar for ios 4
 @implementation UINavigationBar (UINavigationBarCategory)
 
 - (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
     UIImage *img  = [UIImage imageNamed: @"nav-bar.png"];
     [img drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];    
 }
@@ -27,6 +36,7 @@
 @synthesize window = _window;
 @synthesize tabBarController = _tabBarController;
 
+
 - (void)dealloc
 {
     [_window release];
@@ -36,8 +46,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //flurry init
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    [FlurryAnalytics startSession:@"3BPCNKEM1QTCUMTC9R2V"];
+    
     application.statusBarHidden = NO;
     
+    //add custom navbar for ios 5
     if ([[UINavigationBar class]respondsToSelector:@selector(appearance)]) {
         [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"nav-bar.png"] forBarMetrics:UIBarMetricsDefault];
     }
@@ -51,7 +66,7 @@
     placesNavigationController.navigationBar.tintColor = [UIColor blackColor];
     
     MapViewController *mapViewController = [[[MapViewController alloc] initWithNibName:@"MapView" bundle:nil] autorelease];
-    UINavigationController *mapNavigationController = [UIViewController createNavControllerWithRootViewController:mapViewController];
+    UINavigationController *mapNavigationController = [[[UINavigationController alloc] initWithRootViewController:mapViewController] autorelease];    
     
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:homeViewController, placesNavigationController, mapNavigationController, nil];

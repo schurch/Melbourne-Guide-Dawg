@@ -19,14 +19,40 @@
 
 @interface SyncManager()
 - (AFImageRequestOperation *)generateImageFetchOperationWithType:(PlaceImageType)imageType place:(Place *)place;
+- (void)syncFailedWithError:(NSError *)error andErrorBlock:(void (^)(NSError *))errorBlock;
+- (void)syncSuccessWithCompletionBlock:(void (^)())completionBlock;
 @end
 
 @implementation SyncManager
+
+#pragma mark - Init / Dealloc
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _syncInProgress = NO;
+    }
+    
+    return self;
+}
+
+- (void)dealloc
+{
+    
+    [super dealloc];
+}
 
 #pragma mark - Public methods -
 
 - (void)syncWithCompletionBlock:(void (^)())completionBlock errorBlock:(void (^)(NSError *))errorBlock progressBlock:(void (^)(NSString *))progressBlock
 {    
+    if (_syncInProgress) {
+        return;
+    }
+    
+    _syncInProgress = YES;
+    
     NSURLRequest *categoryRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:CATEGORIES_URL]];
     AFJSONRequestOperation *categoryOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:categoryRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) 
     {
@@ -57,16 +83,20 @@
 
         [[NSManagedObjectContext sharedInstance] save];  
         
+        
+        progressBlock(@"Downloading places..");
+        
         NSURLRequest *placesRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:PLACES_URL]];
         AFJSONRequestOperation *placesOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:placesRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) 
         {            
             
             for (int i = 0; i < [JSON count]; i++) {
                 
-                progressBlock([NSString stringWithFormat:@"Downloading place %i of %i..", i + 1, [JSON count]]);
+//                progressBlock([NSString stringWithFormat:@"Downloading places..", i + 1, [JSON count]]);
                 
                 NSDictionary *downloadedPlace = [JSON objectAtIndex:i];
                 
+                //validate returned data
                 NSString *placeId = [downloadedPlace valueForKey:@"id"];
                 NSString *categoryId = [downloadedPlace valueForKey:@"category_id"];
                 NSString *name = [downloadedPlace valueForKey:@"name"];
@@ -84,8 +114,8 @@
                 place.lat = [NSNumber numberWithDouble:[lat doubleValue]];
                 place.lng = [NSNumber numberWithDouble:[lng doubleValue]];
                 place.text = text;
-                place.url = url;
-                place.imageFileName = imageFileName;
+                place.url = [url isKindOfClass:[NSNull class]] ? nil : url;
+                place.imageFileName = [imageFileName isKindOfClass:[NSNull class]] ? nil : imageFileName;
                 
                 //fetch associted category
                 Category *category = [Category categoryWithId:[NSNumber numberWithInt:[categoryId intValue]]];
@@ -96,10 +126,16 @@
                 [[NSManagedObjectContext sharedInstance] save];  
             }
             
+            progressBlock(@"Downloading images..");
+            
             NSMutableArray *imageDownloadOperations = [[NSMutableArray alloc] initWithCapacity:3];
             
             NSArray *places = [Place allPlaces];
-            for (Place *place in places) {                
+            for (Place *place in places) {    
+                if (!place.imageFileName) {
+                    continue;
+                }
+                
                 //retina image
                 
                 //normal image
@@ -118,9 +154,9 @@
             AFHTTPClient *imageFetchClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:BASE_IMAGE_URL ]];
             //report progress..
             [imageFetchClient enqueueBatchOfHTTPRequestOperations:imageDownloadOperations progressBlock:^(NSUInteger numberOfCompletedOperations, NSUInteger totalNumberOfOperations) {
-                progressBlock([NSString stringWithFormat:@"Downloading image %i of %i..", numberOfCompletedOperations, totalNumberOfOperations]);
+//                progressBlock([NSString stringWithFormat:@"Downloading image %i of %i..", numberOfCompletedOperations, totalNumberOfOperations]);
             } completionBlock:^(NSArray *operations) {
-                    completionBlock();   
+                [self syncSuccessWithCompletionBlock:completionBlock];  
             }];
             
             
@@ -129,19 +165,39 @@
 
             
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-             errorBlock(error);
+            [self syncFailedWithError:error andErrorBlock:errorBlock];
         }];   
         
         [placesOperation start];
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        errorBlock(error);
+        [self syncFailedWithError:error andErrorBlock:errorBlock];
     }];
     
     [categoryOperation start];
 }
 
 #pragma mark - Private methods -
+
+- (void)syncFailedWithError:(NSError *)error andErrorBlock:(void (^)(NSError *))errorBlock
+{
+    _syncInProgress = NO;
+    
+    NSNotification *failNotification = [NSNotification notificationWithName: kSyncFailedNotificaton object:self userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:failNotification];
+    
+    errorBlock(error);
+}
+
+- (void)syncSuccessWithCompletionBlock:(void (^)())completionBlock 
+{
+    _syncInProgress = NO;
+    
+    NSNotification *successNotification = [NSNotification notificationWithName: kSyncCompleteNotificaton object:self userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:successNotification];
+    
+    completionBlock();
+}
 
 - (AFImageRequestOperation *)generateImageFetchOperationWithType:(PlaceImageType)imageType place:(Place *)place
 {

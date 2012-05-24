@@ -8,17 +8,27 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import <QuartzCore/QuartzCore.h>
 #import "SyncManager.h"
 
 @interface HomeViewController : UIViewController <MFMailComposeViewControllerDelegate>
+{
+    BOOL _isLoading;
+    BOOL _isDragging;
+}
+
+@property (nonatomic, retain) IBOutlet UILabel *syncLabel;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *syncActivityIndicator;
+@property (nonatomic, retain) IBOutlet UIImageView *syncArrow;
+@property (nonatomic, retain) IBOutlet UIView *syncBackground;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *introScrollView;
 @property (nonatomic, retain) IBOutlet UIView *introductionView;
 @property (nonatomic, retain) IBOutlet UILabel *introHeaderLabel;
+@property (nonatomic, retain) IBOutlet UILabel *introTextLabel;
 @property (nonatomic, retain) IBOutlet UIButton *syncButton;
 @property (nonatomic, retain) SyncManager *syncManager;
 
 - (IBAction)emailFeedback:(id)sender;
-- (IBAction)sync:(id)sender;
 
 @end

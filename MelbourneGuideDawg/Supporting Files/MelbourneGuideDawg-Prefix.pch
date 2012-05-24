@@ -12,6 +12,8 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+    #import "AppConstants.h"
     #import "NSManagedObjectContext+Extras.h"
     #import "NSObject+SBJson.h"
+    #import "FlurryAnalytics.h"
 #endif

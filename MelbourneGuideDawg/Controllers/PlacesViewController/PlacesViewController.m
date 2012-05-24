@@ -12,6 +12,7 @@
 #import "PlaceDetailViewController.h"
 
 @interface PlacesViewController()
+- (void)refreshView;
 @end
 
 @implementation PlacesViewController
@@ -36,9 +37,11 @@
 #pragma mark - memory management -
 
 - (void)dealloc 
-{    
+{   
+    
     [_managedObjectContext release];
     [_category release];
+    
     [super dealloc];
 }
 
@@ -57,11 +60,15 @@
     self.navigationItem.leftBarButtonItem = backButtonItem;
 }
 
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.title = self.category.name;
-    [self.tableView reloadData];
+    [self refreshView];
 }
 
 #pragma mark - Methods -
@@ -69,6 +76,12 @@
 - (void)back:(id)sender 
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)refreshView
+{
+    self.title = self.category.name;
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source delegates -

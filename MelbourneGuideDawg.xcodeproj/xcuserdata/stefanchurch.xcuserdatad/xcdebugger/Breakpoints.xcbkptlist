@@ -8,82 +8,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "MelbourneGuideDawg/Controllers/CategoryViewController/CategoryViewController.m"
-         timestampString = "356165803.997135"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "50"
-         endingLineNumber = "50"
-         landmarkName = "-viewDidLoad"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "MelbourneGuideDawg/Controllers/CategoryViewController/CategoryViewController.m"
-         timestampString = "356165803.997135"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "46"
-         endingLineNumber = "46"
-         landmarkName = "-viewDidLoad"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "MelbourneGuideDawg/Codebase/Categories/NSMangedObjectContext+Utils/NSManagedObjectContext+Extras.m"
-         timestampString = "355406286.22091"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "31"
-         endingLineNumber = "31"
-         landmarkName = "+sharedInstance"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "MelbourneGuideDawg/Controllers/CategoryViewController/CategoryViewController.m"
-         timestampString = "357895548.108916"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "89"
-         endingLineNumber = "89"
-         landmarkName = "-tableView:didSelectRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "MelbourneGuideDawg/Codebase/SyncManager/SyncManager.m"
-         timestampString = "357016383.7717"
+         timestampString = "359515734.573458"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "149"
-         endingLineNumber = "149"
-         landmarkName = "-generateImageFetchOperationWithType:place:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "MelbourneGuideDawg/Codebase/SyncManager/SyncManager.m"
-         timestampString = "357016383.7717"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "121"
-         endingLineNumber = "121"
+         startingLineNumber = "108"
+         endingLineNumber = "108"
          landmarkName = "-syncWithCompletionBlock:errorBlock:progressBlock:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -93,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MelbourneGuideDawg/Codebase/SyncManager/SyncManager.m"
-         timestampString = "357016383.7717"
+         timestampString = "359515734.573458"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "123"
-         endingLineNumber = "123"
+         startingLineNumber = "110"
+         endingLineNumber = "110"
          landmarkName = "-syncWithCompletionBlock:errorBlock:progressBlock:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -106,27 +36,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "MelbourneGuideDawg/Codebase/SyncManager/SyncManager.m"
-         timestampString = "357016383.7717"
+         filePath = "MelbourneGuideDawg/AppDelegate.m"
+         timestampString = "359513786.634711"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "170"
-         endingLineNumber = "170"
-         landmarkName = "-generateImageFetchOperationWithType:place:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "MelbourneGuideDawg/Model/Place/Place+Extensions.m"
-         timestampString = "356171698.104363"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "64"
-         endingLineNumber = "64"
-         landmarkName = "-imagePathForType:"
+         startingLineNumber = "28"
+         endingLineNumber = "28"
+         landmarkName = "-drawRect:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -135,68 +51,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MelbourneGuideDawg/Controllers/PlacesViewController/PlacesViewController.m"
-         timestampString = "357895899.904749"
+         timestampString = "359517310.720249"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "102"
-         endingLineNumber = "102"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "MelbourneGuideDawg/Model/Place/Place+Extensions.m"
-         timestampString = "356171768.325124"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "20"
-         endingLineNumber = "20"
-         landmarkName = "-coordinate"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "MelbourneGuideDawg/Model/Place/Place+Extensions.m"
-         timestampString = "356171771.035336"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "28"
-         endingLineNumber = "28"
-         landmarkName = "-title"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "MelbourneGuideDawg/Model/Place/Place+Extensions.m"
-         timestampString = "356171772.380814"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "33"
-         endingLineNumber = "33"
-         landmarkName = "-subtitle"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "MelbourneGuideDawg/Codebase/SyncManager/SyncManager.m"
-         timestampString = "357016383.7717"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "74"
-         endingLineNumber = "74"
-         landmarkName = "-syncWithCompletionBlock:errorBlock:progressBlock:"
+         startingLineNumber = "83"
+         endingLineNumber = "83"
+         landmarkName = "-refreshView"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -205,40 +65,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MelbourneGuideDawg/Controllers/MapViewController/MapViewController.m"
-         timestampString = "357902635.514479"
+         timestampString = "359550070.187867"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "64"
-         endingLineNumber = "64"
-         landmarkName = "-zoomToSite"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "MelbourneGuideDawg/Controllers/MapViewController/MapViewController.m"
-         timestampString = "357922803.016831"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "149"
-         endingLineNumber = "149"
-         landmarkName = "-mapView:regionDidChangeAnimated:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "MelbourneGuideDawg/Controllers/MapViewController/MapViewController.m"
-         timestampString = "357922803.016831"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "144"
-         endingLineNumber = "144"
-         landmarkName = "-mapView:didAddAnnotationViews:"
+         startingLineNumber = "192"
+         endingLineNumber = "192"
+         landmarkName = "-mapView:viewForAnnotation:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

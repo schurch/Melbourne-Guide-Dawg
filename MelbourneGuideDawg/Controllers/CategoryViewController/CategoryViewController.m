@@ -8,6 +8,10 @@
 
 #import "CategoryViewController.h"
 
+@interface CategoryViewController()
+- (void)refreshView;
+@end
+
 @implementation CategoryViewController
 
 @synthesize tableViewCell = _tableViewCell, managedObjectContext = _managedObjectContext, categories = _categories, placesViewController = _placesViewController;
@@ -18,7 +22,7 @@
     if (self) 
     {
         self.title = NSLocalizedString(@"Category", @"Category");
-        self.tabBarItem.image = [UIImage imageNamed:@"places_tab"];
+        self.tabBarItem.image = [UIImage imageNamed:@"places-tab.png"];
         self.managedObjectContext = [NSManagedObjectContext sharedInstance];
     }
     return self;
@@ -26,28 +30,49 @@
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     [_managedObjectContext release];
     [_categories release];
     [_placesViewController release];
+    
     [super dealloc];
 }
 
 #pragma mark - View lifecycle -
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    self.categories = [Category allCategories];
-    [self.tableView reloadData];
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];
-    self.placesViewController = [[[PlacesViewController alloc] initWithNibName:@"PlacesView" bundle:nil] autorelease];    
+    
+    self.placesViewController = [[[PlacesViewController alloc] initWithNibName:@"PlacesView" bundle:nil] autorelease];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshView) 
+                                                 name:kSyncCompleteNotificaton
+                                               object:nil];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self refreshView];
+}
+
+#pragma mark - Methods -
+
+- (void)refreshView
+{
+    self.categories = [Category allCategories];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -79,8 +104,6 @@
     
     return cell;
 }
-
-
 
 #pragma mark - Table view delegate
 

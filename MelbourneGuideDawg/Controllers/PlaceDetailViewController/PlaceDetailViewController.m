@@ -12,6 +12,8 @@
 
 @implementation PlaceDetailViewController
 
+@synthesize webViewController = _webViewController;
+
 @synthesize place = _place;
 @synthesize imageButton = _imageButton;
 @synthesize titleLabel = _titleLabel;
@@ -38,6 +40,8 @@
 
 - (void)dealloc 
 {
+    [_webViewController release];
+    
     [_place release];
     [_imageButton release];
     [_titleLabel release];
@@ -62,6 +66,8 @@
     [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:backButton] autorelease];
     self.navigationItem.leftBarButtonItem = backButtonItem;
+    
+    self.webViewController = [[[WebViewController alloc] initWithNibName:@"WebView" bundle:nil] autorelease];
 }
 
 - (void)viewWillAppear:(BOOL)animated 
@@ -72,12 +78,16 @@
     if ([[self.navigationController.viewControllers objectAtIndex:0] isKindOfClass:[MapViewController class]]) 
     {
         self.viewOnMapButton.hidden = YES;
-        self.detailActionsView.hidden = YES;
+        if (self.place.url && ![self.place.url isEqualToString:@""]) {
+            self.detailActionsView.hidden = NO;
+        } else {
+            self.detailActionsView.hidden = YES;
+        }
     } 
     else 
     {
-        self.viewOnMapButton.hidden = NO;
         self.detailActionsView.hidden = NO;
+        self.viewOnMapButton.hidden = NO;
     }
     
     self.title = self.place.name;
@@ -138,7 +148,10 @@
 - (IBAction)visitWebSite:(id)sender
 {
     NSLog(@"Visit URL at: %@", self.place.url);
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.place.url]];
+
+    self.webViewController.url = self.place.url;
+    self.webViewController.title = self.place.title;
+    [self.navigationController pushViewController:self.webViewController animated:YES];
 }
 
 - (IBAction)viewMap:(id)sender 
