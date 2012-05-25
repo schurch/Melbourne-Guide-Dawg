@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlaceViewController.h"
 
-@interface WebViewController : UIViewController
+@interface WebViewController : PlaceViewController
 
 @property (nonatomic, retain) IBOutlet UIWebView *webview; 
 @property (nonatomic, retain) NSString *url;

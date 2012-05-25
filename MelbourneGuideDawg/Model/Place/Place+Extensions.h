@@ -22,6 +22,7 @@ typedef enum {
 
 + (NSString *)applicationPhotosDir;
 + (Place *)place;
++ (NSArray *)filteredPlaces;
 + (NSArray *)allPlaces;
 
 - (NSString *)imageTypeStringForType:(PlaceImageType)imageType;

@@ -6,23 +6,25 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "CategoryViewController.h"
+#import "FilterViewController.h"
 
-@interface CategoryViewController()
+@interface FilterViewController()
 - (void)refreshView;
 @end
 
-@implementation CategoryViewController
+@implementation FilterViewController
 
-@synthesize tableViewCell = _tableViewCell, managedObjectContext = _managedObjectContext, categories = _categories, placesViewController = _placesViewController;
+@synthesize delegate = _delegate;
+@synthesize tableView = _tableView;
+@synthesize navBar = _navBar;
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize categories = _categories;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.title = NSLocalizedString(@"Category", @"Category");
-        self.tabBarItem.image = [UIImage imageNamed:@"places-tab.png"];
         self.managedObjectContext = [NSManagedObjectContext sharedInstance];
     }
     return self;
@@ -32,9 +34,11 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
+    [_tableView release];
+    [_navBar release];
+    
     [_managedObjectContext release];
     [_categories release];
-    [_placesViewController release];
     
     [super dealloc];
 }
@@ -45,14 +49,20 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];
-    
-    self.placesViewController = [[[PlacesViewController alloc] initWithNibName:@"PlacesView" bundle:nil] autorelease];
-    
+    UIImage *closeBtnImage = [UIImage imageNamed:@"close-btn.png"];
+    UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [closeBtn setFrame:CGRectMake(0.0f, 0.0f, closeBtnImage.size.width, closeBtnImage.size.height)];
+    [closeBtn setImage:closeBtnImage forState:UIControlStateNormal];
+    [closeBtn addTarget:self action:@selector(close:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *closeBtnItem = [[[UIBarButtonItem alloc] initWithCustomView:closeBtn] autorelease];
+    self.navBar.topItem.rightBarButtonItem = closeBtnItem;
+        
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(refreshView) 
                                                  name:kSyncCompleteNotificaton
                                                object:nil];
+    
+    
 }
 
 - (void)viewDidUnload
@@ -64,6 +74,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    _filterChanged = NO;
     [self refreshView];
 }
 
@@ -71,8 +82,15 @@
 
 - (void)refreshView
 {
-    self.categories = [Category placeCategories];
+    self.categories = [Category placeCategoriesWithToilets:YES];
     [self.tableView reloadData];
+}
+
+- (void)close:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(filterChanged:)]) {
+        [self.delegate filterChanged:_filterChanged];
+    }
 }
 
 #pragma mark - Table view data source
@@ -100,7 +118,8 @@
     Category *category = [self.categories objectAtIndex:indexPath.row];
     
     cell.textLabel.text = category.name;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.accessoryType = [category.filterSelected boolValue] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     
     return cell;
 }
@@ -109,9 +128,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.placesViewController.category = [self.categories objectAtIndex:indexPath.row];
-    self.placesViewController.places = [((Category *)[self.categories objectAtIndex:indexPath.row]).places allObjects];
-    [self.navigationController pushViewController:self.placesViewController animated:YES];    
+    _filterChanged = YES;
+    
+    Category *category = [self.categories objectAtIndex:indexPath.row];
+    category.filterSelected = [category.filterSelected boolValue] ? [NSNumber numberWithBool:NO] : [NSNumber numberWithBool:YES];
+    [self.managedObjectContext save];
+    
+    [self.tableView cellForRowAtIndexPath:indexPath].accessoryType = [category.filterSelected boolValue] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    
+    [self.tableView reloadData];
 }
 
 @end

@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "FilterViewController.h"
 
 #define METERS_PER_MILE 1609.344
 
-@interface MapViewController : UIViewController<MKMapViewDelegate>
+@interface MapViewController : UIViewController<MKMapViewDelegate, FilterProtocol>
 {
     BOOL _animatingToAnnotation;
 }
@@ -23,5 +24,6 @@
 @property (nonatomic, assign) CLLocationCoordinate2D location;
 
 - (void)zoomToSite;
+- (void)refreshView;
 
 @end

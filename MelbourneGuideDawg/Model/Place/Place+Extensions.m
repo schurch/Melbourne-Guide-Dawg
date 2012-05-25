@@ -47,12 +47,38 @@
     return [self entityWithContext:[NSManagedObjectContext sharedInstance]];
 }
 
++ (NSArray *)filteredPlaces
+{
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Place" inManagedObjectContext:[NSManagedObjectContext sharedInstance]];
+    
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    [request setEntity:entity];
+    
+    NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
+    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category.filterSelected == %@", [NSNumber numberWithBool:YES]];
+    [request setPredicate:predicate];   
+    
+    NSError *error = nil;
+    NSArray *results = [[NSManagedObjectContext sharedInstance] executeFetchRequest:request error:&error];
+    
+    if (error) {
+        NSLog(@"Error occured while fetching filtered places: %@", error);
+    }
+    
+    return results;
+}
+
 + (NSArray *)allPlaces 
 {
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Place" inManagedObjectContext:[NSManagedObjectContext sharedInstance]];
     
     NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
     [request setEntity:entity];
+    
+    NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
+    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     
     return [[NSManagedObjectContext sharedInstance] executeFetchRequest:request error:nil];
 }

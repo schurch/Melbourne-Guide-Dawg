@@ -17,7 +17,7 @@
 
 @implementation PlacesViewController
 
-@synthesize managedObjectContext = _managedObjectContext;
+@synthesize tableView = _tableView;
 @synthesize tableViewCell = _tableViewCell;
 @synthesize category = _category;
 @synthesize places = _places;
@@ -29,7 +29,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.managedObjectContext = [NSManagedObjectContext sharedInstance];
     }
     return self;
 }
@@ -38,10 +37,8 @@
 
 - (void)dealloc 
 {   
-    
-    [_managedObjectContext release];
+    [_tableView release];
     [_category release];
-    
     [super dealloc];
 }
 

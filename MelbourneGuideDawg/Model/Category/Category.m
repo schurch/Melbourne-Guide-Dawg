@@ -2,7 +2,7 @@
 //  Category.m
 //  MelbourneGuideDawg
 //
-//  Created by Stefan Church on 25/03/2012.
+//  Created by Stefan Church on 25/05/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -14,6 +14,7 @@
 
 @dynamic categoryId;
 @dynamic name;
+@dynamic filterSelected;
 @dynamic places;
 
 @end

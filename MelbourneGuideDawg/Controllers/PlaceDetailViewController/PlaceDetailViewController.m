@@ -31,7 +31,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-
     }
     return self;
 }
@@ -155,14 +154,23 @@
 }
 
 - (IBAction)viewMap:(id)sender 
-{
+{   
     UINavigationController *mapViewNavigationController = (UINavigationController *)[self.tabBarController.viewControllers objectAtIndex:2];
-    [mapViewNavigationController popToRootViewControllerAnimated:NO];
-    MapViewController *mapViewController = [mapViewNavigationController.viewControllers objectAtIndex:0];        
+    MapViewController *mapViewController = [mapViewNavigationController.viewControllers objectAtIndex:0];  
+    
     mapViewController.selectedPlaceId = self.place.placeId;
     mapViewController.location = CLLocationCoordinate2DMake([self.place.lat doubleValue], [self.place.lng doubleValue]);
+    [mapViewNavigationController popToRootViewControllerAnimated:NO];
+    
     [self.tabBarController setSelectedIndex:2];
-    [mapViewController zoomToSite];
+    
+    if (![self.place.category.filterSelected boolValue]) {
+        self.place.category.filterSelected = [NSNumber numberWithBool:YES];
+        [self.managedObjectContext save];
+        [mapViewController refreshView];
+    } else {
+        [mapViewController zoomToSite];
+    }
 }
 
 #pragma mark - Methods -

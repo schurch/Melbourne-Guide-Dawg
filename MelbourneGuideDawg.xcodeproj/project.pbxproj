@@ -20,8 +20,8 @@
 		FD418F97154BBD3F002DF93A /* into-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD418F91154BBD3F002DF93A /* into-top@2x.png */; };
 		FD4ED4E615030585004AC3B5 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4ED4E415030584004AC3B5 /* CategoryViewController.m */; };
 		FD4ED4E715030585004AC3B5 /* CategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD4ED4E515030585004AC3B5 /* CategoryView.xib */; };
-		FD4ED4EA150305CF004AC3B5 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD4ED4E9150305CF004AC3B5 /* CategoryCell.xib */; };
 		FD4ED4ED15031014004AC3B5 /* Category+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4ED4EC15031014004AC3B5 /* Category+Extensions.m */; };
+		FD53CEBF156F5C760033D509 /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD53CEBE156F5C750033D509 /* PlaceViewController.m */; };
 		FD54EE7014F862E000EC9BAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD54EE1D14F862E000EC9BAE /* AppDelegate.m */; };
 		FD54EE7214F862E000EC9BAE /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD54EE2514F862E000EC9BAE /* HomeViewController.m */; };
 		FD54EE7514F862E000EC9BAE /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD54EE2A14F862E000EC9BAE /* MapViewController.m */; };
@@ -91,6 +91,10 @@
 		FD8703AA156E425100FE0585 /* filter-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FD8703A6156E425100FE0585 /* filter-btn.png */; };
 		FD8703AB156E425100FE0585 /* locate-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FD8703A7156E425100FE0585 /* locate-btn.png */; };
 		FD8703AC156E425100FE0585 /* locate-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD8703A8156E425100FE0585 /* locate-btn@2x.png */; };
+		FD8703B2156E532E00FE0585 /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD8703AF156E532E00FE0585 /* FilterView.xib */; };
+		FD8703B3156E532E00FE0585 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8703B1156E532E00FE0585 /* FilterViewController.m */; };
+		FD8703B6156E5C7600FE0585 /* close-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FD8703B4156E5C7400FE0585 /* close-btn.png */; };
+		FD8703B7156E5C7600FE0585 /* close-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD8703B5156E5C7500FE0585 /* close-btn@2x.png */; };
 		FDA98E8D1568641E00B3D470 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA98E8C1568641E00B3D470 /* libFlurryAnalytics.a */; };
 		FDAE678114C413EF004488DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678014C413EF004488DC /* UIKit.framework */; };
 		FDAE678314C413EF004488DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678214C413EF004488DC /* Foundation.framework */; };
@@ -132,9 +136,10 @@
 		FD4ED4E315030584004AC3B5 /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryViewController.h; path = CategoryViewController/CategoryViewController.h; sourceTree = "<group>"; };
 		FD4ED4E415030584004AC3B5 /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryViewController.m; path = CategoryViewController/CategoryViewController.m; sourceTree = "<group>"; };
 		FD4ED4E515030585004AC3B5 /* CategoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryView.xib; path = CategoryViewController/CategoryView.xib; sourceTree = "<group>"; };
-		FD4ED4E9150305CF004AC3B5 /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryCell.xib; path = CategoryViewController/CategoryCell.xib; sourceTree = "<group>"; };
 		FD4ED4EB15031014004AC3B5 /* Category+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Category+Extensions.h"; path = "Category/Category+Extensions.h"; sourceTree = "<group>"; };
 		FD4ED4EC15031014004AC3B5 /* Category+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Category+Extensions.m"; path = "Category/Category+Extensions.m"; sourceTree = "<group>"; };
+		FD53CEBD156F5C750033D509 /* PlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceViewController.h; path = PlaceViewController/PlaceViewController.h; sourceTree = "<group>"; };
+		FD53CEBE156F5C750033D509 /* PlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceViewController.m; path = PlaceViewController/PlaceViewController.m; sourceTree = "<group>"; };
 		FD54EE1C14F862E000EC9BAE /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FD54EE1D14F862E000EC9BAE /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FD54EE2414F862E000EC9BAE /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -243,6 +248,11 @@
 		FD8703A6156E425100FE0585 /* filter-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "filter-btn.png"; sourceTree = "<group>"; };
 		FD8703A7156E425100FE0585 /* locate-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locate-btn.png"; sourceTree = "<group>"; };
 		FD8703A8156E425100FE0585 /* locate-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locate-btn@2x.png"; sourceTree = "<group>"; };
+		FD8703AF156E532E00FE0585 /* FilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterView.xib; sourceTree = "<group>"; };
+		FD8703B0156E532E00FE0585 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
+		FD8703B1156E532E00FE0585 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
+		FD8703B4156E5C7400FE0585 /* close-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-btn.png"; sourceTree = "<group>"; };
+		FD8703B5156E5C7500FE0585 /* close-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-btn@2x.png"; sourceTree = "<group>"; };
 		FDA98E8B1568641E00B3D470 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
 		FDA98E8C1568641E00B3D470 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
 		FDAE677C14C413EF004488DC /* MelbourneGuideDawg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MelbourneGuideDawg.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -331,9 +341,17 @@
 				FD4ED4E315030584004AC3B5 /* CategoryViewController.h */,
 				FD4ED4E415030584004AC3B5 /* CategoryViewController.m */,
 				FD4ED4E515030585004AC3B5 /* CategoryView.xib */,
-				FD4ED4E9150305CF004AC3B5 /* CategoryCell.xib */,
 			);
 			name = CategoryViewController;
+			sourceTree = "<group>";
+		};
+		FD53CEC1156F5C7B0033D509 /* PlaceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FD53CEBD156F5C750033D509 /* PlaceViewController.h */,
+				FD53CEBE156F5C750033D509 /* PlaceViewController.m */,
+			);
+			name = PlaceViewController;
 			sourceTree = "<group>";
 		};
 		FD54EE1B14F862E000EC9BAE /* MelbourneGuideDawg */ = {
@@ -375,12 +393,14 @@
 		FD54EE2214F862E000EC9BAE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FD8703AE156E532E00FE0585 /* FilterViewController */,
 				FD54EE2314F862E000EC9BAE /* HomeViewController */,
 				FD54EE2814F862E000EC9BAE /* MapViewController */,
 				FD54EE2C14F862E000EC9BAE /* PlaceDetailViewController */,
 				FD54EE3014F862E000EC9BAE /* PlacesViewController */,
 				FD4ED4E81503058B004AC3B5 /* CategoryViewController */,
 				FD79325D156E156800530E9C /* WebViewController */,
+				FD53CEC1156F5C7B0033D509 /* PlaceViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -430,6 +450,8 @@
 		FD54EE3714F862E000EC9BAE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FD8703B4156E5C7400FE0585 /* close-btn.png */,
+				FD8703B5156E5C7500FE0585 /* close-btn@2x.png */,
 				FD8703A5156E425100FE0585 /* filter@2x.png */,
 				FD8703A6156E425100FE0585 /* filter-btn.png */,
 				FD8703A7156E425100FE0585 /* locate-btn.png */,
@@ -602,6 +624,16 @@
 			name = WebViewController;
 			sourceTree = "<group>";
 		};
+		FD8703AE156E532E00FE0585 /* FilterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FD8703AF156E532E00FE0585 /* FilterView.xib */,
+				FD8703B0156E532E00FE0585 /* FilterViewController.h */,
+				FD8703B1156E532E00FE0585 /* FilterViewController.m */,
+			);
+			path = FilterViewController;
+			sourceTree = "<group>";
+		};
 		FD8FDE5B14FCEDD900E7003A /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -758,7 +790,6 @@
 				FD54EEB014F8637C00EC9BAE /* IntroductionView.xib in Resources */,
 				FD54EEC314F87AF700EC9BAE /* places-tab.png in Resources */,
 				FD4ED4E715030585004AC3B5 /* CategoryView.xib in Resources */,
-				FD4ED4EA150305CF004AC3B5 /* CategoryCell.xib in Resources */,
 				FD418F92154BBD3F002DF93A /* Default.png in Resources */,
 				FD418F93154BBD3F002DF93A /* Default@2x.png in Resources */,
 				FD418F94154BBD3F002DF93A /* icon.png in Resources */,
@@ -783,6 +814,9 @@
 				FD8703AA156E425100FE0585 /* filter-btn.png in Resources */,
 				FD8703AB156E425100FE0585 /* locate-btn.png in Resources */,
 				FD8703AC156E425100FE0585 /* locate-btn@2x.png in Resources */,
+				FD8703B2156E532E00FE0585 /* FilterView.xib in Resources */,
+				FD8703B6156E5C7600FE0585 /* close-btn.png in Resources */,
+				FD8703B7156E5C7600FE0585 /* close-btn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,6 +894,8 @@
 				FD07B32B1559481E00F06635 /* MTStatusBarOverlay.m in Sources */,
 				FD793248156DC1C600530E9C /* AppConstants.m in Sources */,
 				FD79325B156E155100530E9C /* WebViewController.m in Sources */,
+				FD8703B3156E532E00FE0585 /* FilterViewController.m in Sources */,
+				FD53CEBF156F5C760033D509 /* PlaceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

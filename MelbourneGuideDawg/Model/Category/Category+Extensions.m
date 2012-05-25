@@ -12,6 +12,10 @@
 #import "Place.h"
 #import "Place+Extensions.h"
 
+@interface Category()
++ (NSArray *)executeRequestWithPredicate:(NSPredicate *)predicate;
+@end
+
 @implementation Category (Extensions)
 
 #pragma mark - Class methods -
@@ -21,7 +25,48 @@
     return [self entityWithContext:[NSManagedObjectContext sharedInstance]];
 }
 
-+ (NSArray *)allCategories 
++ (NSArray *)allCategories
+{
+    return [self executeRequestWithPredicate:nil];
+}
+
++ (NSArray *)placeCategoriesWithToilets:(BOOL)includeToilets
+{
+    NSPredicate *predicate = nil;
+    if (!includeToilets) {
+        predicate = [NSPredicate predicateWithFormat:@"places.@count != 0 && name !=[cd] %@", @"Toilets"];
+    } else {
+        predicate = [NSPredicate predicateWithFormat:@"places.@count != 0"];
+    }
+    
+    return [self executeRequestWithPredicate:predicate];
+}
+
++ (NSArray *)placeCategories 
+{
+    return [self placeCategoriesWithToilets:NO];
+}
+
++ (Category *)categoryWithId:(NSNumber *)categoryId
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"categoryId == %@", categoryId];
+    NSArray *results = [self executeRequestWithPredicate:predicate];
+    
+    if (results == nil || results.count == 0) {
+        NSLog(@"No category found with ID: %@", categoryId);
+        return nil;
+    }
+    
+    if (results.count > 1) {
+        NSLog(@"Muliple categories found with ID: %@", categoryId);
+    }
+    
+    return [results objectAtIndex:0];
+}
+
+#pragma mark - Private methods -
+
++ (NSArray *)executeRequestWithPredicate:(NSPredicate *)predicate
 {
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Category" inManagedObjectContext:[NSManagedObjectContext sharedInstance]];
     
@@ -29,24 +74,23 @@
     [request setEntity:entity];
     
     NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
-    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];    
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"places.@count != 0 && name !=[cd] %@", @"Toilets"];
-    [request setPredicate:predicate];
+    if (predicate) {
+        [request setPredicate:predicate];   
+    }
     
-    return [[NSManagedObjectContext sharedInstance] executeFetchRequest:request error:nil];
-}
-
-+ (Category *)categoryWithId:(NSNumber *)categoryId
-{
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Category" inManagedObjectContext:[NSManagedObjectContext sharedInstance]];
+    NSError *error = nil;
+    NSArray *results = [[NSManagedObjectContext sharedInstance] executeFetchRequest:request error:&error];
     
-    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
-    [request setEntity:entity];
-    [request setFetchLimit:1];
-    [request setPredicate:[NSPredicate predicateWithFormat:@"categoryId == %@", categoryId]];
+    if (error && [error isKindOfClass:[NSError class]]) {
+        NSLog(@"Failed to fetch data: %@", [error localizedDescription]);
+#if DEBUG
+        abort();
+#endif
+    }
     
-    return [[[NSManagedObjectContext sharedInstance] executeFetchRequest:request error:nil] objectAtIndex:0];
+    return results;
 }
 
 @end

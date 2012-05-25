@@ -78,7 +78,13 @@
             
             Category *category = [Category category];
             category.categoryId = [NSNumber numberWithInt:[categoryId intValue]];
-            category.name = categoryName;            
+            category.name = categoryName;       
+            
+            if ([category.name isEqualToString:@"Toilets"]) {
+                category.filterSelected = [NSNumber numberWithBool:NO];                
+            } else {
+                category.filterSelected = [NSNumber numberWithBool:YES];
+            }
         }
 
         [[NSManagedObjectContext sharedInstance] save];  

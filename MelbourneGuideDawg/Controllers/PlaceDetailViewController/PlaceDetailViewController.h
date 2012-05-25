@@ -10,8 +10,9 @@
 #import "Place.h"
 #import <AVFoundation/AVFoundation.h>
 #import "WebViewController.h"
+#import "PlaceViewController.h"
 
-@interface PlaceDetailViewController : UIViewController 
+@interface PlaceDetailViewController : PlaceViewController 
 
 @property (nonatomic, retain) WebViewController *webViewController;
 

@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Category.h"
+#import "PlaceViewController.h"
 
-@interface PlacesViewController : UITableViewController
+@interface PlacesViewController : PlaceViewController
 
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSArray *places;
 @property (nonatomic, retain) Category *category;
 
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) IBOutlet UITableViewCell *tableViewCell;
 
 @end

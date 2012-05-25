@@ -2,7 +2,7 @@
 //  Category.h
 //  MelbourneGuideDawg
 //
-//  Created by Stefan Church on 25/03/2012.
+//  Created by Stefan Church on 25/05/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSNumber * categoryId;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * filterSelected;
 @property (nonatomic, retain) NSSet *places;
 @end
 
@@ -24,5 +25,4 @@
 - (void)removePlacesObject:(Place *)value;
 - (void)addPlaces:(NSSet *)values;
 - (void)removePlaces:(NSSet *)values;
-
 @end

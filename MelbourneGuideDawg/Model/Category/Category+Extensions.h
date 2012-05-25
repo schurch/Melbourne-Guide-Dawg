@@ -12,6 +12,8 @@
 
 + (Category *)category;
 + (NSArray *)allCategories;
++ (NSArray *)placeCategories;
++ (NSArray *)placeCategoriesWithToilets:(BOOL)includeToilets;
 + (Category *)categoryWithId:(NSNumber *)categoryId;
 
 @end
