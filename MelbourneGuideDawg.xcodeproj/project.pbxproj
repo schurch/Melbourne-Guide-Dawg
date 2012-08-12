@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD0221BB15D76A0200BB7460 /* pull-to-sync-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD0221BA15D76A0000BB7460 /* pull-to-sync-btn@2x.png */; };
+		FD0221BD15D76FB500BB7460 /* pull-to-sync-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FD0221BC15D76FB300BB7460 /* pull-to-sync-btn.png */; };
 		FD035FC3152E796A00B5351B /* NSManagedObject+Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = FD035FBC152E796A00B5351B /* NSManagedObject+Entity.m */; };
 		FD035FC4152E796A00B5351B /* NSManagedObjectContext+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FD035FBF152E796A00B5351B /* NSManagedObjectContext+Extras.m */; };
 		FD035FC5152E796A00B5351B /* UIViewController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = FD035FC2152E796A00B5351B /* UIViewController+Utils.m */; };
@@ -120,6 +122,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FD0221BA15D76A0000BB7460 /* pull-to-sync-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull-to-sync-btn@2x.png"; sourceTree = "<group>"; };
+		FD0221BC15D76FB300BB7460 /* pull-to-sync-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull-to-sync-btn.png"; sourceTree = "<group>"; };
 		FD035FBB152E796A00B5351B /* NSManagedObject+Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Entity.h"; sourceTree = "<group>"; };
 		FD035FBC152E796A00B5351B /* NSManagedObject+Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Entity.m"; sourceTree = "<group>"; };
 		FD035FBE152E796A00B5351B /* NSManagedObjectContext+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Extras.h"; sourceTree = "<group>"; };
@@ -454,6 +458,8 @@
 		FD54EE3714F862E000EC9BAE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FD0221BC15D76FB300BB7460 /* pull-to-sync-btn.png */,
+				FD0221BA15D76A0000BB7460 /* pull-to-sync-btn@2x.png */,
 				FD19637715D4CB5E00DAA09E /* toilet.jpg */,
 				FD19637815D4CB5E00DAA09E /* toilet@2x.jpg */,
 				FD8703B4156E5C7400FE0585 /* close-btn.png */,
@@ -760,7 +766,7 @@
 		FDAE677314C413EE004488DC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = FDAE677614C413EE004488DC /* Build configuration list for PBXProject "MelbourneGuideDawg" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -825,6 +831,8 @@
 				FD8703B7156E5C7600FE0585 /* close-btn@2x.png in Resources */,
 				FD19637915D4CB5F00DAA09E /* toilet.jpg in Resources */,
 				FD19637A15D4CB5F00DAA09E /* toilet@2x.jpg in Resources */,
+				FD0221BB15D76A0200BB7460 /* pull-to-sync-btn@2x.png in Resources */,
+				FD0221BD15D76FB500BB7460 /* pull-to-sync-btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

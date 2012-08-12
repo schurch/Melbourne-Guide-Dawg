@@ -8,10 +8,6 @@
 
 #import "NSManagedObjectContext+Extras.h"
 
-@interface NSManagedObjectContext()
-+ (NSURL *)applicationDocumentsDirectory;
-@end
-
 @implementation NSManagedObjectContext (Extras)
 
 static NSManagedObjectContext *managedObjectContext = nil;

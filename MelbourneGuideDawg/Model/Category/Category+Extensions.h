@@ -15,5 +15,6 @@
 + (NSArray *)placeCategories;
 + (NSArray *)placeCategoriesWithToilets:(BOOL)includeToilets;
 + (Category *)categoryWithId:(NSNumber *)categoryId;
++ (NSArray *)executeRequestWithPredicate:(NSPredicate *)predicate;
 
 @end

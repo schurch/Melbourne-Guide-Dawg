@@ -121,11 +121,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MelbourneGuideDawg/Model/Category/Category+Extensions.m"
-         timestampString = "359615036.086595"
+         timestampString = "366438966.875969"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "19"
-         endingLineNumber = "19"
+         startingLineNumber = "15"
+         endingLineNumber = "15"
          landmarkName = "@implementation Category(Extensions)"
          landmarkType = "3">
       </FileBreakpoint>

@@ -18,6 +18,8 @@
 #define RELEASE_TO_SYNC_TEXT @"Release to synchronize..."
 #define LOADING_TEXT @"Initializing..."
 
+#define kShownHelperUserSettingsKey @"showHelper"
+
 @interface HomeViewController()
 - (void)startLoading;
 - (void)stopLoadingWithMessage:(NSString *)message;
@@ -38,6 +40,7 @@
 @synthesize introHeaderLabel = _introHeaderLabel;
 @synthesize introTextLabel = _introTextLabel;
 @synthesize syncButton = _syncButton;
+@synthesize pullToSyncHelper = _pullToSyncHelper;
 @synthesize syncManager = _syncManager;
 
 #pragma mark - Init -
@@ -67,6 +70,7 @@
     [_introductionView release];
     [_introTextLabel release];
     [_syncButton release];
+    [_pullToSyncHelper release];
     [_syncManager release];
     
     [super dealloc];
@@ -92,6 +96,15 @@
     [self.introScrollView addSubview:bottomPadding];
     [bottomPadding release];
     
+    BOOL shownHelper = [[NSUserDefaults standardUserDefaults] boolForKey:kShownHelperUserSettingsKey];
+    if (!shownHelper) {
+        self.pullToSyncHelper.hidden = NO;
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kShownHelperUserSettingsKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    } else {
+        self.pullToSyncHelper.hidden = YES;
+    }
+    
     self.syncBackground.layer.cornerRadius = 5;
     [self.syncBackground.layer setMasksToBounds:YES];
     self.syncBackground.alpha = 0.0;
@@ -100,6 +113,22 @@
     self.syncLabel.text = PULL_TO_SYNC_TEXT;
     
     self.syncManager = [[[SyncManager alloc] init] autorelease];
+}
+
+- (void)viewDidUnload
+{
+    self.syncLabel = nil;
+    self.syncActivityIndicator = nil;
+    self.syncArrow = nil;
+    self.syncBackground = nil;
+    self.introScrollView = nil;
+    self.introductionView = nil;
+    self.introHeaderLabel = nil;
+    self.introTextLabel = nil;
+    self.syncButton = nil;
+    self.pullToSyncHelper = nil;
+
+    [super viewDidUnload];
 }
 
 #pragma mark - UI Actions -
@@ -127,6 +156,11 @@
     
     [self presentModalViewController:composer animated:YES];
     [composer release];  
+}
+
+- (IBAction)hideSyncButton:(id)sender
+{
+    self.pullToSyncHelper.hidden = YES;
 }
 
 #pragma mark - Mail delegates -
@@ -225,12 +259,14 @@
         [self stopLoadingWithMessage:@"Synchronization complete"];
     } errorBlock:^(NSError *error){
         NSLog(@"There was an error syncing the data.");
-        [self stopLoadingWithMessage:@"An error occured"];
+        
+        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:nil message:@"An error occured. Please try again later." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
+        [alertview show];
         
         if (error) {
             NSLog(@"Unresolved error when downloading data: %@, %@", error, [error userInfo]);
 #if DEBUG
-            abort();
+//            abort();
 #endif
         }
         

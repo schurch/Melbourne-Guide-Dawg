@@ -12,10 +12,6 @@
 #import "Place.h"
 #import "Place+Extensions.h"
 
-@interface Category()
-+ (NSArray *)executeRequestWithPredicate:(NSPredicate *)predicate;
-@end
-
 @implementation Category (Extensions)
 
 #pragma mark - Class methods -

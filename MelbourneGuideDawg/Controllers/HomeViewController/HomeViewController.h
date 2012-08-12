@@ -27,8 +27,10 @@
 @property (nonatomic, retain) IBOutlet UILabel *introHeaderLabel;
 @property (nonatomic, retain) IBOutlet UILabel *introTextLabel;
 @property (nonatomic, retain) IBOutlet UIButton *syncButton;
+@property (nonatomic, retain) IBOutlet UIButton *pullToSyncHelper;
 @property (nonatomic, retain) SyncManager *syncManager;
 
 - (IBAction)emailFeedback:(id)sender;
+- (IBAction)hideSyncButton:(id)sender;
 
 @end
