@@ -13,6 +13,7 @@
 #import "Category.h"
 #import "Category+Extensions.h"
 
+
 @interface MapViewController()
 @property (nonatomic, retain) FilterViewController *filterViewController;
 - (void)resetMapLocationWithAnimation:(BOOL)animate location:(CLLocationCoordinate2D)location zoom:(double)zoom;
@@ -37,7 +38,7 @@
     if (self) 
     {
         self.title = NSLocalizedString(@"Map", @"Map");
-        self.tabBarItem.image = [UIImage imageNamed:@"map_tab.png"];
+        self.tabBarItem.image = [UIImage imageNamed:@"map-tab.png"];
         self.managedObjectContext = [NSManagedObjectContext sharedInstance];
         
         _animatingToAnnotation = NO;

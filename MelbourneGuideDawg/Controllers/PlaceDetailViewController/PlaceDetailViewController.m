@@ -91,7 +91,12 @@
     
     self.title = self.place.name;
     self.imageButton.adjustsImageWhenHighlighted = NO;
-    [self.imageButton setImage:[UIImage imageWithContentsOfFile:[self.place imagePathForType:kPlaceImageTypeNormal]] forState:UIControlStateNormal];
+    if ([self.place.category.name isEqualToString:@"Toilets"]) {
+        [self.imageButton setImage:[UIImage imageNamed:@"toilet.jpg"] forState:UIControlStateNormal];
+    } else {
+        [self.imageButton setImage:[UIImage imageWithContentsOfFile:[self.place imagePathForType:kPlaceImageTypeNormal]] forState:UIControlStateNormal];
+    }
+
     
     self.titleLabel.text = self.place.name;
     self.locationLabel.text = self.place.address;
@@ -127,7 +132,11 @@
 - (IBAction)showImage:(id)sender 
 {    
     UIButton *largeImage = [UIButton buttonWithType:UIButtonTypeCustom];
-    [largeImage setImage:[UIImage imageWithContentsOfFile:[self.place imagePathForType:kPlaceImageTypeNormal]] forState:UIControlStateNormal];
+    if ([self.place.category.name isEqualToString:@"Toilets"]) {
+        [largeImage setImage:[UIImage imageNamed:@"toilet.jpg"] forState:UIControlStateNormal];
+    } else {
+        [largeImage setImage:[UIImage imageWithContentsOfFile:[self.place imagePathForType:kPlaceImageTypeNormal]] forState:UIControlStateNormal];
+    }
     largeImage.alpha = 0;
     largeImage.adjustsImageWhenHighlighted = NO;
     [largeImage addTarget:self action:@selector(hideImage:) forControlEvents:UIControlEventTouchUpInside];

@@ -48,7 +48,7 @@
     if (self) 
     {
         self.title = NSLocalizedString(@"Home", @"Home");
-        self.tabBarItem.image = [UIImage imageNamed:@"home_tab"];
+        self.tabBarItem.image = [UIImage imageNamed:@"home-tab.png"];
     }
     return self;
 }

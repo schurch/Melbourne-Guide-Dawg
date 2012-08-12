@@ -11,6 +11,8 @@
 		FD035FC4152E796A00B5351B /* NSManagedObjectContext+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FD035FBF152E796A00B5351B /* NSManagedObjectContext+Extras.m */; };
 		FD035FC5152E796A00B5351B /* UIViewController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = FD035FC2152E796A00B5351B /* UIViewController+Utils.m */; };
 		FD07B32B1559481E00F06635 /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = FD07B32A1559481E00F06635 /* MTStatusBarOverlay.m */; };
+		FD19637915D4CB5F00DAA09E /* toilet.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD19637715D4CB5E00DAA09E /* toilet.jpg */; };
+		FD19637A15D4CB5F00DAA09E /* toilet@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD19637815D4CB5E00DAA09E /* toilet@2x.jpg */; };
 		FD37091614FFAA3D000CA759 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = FD37091514FFAA3D000CA759 /* Category.m */; };
 		FD418F92154BBD3F002DF93A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FD418F8C154BBD3E002DF93A /* Default.png */; };
 		FD418F93154BBD3F002DF93A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD418F8D154BBD3E002DF93A /* Default@2x.png */; };
@@ -126,6 +128,8 @@
 		FD035FC2152E796A00B5351B /* UIViewController+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Utils.m"; sourceTree = "<group>"; };
 		FD07B3291559481E00F06635 /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTStatusBarOverlay.h; sourceTree = "<group>"; };
 		FD07B32A1559481E00F06635 /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTStatusBarOverlay.m; sourceTree = "<group>"; };
+		FD19637715D4CB5E00DAA09E /* toilet.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = toilet.jpg; sourceTree = "<group>"; };
+		FD19637815D4CB5E00DAA09E /* toilet@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "toilet@2x.jpg"; sourceTree = "<group>"; };
 		FD37091514FFAA3D000CA759 /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Category.m; path = Category/Category.m; sourceTree = "<group>"; };
 		FD418F8C154BBD3E002DF93A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		FD418F8D154BBD3E002DF93A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -450,6 +454,8 @@
 		FD54EE3714F862E000EC9BAE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FD19637715D4CB5E00DAA09E /* toilet.jpg */,
+				FD19637815D4CB5E00DAA09E /* toilet@2x.jpg */,
 				FD8703B4156E5C7400FE0585 /* close-btn.png */,
 				FD8703B5156E5C7500FE0585 /* close-btn@2x.png */,
 				FD8703A5156E425100FE0585 /* filter@2x.png */,
@@ -817,6 +823,8 @@
 				FD8703B2156E532E00FE0585 /* FilterView.xib in Resources */,
 				FD8703B6156E5C7600FE0585 /* close-btn.png in Resources */,
 				FD8703B7156E5C7600FE0585 /* close-btn@2x.png in Resources */,
+				FD19637915D4CB5F00DAA09E /* toilet.jpg in Resources */,
+				FD19637A15D4CB5F00DAA09E /* toilet@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -984,15 +992,12 @@
 		FDAE67BE14C413EF004488DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Stefan Church (N8V73QMGL4)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MelbourneGuideDawg/Supporting Files/MelbourneGuideDawg-Prefix.pch";
 				INFOPLIST_FILE = "MelbourneGuideDawg/Supporting Files/MelbourneGuideDawg-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/MelbourneGuideDawg/Codebase/Analytics\"",
@@ -1007,15 +1012,12 @@
 		FDAE67BF14C413EF004488DC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Stefan Church";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MelbourneGuideDawg/Supporting Files/MelbourneGuideDawg-Prefix.pch";
 				INFOPLIST_FILE = "MelbourneGuideDawg/Supporting Files/MelbourneGuideDawg-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/MelbourneGuideDawg/Codebase/Analytics\"",
