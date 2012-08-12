@@ -12,6 +12,7 @@
 #import "CategoryViewController.h"
 #import "MapViewController.h"
 #import "UIViewController+Utils.h"
+#import "SubmissionViewController.h"
 
 //Get flurry to report uncaught exceptions
 void uncaughtExceptionHandler(NSException *exception);
@@ -66,10 +67,14 @@ void uncaughtExceptionHandler(NSException *exception) {
     placesNavigationController.navigationBar.tintColor = [UIColor blackColor];
     
     MapViewController *mapViewController = [[[MapViewController alloc] initWithNibName:@"MapView" bundle:nil] autorelease];
-    UINavigationController *mapNavigationController = [[[UINavigationController alloc] initWithRootViewController:mapViewController] autorelease];    
+    UINavigationController *mapNavigationController = [[[UINavigationController alloc] initWithRootViewController:mapViewController] autorelease];
+    
+    
+    SubmissionViewController *submissionViewController = [[[SubmissionViewController alloc] initWithNibName:@"SubmissionView" bundle:nil] autorelease];
+    UINavigationController *submissionNavController = [[UINavigationController alloc] initWithRootViewController:submissionViewController];
     
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:homeViewController, placesNavigationController, mapNavigationController, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:homeViewController, placesNavigationController, mapNavigationController, submissionNavController, nil];
     
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];

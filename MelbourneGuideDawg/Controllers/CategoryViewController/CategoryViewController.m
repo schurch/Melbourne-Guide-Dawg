@@ -45,8 +45,6 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];
-    
     self.placesViewController = [[[PlacesViewController alloc] initWithNibName:@"PlacesView" bundle:nil] autorelease];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
