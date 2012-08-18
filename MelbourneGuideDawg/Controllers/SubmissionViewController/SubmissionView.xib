@@ -91,7 +91,7 @@
 				<array class="NSMutableArray" key="IBUIItems">
 					<object class="IBUIBarButtonItem" id="15469856">
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<float key="IBUIWidth">246</float>
+						<float key="IBUIWidth">253</float>
 						<reference key="IBUIToolbar" ref="730874086"/>
 						<int key="IBUISystemItemIdentifier">6</int>
 					</object>
@@ -230,20 +230,24 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">SubmissionViewController</string>
 					<string key="superclassName">UIViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">dismissKeyboard:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">dismissKeyboard:</string>
-						<object class="IBActionInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="dismissKeyboard:">id</string>
+						<string key="takePhoto:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="dismissKeyboard:">
 							<string key="name">dismissKeyboard:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-					</object>
+						<object class="IBActionInfo" key="takePhoto:">
+							<string key="name">takePhoto:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="keyboardInputAccessoryView">UIToolbar</string>
 						<string key="locatingCell">UITableViewCell</string>
+						<string key="mainBodyTextCell">UITableViewCell</string>
 						<string key="tableCell">UITableViewCell</string>
 						<string key="tableView">UITableView</string>
 					</dictionary>
@@ -254,6 +258,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="locatingCell">
 							<string key="name">locatingCell</string>
+							<string key="candidateClassName">UITableViewCell</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="mainBodyTextCell">
+							<string key="name">mainBodyTextCell</string>
 							<string key="candidateClassName">UITableViewCell</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="tableCell">

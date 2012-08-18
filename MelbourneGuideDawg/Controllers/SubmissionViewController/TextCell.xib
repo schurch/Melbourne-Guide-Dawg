@@ -45,6 +45,7 @@
 								<string key="NSFrame">{{7, 6}, {280, 31}}</string>
 								<reference key="NSSuperview" ref="775679517"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -164,11 +165,45 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">SubmissionViewController</string>
 					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="dismissKeyboard:">id</string>
+						<string key="post:">id</string>
+						<string key="takePhoto:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="dismissKeyboard:">
+							<string key="name">dismissKeyboard:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="post:">
+							<string key="name">post:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="takePhoto:">
+							<string key="name">takePhoto:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="keyboardInputAccessoryView">UIToolbar</string>
+						<string key="locatingCell">UITableViewCell</string>
+						<string key="mainBodyTextCell">UITableViewCell</string>
 						<string key="tableCell">UITableViewCell</string>
 						<string key="tableView">UITableView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="keyboardInputAccessoryView">
+							<string key="name">keyboardInputAccessoryView</string>
+							<string key="candidateClassName">UIToolbar</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="locatingCell">
+							<string key="name">locatingCell</string>
+							<string key="candidateClassName">UITableViewCell</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="mainBodyTextCell">
+							<string key="name">mainBodyTextCell</string>
+							<string key="candidateClassName">UITableViewCell</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="tableCell">
 							<string key="name">tableCell</string>
 							<string key="candidateClassName">UITableViewCell</string>
