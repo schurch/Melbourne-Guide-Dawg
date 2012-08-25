@@ -16,7 +16,6 @@
 		FD2453C715DF558B00BF027B /* picture-frame.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2453C515DF558B00BF027B /* picture-frame.png */; };
 		FD2453C815DF558B00BF027B /* picture-frame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2453C615DF558B00BF027B /* picture-frame@2x.png */; };
 		FD2453DB15DF5D8D00BF027B /* NSManagedObjectContext+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2453D415DF5D8C00BF027B /* NSManagedObjectContext+Extras.m */; };
-		FD2453DC15DF5D8D00BF027B /* UIImage+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2453D715DF5D8D00BF027B /* UIImage+Extras.m */; };
 		FD2453DD15DF5D8D00BF027B /* UIViewController+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2453DA15DF5D8D00BF027B /* UIViewController+Extras.m */; };
 		FD2ED42215D7CF9B008B211B /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2ED42115D7CF9B008B211B /* AddressBookUI.framework */; };
 		FD2ED42B15D7D5F7008B211B /* SubmitCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2ED42915D7D5F6008B211B /* SubmitCategoryViewController.m */; };
@@ -124,6 +123,14 @@
 		FDD3A65315DFD30F003FB9A2 /* NSString+Numbers.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD3A64A15DFD30F003FB9A2 /* NSString+Numbers.m */; };
 		FDD3A65415DFD30F003FB9A2 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD3A64C15DFD30F003FB9A2 /* NSString+URLEncoding.m */; };
 		FDD3A65515DFD30F003FB9A2 /* NSString+XMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD3A64E15DFD30F003FB9A2 /* NSString+XMLEntities.m */; };
+		FDDD046315E8628700EC3D12 /* white-cross.png in Resources */ = {isa = PBXBuildFile; fileRef = FDDD045F15E8628700EC3D12 /* white-cross.png */; };
+		FDDD046415E8628700EC3D12 /* white-cross@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDDD046015E8628700EC3D12 /* white-cross@2x.png */; };
+		FDDD046515E8628700EC3D12 /* white-tick.png in Resources */ = {isa = PBXBuildFile; fileRef = FDDD046115E8628700EC3D12 /* white-tick.png */; };
+		FDDD046615E8628700EC3D12 /* white-tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDDD046215E8628700EC3D12 /* white-tick@2x.png */; };
+		FDDD047415E867C900EC3D12 /* UIImage+Creation.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD046D15E867C900EC3D12 /* UIImage+Creation.m */; };
+		FDDD047515E867C900EC3D12 /* UIImage+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD046F15E867C900EC3D12 /* UIImage+Extras.m */; };
+		FDDD047615E867C900EC3D12 /* UIImage+Scaling.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD047115E867C900EC3D12 /* UIImage+Scaling.m */; };
+		FDDD047715E867C900EC3D12 /* UIImage+Watermark.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD047315E867C900EC3D12 /* UIImage+Watermark.m */; };
 		FDE74FB615D795C90088D11A /* SubmissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE74FB415D795C90088D11A /* SubmissionViewController.m */; };
 		FDE74FB715D795C90088D11A /* SubmissionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE74FB515D795C90088D11A /* SubmissionView.xib */; };
 		FDE74FBC15D7B1810088D11A /* submit-tab.png in Resources */ = {isa = PBXBuildFile; fileRef = FDE74FBA15D7B1810088D11A /* submit-tab.png */; };
@@ -160,8 +167,6 @@
 		FD2453C615DF558B00BF027B /* picture-frame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-frame@2x.png"; sourceTree = "<group>"; };
 		FD2453D315DF5D8C00BF027B /* NSManagedObjectContext+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Extras.h"; sourceTree = "<group>"; };
 		FD2453D415DF5D8C00BF027B /* NSManagedObjectContext+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+Extras.m"; sourceTree = "<group>"; };
-		FD2453D615DF5D8D00BF027B /* UIImage+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extras.h"; sourceTree = "<group>"; };
-		FD2453D715DF5D8D00BF027B /* UIImage+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extras.m"; sourceTree = "<group>"; };
 		FD2453D915DF5D8D00BF027B /* UIViewController+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extras.h"; sourceTree = "<group>"; };
 		FD2453DA15DF5D8D00BF027B /* UIViewController+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extras.m"; sourceTree = "<group>"; };
 		FD2ED42115D7CF9B008B211B /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -325,6 +330,18 @@
 		FDD3A64C15DFD30F003FB9A2 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		FDD3A64D15DFD30F003FB9A2 /* NSString+XMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XMLEntities.h"; sourceTree = "<group>"; };
 		FDD3A64E15DFD30F003FB9A2 /* NSString+XMLEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XMLEntities.m"; sourceTree = "<group>"; };
+		FDDD045F15E8628700EC3D12 /* white-cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-cross.png"; sourceTree = "<group>"; };
+		FDDD046015E8628700EC3D12 /* white-cross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-cross@2x.png"; sourceTree = "<group>"; };
+		FDDD046115E8628700EC3D12 /* white-tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-tick.png"; sourceTree = "<group>"; };
+		FDDD046215E8628700EC3D12 /* white-tick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-tick@2x.png"; sourceTree = "<group>"; };
+		FDDD046C15E867C900EC3D12 /* UIImage+Creation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Creation.h"; path = "MelbourneGuideDawg/Codebase/Categories/UIImage+/UIImage+Creation.h"; sourceTree = SOURCE_ROOT; };
+		FDDD046D15E867C900EC3D12 /* UIImage+Creation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Creation.m"; path = "MelbourneGuideDawg/Codebase/Categories/UIImage+/UIImage+Creation.m"; sourceTree = SOURCE_ROOT; };
+		FDDD046E15E867C900EC3D12 /* UIImage+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Extras.h"; path = "MelbourneGuideDawg/Codebase/Categories/UIImage+/UIImage+Extras.h"; sourceTree = SOURCE_ROOT; };
+		FDDD046F15E867C900EC3D12 /* UIImage+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Extras.m"; path = "MelbourneGuideDawg/Codebase/Categories/UIImage+/UIImage+Extras.m"; sourceTree = SOURCE_ROOT; };
+		FDDD047015E867C900EC3D12 /* UIImage+Scaling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Scaling.h"; path = "MelbourneGuideDawg/Codebase/Categories/UIImage+/UIImage+Scaling.h"; sourceTree = SOURCE_ROOT; };
+		FDDD047115E867C900EC3D12 /* UIImage+Scaling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Scaling.m"; path = "MelbourneGuideDawg/Codebase/Categories/UIImage+/UIImage+Scaling.m"; sourceTree = SOURCE_ROOT; };
+		FDDD047215E867C900EC3D12 /* UIImage+Watermark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Watermark.h"; path = "MelbourneGuideDawg/Codebase/Categories/UIImage+/UIImage+Watermark.h"; sourceTree = SOURCE_ROOT; };
+		FDDD047315E867C900EC3D12 /* UIImage+Watermark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Watermark.m"; path = "MelbourneGuideDawg/Codebase/Categories/UIImage+/UIImage+Watermark.m"; sourceTree = SOURCE_ROOT; };
 		FDE74FB315D795C90088D11A /* SubmissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubmissionViewController.h; path = SubmissionViewController/SubmissionViewController.h; sourceTree = "<group>"; };
 		FDE74FB415D795C90088D11A /* SubmissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubmissionViewController.m; path = SubmissionViewController/SubmissionViewController.m; sourceTree = "<group>"; };
 		FDE74FB515D795C90088D11A /* SubmissionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SubmissionView.xib; path = SubmissionViewController/SubmissionView.xib; sourceTree = "<group>"; };
@@ -398,12 +415,19 @@
 			path = "NSMangedObjectContext+Extras";
 			sourceTree = "<group>";
 		};
-		FD2453D515DF5D8C00BF027B /* UIImage+Extras */ = {
+		FD2453D515DF5D8C00BF027B /* UIImage+ */ = {
 			isa = PBXGroup;
 			children = (
-				FD2453D615DF5D8D00BF027B /* UIImage+Extras.h */,
-				FD2453D715DF5D8D00BF027B /* UIImage+Extras.m */,
+				FDDD046C15E867C900EC3D12 /* UIImage+Creation.h */,
+				FDDD046D15E867C900EC3D12 /* UIImage+Creation.m */,
+				FDDD046E15E867C900EC3D12 /* UIImage+Extras.h */,
+				FDDD046F15E867C900EC3D12 /* UIImage+Extras.m */,
+				FDDD047015E867C900EC3D12 /* UIImage+Scaling.h */,
+				FDDD047115E867C900EC3D12 /* UIImage+Scaling.m */,
+				FDDD047215E867C900EC3D12 /* UIImage+Watermark.h */,
+				FDDD047315E867C900EC3D12 /* UIImage+Watermark.m */,
 			);
+			name = "UIImage+";
 			path = "UIImage+Extras";
 			sourceTree = "<group>";
 		};
@@ -477,7 +501,7 @@
 				FDD3A63F15DFD30F003FB9A2 /* NSString+ */,
 				FD035FBA152E796A00B5351B /* NSMangedObject+Entity */,
 				FD2453D215DF5D8C00BF027B /* NSMangedObjectContext+Extras */,
-				FD2453D515DF5D8C00BF027B /* UIImage+Extras */,
+				FD2453D515DF5D8C00BF027B /* UIImage+ */,
 				FD2453D815DF5D8D00BF027B /* UIViewController+Extras */,
 			);
 			path = Categories;
@@ -545,6 +569,10 @@
 		FD54EE3714F862E000EC9BAE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FDDD045F15E8628700EC3D12 /* white-cross.png */,
+				FDDD046015E8628700EC3D12 /* white-cross@2x.png */,
+				FDDD046115E8628700EC3D12 /* white-tick.png */,
+				FDDD046215E8628700EC3D12 /* white-tick@2x.png */,
 				FDD3A63A15DFD0F0003FB9A2 /* post-btn.png */,
 				FDD3A63B15DFD0F0003FB9A2 /* post-btn@2x.png */,
 				FD2453C515DF558B00BF027B /* picture-frame.png */,
@@ -981,6 +1009,10 @@
 				FD2453C815DF558B00BF027B /* picture-frame@2x.png in Resources */,
 				FDD3A63C15DFD0F0003FB9A2 /* post-btn.png in Resources */,
 				FDD3A63D15DFD0F0003FB9A2 /* post-btn@2x.png in Resources */,
+				FDDD046315E8628700EC3D12 /* white-cross.png in Resources */,
+				FDDD046415E8628700EC3D12 /* white-cross@2x.png in Resources */,
+				FDDD046515E8628700EC3D12 /* white-tick.png in Resources */,
+				FDDD046615E8628700EC3D12 /* white-tick@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1061,7 +1093,6 @@
 				FDE74FB615D795C90088D11A /* SubmissionViewController.m in Sources */,
 				FD2ED42B15D7D5F7008B211B /* SubmitCategoryViewController.m in Sources */,
 				FD2453DB15DF5D8D00BF027B /* NSManagedObjectContext+Extras.m in Sources */,
-				FD2453DC15DF5D8D00BF027B /* UIImage+Extras.m in Sources */,
 				FD2453DD15DF5D8D00BF027B /* UIViewController+Extras.m in Sources */,
 				FDD3A64F15DFD30F003FB9A2 /* GTMNSString+HTML.m in Sources */,
 				FDD3A65015DFD30F003FB9A2 /* NSString+Censored.m in Sources */,
@@ -1070,6 +1101,10 @@
 				FDD3A65315DFD30F003FB9A2 /* NSString+Numbers.m in Sources */,
 				FDD3A65415DFD30F003FB9A2 /* NSString+URLEncoding.m in Sources */,
 				FDD3A65515DFD30F003FB9A2 /* NSString+XMLEntities.m in Sources */,
+				FDDD047415E867C900EC3D12 /* UIImage+Creation.m in Sources */,
+				FDDD047515E867C900EC3D12 /* UIImage+Extras.m in Sources */,
+				FDDD047615E867C900EC3D12 /* UIImage+Scaling.m in Sources */,
+				FDDD047715E867C900EC3D12 /* UIImage+Watermark.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

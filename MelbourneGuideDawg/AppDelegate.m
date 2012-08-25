@@ -141,9 +141,8 @@ void uncaughtExceptionHandler(NSException *exception) {
         [picker release];
         
         //resize image
-        //TODO: resize properly
         UIImage *resizedImage = [UIImage imageWithImage:image scaledToSize:CGSizeMake(320, 500)];
-        UIImage *thumbnailImage = [UIImage imageWithImage:resizedImage scaledToSize:CGSizeMake(150, 150)];
+        UIImage *thumbnailImage = [image imageByScalingAndCroppingForSize:CGSizeMake(148, 150)];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.window animated:YES];

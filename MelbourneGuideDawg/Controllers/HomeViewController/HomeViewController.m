@@ -22,7 +22,7 @@
 
 @interface HomeViewController()
 - (void)startLoading;
-- (void)stopLoadingWithMessage:(NSString *)message;
+- (void)stopLoadingWithMessage:(NSString *)message wasSuccess:(BOOL)wasSuccess;
 - (void)stopLoadingComplete;
 - (void)sync;
 @end
@@ -64,6 +64,7 @@
     [_syncArrow release];
     [_syncButton release];
     [_syncActivityIndicator release];
+    [_syncTickCrossImage release];
     
     [_introHeaderLabel release];
     [_introScrollView release];
@@ -111,6 +112,7 @@
     self.syncArrow.alpha = 0.0;
     self.syncLabel.alpha = 0.0;
     self.syncLabel.text = PULL_TO_SYNC_TEXT;
+    self.syncTickCrossImage.hidden = YES;
     
     self.syncManager = [[[SyncManager alloc] init] autorelease];
 }
@@ -230,12 +232,19 @@
     [self sync];
 }
 
-- (void)stopLoadingWithMessage:(NSString *)message {
-    _isLoading = NO;
-    
+- (void)stopLoadingWithMessage:(NSString *)message wasSuccess:(BOOL)wasSuccess
+{
     [self.syncActivityIndicator stopAnimating];
+    
+    if (wasSuccess) {
+        self.syncTickCrossImage.image = [UIImage imageNamed:@"white-tick.png"];
+    } else {
+        self.syncTickCrossImage.image = [UIImage imageNamed:@"white-cross.png"];
+    }
+    self.syncTickCrossImage.hidden = NO;
+    
     self.syncLabel.text = message;
-    [self performSelector:@selector(stopLoadingComplete) withObject:self afterDelay:1.5];
+    [self performSelector:@selector(stopLoadingComplete) withObject:self afterDelay:2];
 }
 
 - (void)stopLoadingComplete {
@@ -247,8 +256,11 @@
     self.syncLabel.text = PULL_TO_SYNC_TEXT;
     [self.syncArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
     self.syncArrow.hidden = NO;
+    self.syncTickCrossImage.hidden = YES;
     
     self.view.window.userInteractionEnabled = YES;
+    
+    _isLoading = NO;
 }
 
 - (void)sync {
@@ -256,12 +268,11 @@
     
     [self.syncManager syncWithCompletionBlock:^{
         NSLog(@"Success syncing the data.");
-        [self stopLoadingWithMessage:@"Synchronization complete"];
+        [self stopLoadingWithMessage:@"Synchronization complete" wasSuccess:YES];
     } errorBlock:^(NSError *error){
         NSLog(@"There was an error syncing the data.");
         
-        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:nil message:@"An error occured. Please try again later." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
-        [alertview show];
+        [self stopLoadingWithMessage:@"An error occured. Please try again later" wasSuccess:NO];
         
         if (error) {
             NSLog(@"Unresolved error when downloading data: %@, %@", error, [error userInfo]);

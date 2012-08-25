@@ -21,6 +21,7 @@
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *syncActivityIndicator;
 @property (nonatomic, retain) IBOutlet UIImageView *syncArrow;
 @property (nonatomic, retain) IBOutlet UIView *syncBackground;
+@property (nonatomic, retain) IBOutlet UIImageView *syncTickCrossImage;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *introScrollView;
 @property (nonatomic, retain) IBOutlet UIView *introductionView;

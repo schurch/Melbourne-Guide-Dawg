@@ -86,7 +86,7 @@
 							<object class="IBUIImageView" id="906196046">
 								<reference key="NSNextResponder" ref="339471118"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{16, 15}, {75, 75}}</string>
+								<string key="NSFrame">{{16, 15}, {74, 75}}</string>
 								<reference key="NSSuperview" ref="339471118"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1057012596"/>
@@ -102,6 +102,7 @@
 								<string key="NSFrame">{{113, 8}, {128, 21}}</string>
 								<reference key="NSSuperview" ref="339471118"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -242,11 +243,16 @@
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="dismissKeyboard:">id</string>
+						<string key="post:">id</string>
 						<string key="takePhoto:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="dismissKeyboard:">
 							<string key="name">dismissKeyboard:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="post:">
+							<string key="name">post:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="takePhoto:">
