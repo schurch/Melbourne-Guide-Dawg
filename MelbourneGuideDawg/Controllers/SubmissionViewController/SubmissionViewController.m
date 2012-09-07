@@ -10,35 +10,28 @@
 #import "AppDelegate.h"
 #import <AddressBookUI/AddressBookUI.h>
 #import "NSString+HTML.h"
+#import "Category.h"
+#import "Place.h"
+#import "Place+Extensions.h"
+#import "NSManagedObject+Entity.h"
+#import "MBProgressHUD.h"
+
 
 #define TITLE_TEXTFIELD_TAG 100
 #define WEBSITE_TEXTFIELD_TAG 101
 
+#define ALERTVIEW_SUCCESS_TAG 200
+
 #define CATEGORY_DEFAULT_TEXT @"Category"
 
 @interface SubmissionViewController ()
-@property (nonatomic, retain) NSString *category;
+@property (nonatomic, retain) Category *category;
 - (void)resetLocatingCell;
 - (void)showLocationCellError;
 - (void)setPostEnabledState;
 @end
 
 @implementation SubmissionViewController
-
-@synthesize category = _category;
-@synthesize tableCell = _tableCell;
-@synthesize locatingCell = _locatingCell;
-@synthesize mainBodyTextCell = _mainBodyTextCell;
-@synthesize tableView = _tableView;
-@synthesize tapRecognizer = _tapRecognizer;
-@synthesize photo = _photo;
-@synthesize photoThumbnail = _photoThumbnail;
-@synthesize submissionTitle = _submissionTitle;
-@synthesize website = _website;
-@synthesize text = _text;
-@synthesize address = _address;
-@synthesize keyboardInputAccessoryView = _keyboardInputAccessoryView;
-
 
 #pragma mark - init / dealloc -
 
@@ -60,12 +53,12 @@
     [_tableView release];
     [_keyboardInputAccessoryView release];
     [_tapRecognizer release];
-    [_photo release];
-    [_photoThumbnail release];
     [_submissionTitle release];
     [_website release];
     [_text release];
     [_address release];
+    [_photo release];
+    [_photoThumbnail release];
     
     [super dealloc];
 }
@@ -107,7 +100,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    
+
     self.tableCell = nil;
     self.locatingCell = nil;
     self.mainBodyTextCell = nil;
@@ -120,7 +113,7 @@
 - (void)setPostEnabledState
 {
     BOOL titleSet = ![[self.submissionTitle stringByRemovingNewLinesAndWhitespace] isEqualToString:@""];
-    BOOL categorySet = ![[self.category stringByRemovingNewLinesAndWhitespace] isEqualToString:CATEGORY_DEFAULT_TEXT];
+    BOOL categorySet = self.category != nil;
     BOOL addressSet = ![[self.address stringByRemovingNewLinesAndWhitespace] isEqualToString:@""];
     BOOL textSet = ![[self.text stringByRemovingNewLinesAndWhitespace] isEqualToString:@""];
     
@@ -136,7 +129,7 @@
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
     self.submissionTitle = @"";
-    self.category = CATEGORY_DEFAULT_TEXT;
+    self.category = nil;
     self.website = @"";
     self.text = @"";
     
@@ -144,13 +137,15 @@
     placeholderText.hidden = NO;
     
     [self resetLocatingCell];
-    
+    [self.tableView reloadData];
+}
+
+- (void)fetchLocation
+{
     CLLocationManager *locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
-    
-    [self.tableView reloadData];
 }
 
 - (IBAction)dismissKeyboard:(id)sender
@@ -184,8 +179,10 @@
     
     [activityIndicator stopAnimating];
     
+//    cellLabel.textColor =[UIColor blackColor];
     cellLabel.text = @"There was an error fetching the address.";
     checkCrossImage.image = [UIImage imageNamed:@"red-cross.png"];
+    checkCrossImage.hidden = NO;
     
     [self setPostEnabledState];
 }
@@ -193,6 +190,35 @@
 - (IBAction)post:(id)sender
 {
     NSLog(@"Post..");
+    
+    self.view.window.userInteractionEnabled = NO;
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Submitting..";
+    
+    NSDictionary *details =
+    @{
+        @"place[name]" : self.submissionTitle,
+        @"place[lat]" : [NSNumber numberWithDouble:self.coords.latitude],
+        @"place[lng]" : [NSNumber numberWithDouble:self.coords.longitude],
+        @"place[address]" : self.address,
+        @"place[text]" : self.text,
+        @"place[category_id]" : self.category.categoryId,
+        @"place[url]" : self.website
+    };
+    
+    [Place submitWithDetails:details image:self.photo success:^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        self.view.window.userInteractionEnabled = YES;
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Success submitting place" message:@"Your place details were successfully submitted. All details need to be reviewed and approved before being added to the app." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        alertview.tag = ALERTVIEW_SUCCESS_TAG;
+        [alertview show];
+    } failure:^(NSString *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        self.view.window.userInteractionEnabled = YES;
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Error submitting place" message:@"There was an error submitting your place. Please try again later." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alertview show];
+    }];
 }
 
 - (IBAction)takePhoto:(id)sender
@@ -252,7 +278,7 @@
             textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
         } else if (indexPath.row == 1) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-            cell.textLabel.text = self.category;
+            cell.textLabel.text = self.category ? self.category.name : CATEGORY_DEFAULT_TEXT;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else if (indexPath.row == 2) {
             [[NSBundle mainBundle] loadNibNamed:@"TextCell" owner:self options:nil];
@@ -397,9 +423,21 @@
     return YES;
 }
 
+#pragma mark - Alertview delegate -
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == ALERTVIEW_SUCCESS_TAG) {
+        [self.tabBarController setSelectedIndex:0];
+        self.photo = nil;
+        self.photoThumbnail = nil;
+        [self resetView];
+    }
+}
+
 #pragma mark - Category selected delegate -
 
-- (void)selectedCategory:(NSString *)category
+- (void)selectedCategory:(Category *)category
 {
     self.category = category;
     [self.tableView reloadData];

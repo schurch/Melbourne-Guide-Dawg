@@ -330,6 +330,7 @@
 		FDD3A64C15DFD30F003FB9A2 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		FDD3A64D15DFD30F003FB9A2 /* NSString+XMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XMLEntities.h"; sourceTree = "<group>"; };
 		FDD3A64E15DFD30F003FB9A2 /* NSString+XMLEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XMLEntities.m"; sourceTree = "<group>"; };
+		FDD4422415F9A66D00487809 /* PrivateConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateConstants.h; sourceTree = "<group>"; };
 		FDDD045F15E8628700EC3D12 /* white-cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-cross.png"; sourceTree = "<group>"; };
 		FDDD046015E8628700EC3D12 /* white-cross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-cross@2x.png"; sourceTree = "<group>"; };
 		FDDD046115E8628700EC3D12 /* white-tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-tick.png"; sourceTree = "<group>"; };
@@ -628,6 +629,7 @@
 				FD54EE6D14F862E000EC9BAE /* main.m */,
 				FD54EE6E14F862E000EC9BAE /* MelbourneGuideDawg-Info.plist */,
 				FD54EE6F14F862E000EC9BAE /* MelbourneGuideDawg-Prefix.pch */,
+				FDD4422415F9A66D00487809 /* PrivateConstants.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";

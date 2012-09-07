@@ -23,13 +23,6 @@
 
 @implementation MapViewController
 
-@synthesize filterViewController = _filterViewController;
-@synthesize selectedPlaceId = _selectedPlaceId;
-@synthesize map = _map;
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize places = _places;
-@synthesize location = _location;
-
 #pragma mark - Init -
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -52,8 +45,6 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];  
     [self.map.userLocation removeObserver:self forKeyPath:@"location"];
-    
-    _filterViewController.delegate = nil;
     
     [_filterViewController release];
     [_selectedPlaceId release];
@@ -112,7 +103,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.map.userLocation removeObserver:self forKeyPath:@"location"];
     
-    self.filterViewController = nil;
+    self.map = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated

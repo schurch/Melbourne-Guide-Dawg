@@ -14,7 +14,6 @@
 
 @property (nonatomic, retain) NSArray *places;
 @property (nonatomic, retain) Category *category;
-
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) IBOutlet UITableViewCell *tableViewCell;
 

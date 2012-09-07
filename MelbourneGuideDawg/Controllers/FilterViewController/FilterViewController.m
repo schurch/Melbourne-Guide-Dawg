@@ -14,11 +14,6 @@
 
 @implementation FilterViewController
 
-@synthesize delegate = _delegate;
-@synthesize tableView = _tableView;
-@synthesize navBar = _navBar;
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize categories = _categories;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
 {
@@ -34,9 +29,9 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
+    _delegate = nil;
     [_tableView release];
     [_navBar release];
-    
     [_managedObjectContext release];
     [_categories release];
     
@@ -69,6 +64,9 @@
 {
     [super viewDidUnload];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    self.tableView = nil;
+    self.navBar = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated

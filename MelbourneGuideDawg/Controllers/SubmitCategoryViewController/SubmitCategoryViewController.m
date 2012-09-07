@@ -10,15 +10,7 @@
 #import "Category.h"
 #import "Category+Extensions.h"
 
-@interface SubmitCategoryViewController ()
-
-@end
-
 @implementation SubmitCategoryViewController
-
-@synthesize delegate = _delegate;
-@synthesize tableView = _tableView;
-@synthesize categories = _categories;
 
 #pragma mark - Init / dealloc
 
@@ -32,6 +24,7 @@
 
 - (void)dealloc
 {
+    _delegate = nil;
     [_tableView release];
     [_categories release];
     [super dealloc];
@@ -60,7 +53,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    
+
     self.tableView = nil;
 }
 
@@ -118,8 +111,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.navigationController popViewControllerAnimated:YES];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    [self.delegate selectedCategory:cell.textLabel.text];
+    [self.delegate selectedCategory:[self.categories objectAtIndex:indexPath.row]];
 }
 
 @end

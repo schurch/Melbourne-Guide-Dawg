@@ -17,10 +17,6 @@
 
 @implementation PlacesViewController
 
-@synthesize tableView = _tableView;
-@synthesize tableViewCell = _tableViewCell;
-@synthesize category = _category;
-@synthesize places = _places;
 
 #pragma mark - Init -
 
@@ -36,9 +32,11 @@
 #pragma mark - memory management -
 
 - (void)dealloc 
-{   
-    [_tableView release];
+{
+    [_places release];
     [_category release];
+    [_tableView release];
+    
     [super dealloc];
 }
 
@@ -60,6 +58,9 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    
+    self.tableView = nil;
+    self.tableViewCell = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated

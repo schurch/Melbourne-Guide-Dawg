@@ -15,7 +15,6 @@
 @interface PlaceDetailViewController : PlaceViewController 
 
 @property (nonatomic, retain) WebViewController *webViewController;
-
 @property (nonatomic, retain) Place *place;
 @property (nonatomic, retain) IBOutlet UIButton *imageButton;
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;

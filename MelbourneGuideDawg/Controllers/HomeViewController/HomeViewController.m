@@ -30,19 +30,6 @@
 
 @implementation HomeViewController
 
-@synthesize syncLabel = _syncLabel;
-@synthesize syncArrow = _syncArrow;
-@synthesize syncBackground = _syncBackground;
-@synthesize syncActivityIndicator = _syncActivityIndicator;
-
-@synthesize introScrollView = _introScrollView;
-@synthesize introductionView = _introductionView;
-@synthesize introHeaderLabel = _introHeaderLabel;
-@synthesize introTextLabel = _introTextLabel;
-@synthesize syncButton = _syncButton;
-@synthesize pullToSyncHelper = _pullToSyncHelper;
-@synthesize syncManager = _syncManager;
-
 #pragma mark - Init -
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -60,15 +47,14 @@
 
 - (void)dealloc 
 {
-    [_syncBackground release];
-    [_syncArrow release];
-    [_syncButton release];
+    [_syncLabel release];
     [_syncActivityIndicator release];
+    [_syncArrow release];
+    [_syncBackground release];
     [_syncTickCrossImage release];
-    
-    [_introHeaderLabel release];
     [_introScrollView release];
     [_introductionView release];
+    [_introHeaderLabel release];
     [_introTextLabel release];
     [_syncButton release];
     [_pullToSyncHelper release];
@@ -123,6 +109,7 @@
     self.syncActivityIndicator = nil;
     self.syncArrow = nil;
     self.syncBackground = nil;
+    self.syncTickCrossImage = nil;
     self.introScrollView = nil;
     self.introductionView = nil;
     self.introHeaderLabel = nil;

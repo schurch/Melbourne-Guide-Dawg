@@ -10,8 +10,6 @@
 
 @implementation WebViewController
 
-@synthesize webview = _webview;
-@synthesize url = _url;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,6 +45,8 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    
+    self.webview = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated

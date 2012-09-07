@@ -24,6 +24,7 @@ typedef enum {
 + (Place *)place;
 + (NSArray *)filteredPlaces;
 + (NSArray *)allPlaces;
++ (void)submitWithDetails:(NSDictionary *)details image:(UIImage *)image success:(void (^)())success failure:(void (^)(NSString *error))failure;
 
 - (NSString *)imageTypeStringForType:(PlaceImageType)imageType;
 - (NSString *)imagePathForType:(PlaceImageType)imageType;

@@ -140,8 +140,15 @@ void uncaughtExceptionHandler(NSException *exception) {
         UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
         [picker release];
         
-        //resize image
-        UIImage *resizedImage = [UIImage imageWithImage:image scaledToSize:CGSizeMake(320, 500)];
+        UIImage *resizedImage = nil;
+        if (image.size.width > image.size.height) {
+            //landscape
+            resizedImage = [UIImage imageWithImage:image scaledToSize:CGSizeMake(864, 640)];
+        } else {
+            //portrait
+            resizedImage = [UIImage imageWithImage:image scaledToSize:CGSizeMake(640, 864)];
+        }
+        
         UIImage *thumbnailImage = [image imageByScalingAndCroppingForSize:CGSizeMake(148, 150)];
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -150,6 +157,7 @@ void uncaughtExceptionHandler(NSException *exception) {
             submissionViewController.photo = resizedImage;
             submissionViewController.photoThumbnail = thumbnailImage;
             [submissionViewController dismissModalViewControllerAnimated:YES];
+            [submissionViewController fetchLocation];
             [submissionViewController resetView];
         });
     });

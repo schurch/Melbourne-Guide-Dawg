@@ -11,6 +11,7 @@
 @interface PlaceViewController : UIViewController
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+
 - (void)refreshView;
 
 @end

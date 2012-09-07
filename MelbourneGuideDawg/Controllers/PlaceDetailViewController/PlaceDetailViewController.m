@@ -12,18 +12,6 @@
 
 @implementation PlaceDetailViewController
 
-@synthesize webViewController = _webViewController;
-
-@synthesize place = _place;
-@synthesize imageButton = _imageButton;
-@synthesize titleLabel = _titleLabel;
-@synthesize locationLabel = _locationLabel;
-@synthesize textLabel = _textLabel;
-@synthesize scrollView = _scrollView;
-@synthesize viewOnMapButton = _viewOnMapButton;
-@synthesize detailActionsView = _detailActionsView;
-@synthesize viewWebsiteButton = _viewWebsiteButton;
-
 #pragma mark - Init -
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -40,12 +28,13 @@
 - (void)dealloc 
 {
     [_webViewController release];
-    
     [_place release];
     [_imageButton release];
     [_titleLabel release];
     [_locationLabel release];
     [_textLabel release];
+    [_scrollView release];
+    [_viewOnMapButton release];
     [_detailActionsView release];
     [_viewWebsiteButton release];
     
@@ -67,6 +56,20 @@
     self.navigationItem.leftBarButtonItem = backButtonItem;
     
     self.webViewController = [[[WebViewController alloc] initWithNibName:@"WebView" bundle:nil] autorelease];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    self.imageButton = nil;
+    self.titleLabel = nil;
+    self.locationLabel = nil;
+    self.textLabel = nil;
+    self.scrollView = nil;
+    self.viewOnMapButton = nil;
+    self.detailActionsView = nil;
+    self.viewWebsiteButton = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated 

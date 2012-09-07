@@ -12,7 +12,7 @@
 
 #import "SubmitCategoryViewController.h"
 
-@interface SubmissionViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CategoryViewControllerProtocol>
+@interface SubmissionViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CategoryViewControllerProtocol, UIAlertViewDelegate>
 
 @property (nonatomic, assign) IBOutlet UITableViewCell *tableCell;
 @property (nonatomic, retain) IBOutlet UITableViewCell *locatingCell;
@@ -29,6 +29,7 @@
 @property (nonatomic, assign) CLLocationCoordinate2D coords;
 
 - (void)resetView;
+- (void)fetchLocation;
 - (IBAction)dismissKeyboard:(id)sender;
 - (IBAction)post:(id)sender;
 - (IBAction)takePhoto:(id)sender;

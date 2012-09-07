@@ -10,6 +10,9 @@
 #import "NSManagedObjectContext+Extras.h"
 #import "NSManagedObject+Entity.h"
 #import "SyncManager.h"
+#import "AFHTTPClient.h"
+#import "AFHTTPRequestOperation.h"
+#import "Category.h"
 
 @implementation Place(Extensions)
 
@@ -81,6 +84,30 @@
     [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     
     return [[NSManagedObjectContext sharedInstance] executeFetchRequest:request error:nil];
+}
+
++ (void)submitWithDetails:(NSDictionary *)details image:(UIImage *)image success:(void (^)())success failure:(void (^)(NSString *error))failure
+{
+    AFHTTPClient *client = [[[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://www.melbourneguidedawg.com"]] autorelease];
+    [client setAuthorizationHeaderWithUsername:kUploadUsername password:kUploadPassword];
+    client.parameterEncoding = AFJSONParameterEncoding;
+    
+    NSData *imageData = UIImagePNGRepresentation(image);
+    NSMutableURLRequest *request = [client multipartFormRequestWithMethod:@"POST" path:@"/places.json" parameters:details constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
+        [formData appendPartWithFileData:imageData name:@"place[image]" fileName:@"image.png" mimeType:@"image/png"];
+    }];
+    
+    AFHTTPRequestOperation *operation = [[[AFHTTPRequestOperation alloc] initWithRequest:request] autorelease];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Response object: %@", responseObject);
+        success();
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error submmitting location: %@", error.localizedDescription);
+        failure(@"There was an error submitting the place.");
+    }];
+    
+    [operation start];
 }
 
 #pragma mark - Methods -

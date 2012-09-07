@@ -14,7 +14,6 @@
 
 @implementation CategoryViewController
 
-@synthesize tableViewCell = _tableViewCell, managedObjectContext = _managedObjectContext, categories = _categories, placesViewController = _placesViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
 {
@@ -57,6 +56,8 @@
 {
     [super viewDidUnload];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    self.tableViewCell = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated

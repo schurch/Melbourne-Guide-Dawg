@@ -13,6 +13,7 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
     #import "AppConstants.h"
+    #import "PrivateConstants.h"
     #import "NSManagedObjectContext+Extras.h"
     #import "NSObject+SBJson.h"
     #import "FlurryAnalytics.h"
