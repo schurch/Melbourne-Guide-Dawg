@@ -157,7 +157,7 @@
                 [imageDownloadOperations addObject:cellImageRequest];   
             }
 
-            AFHTTPClient *imageFetchClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:BASE_IMAGE_URL ]];
+            AFHTTPClient *imageFetchClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:BASE_IMAGE_URL]];
             //report progress..
             [imageFetchClient enqueueBatchOfHTTPRequestOperations:imageDownloadOperations progressBlock:^(NSUInteger numberOfCompletedOperations, NSUInteger totalNumberOfOperations) {
 //                progressBlock([NSString stringWithFormat:@"Downloading image %i of %i..", numberOfCompletedOperations, totalNumberOfOperations]);
@@ -227,11 +227,25 @@
         
         NSString *imagePath = [place imagePathForType:imageType];
         
+        //if portrait and normal image, then generate small image from it to fit in the landscape cell
+//        if (imageType == kPlaceImageTypeNormal && (image.size.height > image.size.width)) {
+//            UIImage *smallImage = [image imageByScalingAndCroppingForSize:CGSizeMake(120, 80)];
+//            NSData *imageData = UIImagePNGRepresentation(smallImage);
+//            BOOL didWriteSuccessfully = [imageData writeToFile:imagePath atomically:YES];
+//            if (!didWriteSuccessfully) {
+//#if DEBUG
+//                abort();
+//#endif
+//            }
+//        }
+        
         NSLog(@"Saving image to %@.", imagePath);       
-        NSData *imageData = UIImageJPEGRepresentation(image, 0.7);
+        NSData *imageData = UIImagePNGRepresentation(image);
         BOOL didWriteSuccessfully = [imageData writeToFile:imagePath atomically:YES];
         if (!didWriteSuccessfully) {
+#if DEBUG
             abort();
+#endif
         }
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {

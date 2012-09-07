@@ -15,6 +15,7 @@
 #import "Place+Extensions.h"
 #import "NSManagedObject+Entity.h"
 #import "MBProgressHUD.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 #define TITLE_TEXTFIELD_TAG 100
@@ -29,6 +30,7 @@
 - (void)resetLocatingCell;
 - (void)showLocationCellError;
 - (void)setPostEnabledState;
+- (BOOL)validateFields;
 @end
 
 @implementation SubmissionViewController
@@ -67,9 +69,9 @@
 {
     [super viewDidLoad];
     
-    self.tapRecognizer = [[UITapGestureRecognizer alloc]
+    self.tapRecognizer = [[[UITapGestureRecognizer alloc]
                                    initWithTarget:self
-                                   action:@selector(dismissKeyboard:)];
+                                   action:@selector(dismissKeyboard:)] autorelease];
     
     [[NSBundle mainBundle] loadNibNamed:@"LocationCell" owner:self options:nil];
     [[NSBundle mainBundle] loadNibNamed:@"LargeTextCell" owner:self options:nil];
@@ -152,9 +154,11 @@
 {
     [self.view endEditing:NO];
     [self.view removeGestureRecognizer:self.tapRecognizer];
-    self.tableView.scrollEnabled = YES;
-    self.tableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0);
-    [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+    
+    if (self.tableView.contentInset.bottom == 216) {
+        self.tableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0);
+        [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+    }
 }
 
 - (void)resetLocatingCell
@@ -179,7 +183,6 @@
     
     [activityIndicator stopAnimating];
     
-//    cellLabel.textColor =[UIColor blackColor];
     cellLabel.text = @"There was an error fetching the address.";
     checkCrossImage.image = [UIImage imageNamed:@"red-cross.png"];
     checkCrossImage.hidden = NO;
@@ -190,6 +193,13 @@
 - (IBAction)post:(id)sender
 {
     NSLog(@"Post..");
+    
+    [self dismissKeyboard:nil];
+    
+    BOOL valid = [self validateFields];
+    if (!valid) {
+        return;
+    }
     
     self.view.window.userInteractionEnabled = NO;
     
@@ -210,13 +220,13 @@
     [Place submitWithDetails:details image:self.photo success:^{
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.view.window.userInteractionEnabled = YES;
-        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Success submitting place" message:@"Your place details were successfully submitted. All details need to be reviewed and approved before being added to the app." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Success" message:@"Please note: All details need to be reviewed and approved before being added to the app." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
         alertview.tag = ALERTVIEW_SUCCESS_TAG;
         [alertview show];
     } failure:^(NSString *error) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.view.window.userInteractionEnabled = YES;
-        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Error submitting place" message:@"There was an error submitting your place. Please try again later." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error submitting your place. Please try again later." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
         [alertview show];
     }];
 }
@@ -225,6 +235,39 @@
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate takePhoto];
+}
+
+- (BOOL)validateFields
+{
+    BOOL titleSet = self.submissionTitle && ![[self.submissionTitle stringByRemovingNewLinesAndWhitespace] isEqualToString:@""];
+    if (!titleSet) {
+        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Title" message:@"Please enter a title." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
+        [alertview show];
+        return NO;
+    }
+    
+    BOOL categorySet = self.category != nil;
+    if (!categorySet) {
+        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Category" message:@"Please select a category." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
+        [alertview show];
+        return NO;
+    }
+    
+    BOOL addressSet = self.address && ![[self.address stringByRemovingNewLinesAndWhitespace] isEqualToString:@""];
+    if (!addressSet) {
+        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Address" message:@"The address cannot be found. Please make sure you have location services enabled and an active internet connection." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
+        [alertview show];
+        return NO;
+    }
+    
+    BOOL textSet = self.text && ![[self.text stringByRemovingNewLinesAndWhitespace] isEqualToString:@""];
+    if (!textSet) {
+        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Text" message:@"Please enter some text." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
+        [alertview show];
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark - Table view data source
@@ -277,7 +320,7 @@
             textField.tag = TITLE_TEXTFIELD_TAG;
             textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
         } else if (indexPath.row == 1) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
             cell.textLabel.text = self.category ? self.category.name : CATEGORY_DEFAULT_TEXT;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else if (indexPath.row == 2) {
@@ -308,7 +351,7 @@
         textView.inputAccessoryView = self.keyboardInputAccessoryView;
         textView.text = self.text;
         
-        UIImageView *thumnailImageView = (UIImageView *)[cell viewWithTag:2];
+        UIImageView *thumnailImageView = (UIImageView *)[cell viewWithTag:2];        
         thumnailImageView.image = self.photoThumbnail;
     }
     
@@ -335,7 +378,7 @@
     
     self.coords = newLocation.coordinate;
     
-    CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
+    CLGeocoder * geoCoder = [[[CLGeocoder alloc] init] autorelease];
     [geoCoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks, NSError *error)
     {
         if (error) {
@@ -379,7 +422,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
+    [self dismissKeyboard:nil];
     return YES;
 }
 
@@ -403,7 +446,7 @@
     self.tableView.contentInset =  UIEdgeInsetsMake(0, 0, 216, 0);
     NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:2];
     [self.tableView scrollToRowAtIndexPath:selectedIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    self.tableView.scrollEnabled = NO;
+//    self.tableView.scrollEnabled = NO;
 }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -442,6 +485,15 @@
     self.category = category;
     [self.tableView reloadData];
     [self setPostEnabledState];
+}
+
+#pragma mark - scrollview delegate -
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    if (scrollView == self.tableView && self.tableView.contentInset.bottom != 216) {
+        [self dismissKeyboard:nil];
+    }
 }
 
 @end

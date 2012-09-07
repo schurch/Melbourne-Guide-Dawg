@@ -43,8 +43,7 @@
 
 - (void)dealloc 
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];  
-    [self.map.userLocation removeObserver:self forKeyPath:@"location"];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [_filterViewController release];
     [_selectedPlaceId release];
@@ -101,7 +100,6 @@
     [super viewDidUnload];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self.map.userLocation removeObserver:self forKeyPath:@"location"];
     
     self.map = nil;
 }
@@ -132,7 +130,9 @@
     } 
     else 
     {
-         [self resetMapLocationWithAnimation:YES location:self.map.userLocation.coordinate zoom:0.2];    
+        if (self.map.userLocation && CLLocationCoordinate2DIsValid(self.map.userLocation.coordinate) && self.map.userLocation.coordinate.latitude != 0.0) {
+            [self resetMapLocationWithAnimation:YES location:self.map.userLocation.coordinate zoom:0.2];
+        }
     }
 }
 

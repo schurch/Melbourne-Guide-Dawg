@@ -97,7 +97,8 @@
     if ([self.place.category.name isEqualToString:@"Toilets"]) {
         [self.imageButton setImage:[UIImage imageNamed:@"toilet.jpg"] forState:UIControlStateNormal];
     } else {
-        [self.imageButton setImage:[UIImage imageWithContentsOfFile:[self.place imagePathForType:kPlaceImageTypeNormal]] forState:UIControlStateNormal];
+        UIImage *image = [[UIImage imageWithContentsOfFile:[self.place imagePathForType:kPlaceImageTypeNormal]] imageByScalingAndCroppingForSize:CGSizeMake(300, 200)];
+        [self.imageButton setImage:image forState:UIControlStateNormal];
     }
 
     
@@ -135,19 +136,28 @@
 - (IBAction)showImage:(id)sender 
 {    
     UIButton *largeImage = [UIButton buttonWithType:UIButtonTypeCustom];
+    
     if ([self.place.category.name isEqualToString:@"Toilets"]) {
         [largeImage setImage:[UIImage imageNamed:@"toilet.jpg"] forState:UIControlStateNormal];
     } else {
         [largeImage setImage:[UIImage imageWithContentsOfFile:[self.place imagePathForType:kPlaceImageTypeNormal]] forState:UIControlStateNormal];
     }
+    
+    largeImage.backgroundColor = [UIColor blackColor];
+    
     largeImage.alpha = 0;
     largeImage.adjustsImageWhenHighlighted = NO;
     [largeImage addTarget:self action:@selector(hideImage:) forControlEvents:UIControlEventTouchUpInside];
-    largeImage.transform = CGAffineTransformIdentity;
-    largeImage.transform = CGAffineTransformMakeRotation((M_PI * (90) / 180.0));
-    largeImage.frame = CGRectMake(0, 0, 320, 480);
-    [[[[UIApplication sharedApplication] delegate] window] addSubview:largeImage];
     
+    //if landscape image; then rotate 90
+    if (largeImage.imageView.image.size.width > largeImage.imageView.image.size.height) {
+        largeImage.transform = CGAffineTransformIdentity;
+        largeImage.transform = CGAffineTransformMakeRotation((M_PI * (90) / 180.0));
+    }
+    
+    largeImage.frame = CGRectMake(0, 0, 320, 480);
+    
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:largeImage];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     
     [UIView animateWithDuration:0.5 animations:^
