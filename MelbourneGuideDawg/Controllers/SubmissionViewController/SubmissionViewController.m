@@ -108,6 +108,11 @@
     self.mainBodyTextCell = nil;
     self.tableView = nil;
     self.keyboardInputAccessoryView = nil;
+    
+    //if view is unloaded for whatever reason, reset everything
+    self.photo = nil;
+    self.photoThumbnail = nil;
+    [self resetView];
 }
 
 #pragma mark - Methods -
