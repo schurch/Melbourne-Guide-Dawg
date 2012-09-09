@@ -100,7 +100,7 @@
     AFHTTPRequestOperation *operation = [[[AFHTTPRequestOperation alloc] initWithRequest:request] autorelease];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Response object: %@", responseObject);
+//        NSLog(@"Response object: %@", responseObject);
         success();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error submmitting location: %@", error.localizedDescription);

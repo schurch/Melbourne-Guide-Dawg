@@ -225,7 +225,7 @@
     [Place submitWithDetails:details image:self.photo success:^{
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.view.window.userInteractionEnabled = YES;
-        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Success" message:@"Please note: All details need to be reviewed and approved before being added to the app." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
+        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Thank you" message:@"Thank you for your submission. All details need to be reviewed and approved before being added to the app." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
         alertview.tag = ALERTVIEW_SUCCESS_TAG;
         [alertview show];
     } failure:^(NSString *error) {
