@@ -9,6 +9,20 @@
 #import "PlaceDetailViewController.h"
 #import "MapViewController.h"
 #import "Place+Extensions.h"
+#import "PlaceDetailFetcher.h"
+#import "CommentViewController.h"
+
+
+@interface PlaceDetailViewController()
+{
+    BOOL _perfomingFetchRequest;
+    int _likes;
+}
+@property (nonatomic, retain) PlaceDetailFetcher *fetcher;
+- (void)selectLikeButton;
+- (void)deselectLikeButton;
+@end
+
 
 @implementation PlaceDetailViewController
 
@@ -25,8 +39,10 @@
 
 #pragma mark - Memory management -
 
-- (void)dealloc 
+- (void)dealloc
 {
+    [_fetcher release];
+    
     [_webViewController release];
     [_place release];
     [_imageButton release];
@@ -37,6 +53,9 @@
     [_viewOnMapButton release];
     [_detailActionsView release];
     [_viewWebsiteButton release];
+    [_likesLabel release];
+    [_commentsLabel release];
+    [_likeButton release];
     
     [super dealloc];
 }
@@ -56,6 +75,13 @@
     self.navigationItem.leftBarButtonItem = backButtonItem;
     
     self.webViewController = [[[WebViewController alloc] initWithNibName:@"WebView" bundle:nil] autorelease];
+    
+    self.likesLabel.text = @"0 likes";
+    self.commentsLabel.text = @"0 comments";
+    
+    self.fetcher = [[[PlaceDetailFetcher alloc] init] autorelease];
+    
+    _perfomingFetchRequest = NO;
 }
 
 - (void)viewDidUnload
@@ -70,12 +96,28 @@
     self.viewOnMapButton = nil;
     self.detailActionsView = nil;
     self.viewWebsiteButton = nil;
+    self.likesLabel = nil;
+    self.commentsLabel = nil;
+    self.likeButton = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated 
 {
     
     [super viewWillAppear:animated];
+    
+    _perfomingFetchRequest = YES;
+    [self.fetcher fetchPlaceDetailsForPlaceID:[self.place.placeId intValue] success:^(int likeCount, int commentCount, BOOL isLiked)
+    {
+        _likes = likeCount;
+        self.likesLabel.text = [NSString stringWithFormat:@"%i likes", _likes];
+        self.commentsLabel.text = [NSString stringWithFormat:@"%i comments", commentCount];
+        self.likeButton.selected = isLiked;
+        _perfomingFetchRequest = NO;
+    } failure:^(NSString *error) {
+        //fail silently
+        _perfomingFetchRequest = NO;
+    }];
     
     if ([[self.navigationController.viewControllers objectAtIndex:0] isKindOfClass:[MapViewController class]]) 
     {
@@ -114,7 +156,7 @@
     CGRect textLabelFrame = CGRectMake(self.textLabel.frame.origin.x, self.textLabel.frame.origin.y, self.textLabel.frame.size.width, textLabelSize.height);
     self.textLabel.frame = textLabelFrame;
     
-    int scrollViewHeight = self.imageButton.frame.size.height + self.titleLabel.frame.size.height + self.locationLabel.frame.size.height + self.textLabel.frame.size.height + 30;
+    int scrollViewHeight = self.imageButton.frame.size.height + self.titleLabel.frame.size.height + self.locationLabel.frame.size.height + self.textLabel.frame.size.height + 70;
     self.scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, scrollViewHeight);
     
     if (self.place.url && self.place.url.length > 0) {
@@ -195,6 +237,39 @@
     }
 }
 
+- (IBAction)comment:(id)sender
+{
+    CommentViewController *commentController = [[[CommentViewController alloc] initWithNibName:@"CommentView" bundle:nil] autorelease];
+    [self.navigationController pushViewController:commentController animated:YES];
+}
+
+- (IBAction)like:(id)sender
+{
+    if (_perfomingFetchRequest) {
+        return;
+    }
+    
+    _perfomingFetchRequest = YES;
+    
+    if (self.likeButton.selected) {
+        [self deselectLikeButton];
+        [self.fetcher unlikePlaceWithID:[self.place.placeId intValue] success:^{
+            _perfomingFetchRequest = NO;
+        } failure:^(NSString *error) {
+            [self selectLikeButton];
+            _perfomingFetchRequest = NO;
+        }];
+    } else {
+        [self selectLikeButton];
+        [self.fetcher likePlaceWithID:[self.place.placeId intValue] success:^{
+            _perfomingFetchRequest = NO;
+        } failure:^(NSString *error) {
+            [self deselectLikeButton];
+            _perfomingFetchRequest = NO;
+        }];
+    }
+}
+
 #pragma mark - Methods -
 
 - (void)back:(id)sender 
@@ -211,6 +286,20 @@
      }];
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+}
+
+- (void)selectLikeButton
+{
+    self.likeButton.selected = YES;
+    _likes += 1;
+    self.likesLabel.text = [NSString stringWithFormat:@"%i likes", _likes];
+}
+
+- (void)deselectLikeButton
+{
+    self.likeButton.selected = NO;
+    _likes -= 1;
+    self.likesLabel.text = [NSString stringWithFormat:@"%i likes", _likes];
 }
 
 @end

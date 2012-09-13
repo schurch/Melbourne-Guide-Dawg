@@ -18,4 +18,5 @@
     #import "NSObject+SBJson.h"
     #import "FlurryAnalytics.h"
     #import "UIImage+Scaling.h"
+    #import "Utils.h"
 #endif

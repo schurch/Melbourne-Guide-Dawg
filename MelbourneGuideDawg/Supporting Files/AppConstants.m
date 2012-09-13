@@ -8,5 +8,6 @@
 
 #import "AppConstants.h"
 
+NSString * const kBundleID = @"com.stefanchurch.melbourneguidedawg";
 NSString * const kSyncCompleteNotificaton = @"com.melbourneguidedawg.events.sync_complete";
 NSString * const kSyncFailedNotificaton = @"com.melbourneguidedawg.events.sync_failed";

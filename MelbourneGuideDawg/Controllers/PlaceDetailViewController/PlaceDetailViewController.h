@@ -24,9 +24,14 @@
 @property (nonatomic, retain) IBOutlet UIButton *viewOnMapButton;
 @property (nonatomic, retain) IBOutlet UIView *detailActionsView;
 @property (nonatomic, retain) IBOutlet UIButton *viewWebsiteButton;
+@property (nonatomic, retain) IBOutlet UILabel *likesLabel;
+@property (nonatomic, retain) IBOutlet UILabel *commentsLabel;
+@property (nonatomic, retain) IBOutlet UIButton *likeButton;
 
 - (IBAction)visitWebSite:(id)sender;
 - (IBAction)showImage:(id)sender;
 - (IBAction)viewMap:(id)sender;
+- (IBAction)comment:(id)sender;
+- (IBAction)like:(id)sender;
 
 @end

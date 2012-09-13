@@ -8,5 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const kBundleID;
 extern NSString * const kSyncCompleteNotificaton;
 extern NSString * const kSyncFailedNotificaton;
