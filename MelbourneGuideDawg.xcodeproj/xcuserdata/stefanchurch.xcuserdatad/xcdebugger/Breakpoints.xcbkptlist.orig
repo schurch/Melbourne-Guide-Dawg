@@ -184,37 +184,17 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MelbourneGuideDawg/Controllers/HomeViewController/HomeViewController.m"
-         timestampString = "368766497.826736"
+<<<<<<< HEAD
+         timestampString = "369292742.659544"
+=======
+         timestampString = "369293900.965182"
+>>>>>>> version_1.1
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "259"
-         endingLineNumber = "259"
+         startingLineNumber = "258"
+         endingLineNumber = "258"
          landmarkName = "-sync"
          landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-<<<<<<< HEAD
-         filePath = "MelbourneGuideDawg/Codebase/PlaceDetailFetcher/PlaceDetailFetcher.m"
-         timestampString = "369214936.033097"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "12"
-         endingLineNumber = "12"
-         landmarkName = "@implementation PlaceDetailFetcher"
-         landmarkType = "3">
-=======
-         filePath = "MelbourneGuideDawg/Codebase/Utils/Utils.m"
-         timestampString = "369290620.949201"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "71"
-         endingLineNumber = "71"
-         landmarkName = "+excludeURLPathFromBackup:"
-         landmarkType = "5">
->>>>>>> version_1.1
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

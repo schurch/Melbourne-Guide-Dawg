@@ -103,7 +103,6 @@
 		FD8703B3156E532E00FE0585 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8703B1156E532E00FE0585 /* FilterViewController.m */; };
 		FD8703B6156E5C7600FE0585 /* close-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FD8703B4156E5C7400FE0585 /* close-btn.png */; };
 		FD8703B7156E5C7600FE0585 /* close-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD8703B5156E5C7500FE0585 /* close-btn@2x.png */; };
-		FD8AD30D1602F5E7005E6D1B /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8AD30C1602F5E7005E6D1B /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FDA98E8D1568641E00B3D470 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA98E8C1568641E00B3D470 /* libFlurryAnalytics.a */; };
 		FDAE678114C413EF004488DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678014C413EF004488DC /* UIKit.framework */; };
 		FDAE678314C413EF004488DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678214C413EF004488DC /* Foundation.framework */; };
@@ -321,7 +320,6 @@
 		FD8703B1156E532E00FE0585 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		FD8703B4156E5C7400FE0585 /* close-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-btn.png"; sourceTree = "<group>"; };
 		FD8703B5156E5C7500FE0585 /* close-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-btn@2x.png"; sourceTree = "<group>"; };
-		FD8AD30C1602F5E7005E6D1B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		FDA98E8B1568641E00B3D470 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
 		FDA98E8C1568641E00B3D470 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
 		FDAE677C14C413EF004488DC /* MelbourneGuideDawg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MelbourneGuideDawg.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -410,7 +408,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD8AD30D1602F5E7005E6D1B /* CoreFoundation.framework in Frameworks */,
 				FDE199411601C57000200EC4 /* Security.framework in Frameworks */,
 				FD2ED42215D7CF9B008B211B /* AddressBookUI.framework in Frameworks */,
 				FD5D3FBD14CACBFE00CC7C76 /* CoreLocation.framework in Frameworks */,
@@ -873,7 +870,6 @@
 		FDAE677F14C413EF004488DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FD8AD30C1602F5E7005E6D1B /* CoreFoundation.framework */,
 				FDE199401601C57000200EC4 /* Security.framework */,
 				FD2ED42115D7CF9B008B211B /* AddressBookUI.framework */,
 				FD793256156E003100530E9C /* QuartzCore.framework */,

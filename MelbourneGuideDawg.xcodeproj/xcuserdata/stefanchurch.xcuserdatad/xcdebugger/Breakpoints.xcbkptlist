@@ -179,18 +179,5 @@
          landmarkName = "-textViewShouldEndEditing:"
          landmarkType = "5">
       </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "MelbourneGuideDawg/Controllers/HomeViewController/HomeViewController.m"
-         timestampString = "369292742.659544"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "258"
-         endingLineNumber = "258"
-         landmarkName = "-sync"
-         landmarkType = "5">
-      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

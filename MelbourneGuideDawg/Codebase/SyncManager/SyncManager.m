@@ -226,6 +226,7 @@
         }; 
         
         NSURL *imagePath = [place imagePathForType:imageType];
+        [Utils excludeURLPathFromBackup:imagePath];
         
         NSLog(@"Saving image to %@.", imagePath);       
         NSData *imageData = UIImagePNGRepresentation(image);
