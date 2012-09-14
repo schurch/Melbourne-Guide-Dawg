@@ -2,7 +2,11 @@
 //  Utils.h
 //  MelbourneGuideDawg
 //
+<<<<<<< HEAD
 //  Created by Stefan Church on 13/09/2012.
+=======
+//  Created by Stefan Church on 14/09/2012.
+>>>>>>> version_1.1
 //
 //
 
@@ -10,11 +14,14 @@
 
 @interface Utils : NSObject
 
+<<<<<<< HEAD
 + (NSString *)deviceID;
+=======
 + (NSURL *)documentsDirectory;
 + (NSURL *)downloadDirectory;
 + (BOOL)downloadDataInDocuments;
 + (void)moveDownloadDataToCache;
 + (BOOL)excludeURLPathFromBackup:(NSURL *)URL;
+>>>>>>> version_1.1
 
 @end

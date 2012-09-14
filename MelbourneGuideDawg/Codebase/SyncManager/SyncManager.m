@@ -217,7 +217,7 @@
         //make sure photos place dir exsists
         NSFileManager *fileManager = [NSFileManager defaultManager];        
         NSError *error;
-        if (![fileManager createDirectoryAtPath:[place imagesDir] withIntermediateDirectories:YES attributes:nil error:&error]) 
+        if (![fileManager createDirectoryAtURL:[place imagesDir] withIntermediateDirectories:YES attributes:nil error:&error])
         {
             NSLog(@"Unresolved error creating place photos dir %@, %@", error, [error userInfo]);
 #if DEBUG
@@ -225,23 +225,11 @@
 #endif
         }; 
         
-        NSString *imagePath = [place imagePathForType:imageType];
-        
-        //if portrait and normal image, then generate small image from it to fit in the landscape cell
-//        if (imageType == kPlaceImageTypeNormal && (image.size.height > image.size.width)) {
-//            UIImage *smallImage = [image imageByScalingAndCroppingForSize:CGSizeMake(120, 80)];
-//            NSData *imageData = UIImagePNGRepresentation(smallImage);
-//            BOOL didWriteSuccessfully = [imageData writeToFile:imagePath atomically:YES];
-//            if (!didWriteSuccessfully) {
-//#if DEBUG
-//                abort();
-//#endif
-//            }
-//        }
+        NSURL *imagePath = [place imagePathForType:imageType];
         
         NSLog(@"Saving image to %@.", imagePath);       
         NSData *imageData = UIImagePNGRepresentation(image);
-        BOOL didWriteSuccessfully = [imageData writeToFile:imagePath atomically:YES];
+        BOOL didWriteSuccessfully = [imageData writeToURL:imagePath atomically:YES];
         if (!didWriteSuccessfully) {
 #if DEBUG
             abort();

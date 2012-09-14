@@ -24,7 +24,7 @@ static NSManagedObjectContext *managedObjectContext = nil;
             NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] autorelease];
             
             NSPersistentStoreCoordinator *persistentStoreCoordinator;
-            NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Model.sqlite"];
+            NSURL *storeURL = [self storeURL];
             persistentStoreCoordinator = [[[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel] autorelease];
             
             if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
@@ -43,9 +43,11 @@ static NSManagedObjectContext *managedObjectContext = nil;
     }
 }
 
-+ (NSURL *)applicationDocumentsDirectory
++ (NSURL *)storeURL
 {
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *URL = [[Utils downloadDirectory] URLByAppendingPathComponent:@"Model.sqlite"];
+    [Utils excludeURLPathFromBackup:URL];
+    return URL;
 }
 
 - (void)save

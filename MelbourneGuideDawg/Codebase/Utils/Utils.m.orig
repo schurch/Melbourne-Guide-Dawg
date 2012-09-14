@@ -2,22 +2,19 @@
 //  Utils.m
 //  MelbourneGuideDawg
 //
+<<<<<<< HEAD
+//  Created by Stefan Church on 13/09/2012.
+=======
 //  Created by Stefan Church on 14/09/2012.
+>>>>>>> version_1.1
 //
 //
 
 #import "Utils.h"
-#import "Place+Extensions.h"
+<<<<<<< HEAD
 #import "KeychainManager.h"
 
-@interface Utils()
-+ (NSURL *)storeLocation;
-+ (NSURL *)photosLocation;
-@end
-
 @implementation Utils
-
-#pragma mark - public methods -
 
 + (NSString *)deviceID
 {
@@ -37,6 +34,18 @@
         return uuid;
     }
 }
+
+=======
+#import "Place+Extensions.h"
+
+@interface Utils()
++ (NSURL *)storeLocation;
++ (NSURL *)photosLocation;
+@end
+
+@implementation Utils
+
+#pragma mark - public methods -
 
 + (NSURL *)documentsDirectory
 {
@@ -98,7 +107,7 @@
         }
         
         // Set the new key
-        return [URL setResourceValue:[NSNumber numberWithBool:YES] forKey:@"NSURLIsExcludedFromBackupKey" error:nil];
+        return [URL setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:nil];
     }
 }
 
@@ -114,4 +123,5 @@
     return [[self documentsDirectory] URLByAppendingPathComponent:@"photos"];
 }
 
+>>>>>>> version_1.1
 @end

@@ -14,7 +14,6 @@
 
 @implementation CategoryViewController
 
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -55,8 +54,8 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.tableViewCell = nil;
 }
 

@@ -139,7 +139,7 @@
     if ([self.place.category.name isEqualToString:@"Toilets"]) {
         [self.imageButton setImage:[UIImage imageNamed:@"toilet.jpg"] forState:UIControlStateNormal];
     } else {
-        UIImage *image = [[UIImage imageWithContentsOfFile:[self.place imagePathForType:kPlaceImageTypeNormal]] imageByScalingAndCroppingForSize:CGSizeMake(300, 200)];
+        UIImage *image = [[UIImage imageWithContentsOfFile:[[self.place imagePathForType:kPlaceImageTypeNormal] path]] imageByScalingAndCroppingForSize:CGSizeMake(300, 200)];
         [self.imageButton setImage:image forState:UIControlStateNormal];
     }
 
@@ -182,7 +182,7 @@
     if ([self.place.category.name isEqualToString:@"Toilets"]) {
         [largeImage setImage:[UIImage imageNamed:@"toilet.jpg"] forState:UIControlStateNormal];
     } else {
-        [largeImage setImage:[UIImage imageWithContentsOfFile:[self.place imagePathForType:kPlaceImageTypeNormal]] forState:UIControlStateNormal];
+        [largeImage setImage:[UIImage imageWithContentsOfFile:[[self.place imagePathForType:kPlaceImageTypeNormal] path]] forState:UIControlStateNormal];
     }
     
     largeImage.backgroundColor = [UIColor blackColor];
