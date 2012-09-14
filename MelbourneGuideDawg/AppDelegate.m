@@ -62,6 +62,12 @@ void uncaughtExceptionHandler(NSException *exception) {
         [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"nav-bar.png"] forBarMetrics:UIBarMetricsDefault];
     }
     
+    //if using old version and data in documents, then move to cache dir
+    //(Apple rejected upadate as documents folder is backed up to iCloud)
+    if ([Utils downloadDataInDocuments]) {
+        [Utils moveDownloadDataToCache];
+    }
+    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
     HomeViewController *homeViewController = [[[HomeViewController alloc] initWithNibName:@"HomeView" bundle:nil] autorelease];

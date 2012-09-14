@@ -199,7 +199,7 @@
             thumbImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toilet-cell.png"]];
         } else {
             annotationView.pinColor = MKPinAnnotationColorRed;
-            thumbImageView = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:[place imagePathForType:kPlaceImageTypeCell]]];
+            thumbImageView = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:[[place imagePathForType:kPlaceImageTypeCell] path]]];
 
         }
     

@@ -12,8 +12,7 @@
 @interface NSManagedObjectContext (Extras)
 
 + (NSManagedObjectContext *)sharedInstance;
-+ (NSURL *)applicationDocumentsDirectory;
-
++ (NSURL *)storeURL;
 - (void)save;
 
 @end

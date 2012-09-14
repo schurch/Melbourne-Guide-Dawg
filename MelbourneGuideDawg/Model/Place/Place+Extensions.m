@@ -38,11 +38,11 @@
 
 #pragma mark - Class methods -
 
-+ (NSString *)applicationPhotosDir
++ (NSURL *)applicationPhotosDir
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    return [documentsDirectory stringByAppendingPathComponent:@"photos"];
+    NSURL *URL = [[Utils downloadDirectory] URLByAppendingPathComponent:@"photos"];
+    [Utils excludeURLPathFromBackup:URL];
+    return URL;
 }
 
 + (Place *)place
@@ -112,15 +112,16 @@
 
 #pragma mark - Methods -
 
-- (NSString *)imagePathForType:(PlaceImageType)imageType
+- (NSURL *)imagePathForType:(PlaceImageType)imageType
 {
-    NSString *placePhotosDir = [self imagesDir];
+    NSURL *placePhotosDir = [self imagesDir];
+
     NSString *filename = [[self.imageFileName componentsSeparatedByString:@"."] objectAtIndex:0];
     NSString *extension = [[self.imageFileName componentsSeparatedByString:@"."] objectAtIndex:1];
     NSString *imageTypeString = [self imageTypeStringForType:imageType];
     NSString *fullFilename = [NSString stringWithFormat:@"%@_%@.%@", filename, imageTypeString, extension];
     
-    return [NSString stringWithFormat:@"%@/%@", placePhotosDir, fullFilename];
+    return [placePhotosDir URLByAppendingPathComponent:fullFilename];
 }
 
 - (NSString *)imageTypeStringForType:(PlaceImageType)imageType
@@ -147,9 +148,9 @@
     return imageTypeString;
 }
 
-- (NSString *)imagesDir
+- (NSURL *)imagesDir
 {
-    return [[Place applicationPhotosDir] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@", self.placeId]];
+    return [[Place applicationPhotosDir] URLByAppendingPathComponent:[NSString stringWithFormat:@"%@", self.placeId]];
 }
 
 @end

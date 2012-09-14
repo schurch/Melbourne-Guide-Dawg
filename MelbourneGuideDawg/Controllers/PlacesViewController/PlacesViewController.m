@@ -110,7 +110,7 @@
     Place *place = [self.places objectAtIndex:indexPath.row];
     
     UIImageView *image = (UIImageView *)[cell viewWithTag:1];
-    NSString *imageFilePath = [place imagePathForType:kPlaceImageTypeSmall];
+    NSString *imageFilePath = [[place imagePathForType:kPlaceImageTypeSmall] path];
     [image setImage:[UIImage imageWithContentsOfFile:imageFilePath]];
     
     UILabel *label;

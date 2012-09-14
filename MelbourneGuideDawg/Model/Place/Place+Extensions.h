@@ -20,14 +20,14 @@ typedef enum {
 
 @interface Place(Extensions) <MKAnnotation>
 
-+ (NSString *)applicationPhotosDir;
++ (NSURL *)applicationPhotosDir;
 + (Place *)place;
 + (NSArray *)filteredPlaces;
 + (NSArray *)allPlaces;
 + (void)submitWithDetails:(NSDictionary *)details image:(UIImage *)image success:(void (^)())success failure:(void (^)(NSString *error))failure;
 
 - (NSString *)imageTypeStringForType:(PlaceImageType)imageType;
-- (NSString *)imagePathForType:(PlaceImageType)imageType;
-- (NSString *)imagesDir;
+- (NSURL *)imagePathForType:(PlaceImageType)imageType;
+- (NSURL *)imagesDir;
 
 @end
