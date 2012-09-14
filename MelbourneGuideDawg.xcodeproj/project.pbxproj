@@ -10,14 +10,12 @@
 		FD0221BB15D76A0200BB7460 /* pull-to-sync-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD0221BA15D76A0000BB7460 /* pull-to-sync-btn@2x.png */; };
 		FD0221BD15D76FB500BB7460 /* pull-to-sync-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FD0221BC15D76FB300BB7460 /* pull-to-sync-btn.png */; };
 		FD035FC3152E796A00B5351B /* NSManagedObject+Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = FD035FBC152E796A00B5351B /* NSManagedObject+Entity.m */; };
-		FD07B32B1559481E00F06635 /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = FD07B32A1559481E00F06635 /* MTStatusBarOverlay.m */; };
 		FD19637915D4CB5F00DAA09E /* toilet.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD19637715D4CB5E00DAA09E /* toilet.jpg */; };
 		FD19637A15D4CB5F00DAA09E /* toilet@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD19637815D4CB5E00DAA09E /* toilet@2x.jpg */; };
 		FD2453C715DF558B00BF027B /* picture-frame.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2453C515DF558B00BF027B /* picture-frame.png */; };
 		FD2453C815DF558B00BF027B /* picture-frame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2453C615DF558B00BF027B /* picture-frame@2x.png */; };
 		FD2453DB15DF5D8D00BF027B /* NSManagedObjectContext+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2453D415DF5D8C00BF027B /* NSManagedObjectContext+Extras.m */; };
 		FD2453DD15DF5D8D00BF027B /* UIViewController+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2453DA15DF5D8D00BF027B /* UIViewController+Extras.m */; };
-		FD2D1F9F1602ED5E00C96625 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2D1F9E1602ED5E00C96625 /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FD2ED42215D7CF9B008B211B /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2ED42115D7CF9B008B211B /* AddressBookUI.framework */; };
 		FD2ED42B15D7D5F7008B211B /* SubmitCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2ED42915D7D5F6008B211B /* SubmitCategoryViewController.m */; };
 		FD2ED42C15D7D5F7008B211B /* SubmitCategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2ED42A15D7D5F6008B211B /* SubmitCategoryView.xib */; };
@@ -161,8 +159,6 @@
 		FD0221BC15D76FB300BB7460 /* pull-to-sync-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull-to-sync-btn.png"; sourceTree = "<group>"; };
 		FD035FBB152E796A00B5351B /* NSManagedObject+Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Entity.h"; sourceTree = "<group>"; };
 		FD035FBC152E796A00B5351B /* NSManagedObject+Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Entity.m"; sourceTree = "<group>"; };
-		FD07B3291559481E00F06635 /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTStatusBarOverlay.h; sourceTree = "<group>"; };
-		FD07B32A1559481E00F06635 /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTStatusBarOverlay.m; sourceTree = "<group>"; };
 		FD19637715D4CB5E00DAA09E /* toilet.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = toilet.jpg; sourceTree = "<group>"; };
 		FD19637815D4CB5E00DAA09E /* toilet@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "toilet@2x.jpg"; sourceTree = "<group>"; };
 		FD2453C515DF558B00BF027B /* picture-frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-frame.png"; sourceTree = "<group>"; };
@@ -171,7 +167,6 @@
 		FD2453D415DF5D8C00BF027B /* NSManagedObjectContext+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+Extras.m"; sourceTree = "<group>"; };
 		FD2453D915DF5D8D00BF027B /* UIViewController+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extras.h"; sourceTree = "<group>"; };
 		FD2453DA15DF5D8D00BF027B /* UIViewController+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extras.m"; sourceTree = "<group>"; };
-		FD2D1F9E1602ED5E00C96625 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		FD2ED42115D7CF9B008B211B /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		FD2ED42815D7D5F6008B211B /* SubmitCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubmitCategoryViewController.h; path = SubmitCategoryViewController/SubmitCategoryViewController.h; sourceTree = "<group>"; };
 		FD2ED42915D7D5F6008B211B /* SubmitCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubmitCategoryViewController.m; path = SubmitCategoryViewController/SubmitCategoryViewController.m; sourceTree = "<group>"; };
@@ -367,7 +362,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD2D1F9F1602ED5E00C96625 /* CoreFoundation.framework in Frameworks */,
 				FD2ED42215D7CF9B008B211B /* AddressBookUI.framework in Frameworks */,
 				FD5D3FBD14CACBFE00CC7C76 /* CoreLocation.framework in Frameworks */,
 				FD793257156E003200530E9C /* QuartzCore.framework in Frameworks */,
@@ -402,15 +396,6 @@
 				FD035FBC152E796A00B5351B /* NSManagedObject+Entity.m */,
 			);
 			path = "NSMangedObject+Entity";
-			sourceTree = "<group>";
-		};
-		FD07B3281559481E00F06635 /* MTStatusBarOverlay */ = {
-			isa = PBXGroup;
-			children = (
-				FD07B3291559481E00F06635 /* MTStatusBarOverlay.h */,
-				FD07B32A1559481E00F06635 /* MTStatusBarOverlay.m */,
-			);
-			path = MTStatusBarOverlay;
 			sourceTree = "<group>";
 		};
 		FD2453D215DF5D8C00BF027B /* NSMangedObjectContext+Extras */ = {
@@ -674,7 +659,6 @@
 		FD64824C15328782004F28F0 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				FD07B3281559481E00F06635 /* MTStatusBarOverlay */,
 				FD64824D15328783004F28F0 /* AFNetworking */,
 				FD64826315328783004F28F0 /* MBProgressHUD */,
 				FD64826615328783004F28F0 /* SBJson */,
@@ -831,7 +815,6 @@
 		FDAE677F14C413EF004488DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FD2D1F9E1602ED5E00C96625 /* CoreFoundation.framework */,
 				FD2ED42115D7CF9B008B211B /* AddressBookUI.framework */,
 				FD793256156E003100530E9C /* QuartzCore.framework */,
 				FD54EEC814F87E8800EC9BAE /* MessageUI.framework */,
@@ -1104,7 +1087,6 @@
 				FD64829515328783004F28F0 /* SBJsonUTF8Stream.m in Sources */,
 				FD64829615328783004F28F0 /* SBJsonWriter.m in Sources */,
 				FD64829A15329FD8004F28F0 /* SyncManager.m in Sources */,
-				FD07B32B1559481E00F06635 /* MTStatusBarOverlay.m in Sources */,
 				FD793248156DC1C600530E9C /* AppConstants.m in Sources */,
 				FD79325B156E155100530E9C /* WebViewController.m in Sources */,
 				FD8703B3156E532E00FE0585 /* FilterViewController.m in Sources */,
@@ -1218,7 +1200,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MelbourneGuideDawg/Supporting Files/MelbourneGuideDawg-Prefix.pch";
 				INFOPLIST_FILE = "MelbourneGuideDawg/Supporting Files/MelbourneGuideDawg-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/MelbourneGuideDawg/Codebase/Analytics\"",
@@ -1238,7 +1220,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MelbourneGuideDawg/Supporting Files/MelbourneGuideDawg-Prefix.pch";
 				INFOPLIST_FILE = "MelbourneGuideDawg/Supporting Files/MelbourneGuideDawg-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/MelbourneGuideDawg/Codebase/Analytics\"",

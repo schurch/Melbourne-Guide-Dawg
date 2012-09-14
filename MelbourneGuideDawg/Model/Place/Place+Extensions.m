@@ -150,7 +150,9 @@
 
 - (NSURL *)imagesDir
 {
-    return [[Place applicationPhotosDir] URLByAppendingPathComponent:[NSString stringWithFormat:@"%@", self.placeId]];
+    NSURL *imagesURL = [[Place applicationPhotosDir] URLByAppendingPathComponent:[NSString stringWithFormat:@"%@", self.placeId]];
+    [Utils excludeURLPathFromBackup:imagesURL];
+    return imagesURL;
 }
 
 @end

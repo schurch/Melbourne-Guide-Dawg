@@ -184,11 +184,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MelbourneGuideDawg/Controllers/HomeViewController/HomeViewController.m"
-         timestampString = "368766497.826736"
+         timestampString = "369293900.965182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "259"
-         endingLineNumber = "259"
+         startingLineNumber = "258"
+         endingLineNumber = "258"
          landmarkName = "-sync"
          landmarkType = "5">
       </FileBreakpoint>

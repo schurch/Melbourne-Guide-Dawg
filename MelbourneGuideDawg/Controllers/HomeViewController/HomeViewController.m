@@ -9,7 +9,6 @@
 #import <math.h>
 #import "HomeViewController.h"
 #import "MBProgressHUD.h"
-#import "MTStatusBarOverlay.h"
 
 #define INTRO_OFFSET 250
 
