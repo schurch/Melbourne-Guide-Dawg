@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FD0221BB15D76A0200BB7460 /* pull-to-sync-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD0221BA15D76A0000BB7460 /* pull-to-sync-btn@2x.png */; };
 		FD0221BD15D76FB500BB7460 /* pull-to-sync-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FD0221BC15D76FB300BB7460 /* pull-to-sync-btn.png */; };
+		FD02CE521604171700621D19 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = FD02CE511604171600621D19 /* Comment.m */; };
 		FD035FC3152E796A00B5351B /* NSManagedObject+Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = FD035FBC152E796A00B5351B /* NSManagedObject+Entity.m */; };
 		FD19637915D4CB5F00DAA09E /* toilet.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD19637715D4CB5E00DAA09E /* toilet.jpg */; };
 		FD19637A15D4CB5F00DAA09E /* toilet@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD19637815D4CB5E00DAA09E /* toilet@2x.jpg */; };
@@ -178,6 +179,8 @@
 /* Begin PBXFileReference section */
 		FD0221BA15D76A0000BB7460 /* pull-to-sync-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull-to-sync-btn@2x.png"; sourceTree = "<group>"; };
 		FD0221BC15D76FB300BB7460 /* pull-to-sync-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull-to-sync-btn.png"; sourceTree = "<group>"; };
+		FD02CE501604171600621D19 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Comment.h; path = Comment/Comment.h; sourceTree = "<group>"; };
+		FD02CE511604171600621D19 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Comment.m; path = Comment/Comment.m; sourceTree = "<group>"; };
 		FD035FBB152E796A00B5351B /* NSManagedObject+Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Entity.h"; sourceTree = "<group>"; };
 		FD035FBC152E796A00B5351B /* NSManagedObject+Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Entity.m"; sourceTree = "<group>"; };
 		FD19637715D4CB5E00DAA09E /* toilet.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = toilet.jpg; sourceTree = "<group>"; };
@@ -436,6 +439,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD02CE541604171A00621D19 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				FD02CE501604171600621D19 /* Comment.h */,
+				FD02CE511604171600621D19 /* Comment.m */,
+			);
+			name = Comment;
+			sourceTree = "<group>";
+		};
 		FD035FBA152E796A00B5351B /* NSMangedObject+Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -696,6 +708,7 @@
 				FD6074EF14FCFE4500932405 /* Model.xcdatamodeld */,
 				FD8FDE5B14FCEDD900E7003A /* Category */,
 				FD54EEB714F8741A00EC9BAE /* Place */,
+				FD02CE541604171A00621D19 /* Comment */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1223,6 +1236,7 @@
 				FDE1993E1601C42700200EC4 /* KeychainManager.m in Sources */,
 				FDE1993F1601C42700200EC4 /* SFHFKeychainUtils.m in Sources */,
 				FDE199451601DA1B00200EC4 /* CommentViewController.m in Sources */,
+				FD02CE521604171700621D19 /* Comment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

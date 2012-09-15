@@ -18,7 +18,6 @@
     BOOL _perfomingFetchRequest;
     int _likes;
 }
-@property (nonatomic, retain) PlaceDetailFetcher *fetcher;
 - (void)selectLikeButton;
 - (void)deselectLikeButton;
 @end
@@ -41,8 +40,6 @@
 
 - (void)dealloc
 {
-    [_fetcher release];
-    
     [_webViewController release];
     [_place release];
     [_imageButton release];
@@ -79,8 +76,6 @@
     self.likesLabel.text = @"0 likes";
     self.commentsLabel.text = @"0 comments";
     
-    self.fetcher = [[[PlaceDetailFetcher alloc] init] autorelease];
-    
     _perfomingFetchRequest = NO;
 }
 
@@ -107,7 +102,7 @@
     [super viewWillAppear:animated];
     
     _perfomingFetchRequest = YES;
-    [self.fetcher fetchPlaceDetailsForPlaceID:[self.place.placeId intValue] success:^(int likeCount, int commentCount, BOOL isLiked)
+    [PlaceDetailFetcher fetchPlaceDetailsForPlaceID:[self.place.placeId intValue] success:^(int likeCount, int commentCount, BOOL isLiked)
     {
         _likes = likeCount;
         self.likesLabel.text = [NSString stringWithFormat:@"%i likes", _likes];
@@ -211,7 +206,6 @@
 - (IBAction)visitWebSite:(id)sender
 {
     NSLog(@"Visit URL at: %@", self.place.url);
-
     self.webViewController.url = self.place.url;
     self.webViewController.title = self.place.title;
     [self.navigationController pushViewController:self.webViewController animated:YES];
@@ -253,7 +247,7 @@
     
     if (self.likeButton.selected) {
         [self deselectLikeButton];
-        [self.fetcher unlikePlaceWithID:[self.place.placeId intValue] success:^{
+        [PlaceDetailFetcher unlikePlaceWithID:[self.place.placeId intValue] success:^{
             _perfomingFetchRequest = NO;
         } failure:^(NSString *error) {
             [self selectLikeButton];
@@ -261,7 +255,7 @@
         }];
     } else {
         [self selectLikeButton];
-        [self.fetcher likePlaceWithID:[self.place.placeId intValue] success:^{
+        [PlaceDetailFetcher likePlaceWithID:[self.place.placeId intValue] success:^{
             _perfomingFetchRequest = NO;
         } failure:^(NSString *error) {
             [self deselectLikeButton];

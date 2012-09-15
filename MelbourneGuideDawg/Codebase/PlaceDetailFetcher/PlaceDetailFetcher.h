@@ -10,8 +10,15 @@
 
 @interface PlaceDetailFetcher : NSObject
 
-- (void)fetchPlaceDetailsForPlaceID:(int)ID success:(void (^)(int likeCount, int commentCount, BOOL isLiked))success failure:(void (^)(NSString *error))failure;
-- (void)likePlaceWithID:(int)ID success:(void (^)())success failure:(void (^)(NSString *error))failure;
-- (void)unlikePlaceWithID:(int)ID success:(void (^)())success failure:(void (^)(NSString *error))failure;
+//general fetch
++ (void)fetchPlaceDetailsForPlaceID:(int)ID success:(void (^)(int likeCount, int commentCount, BOOL isLiked))success failure:(void (^)(NSString *error))failure;
+
+//likes
++ (void)likePlaceWithID:(int)ID success:(void (^)())success failure:(void (^)(NSString *error))failure;
++ (void)unlikePlaceWithID:(int)ID success:(void (^)())success failure:(void (^)(NSString *error))failure;
+
+//coments
++ (void)postCommentForPlaceID:(int)ID withComment:(NSString *)comment success:(void (^)())success failure:(void (^)(NSString *error))failure;
++ (void)fetchCommentsForPlaceID:(int)ID success:(void (^)(NSArray *comments))success failure:(void (^)(NSString *error))failure;
 
 @end

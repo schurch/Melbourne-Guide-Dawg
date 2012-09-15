@@ -13,8 +13,8 @@
 #import "Place+Extensions.h"
 #import "Category+Extensions.h"
 
-#define CATEGORIES_URL @"http://www.melbourneguidedawg.com/categories.json"
-#define PLACES_URL @"http://www.melbourneguidedawg.com/places.json"
+#define CATEGORIES_PATH @"categories.json"
+#define PLACES_PATH @"places.json"
 #define BASE_IMAGE_URL @"http://s3.amazonaws.com/melbourne_guide_dawg/images"
 
 @interface SyncManager()
@@ -53,7 +53,8 @@
     
     _syncInProgress = YES;
     
-    NSURLRequest *categoryRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:CATEGORIES_URL]];
+    NSString *categoriesURL = [NSString stringWithFormat:@"%@%@", kServerBaseURL, CATEGORIES_PATH];
+    NSURLRequest *categoryRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:categoriesURL]];
     AFJSONRequestOperation *categoryOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:categoryRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) 
     {
         progressBlock(@"Downloading categories..");
@@ -92,7 +93,8 @@
         
         progressBlock(@"Downloading places..");
         
-        NSURLRequest *placesRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:PLACES_URL]];
+        NSString *placesURL = [NSString stringWithFormat:@"%@%@", kServerBaseURL, PLACES_PATH];
+        NSURLRequest *placesRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:placesURL]];
         AFJSONRequestOperation *placesOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:placesRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) 
         {            
             

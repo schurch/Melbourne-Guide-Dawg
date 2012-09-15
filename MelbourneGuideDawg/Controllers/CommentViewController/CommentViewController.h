@@ -10,11 +10,13 @@
 
 @interface CommentViewController : UIViewController<UITextFieldDelegate>
 
+@property (nonatomic, assign) int placeID;
 @property (nonatomic, assign) IBOutlet UITableViewCell *commentCell;
 @property (nonatomic, retain) IBOutlet UIButton *postButton;
 @property (nonatomic, retain) IBOutlet UITextField *commentBox;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 
+- (IBAction)postComment:(id)sender;
 - (IBAction)textFieldTextChanged:(id)sender;
 
 @end
