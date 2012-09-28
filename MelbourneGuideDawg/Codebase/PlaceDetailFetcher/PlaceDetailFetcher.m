@@ -81,7 +81,7 @@ static NSString *kPostCommentPath = @"places/%i/comments";
 {
     NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:kNameKeyLookup];
     if (!username || [username stringByRemovingNewLinesAndWhitespace].length == 0) {
-        username = @"anonymous";
+        username = kDefaultCommentUsername;
     }
     
     NSDictionary *details =

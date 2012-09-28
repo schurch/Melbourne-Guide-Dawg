@@ -13,5 +13,6 @@ NSString * const kBundleID = @"com.stefanchurch.melbourneguidedawg";
 NSString * const kServerBaseURL = @"http://www.melbourneguidedawg.com/";
 NSString * const kSyncCompleteNotificaton = @"com.melbourneguidedawg.events.sync_complete";
 NSString * const kSyncFailedNotificaton = @"com.melbourneguidedawg.events.sync_failed";
+NSString * const kDefaultCommentUsername = @"anonymous";
 
 NSString * const kNameKeyLookup = @"userdefaults.keys.name";

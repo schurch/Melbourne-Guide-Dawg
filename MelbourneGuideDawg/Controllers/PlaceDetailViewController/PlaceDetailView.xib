@@ -41,7 +41,7 @@
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIScrollView" id="293019803">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">268</int>
+						<int key="NSvFlags">272</int>
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUILabel" id="972739804">
 								<reference key="NSNextResponder" ref="293019803"/>
@@ -288,7 +288,7 @@ dWxsYSBmYWNpbGlzaS4</string>
 								<string key="NSFrame">{{143, 208}, {72, 47}}</string>
 								<reference key="NSSuperview" ref="293019803"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="71137868"/>
+								<reference key="NSNextKeyView" ref="804310594"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -399,12 +399,13 @@ dWxsYSBmYWNpbGlzaS4</string>
 									<string key="NSResourceName">chat-icon.png</string>
 								</object>
 							</object>
-							<object class="IBUIActivityIndicatorView" id="46800010">
+							<object class="IBUIActivityIndicatorView" id="804310594">
 								<reference key="NSNextResponder" ref="293019803"/>
 								<int key="NSvFlags">-2147483356</int>
 								<string key="NSFrame">{{170, 221}, {20, 20}}</string>
 								<reference key="NSSuperview" ref="293019803"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="71137868"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -542,7 +543,7 @@ dWxsYSBmYWNpbGlzaS4</string>
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">loadingActivityIndicator</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="46800010"/>
+						<reference key="destination" ref="804310594"/>
 					</object>
 					<int key="connectionID">54</int>
 				</object>
@@ -635,7 +636,7 @@ dWxsYSBmYWNpbGlzaS4</string>
 							<reference ref="647726375"/>
 							<reference ref="1066622601"/>
 							<reference ref="812269449"/>
-							<reference ref="46800010"/>
+							<reference ref="804310594"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -709,7 +710,7 @@ dWxsYSBmYWNpbGlzaS4</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">53</int>
-						<reference key="object" ref="46800010"/>
+						<reference key="object" ref="804310594"/>
 						<reference key="parent" ref="293019803"/>
 					</object>
 				</array>

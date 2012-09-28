@@ -107,6 +107,11 @@
         
         self.postButton.enabled = NO;
         
+        NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:kNameKeyLookup];
+        if (!username || [username stringByRemovingNewLinesAndWhitespace]) {
+            username = kDefaultCommentUsername;
+        }
+        
         Comment *newComment = [[[Comment alloc] init] autorelease];
         newComment.text = self.commentBox.text;
         newComment.name = [[NSUserDefaults standardUserDefaults] stringForKey:kNameKeyLookup];

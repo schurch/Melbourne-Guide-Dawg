@@ -108,6 +108,7 @@
 		FDA4E97616153D7F00E4412C /* configure-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDA4E97416153D7F00E4412C /* configure-btn@2x.png */; };
 		FDA4E979161557CD00E4412C /* please-sync-message.png in Resources */ = {isa = PBXBuildFile; fileRef = FDA4E977161557CD00E4412C /* please-sync-message.png */; };
 		FDA4E97A161557CE00E4412C /* please-sync-message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDA4E978161557CD00E4412C /* please-sync-message@2x.png */; };
+		FDA4E97E1615ADCD00E4412C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDA4E97D1615ADCD00E4412C /* Default-568h@2x.png */; };
 		FDA98E8D1568641E00B3D470 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA98E8C1568641E00B3D470 /* libFlurryAnalytics.a */; };
 		FDAE678114C413EF004488DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678014C413EF004488DC /* UIKit.framework */; };
 		FDAE678314C413EF004488DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678214C413EF004488DC /* Foundation.framework */; };
@@ -331,6 +332,7 @@
 		FDA4E97416153D7F00E4412C /* configure-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "configure-btn@2x.png"; sourceTree = "<group>"; };
 		FDA4E977161557CD00E4412C /* please-sync-message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "please-sync-message.png"; sourceTree = "<group>"; };
 		FDA4E978161557CD00E4412C /* please-sync-message@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "please-sync-message@2x.png"; sourceTree = "<group>"; };
+		FDA4E97D1615ADCD00E4412C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		FDA98E8B1568641E00B3D470 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
 		FDA98E8C1568641E00B3D470 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
 		FDAE677C14C413EF004488DC /* MelbourneGuideDawg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MelbourneGuideDawg.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -632,6 +634,7 @@
 		FD54EE3714F862E000EC9BAE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FDA4E97D1615ADCD00E4412C /* Default-568h@2x.png */,
 				FDA4E977161557CD00E4412C /* please-sync-message.png */,
 				FDA4E978161557CD00E4412C /* please-sync-message@2x.png */,
 				FDA4E97316153D7F00E4412C /* configure-btn.png */,
@@ -1156,6 +1159,7 @@
 				FDA4E97616153D7F00E4412C /* configure-btn@2x.png in Resources */,
 				FDA4E979161557CD00E4412C /* please-sync-message.png in Resources */,
 				FDA4E97A161557CE00E4412C /* please-sync-message@2x.png in Resources */,
+				FDA4E97E1615ADCD00E4412C /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -192,7 +192,8 @@
         largeImage.transform = CGAffineTransformMakeRotation((M_PI * (90) / 180.0));
     }
     
-    largeImage.frame = CGRectMake(0, 0, 320, 480);
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    largeImage.frame = CGRectMake(0, 0, window.frame.size.width, window.frame.size.height);
     
     [[[[UIApplication sharedApplication] delegate] window] addSubview:largeImage];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];

@@ -43,7 +43,7 @@
 							<object class="IBUILabel" id="970996842">
 								<reference key="NSNextResponder" ref="449365759"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{6, 1}, {177, 21}}</string>
+								<string key="NSFrame">{{10, 1}, {173, 21}}</string>
 								<reference key="NSSuperview" ref="449365759"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="547845272"/>
@@ -106,10 +106,10 @@
 							<object class="IBUILabel" id="34399681">
 								<reference key="NSNextResponder" ref="449365759"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{5, 22}, {287, 25}}</string>
+								<string key="NSFrame">{{10, 22}, {282, 25}}</string>
 								<reference key="NSSuperview" ref="449365759"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="403280756"/>
+								<reference key="NSNextKeyView" ref="98068984"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -137,9 +137,9 @@
 									<int key="NSfFlags">16</int>
 								</object>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-								<double key="preferredMaxLayoutWidth">287</double>
+								<double key="preferredMaxLayoutWidth">282</double>
 							</object>
-							<object class="IBUIActivityIndicatorView" id="403280756">
+							<object class="IBUIActivityIndicatorView" id="98068984">
 								<reference key="NSNextResponder" ref="449365759"/>
 								<int key="NSvFlags">-2147483356</int>
 								<string key="NSFrame">{{293, 23}, {20, 20}}</string>
@@ -216,7 +216,7 @@
 							<reference ref="970996842"/>
 							<reference ref="547845272"/>
 							<reference ref="34399681"/>
-							<reference ref="403280756"/>
+							<reference ref="98068984"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -237,7 +237,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">7</int>
-						<reference key="object" ref="403280756"/>
+						<reference key="object" ref="98068984"/>
 						<reference key="parent" ref="342170629"/>
 					</object>
 				</array>
@@ -281,6 +281,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="commentBox">UITextField</string>
 						<string key="commentCell">UITableViewCell</string>
+						<string key="loadingIndicator">UIActivityIndicatorView</string>
 						<string key="postButton">UIButton</string>
 						<string key="tableView">UITableView</string>
 						<string key="usernameTextField">UITextField</string>
@@ -294,6 +295,10 @@
 						<object class="IBToOneOutletInfo" key="commentCell">
 							<string key="name">commentCell</string>
 							<string key="candidateClassName">UITableViewCell</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="loadingIndicator">
+							<string key="name">loadingIndicator</string>
+							<string key="candidateClassName">UIActivityIndicatorView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="postButton">
 							<string key="name">postButton</string>
