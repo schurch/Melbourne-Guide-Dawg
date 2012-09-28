@@ -10,6 +10,7 @@
 
 @interface Utils : NSObject
 
++ (UIBarButtonItem *)generateButtonItemWithImageName:(NSString *)imageName target:(id)target selector:(SEL)selector;
 + (NSString *)deviceID;
 + (NSURL *)documentsDirectory;
 + (NSURL *)downloadDirectory;

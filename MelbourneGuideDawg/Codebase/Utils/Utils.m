@@ -19,6 +19,16 @@
 
 #pragma mark - public methods -
 
++ (UIBarButtonItem *)generateButtonItemWithImageName:(NSString *)imageName target:(id)target selector:(SEL)selector
+{
+    UIImage *image = [UIImage imageNamed:imageName];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setFrame:CGRectMake(0.0f, 0.0f, image.size.width, image.size.height)];
+    [button setImage:image forState:UIControlStateNormal];
+    [button addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
+    return [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
+}
+
 + (NSString *)deviceID
 {
     KeychainManager *keychain = [[[KeychainManager alloc] initWithServiceName:kBundleID] autorelease];

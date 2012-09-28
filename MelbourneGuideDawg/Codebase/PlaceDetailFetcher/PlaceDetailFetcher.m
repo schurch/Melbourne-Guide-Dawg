@@ -10,6 +10,11 @@
 #import "AFNetworking.h"
 #import "Comment.h"
 
+@interface PlaceDetailFetcher()
++ (NSArray *)generateCommmentsFromResponse:(id)responseJSON;
+@end
+
+
 @implementation PlaceDetailFetcher
 
 static NSString *kFetchDetailsPath = @"places/%i/details?device_id=%@";
@@ -28,12 +33,12 @@ static NSString *kPostCommentPath = @"places/%i/comments";
     AFJSONRequestOperation *detailsOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:requestURL success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         
         NSLog(@"Successfully fetched place details");
-        int likeCount = [[JSON objectForKey:@"count"] intValue];
+        int likeCount = [[JSON objectForKey:@"like_count"] intValue];
+        int commentCount = [[JSON objectForKey:@"comment_count"] intValue];
         BOOL isLiked = [[JSON objectForKey:@"have_liked"] boolValue];
-        success(likeCount, 0, isLiked);
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
-    {
-        NSLog(@"ERROR :: PlaceFetcher :: FetchPlaceDetails :: %@", error.localizedDescription);
+        success(likeCount, commentCount, isLiked);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"ERROR :: PlaceFetcher :: fetchPlaceDetailsForPlaceID :: %@", error.localizedDescription);
         failure(@"Could not fetch place details.");
     }];
     
@@ -51,7 +56,7 @@ static NSString *kPostCommentPath = @"places/%i/comments";
         NSLog(@"Successfully liked place with ID %i", ID);
         success();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"ERROR :: PlaceFetcher :: LikePlace :: %@", [error localizedDescription]);
+        NSLog(@"ERROR :: PlaceFetcher :: likePlaceWithID :: %@", [error localizedDescription]);
         failure(@"There was a problem liking the place.");
     }];
 }
@@ -65,46 +70,63 @@ static NSString *kPostCommentPath = @"places/%i/comments";
         NSLog(@"Successfully unliked place with ID %i", ID);
         success();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"ERROR :: PlaceFetcher :: UnlikePlace :: %@", [error localizedDescription]);
-        failure(@"There was a problem liking the place.");
+        NSLog(@"ERROR :: PlaceFetcher :: unlikePlaceWithID :: %@", [error localizedDescription]);
+        failure(@"There was a problem unliking the place.");
     }];
 }
 
 #pragma mark - commments -
 
-+ (void)postCommentForPlaceID:(int)ID withComment:(NSString *)comment success:(void (^)())success failure:(void (^)(NSString *error))failure
++ (void)postCommentForPlaceID:(int)ID withComment:(NSString *)comment success:(void (^)(NSArray *comments))success failure:(void (^)(NSString *error))failure
 {
+    NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:kNameKeyLookup];
+    if (!username || [username stringByRemovingNewLinesAndWhitespace].length == 0) {
+        username = @"anonymous";
+    }
+    
     NSDictionary *details =
     @{
         @"comment[device_id]" : [Utils deviceID],
-        @"comment[commenter]" : @"stefanchurch",
-        @"comment[body]" : comment
+        @"comment[commenter]" : username,
+        @"comment[body]" : comment,
+        @"comment[place_id]" : [NSNumber numberWithInt:ID]
     };
     
     AFHTTPClient *client = [[[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kServerBaseURL]] autorelease];
+    [client setParameterEncoding:AFJSONParameterEncoding];
+    [client setAuthorizationHeaderWithUsername:kUploadUsername password:kUploadPassword];
     
-    [client postPath:kCommentsPath parameters:details success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success();
+    NSString *postPath = [NSString stringWithFormat:kCommentsPath, ID];
+    NSMutableURLRequest *request = [client multipartFormRequestWithMethod:@"POST" path:postPath parameters:details constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
+    }];
+    
+    AFHTTPRequestOperation *operation = [[[AFHTTPRequestOperation alloc] initWithRequest:request] autorelease];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Successfully posted comment.");
+        NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSArray *comments = [self generateCommmentsFromResponse:[responseString JSONValue]];
+        success(comments);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"ERROR :: PlaceFetcher :: postCommentForPlaceID :: %@", error.localizedDescription);
         failure(@"There was a problem posting the comment.");
     }];
+    
+    [operation start];
 }
 
 + (void)fetchCommentsForPlaceID:(int)ID success:(void (^)(NSArray *comments))success failure:(void (^)(NSString *error))failure
 {
-    NSString *fullURL = [NSString stringWithFormat:@"%@%@", kServerBaseURL, kCommentsPath];
-    NSURLRequest *requestURL = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:fullURL, ID]]];
+    AFHTTPClient *client = [[[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kServerBaseURL]] autorelease];
+    [client setParameterEncoding:AFJSONParameterEncoding];
+    [client setAuthorizationHeaderWithUsername:kUploadUsername password:kUploadPassword];
+    NSString *commentsPath = [NSString stringWithFormat:kCommentsPath, ID];
+    NSMutableURLRequest *requestURL = [client requestWithMethod:@"GET" path:commentsPath parameters:nil];
     
     AFJSONRequestOperation *detailsOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:requestURL success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         
         NSLog(@"Successfully fetched place comments");
-        
-        NSMutableArray *comments = [NSMutableArray array];
-        for (NSDictionary *commentData in JSON) {
-            Comment *comment = [[[Comment alloc] initWithData:commentData] autorelease];
-            [comments addObject:comment];
-        }
-        
+        NSArray *comments = [self generateCommmentsFromResponse:JSON];
         success(comments);
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
@@ -114,6 +136,19 @@ static NSString *kPostCommentPath = @"places/%i/comments";
     }];
     
     [detailsOperation start];
+}
+
+#pragma mark - private methods -
+
++ (NSArray *)generateCommmentsFromResponse:(id)responseJSON
+{
+    NSMutableArray *comments = [NSMutableArray array];
+    for (NSDictionary *commentData in responseJSON) {
+        Comment *comment = [[[Comment alloc] initWithData:commentData] autorelease];
+        [comments addObject:comment];
+    }
+    
+    return comments;
 }
 
 @end

@@ -44,13 +44,7 @@
 {
     [super viewDidLoad];
     
-    UIImage *closeBtnImage = [UIImage imageNamed:@"close-btn.png"];
-    UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [closeBtn setFrame:CGRectMake(0.0f, 0.0f, closeBtnImage.size.width, closeBtnImage.size.height)];
-    [closeBtn setImage:closeBtnImage forState:UIControlStateNormal];
-    [closeBtn addTarget:self action:@selector(close:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *closeBtnItem = [[[UIBarButtonItem alloc] initWithCustomView:closeBtn] autorelease];
-    self.navBar.topItem.rightBarButtonItem = closeBtnItem;
+    self.navBar.topItem.rightBarButtonItem = [Utils generateButtonItemWithImageName:@"close-btn.png" target:self selector:@selector(close:)];
         
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(refreshView) 

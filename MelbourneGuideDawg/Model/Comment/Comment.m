@@ -18,13 +18,15 @@
     self = [super init];
 
     if (self) {
-        self.commentID = [[NSString validStringOrNil:[data objectForKey:@"id"]] intValue];
+        self.commentID = [[data objectForKey:@"id"] intValue];
         self.name = [NSString validStringOrNil:[data objectForKey:@"commenter"]];
         self.text = [NSString validStringOrNil:[data objectForKey:@"body"]];
+        self.posting = NO;
 
         NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
         dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";         //2012-09-14T09:17:26Z
-        NSString *dateString = [NSString validStringOrNil:[data objectForKey:@"created"]];
+        dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+        NSString *dateString = [NSString validStringOrNil:[data objectForKey:@"created_at"]];
         self.date = [dateFormatter dateFromString:dateString];
     }
     

@@ -17,6 +17,10 @@
 }
 @property (nonatomic, retain) NSMutableArray *comments;
 - (void)fetchComments;
+- (void)reloadComments;
+- (void)configure:(id)sender;
+- (void)showChangeUsernameDialog:(BOOL)animated;
+- (void)hideChangeUsernameDialog;
 @end
 
 @implementation CommentViewController
@@ -38,36 +42,29 @@
     [_tableView release];
     [_commentBox release];
     [_comments release];
+    [_usernameView release];
+    [_usernameTextField release];
+    [_loadingIndicator release];
+    
     [super dealloc];
 }
 
 #pragma mark - view lifecycle -
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.commentBox becomeFirstResponder];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    UIImage *backButtonImage = [UIImage imageNamed:@"back-btn.png"];
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setFrame:CGRectMake(0.0f, 0.0f, backButtonImage.size.width, backButtonImage.size.height)];
-    [backButton setImage:backButtonImage forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:backButton] autorelease];
-    self.navigationItem.leftBarButtonItem = backButtonItem;
+    self.navigationItem.leftBarButtonItem = [Utils generateButtonItemWithImageName:@"back-btn.png" target:self selector:@selector(back:)];
+    self.navigationItem.rightBarButtonItem = [Utils generateButtonItemWithImageName:@"configure-btn.png" target:self selector:@selector(configure:)];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.postButton.enabled = NO;
     self.commentBox.keyboardType = UIKeyboardTypeTwitter;
     
-    _postingComment = NO;
+    self.usernameView.alpha = 0.0;
     
-    [self fetchComments];
+    _postingComment = NO;
 }
 
 - (void)viewDidUnload
@@ -77,6 +74,23 @@
     self.postButton = nil;
     self.tableView = nil;
     self.commentBox = nil;
+    self.usernameView = nil;
+    self.usernameTextField = nil;
+    self.loadingIndicator = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    
+    NSString *name = [[NSUserDefaults standardUserDefaults] stringForKey:kNameKeyLookup];
+    if (!name) {
+        [self showChangeUsernameDialog:NO];
+    } else {
+        [self.commentBox becomeFirstResponder];
+        [self fetchComments];
+    }
 }
 
 #pragma mark - ui actions -
@@ -91,13 +105,37 @@
         
         _postingComment = YES;
         
-        [PlaceDetailFetcher postCommentForPlaceID:self.placeID withComment:self.commentBox.text success:^(int commentID) {
-            [self fetchComments];
+        self.postButton.enabled = NO;
+        
+        Comment *newComment = [[[Comment alloc] init] autorelease];
+        newComment.text = self.commentBox.text;
+        newComment.name = [[NSUserDefaults standardUserDefaults] stringForKey:kNameKeyLookup];
+        newComment.posting = YES;
+        newComment.date = [NSDate date];
+        
+        [self.comments addObject:newComment];
+        [self reloadComments];
+        
+        self.commentBox.text = @"";
+        
+        [PlaceDetailFetcher postCommentForPlaceID:self.placeID withComment:newComment.text success:^(NSArray *comments) {
+            if ([self.delegate respondsToSelector:@selector(commmentCountUpdated:)]) {
+                [self.delegate commmentCountUpdated:comments.count];
+            }
+            self.comments = [NSMutableArray arrayWithArray:[[comments reverseObjectEnumerator] allObjects]];
+            [self reloadComments];
             self.commentBox.text = @"";
+            self.commentBox.enabled = YES;
             _postingComment = NO;
         } failure:^(NSString *error) {
-            UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:nil message:@"There was a problem posting your comment. Please try again later." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] autorelease];
+            
+            UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Unable to post comment" message:@"There was a problem posting your comment. Please try again later." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] autorelease];
             [alertView show];
+            
+            [self.comments removeLastObject];
+            [self reloadComments];
+            self.commentBox.text = newComment.text;
+            self.postButton.enabled = YES;
             _postingComment = NO;
         }];
     }
@@ -121,24 +159,61 @@
 
 - (void)fetchComments
 {
+    [self.loadingIndicator startAnimating];
     [PlaceDetailFetcher fetchCommentsForPlaceID:self.placeID success:^(NSArray *comments){
-        
+        [self.loadingIndicator stopAnimating];
         self.comments = [NSMutableArray arrayWithArray:[[comments reverseObjectEnumerator] allObjects]];
-        [self.tableView reloadData];
-        
-        if (self.comments.count > 0) {
-            self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(self.comments.count - 1) inSection:0];
-            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-        }
-        
+        [self reloadComments];
     } failure:^(NSString *error) {
-        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Problem fetching comments" message:@"There was an issue fetching the comments. Please try again later." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] autorelease];
+        [self.loadingIndicator stopAnimating];
+        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Unable to fetch comments" message:@"There was an issue fetching the comments. Please try again later." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] autorelease];
         [alertview show];
     }];
 }
 
-#define CELL_LABEL_WIDTH 307
+- (void)reloadComments
+{
+    [self.tableView reloadData];
+    
+    if (self.comments.count > 0) {
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(self.comments.count - 1) inSection:0];
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    }
+}
+
+- (void)configure:(id)sender
+{
+    [self showChangeUsernameDialog:YES];
+}
+
+- (void)showChangeUsernameDialog:(BOOL)animated
+{
+    [self.usernameTextField becomeFirstResponder];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.usernameTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kNameKeyLookup];
+    
+    if (animated) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.usernameView.alpha = 1.0;
+        }];
+    } else {
+        self.usernameView.alpha = 1.0;
+    }
+}
+
+- (void)hideChangeUsernameDialog
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+        self.usernameView.alpha = 0.0;
+        [self.commentBox becomeFirstResponder];
+    } completion:^(BOOL finished) {
+        //
+    }];
+}
+
+#define CELL_LABEL_WIDTH 284
 #define CELL_FONT_SIZE 14.0
 
 #pragma mark - tableview delegates / datasource
@@ -171,12 +246,19 @@
     UILabel *username = (UILabel *)[cell viewWithTag:1];
     UILabel *time = (UILabel *)[cell viewWithTag:2];
     UILabel *text = (UILabel *)[cell viewWithTag:3];
+    UIActivityIndicatorView *postingCommentIndicator = (UIActivityIndicatorView *)[cell viewWithTag:4];
     
     Comment *comment = [self.comments objectAtIndex:indexPath.row];
     
     username.text = comment.name;
     time.text = comment.timeSinceText;
     text.text = comment.text;
+    
+    if (comment.posting) {
+        [postingCommentIndicator startAnimating];
+    } else {
+        [postingCommentIndicator stopAnimating];
+    }
     
     //resize comment label
     CGSize commentSize = [comment.text sizeWithFont:[UIFont systemFontOfSize:CELL_FONT_SIZE] constrainedToSize:CGSizeMake(CELL_LABEL_WIDTH, 20000.0f) lineBreakMode:UILineBreakModeWordWrap];
@@ -194,17 +276,38 @@
 #pragma mark - textfield delegate -
 
 #define COMMENT_MAXLENGTH 200
+#define USERNAME_MAXLENGTH 20
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    int length = [[textField.text stringByRemovingNewLinesAndWhitespace] length];
-    
-    if (length >= COMMENT_MAXLENGTH && ![string isEqualToString:@""]) {
-        textField.text = [textField.text substringToIndex:COMMENT_MAXLENGTH];
+    if (_postingComment) {
         return NO;
     }
     
+    int textFieldMaxLength;
     
+    if (textField.tag == 1) {
+        textFieldMaxLength = COMMENT_MAXLENGTH;
+    } else if (textField.tag == 2) {
+        textFieldMaxLength = USERNAME_MAXLENGTH;
+    }
+    
+    int length = [[textField.text stringByRemovingNewLinesAndWhitespace] length];
+    if (length >= textFieldMaxLength && ![string isEqualToString:@""]) {
+        textField.text = [textField.text substringToIndex:textFieldMaxLength];
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSString *name = [self.usernameTextField.text stringByRemovingNewLinesAndWhitespace];
+    [[NSUserDefaults standardUserDefaults] setValue:name forKey:kNameKeyLookup];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self hideChangeUsernameDialog];
     return YES;
 }
 

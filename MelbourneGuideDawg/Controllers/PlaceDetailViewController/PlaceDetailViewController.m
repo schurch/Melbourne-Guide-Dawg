@@ -10,7 +10,6 @@
 #import "MapViewController.h"
 #import "Place+Extensions.h"
 #import "PlaceDetailFetcher.h"
-#import "CommentViewController.h"
 
 
 @interface PlaceDetailViewController()
@@ -25,7 +24,7 @@
 
 @implementation PlaceDetailViewController
 
-#pragma mark - Init -
+#pragma mark - init / dealloc -
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,8 +34,6 @@
     }
     return self;
 }
-
-#pragma mark - Memory management -
 
 - (void)dealloc
 {
@@ -53,6 +50,7 @@
     [_likesLabel release];
     [_commentsLabel release];
     [_likeButton release];
+    [_loadingActivityIndicator release];
     
     [super dealloc];
 }
@@ -62,14 +60,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    UIImage *backButtonImage = [UIImage imageNamed:@"back-btn.png"];
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setFrame:CGRectMake(0.0f, 0.0f, backButtonImage.size.width, backButtonImage.size.height)];
-    [backButton setImage:backButtonImage forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:backButton] autorelease];
-    self.navigationItem.leftBarButtonItem = backButtonItem;
+    
+    self.navigationItem.leftBarButtonItem = [Utils generateButtonItemWithImageName:@"back-btn.png" target:self selector:@selector(back:)];
     
     self.webViewController = [[[WebViewController alloc] initWithNibName:@"WebView" bundle:nil] autorelease];
     
@@ -94,6 +86,7 @@
     self.likesLabel = nil;
     self.commentsLabel = nil;
     self.likeButton = nil;
+    self.loadingActivityIndicator = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated 
@@ -102,6 +95,10 @@
     [super viewWillAppear:animated];
     
     _perfomingFetchRequest = YES;
+    self.likeButton.hidden = YES;
+    [self.loadingActivityIndicator startAnimating];
+
+    
     [PlaceDetailFetcher fetchPlaceDetailsForPlaceID:[self.place.placeId intValue] success:^(int likeCount, int commentCount, BOOL isLiked)
     {
         _likes = likeCount;
@@ -109,9 +106,12 @@
         self.commentsLabel.text = [NSString stringWithFormat:@"%i comments", commentCount];
         self.likeButton.selected = isLiked;
         _perfomingFetchRequest = NO;
+        [self.loadingActivityIndicator stopAnimating];
+        self.likeButton.hidden = NO;
     } failure:^(NSString *error) {
         //fail silently
         _perfomingFetchRequest = NO;
+        [self.loadingActivityIndicator stopAnimating];
     }];
     
     if ([[self.navigationController.viewControllers objectAtIndex:0] isKindOfClass:[MapViewController class]]) 
@@ -234,6 +234,8 @@
 - (IBAction)comment:(id)sender
 {
     CommentViewController *commentController = [[[CommentViewController alloc] initWithNibName:@"CommentView" bundle:nil] autorelease];
+    commentController.placeID = [self.place.placeId intValue];
+    commentController.delegate = self;
     [self.navigationController pushViewController:commentController animated:YES];
 }
 
@@ -294,6 +296,13 @@
     self.likeButton.selected = NO;
     _likes -= 1;
     self.likesLabel.text = [NSString stringWithFormat:@"%i likes", _likes];
+}
+
+#pragma mark - comment view controller delegates -
+
+- (void)commmentCountUpdated:(int)count
+{
+    self.commentsLabel.text = [NSString stringWithFormat:@"%i comments", count];
 }
 
 @end

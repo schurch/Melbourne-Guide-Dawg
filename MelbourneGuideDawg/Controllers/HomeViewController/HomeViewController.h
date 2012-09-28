@@ -11,7 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "SyncManager.h"
 
-@interface HomeViewController : UIViewController <MFMailComposeViewControllerDelegate>
+@interface HomeViewController : UIViewController <MFMailComposeViewControllerDelegate, UIAlertViewDelegate>
 {
     BOOL _isLoading;
     BOOL _isDragging;
@@ -30,6 +30,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *pullToSyncHelper;
 @property (nonatomic, retain) SyncManager *syncManager;
 
+- (IBAction)visitWebsite:(id)sender;
 - (IBAction)emailFeedback:(id)sender;
 - (IBAction)hideSyncButton:(id)sender;
 

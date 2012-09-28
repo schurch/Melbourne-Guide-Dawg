@@ -30,6 +30,8 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
+    [_tableView release];
+    [_pleaseSyncMessage release];
     [_managedObjectContext release];
     [_categories release];
     [_placesViewController release];
@@ -57,12 +59,20 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.tableViewCell = nil;
+    self.tableView = nil;
+    self.pleaseSyncMessage = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self refreshView];
+    
+    if (!self.categories || self.categories.count == 0) {
+        self.pleaseSyncMessage.hidden = NO;
+    } else {
+        self.pleaseSyncMessage.hidden = YES;
+    }
 }
 
 #pragma mark - Methods -
@@ -108,7 +118,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.placesViewController.category = [self.categories objectAtIndex:indexPath.row];
-    self.placesViewController.places = [((Category *)[self.categories objectAtIndex:indexPath.row]).places allObjects];
+    self.placesViewController.places = ((Category *)[self.categories objectAtIndex:indexPath.row]).sortedPlaces;
     [self.navigationController pushViewController:self.placesViewController animated:YES];    
 }
 

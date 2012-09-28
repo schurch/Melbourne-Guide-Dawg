@@ -11,8 +11,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import "WebViewController.h"
 #import "PlaceViewController.h"
+#import "CommentViewController.h"
 
-@interface PlaceDetailViewController : PlaceViewController 
+@interface PlaceDetailViewController : PlaceViewController<CommentViewControllerDelegate>
 
 @property (nonatomic, retain) WebViewController *webViewController;
 @property (nonatomic, retain) Place *place;
@@ -27,6 +28,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *likesLabel;
 @property (nonatomic, retain) IBOutlet UILabel *commentsLabel;
 @property (nonatomic, retain) IBOutlet UIButton *likeButton;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *loadingActivityIndicator;
 
 - (IBAction)visitWebSite:(id)sender;
 - (IBAction)showImage:(id)sender;

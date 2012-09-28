@@ -76,22 +76,10 @@
     [[NSBundle mainBundle] loadNibNamed:@"LocationCell" owner:self options:nil];
     [[NSBundle mainBundle] loadNibNamed:@"LargeTextCell" owner:self options:nil];
     
-    UIImage *backButtonImage = [UIImage imageNamed:@"back-btn.png"];
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setFrame:CGRectMake(0.0f, 0.0f, backButtonImage.size.width, backButtonImage.size.height)];
-    [backButton setImage:backButtonImage forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(takePhoto:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:backButton] autorelease];
-    self.navigationItem.leftBarButtonItem = backButtonItem;
+    self.navigationItem.leftBarButtonItem = [Utils generateButtonItemWithImageName:@"back-btn.png" target:self selector:@selector(takePhoto:)];
+    self.navigationItem.rightBarButtonItem = [Utils generateButtonItemWithImageName:@"post-btn.png" target:self selector:@selector(post:)];
     
-    UIImage *postButtonImage = [UIImage imageNamed:@"post-btn.png"];
-    UIButton *postButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [postButton setFrame:CGRectMake(0.0f, 0.0f, postButtonImage.size.width, postButtonImage.size.height)];
-    [postButton setImage:postButtonImage forState:UIControlStateNormal];
-    [postButton addTarget:self action:@selector(post:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *postButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:postButton] autorelease];
-    self.navigationItem.rightBarButtonItem = postButtonItem;
-    postButtonItem.enabled = NO;
+    self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -137,7 +125,7 @@
     
     self.submissionTitle = @"";
     self.category = nil;
-    self.website = @"";
+    self.website = @"http://";
     self.text = @"";
     
     UILabel *placeholderText = (UILabel *)[self.mainBodyTextCell viewWithTag:3];
@@ -326,6 +314,10 @@
             textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
         } else if (indexPath.row == 1) {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
+            if (!self.category) {
+                cell.textLabel.font = [UIFont systemFontOfSize:16];
+                cell.textLabel.textColor = [UIColor lightGrayColor];
+            }
             cell.textLabel.text = self.category ? self.category.name : CATEGORY_DEFAULT_TEXT;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else if (indexPath.row == 2) {

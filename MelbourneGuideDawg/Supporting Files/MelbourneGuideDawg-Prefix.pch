@@ -19,4 +19,5 @@
     #import "FlurryAnalytics.h"
     #import "UIImage+Scaling.h"
     #import "Utils.h"
+    #import "NSString+HTML.h"
 #endif

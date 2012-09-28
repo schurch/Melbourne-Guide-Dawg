@@ -10,6 +10,7 @@
 
 @interface Comment : NSObject
 
+@property (nonatomic, assign) BOOL posting;
 @property (nonatomic, assign) int commentID;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSDate *date;

@@ -104,6 +104,10 @@
 		FD8703B3156E532E00FE0585 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8703B1156E532E00FE0585 /* FilterViewController.m */; };
 		FD8703B6156E5C7600FE0585 /* close-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FD8703B4156E5C7400FE0585 /* close-btn.png */; };
 		FD8703B7156E5C7600FE0585 /* close-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD8703B5156E5C7500FE0585 /* close-btn@2x.png */; };
+		FDA4E97516153D7F00E4412C /* configure-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FDA4E97316153D7F00E4412C /* configure-btn.png */; };
+		FDA4E97616153D7F00E4412C /* configure-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDA4E97416153D7F00E4412C /* configure-btn@2x.png */; };
+		FDA4E979161557CD00E4412C /* please-sync-message.png in Resources */ = {isa = PBXBuildFile; fileRef = FDA4E977161557CD00E4412C /* please-sync-message.png */; };
+		FDA4E97A161557CE00E4412C /* please-sync-message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDA4E978161557CD00E4412C /* please-sync-message@2x.png */; };
 		FDA98E8D1568641E00B3D470 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA98E8C1568641E00B3D470 /* libFlurryAnalytics.a */; };
 		FDAE678114C413EF004488DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678014C413EF004488DC /* UIKit.framework */; };
 		FDAE678314C413EF004488DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAE678214C413EF004488DC /* Foundation.framework */; };
@@ -323,6 +327,10 @@
 		FD8703B1156E532E00FE0585 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		FD8703B4156E5C7400FE0585 /* close-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-btn.png"; sourceTree = "<group>"; };
 		FD8703B5156E5C7500FE0585 /* close-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-btn@2x.png"; sourceTree = "<group>"; };
+		FDA4E97316153D7F00E4412C /* configure-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "configure-btn.png"; sourceTree = "<group>"; };
+		FDA4E97416153D7F00E4412C /* configure-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "configure-btn@2x.png"; sourceTree = "<group>"; };
+		FDA4E977161557CD00E4412C /* please-sync-message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "please-sync-message.png"; sourceTree = "<group>"; };
+		FDA4E978161557CD00E4412C /* please-sync-message@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "please-sync-message@2x.png"; sourceTree = "<group>"; };
 		FDA98E8B1568641E00B3D470 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
 		FDA98E8C1568641E00B3D470 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
 		FDAE677C14C413EF004488DC /* MelbourneGuideDawg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MelbourneGuideDawg.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -624,6 +632,10 @@
 		FD54EE3714F862E000EC9BAE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FDA4E977161557CD00E4412C /* please-sync-message.png */,
+				FDA4E978161557CD00E4412C /* please-sync-message@2x.png */,
+				FDA4E97316153D7F00E4412C /* configure-btn.png */,
+				FDA4E97416153D7F00E4412C /* configure-btn@2x.png */,
 				FDE1994C1601E20000200EC4 /* comment-post-btn.png */,
 				FDE1994D1601E20000200EC4 /* comment-post-btn@2x.png */,
 				FDE199481601DB4700200EC4 /* comment-input-bg.png */,
@@ -1140,6 +1152,10 @@
 				FDE1994E1601E20000200EC4 /* comment-post-btn.png in Resources */,
 				FDE1994F1601E20000200EC4 /* comment-post-btn@2x.png in Resources */,
 				FDE199591601EC0600200EC4 /* CommentCell.xib in Resources */,
+				FDA4E97516153D7F00E4412C /* configure-btn.png in Resources */,
+				FDA4E97616153D7F00E4412C /* configure-btn@2x.png in Resources */,
+				FDA4E979161557CD00E4412C /* please-sync-message.png in Resources */,
+				FDA4E97A161557CE00E4412C /* please-sync-message@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -121,6 +121,12 @@
 
 #pragma mark - UI Actions -
 
+- (IBAction)visitWebsite:(id)sender
+{
+    UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Visit website?" message:@"Open Safari to view our website?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Open Safari", nil] autorelease];
+    [alertView show];
+}
+
 - (IBAction)emailFeedback:(id)sender 
 {
     if (![MFMailComposeViewController canSendMail]) 
@@ -139,8 +145,7 @@
     composer.navigationBar.tintColor = [UIColor colorWithWhite:0.1 alpha:1.0];
     composer.mailComposeDelegate = self;
     
-    [composer setToRecipients:[NSArray arrayWithObject:@"feedback@melbourneguidedawg.com"]];
-    [composer setSubject:@"Feedback"];
+    [composer setToRecipients:[NSArray arrayWithObject:@"info@melbourneguidedawg.com"]];
     
     [self presentModalViewController:composer animated:YES];
     [composer release];  
@@ -156,6 +161,15 @@
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
 {    
     [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - alert view delegate -
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.melbourneguidedawg.com"]];
+    }
 }
 
 #pragma mark - Sync view methods -
@@ -254,11 +268,11 @@
     
     [self.syncManager syncWithCompletionBlock:^{
         NSLog(@"Success syncing the data.");
-        [self stopLoadingWithMessage:@"Synchronization complete" wasSuccess:YES];
+        [self stopLoadingWithMessage:@"Synchronization complete." wasSuccess:YES];
     } errorBlock:^(NSError *error){
         NSLog(@"There was an error syncing the data.");
         
-        [self stopLoadingWithMessage:@"An error occured. Please try again later" wasSuccess:NO];
+        [self stopLoadingWithMessage:@"An error occured. Please try again later." wasSuccess:NO];
         
         if (error) {
             NSLog(@"Unresolved error when downloading data: %@, %@", error, [error userInfo]);

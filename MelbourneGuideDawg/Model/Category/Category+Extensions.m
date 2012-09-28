@@ -60,6 +60,16 @@
     return [results objectAtIndex:0];
 }
 
+#pragma mark - instance methods -
+
+- (NSArray *)sortedPlaces
+{
+    NSSortDescriptor *sortNameDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
+    NSArray *sortDescriptors = @[sortNameDescriptor];
+    
+    return [self.places sortedArrayUsingDescriptors:sortDescriptors];
+}
+
 #pragma mark - Private methods -
 
 + (NSArray *)executeRequestWithPredicate:(NSPredicate *)predicate
@@ -70,7 +80,7 @@
     [request setEntity:entity];
     
     NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
-    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];    
+    [request setSortDescriptors:@[sortDescriptor]];
     
     if (predicate) {
         [request setPredicate:predicate];   

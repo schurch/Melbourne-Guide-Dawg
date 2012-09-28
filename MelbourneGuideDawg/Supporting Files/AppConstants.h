@@ -12,3 +12,5 @@ extern NSString * const kBundleID;
 extern NSString * const kServerBaseURL;
 extern NSString * const kSyncCompleteNotificaton;
 extern NSString * const kSyncFailedNotificaton;
+
+extern NSString * const kNameKeyLookup;

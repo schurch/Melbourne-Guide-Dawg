@@ -11,9 +11,11 @@
 #import "Category.h"
 #import "Category+Extensions.h"
 
-@interface CategoryViewController : UITableViewController
+@interface CategoryViewController : UIViewController
 
 @property (nonatomic, assign) IBOutlet UITableViewCell *tableViewCell;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet UIImageView *pleaseSyncMessage;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSArray *categories;
 @property (nonatomic, retain) PlacesViewController *placesViewController;

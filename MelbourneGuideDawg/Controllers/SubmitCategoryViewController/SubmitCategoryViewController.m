@@ -35,14 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    UIImage *backButtonImage = [UIImage imageNamed:@"back-btn.png"];
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setFrame:CGRectMake(0.0f, 0.0f, backButtonImage.size.width, backButtonImage.size.height)];
-    [backButton setImage:backButtonImage forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:backButton] autorelease];
-    self.navigationItem.leftBarButtonItem = backButtonItem;
+
+    self.navigationItem.leftBarButtonItem = [Utils generateButtonItemWithImageName:@"back-btn.png" target:self selector:@selector(back:)];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(refreshView)

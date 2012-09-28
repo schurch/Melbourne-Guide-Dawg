@@ -60,21 +60,9 @@
 {
     [super viewDidLoad];
     
-    UIImage *locateBtnImage = [UIImage imageNamed:@"locate-btn.png"];
-    UIButton *locateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [locateBtn setFrame:CGRectMake(0.0f, 0.0f, locateBtnImage.size.width, locateBtnImage.size.height)];
-    [locateBtn setImage:locateBtnImage forState:UIControlStateNormal];
-    [locateBtn addTarget:self action:@selector(locate:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *locateBtnItem = [[[UIBarButtonItem alloc] initWithCustomView:locateBtn] autorelease];
-    self.navigationItem.leftBarButtonItem = locateBtnItem;
-    
-    UIImage *filterBtnImage = [UIImage imageNamed:@"filter-btn.png"];
-    UIButton *filterBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [filterBtn setFrame:CGRectMake(0.0f, 0.0f, filterBtnImage.size.width, filterBtnImage.size.height)];
-    [filterBtn setImage:filterBtnImage forState:UIControlStateNormal];
-    [filterBtn addTarget:self action:@selector(filter:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *filterBtnItem = [[[UIBarButtonItem alloc] initWithCustomView:filterBtn] autorelease];
-    self.navigationItem.rightBarButtonItem = filterBtnItem;
+
+    self.navigationItem.leftBarButtonItem = [Utils generateButtonItemWithImageName:@"locate-btn.png" target:self selector:@selector(locate:)];
+    self.navigationItem.rightBarButtonItem = [Utils generateButtonItemWithImageName:@"filter-btn.png" target:self selector:@selector(filter:)];
     
     [self resetMapLocationWithAnimation:NO location:CLLocationCoordinate2DMake(-37.812225, 144.963055) zoom:2.0];
     

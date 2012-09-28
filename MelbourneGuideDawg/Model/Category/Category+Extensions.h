@@ -17,4 +17,6 @@
 + (Category *)categoryWithId:(NSNumber *)categoryId;
 + (NSArray *)executeRequestWithPredicate:(NSPredicate *)predicate;
 
+- (NSArray *)sortedPlaces;
+
 @end

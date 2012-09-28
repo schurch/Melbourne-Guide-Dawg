@@ -68,6 +68,7 @@ void uncaughtExceptionHandler(NSException *exception) {
         [Utils moveDownloadDataToCache];
     }
     
+    //configure views
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
     HomeViewController *homeViewController = [[[HomeViewController alloc] initWithNibName:@"HomeView" bundle:nil] autorelease];
