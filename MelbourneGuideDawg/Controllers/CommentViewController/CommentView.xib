@@ -123,6 +123,7 @@
 						<string key="NSFrame">{{238, 159}, {71, 31}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -157,6 +158,7 @@
 						<string key="NSFrame">{{141, 31}, {37, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="456371442"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -241,16 +243,14 @@
 								<string key="NSFrame">{{43, 98}, {235, 62}}</string>
 								<reference key="NSSuperview" ref="681127378"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="456371442"/>
+								<reference key="NSNextKeyView" ref="395348967"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string type="base64-UTF8" key="IBUIText">UGxlYXNlIHNlbGVjdCBhIHVzZXJuYW1lIHRvIGNvbW1lbnQgd2l0aC4KVGhpcyBjYW4gYmUgY2hhbmdl
-ZCBhdCBhbnkgdGltZSBieSBoaXR0aW5nIHRoZSBjb25maWd1cmUgYnV0dG9uIGF0IHRoZSB0b3Agcmln
-aHQuA</string>
+								<string key="IBUIText">This can be changed at any time by hitting the configure button at the top right.</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -281,7 +281,6 @@ aHQuA</string>
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwLjkAA</bytes>
 						</object>
-						<float key="IBUIAlpha">0.0</float>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</array>

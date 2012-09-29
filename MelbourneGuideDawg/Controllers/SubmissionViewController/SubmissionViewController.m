@@ -207,7 +207,8 @@
         @"place[address]" : self.address,
         @"place[text]" : self.text,
         @"place[category_id]" : self.category.categoryId,
-        @"place[url]" : self.website
+        @"place[url]" : self.website,
+        @"place[device_id]" : [Utils deviceID]
     };
     
     [Place submitWithDetails:details image:self.photo success:^{

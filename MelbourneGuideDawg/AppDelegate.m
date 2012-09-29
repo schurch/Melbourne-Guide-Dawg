@@ -44,6 +44,8 @@ void uncaughtExceptionHandler(NSException *exception) {
 {
     [_window release];
     [_tabBarController release];
+    [_tabImageView release];
+    
     [super dealloc];
 }
 
@@ -84,9 +86,16 @@ void uncaughtExceptionHandler(NSException *exception) {
     SubmissionViewController *submissionViewController = [[[SubmissionViewController alloc] initWithNibName:@"SubmissionView" bundle:nil] autorelease];
     UINavigationController *submissionNavController = [[UINavigationController alloc] initWithRootViewController:submissionViewController];
     
+    
+    //tabbar and customization
+    self.tabImageView = [[[UIImageView alloc] init] autorelease];
+    self.tabImageView.image = [UIImage imageNamed:@"t-bar-1.png"];
+    self.tabImageView.frame = CGRectMake(0, self.window.frame.size.height - 49, 320, 49);
+    
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:homeViewController, placesNavigationController, mapNavigationController, submissionNavController, nil];
     self.tabBarController.delegate = self;
+    [self.tabBarController.view addSubview:self.tabImageView];
     
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
@@ -119,12 +128,30 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
+    NSUInteger index=[[tabBarController viewControllers] indexOfObject:viewController];
+    
+    switch (index)
+    {
+        case 0:
+            self.tabImageView.image = [UIImage imageNamed:@"t-bar-1.png"];
+            break;
+        case 1:
+            self.tabImageView.image = [UIImage imageNamed:@"t-bar-2.png"];
+            break;
+        case 2:
+            self.tabImageView.image = [UIImage imageNamed:@"t-bar-3.png"];
+            break;
+        default:
+            break;
+    }
+    
     if ([viewController isKindOfClass:[UINavigationController class]]) {
         UIViewController *rootController = [[((UINavigationController *)viewController) viewControllers] objectAtIndex:0];
         if ([rootController isKindOfClass:[SubmissionViewController class]]) {
             SubmissionViewController *submissionController = (SubmissionViewController *)rootController;
             
             if (submissionController.photo) {
+                self.tabImageView.image = [UIImage imageNamed:@"t-bar-4.png"];
                 return YES;
             }
             
