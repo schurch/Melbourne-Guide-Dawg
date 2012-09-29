@@ -168,6 +168,8 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    self.tabImageView.image = [UIImage imageNamed:@"t-bar-4.png"];
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.window animated:YES];
     hud.labelText = @"Processing image..";
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

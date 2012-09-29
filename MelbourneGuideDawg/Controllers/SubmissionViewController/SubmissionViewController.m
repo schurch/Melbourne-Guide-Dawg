@@ -469,6 +469,8 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (alertView.tag == ALERTVIEW_SUCCESS_TAG) {
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        appDelegate.tabImageView.image = [UIImage imageNamed:@"t-bar-1.png"];
         [self.tabBarController setSelectedIndex:0];
         self.photo = nil;
         self.photoThumbnail = nil;

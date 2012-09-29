@@ -87,6 +87,7 @@
     NSString *name = [[NSUserDefaults standardUserDefaults] stringForKey:kNameKeyLookup];
     if (!name) {
         [self showChangeUsernameDialog:NO];
+        [self fetchComments];
     } else {
         [self.commentBox becomeFirstResponder];
         [self fetchComments];
@@ -195,6 +196,7 @@
 - (void)showChangeUsernameDialog:(BOOL)animated
 {
     [self.usernameTextField becomeFirstResponder];
+    self.navigationItem.leftBarButtonItem.enabled = NO;
     self.navigationItem.rightBarButtonItem.enabled = NO;
     self.usernameTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kNameKeyLookup];
     
@@ -210,6 +212,7 @@
 - (void)hideChangeUsernameDialog
 {
     [UIView animateWithDuration:0.3 animations:^{
+        self.navigationItem.leftBarButtonItem.enabled = YES;
         self.navigationItem.rightBarButtonItem.enabled = YES;
         self.usernameView.alpha = 0.0;
         [self.commentBox becomeFirstResponder];

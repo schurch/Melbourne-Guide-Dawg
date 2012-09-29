@@ -1144,7 +1144,7 @@
 		FDAE677314C413EE004488DC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = FDAE677614C413EE004488DC /* Build configuration list for PBXProject "MelbourneGuideDawg" */;
 			compatibilityVersion = "Xcode 3.2";
