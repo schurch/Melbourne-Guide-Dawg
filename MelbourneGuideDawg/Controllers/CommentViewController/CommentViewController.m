@@ -115,7 +115,7 @@
         
         Comment *newComment = [[[Comment alloc] init] autorelease];
         newComment.text = self.commentBox.text;
-        newComment.name = [[NSUserDefaults standardUserDefaults] stringForKey:kNameKeyLookup];
+        newComment.name = username;
         newComment.posting = YES;
         newComment.date = [NSDate date];
         
@@ -296,7 +296,7 @@
     
     if (textField.tag == 1) {
         textFieldMaxLength = COMMENT_MAXLENGTH;
-    } else if (textField.tag == 2) {
+    } else {
         textFieldMaxLength = USERNAME_MAXLENGTH;
     }
     

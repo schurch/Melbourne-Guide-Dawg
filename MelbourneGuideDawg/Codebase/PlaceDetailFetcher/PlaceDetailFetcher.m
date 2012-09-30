@@ -49,7 +49,7 @@ static NSString *kPostCommentPath = @"places/%i/comments";
 
 + (void)likePlaceWithID:(int)ID success:(void (^)())success failure:(void (^)(NSString *error))failure
 {
-    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kServerBaseURL]];
+    AFHTTPClient *client = [[[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kServerBaseURL]] autorelease];
     
     NSString *path = [NSString stringWithFormat:kLikePlacePath, ID, [Utils deviceID]];
     [client postPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -63,7 +63,7 @@ static NSString *kPostCommentPath = @"places/%i/comments";
 
 + (void)unlikePlaceWithID:(int)ID success:(void (^)())success failure:(void (^)(NSString *error))failure
 {
-    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kServerBaseURL]];
+    AFHTTPClient *client = [[[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kServerBaseURL]] autorelease];
     
     NSString *path = [NSString stringWithFormat:kUnlikePlacePath, ID, [Utils deviceID]];
     [client postPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -104,7 +104,7 @@ static NSString *kPostCommentPath = @"places/%i/comments";
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Successfully posted comment.");
-        NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSString *responseString = [[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding] autorelease];
         NSArray *comments = [self generateCommmentsFromResponse:[responseString JSONValue]];
         success(comments);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

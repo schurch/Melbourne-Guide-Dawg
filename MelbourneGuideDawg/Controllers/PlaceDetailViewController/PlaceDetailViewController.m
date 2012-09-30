@@ -10,6 +10,7 @@
 #import "MapViewController.h"
 #import "Place+Extensions.h"
 #import "PlaceDetailFetcher.h"
+#import "AppDelegate.h"
 
 
 @interface PlaceDetailViewController()
@@ -221,6 +222,8 @@
     mapViewController.location = CLLocationCoordinate2DMake([self.place.lat doubleValue], [self.place.lng doubleValue]);
     [mapViewNavigationController popToRootViewControllerAnimated:NO];
     
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.tabImageView.image = [UIImage imageNamed:@"t-bar-3.png"];
     [self.tabBarController setSelectedIndex:2];
     
     if (![self.place.category.filterSelected boolValue]) {

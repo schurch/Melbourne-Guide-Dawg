@@ -395,7 +395,7 @@
         
         cellLabel.textColor = [UIColor blackColor];
         CLPlacemark *placemark = [placemarks objectAtIndex:0];
-        self.address = [ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO) stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
+        self.address = [[ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO) autorelease] stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
         cellLabel.text = self.address;
         
         [self setPostEnabledState];

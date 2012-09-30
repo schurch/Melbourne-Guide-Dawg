@@ -84,7 +84,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     
     
     SubmissionViewController *submissionViewController = [[[SubmissionViewController alloc] initWithNibName:@"SubmissionView" bundle:nil] autorelease];
-    UINavigationController *submissionNavController = [[UINavigationController alloc] initWithRootViewController:submissionViewController];
+    UINavigationController *submissionNavController = [[[UINavigationController alloc] initWithRootViewController:submissionViewController] autorelease];
     
     
     //tabbar and customization
