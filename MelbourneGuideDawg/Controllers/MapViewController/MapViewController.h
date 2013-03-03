@@ -12,18 +12,8 @@
 
 #define METERS_PER_MILE 1609.344
 
-@interface MapViewController : UIViewController<MKMapViewDelegate, FilterProtocol>
-{
-    BOOL _animatingToAnnotation;
-}
+@interface MapViewController : UIViewController<FilterProtocol>
 
-@property (nonatomic, retain) NSNumber *selectedPlaceId;
-@property (nonatomic, retain) IBOutlet MKMapView *map;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain) NSArray *places;
-@property (nonatomic, assign) CLLocationCoordinate2D location;
-
-- (void)zoomToSite;
-- (void)refreshView;
 
 @end

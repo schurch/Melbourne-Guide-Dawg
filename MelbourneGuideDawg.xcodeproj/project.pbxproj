@@ -1457,7 +1457,7 @@
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9E10F8A6-20EC-4B9C-A7AE-638DD5452924";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "32AB3679-1429-4412-8F52-DFD675CB4073";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

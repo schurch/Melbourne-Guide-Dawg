@@ -36,20 +36,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "MelbourneGuideDawg/Controllers/MapViewController/MapViewController.m"
-         timestampString = "370485152.549015"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "184"
-         endingLineNumber = "184"
-         landmarkName = "-mapView:viewForAnnotation:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "MelbourneGuideDawg/Controllers/FilterViewController/FilterViewController.m"
          timestampString = "370485152.549015"
          startingColumnNumber = "9223372036854775807"
@@ -134,11 +120,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MelbourneGuideDawg/Controllers/MapViewController/MapViewController.m"
-         timestampString = "368683441.925602"
+         timestampString = "376192665.975845"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "35"
-         endingLineNumber = "35"
+         startingLineNumber = "33"
+         endingLineNumber = "33"
          landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>

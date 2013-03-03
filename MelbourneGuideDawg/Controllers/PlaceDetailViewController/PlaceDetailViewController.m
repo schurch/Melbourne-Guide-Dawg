@@ -215,24 +215,25 @@
 
 - (IBAction)viewMap:(id)sender 
 {   
-    UINavigationController *mapViewNavigationController = (UINavigationController *)[self.tabBarController.viewControllers objectAtIndex:2];
-    MapViewController *mapViewController = [mapViewNavigationController.viewControllers objectAtIndex:0];  
-    
-    mapViewController.selectedPlaceId = self.place.placeId;
-    mapViewController.location = CLLocationCoordinate2DMake([self.place.lat doubleValue], [self.place.lng doubleValue]);
-    [mapViewNavigationController popToRootViewControllerAnimated:NO];
-    
+//    UINavigationController *mapViewNavigationController = (UINavigationController *)[self.tabBarController.viewControllers objectAtIndex:2];
+//    MapViewController *mapViewController = [mapViewNavigationController.viewControllers objectAtIndex:0];  
+//    
+//    mapViewController.selectedPlaceId = self.place.placeId;
+//    mapViewController.location = CLLocationCoordinate2DMake([self.place.lat doubleValue], [self.place.lng doubleValue]);
+//    [mapViewNavigationController popToRootViewControllerAnimated:NO];
+//    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     appDelegate.tabImageView.image = [UIImage imageNamed:@"t-bar-3.png"];
     [self.tabBarController setSelectedIndex:2];
-    
-    if (![self.place.category.filterSelected boolValue]) {
-        self.place.category.filterSelected = [NSNumber numberWithBool:YES];
-        [self.managedObjectContext save];
-        [mapViewController refreshView];
-    } else {
-        [mapViewController zoomToSite];
-    }
+//
+//    //make sure the item to show is visible (if the user has hidden their filter)
+//    if (![self.place.category.filterSelected boolValue]) {
+//        self.place.category.filterSelected = [NSNumber numberWithBool:YES];
+//        [self.managedObjectContext save];
+//        [mapViewController refreshView];
+//    } else {
+//        [mapViewController zoomToSite];
+//    }
 }
 
 - (IBAction)comment:(id)sender
