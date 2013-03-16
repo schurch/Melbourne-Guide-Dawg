@@ -52,7 +52,6 @@
     [_category release];
     [_locatingCell release];
     [_mainBodyTextCell release];
-    [_tableView release];
     [_keyboardInputAccessoryView release];
     [_tapRecognizer release];
     [_submissionTitle release];
@@ -264,6 +263,13 @@
     return YES;
 }
 
+- (void)refresh
+{
+    [self dismissKeyboard:nil];
+    [self resetLocatingCell];
+    [self fetchLocation];
+}
+
 #pragma mark - Table view data source
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -382,6 +388,7 @@
         if (error) {
             NSLog(@"Error occured reverse geocoding.");
             [self showLocationCellError];
+            [super stopLoading];
             return;
         }
         
@@ -399,6 +406,7 @@
         cellLabel.text = self.address;
         
         [self setPostEnabledState];
+        [super stopLoading];
     }];
     
     [manager release];
@@ -407,6 +415,7 @@
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"Error occured fetching coords.");
+    [super stopLoading];
     [self showLocationCellError];
     [manager release];
 }
@@ -491,6 +500,8 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
+    [super scrollViewWillBeginDragging:scrollView];
+    
     if (scrollView == self.tableView && self.tableView.contentInset.bottom != 216) {
         [self dismissKeyboard:nil];
     }
