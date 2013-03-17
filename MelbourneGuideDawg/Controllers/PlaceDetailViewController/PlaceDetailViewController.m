@@ -11,6 +11,7 @@
 #import "Place+Extensions.h"
 #import "PlaceDetailFetcher.h"
 #import "AppDelegate.h"
+#import "FullScreenImageViewer.h"
 
 
 @interface PlaceDetailViewController()
@@ -18,6 +19,7 @@
     BOOL _perfomingFetchRequest;
     int _likes;
 }
+@property (nonatomic, retain) FullScreenImageViewer *imageViewer;
 - (void)selectLikeButton;
 - (void)deselectLikeButton;
 @end
@@ -30,8 +32,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) 
-    {
+    if (self)  {
+        self.imageViewer = [[[FullScreenImageViewer alloc] init] autorelease];
     }
     return self;
 }
@@ -52,6 +54,7 @@
     [_commentsLabel release];
     [_likeButton release];
     [_loadingActivityIndicator release];
+    [_imageViewer release];
     
     [super dealloc];
 }
@@ -172,37 +175,15 @@
 # pragma mark - UI actions - 
 
 - (IBAction)showImage:(id)sender 
-{    
-    UIButton *largeImage = [UIButton buttonWithType:UIButtonTypeCustom];
-    
+{
+    UIImage *image = nil;
     if ([self.place.category.name isEqualToString:@"Toilets"]) {
-        [largeImage setImage:[UIImage imageNamed:@"toilet.jpg"] forState:UIControlStateNormal];
+        image = [UIImage imageNamed:@"toilet.jpg"];
     } else {
-        [largeImage setImage:[UIImage imageWithContentsOfFile:[[self.place imagePathForType:kPlaceImageTypeNormal] path]] forState:UIControlStateNormal];
+        image = [UIImage imageWithContentsOfFile:[[self.place imagePathForType:kPlaceImageTypeNormal] path]];
     }
-    
-    largeImage.backgroundColor = [UIColor blackColor];
-    
-    largeImage.alpha = 0;
-    largeImage.adjustsImageWhenHighlighted = NO;
-    [largeImage addTarget:self action:@selector(hideImage:) forControlEvents:UIControlEventTouchUpInside];
-    
-    //if landscape image; then rotate 90
-    if (largeImage.imageView.image.size.width > largeImage.imageView.image.size.height) {
-        largeImage.transform = CGAffineTransformIdentity;
-        largeImage.transform = CGAffineTransformMakeRotation((M_PI * (90) / 180.0));
-    }
-    
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    largeImage.frame = CGRectMake(0, 0, window.frame.size.width, window.frame.size.height);
-    
-    [[[[UIApplication sharedApplication] delegate] window] addSubview:largeImage];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
-    
-    [UIView animateWithDuration:0.5 animations:^
-    {
-        largeImage.alpha = 1.0;
-    }];
+
+    [self.imageViewer displayFullscreenImage:image];
 }
 
 - (IBAction)visitWebSite:(id)sender
@@ -276,17 +257,6 @@
 - (void)back:(id)sender 
 {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)hideImage:(id)sender 
-{
-    [UIView animateWithDuration:0.5 animations:^
-     {
-         [sender setAlpha:0.0];
-         [sender removeFromSuperview];
-     }];
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 }
 
 - (void)selectLikeButton
