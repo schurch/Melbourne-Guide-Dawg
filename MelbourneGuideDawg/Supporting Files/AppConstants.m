@@ -9,7 +9,7 @@
 #import "AppConstants.h"
 
 NSString * const kBundleID = @"com.stefanchurch.melbourneguidedawg";
-//NSString * const kServerBaseURL = @"http://localhost:8080/";
+//NSString * const kServerBaseURL = @"http://192.168.1.106:8080/";
 NSString * const kServerBaseURL = @"http://www.melbourneguidedawg.com/";
 NSString * const kSyncCompleteNotificaton = @"com.melbourneguidedawg.events.sync_complete";
 NSString * const kSyncFailedNotificaton = @"com.melbourneguidedawg.events.sync_failed";

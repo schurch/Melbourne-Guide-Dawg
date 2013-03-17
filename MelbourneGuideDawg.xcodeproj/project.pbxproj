@@ -157,6 +157,7 @@
 		FDB38AE416F5295B00D077D6 /* black-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDB38AE216F5295B00D077D6 /* black-arrow@2x.png */; };
 		FDB38AE716F52DF700D077D6 /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB38AE616F52DF700D077D6 /* PullRefreshTableViewController.m */; };
 		FDBC9C8414C43A8200C56A8C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDBC9C8314C43A8200C56A8C /* MapKit.framework */; };
+		FDC0E1C816F56733004DAB2D /* FullScreenImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC0E1C716F56733004DAB2D /* FullScreenImageViewer.m */; };
 		FDD3A64F15DFD30F003FB9A2 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD3A64215DFD30F003FB9A2 /* GTMNSString+HTML.m */; };
 		FDD3A65015DFD30F003FB9A2 /* NSString+Censored.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD3A64415DFD30F003FB9A2 /* NSString+Censored.m */; };
 		FDD3A65115DFD30F003FB9A2 /* NSString+ErrorChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD3A64615DFD30F003FB9A2 /* NSString+ErrorChecking.m */; };
@@ -397,6 +398,8 @@
 		FDB38AE516F52DF600D077D6 /* PullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PullRefreshTableViewController.h; path = SubmissionViewController/PullRefreshTableViewController.h; sourceTree = "<group>"; };
 		FDB38AE616F52DF700D077D6 /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PullRefreshTableViewController.m; path = SubmissionViewController/PullRefreshTableViewController.m; sourceTree = "<group>"; };
 		FDBC9C8314C43A8200C56A8C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FDC0E1C616F56733004DAB2D /* FullScreenImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FullScreenImageViewer.h; path = Utils/FullScreenImageViewer.h; sourceTree = "<group>"; };
+		FDC0E1C716F56733004DAB2D /* FullScreenImageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FullScreenImageViewer.m; path = Utils/FullScreenImageViewer.m; sourceTree = "<group>"; };
 		FDD3A64015DFD30F003FB9A2 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		FDD3A64115DFD30F003FB9A2 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		FDD3A64215DFD30F003FB9A2 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
@@ -711,7 +714,7 @@
 				FD54EE1F14F862E000EC9BAE /* Categories */,
 				FD64829B15329FDF004F28F0 /* SyncManager */,
 				FDE199341601BC1A00200EC4 /* PlaceDetailFetcher */,
-				FDE199381601C3A400200EC4 /* Utils */,
+				FDE199381601C3A400200EC4 /* Utilities */,
 			);
 			path = Codebase;
 			sourceTree = "<group>";
@@ -1064,13 +1067,15 @@
 			name = PlaceDetailFetcher;
 			sourceTree = "<group>";
 		};
-		FDE199381601C3A400200EC4 /* Utils */ = {
+		FDE199381601C3A400200EC4 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				FDE199351601C3A000200EC4 /* Utils.h */,
 				FDE199361601C3A000200EC4 /* Utils.m */,
+				FDC0E1C616F56733004DAB2D /* FullScreenImageViewer.h */,
+				FDC0E1C716F56733004DAB2D /* FullScreenImageViewer.m */,
 			);
-			name = Utils;
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		FDE199391601C42600200EC4 /* KeychainManager */ = {
@@ -1371,6 +1376,7 @@
 				FDE199451601DA1B00200EC4 /* CommentViewController.m in Sources */,
 				FD02CE521604171700621D19 /* Comment.m in Sources */,
 				FDB38AE716F52DF700D077D6 /* PullRefreshTableViewController.m in Sources */,
+				FDC0E1C816F56733004DAB2D /* FullScreenImageViewer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
