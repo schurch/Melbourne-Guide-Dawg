@@ -149,7 +149,6 @@
     
     if (self.tableView.contentInset.bottom == 216) {
         self.tableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0);
-        [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
     }
 }
 
@@ -453,7 +452,6 @@
     self.tableView.contentInset =  UIEdgeInsetsMake(0, 0, 216, 0);
     NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:2];
     [self.tableView scrollToRowAtIndexPath:selectedIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-//    self.tableView.scrollEnabled = NO;
 }
 
 - (void)textViewDidChange:(UITextView *)textView
