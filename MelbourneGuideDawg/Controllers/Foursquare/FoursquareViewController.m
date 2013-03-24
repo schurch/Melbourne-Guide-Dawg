@@ -88,9 +88,9 @@ typedef enum {
     UIBarButtonItem *loadingViewItem = [[[UIBarButtonItem alloc] initWithCustomView:activityView] autorelease];
     [activityView startAnimating];
     
-    UIBarButtonItem *fixedSpaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+    UIBarButtonItem *fixedSpaceItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                                                                     target:nil
-                                                                                    action:nil];
+                                                                                    action:nil] autorelease];
     [fixedSpaceItem setWidth:8];
     
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:fixedSpaceItem, loadingViewItem, nil];

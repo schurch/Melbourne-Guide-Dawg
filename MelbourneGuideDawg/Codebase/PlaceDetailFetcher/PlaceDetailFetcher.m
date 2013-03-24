@@ -21,7 +21,6 @@ static NSString *kFetchDetailsPath = @"places/%i/details?device_id=%@";
 static NSString *kLikePlacePath = @"places/%i/like?device_id=%@";
 static NSString *kUnlikePlacePath = @"places/%i/unlike?device_id=%@";
 static NSString *kCommentsPath = @"places/%i/comments.json";
-static NSString *kPostCommentPath = @"places/%i/comments";
 
 #pragma mark - general fetch -
 
