@@ -12,8 +12,9 @@
 
 #import "PullRefreshTableViewController.h"
 #import "SubmitCategoryViewController.h"
+#import "FoursquareViewController.h"
 
-@interface SubmissionViewController : PullRefreshTableViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CategoryViewControllerProtocol, UIAlertViewDelegate>
+@interface SubmissionViewController : PullRefreshTableViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CategoryViewControllerProtocol, UIAlertViewDelegate, FoursquareViewControllerDelegate>
 
 @property (nonatomic, assign) IBOutlet UITableViewCell *tableCell;
 @property (nonatomic, retain) IBOutlet UITableViewCell *locatingCell;

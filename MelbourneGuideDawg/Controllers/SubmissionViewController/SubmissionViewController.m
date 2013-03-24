@@ -6,23 +6,21 @@
 //
 //
 
+#import <AddressBookUI/AddressBookUI.h>
+#import <QuartzCore/QuartzCore.h>
 #import "SubmissionViewController.h"
 #import "AppDelegate.h"
-#import <AddressBookUI/AddressBookUI.h>
 #import "NSString+HTML.h"
 #import "Category.h"
 #import "Place.h"
 #import "Place+Extensions.h"
 #import "NSManagedObject+Entity.h"
 #import "MBProgressHUD.h"
-#import <QuartzCore/QuartzCore.h>
-
+#import "FoursquareVenue.h"
 
 #define TITLE_TEXTFIELD_TAG 100
 #define WEBSITE_TEXTFIELD_TAG 101
-
 #define ALERTVIEW_SUCCESS_TAG 200
-
 #define CATEGORY_DEFAULT_TEXT @"Category"
 
 @interface SubmissionViewController ()
@@ -63,6 +61,8 @@
     
     [super dealloc];
 }
+
+#pragma mark - view lifecycle -
 
 - (void)viewDidLoad
 {
@@ -181,6 +181,21 @@
     [self setPostEnabledState];
 }
 
+- (void)updateAddressCellWithAddress:(NSString *)address
+{
+    UIActivityIndicatorView *activityIndicator = (UIActivityIndicatorView *)[self.locatingCell viewWithTag:1];
+    [activityIndicator stopAnimating];
+    
+    UILabel *cellLabel = (UILabel *)[self.locatingCell viewWithTag:2];
+    UIImageView *checkCrossImage = (UIImageView *)[self.locatingCell viewWithTag:3];
+    
+    checkCrossImage.image = [UIImage imageNamed:@"green-check.png"];
+    checkCrossImage.hidden = NO;
+    
+    cellLabel.textColor = [UIColor blackColor];
+    cellLabel.text = address;
+}
+
 - (IBAction)post:(id)sender
 {
     NSLog(@"Post..");
@@ -271,15 +286,6 @@
 
 #pragma mark - Table view data source
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 2 && indexPath.row == 0) {
-        return 130;
-    } else {
-        return 44;
-    }
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 3;
@@ -363,13 +369,28 @@
 
 #pragma mark - Table view delegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 2 && indexPath.row == 0) {
+        return 130;
+    } else {
+        return 44;
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0 && indexPath.row == 1) {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        SubmitCategoryViewController *categoryViewController = [[[SubmitCategoryViewController alloc] initWithNibName:@"SubmitCategoryView" bundle:nil] autorelease];
-        categoryViewController.delegate = self;
-        [self.navigationController pushViewController:categoryViewController animated:YES];
+    if (indexPath.section == 0) {
+        if (indexPath.row == 1) {
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            SubmitCategoryViewController *categoryViewController = [[[SubmitCategoryViewController alloc] initWithNibName:@"SubmitCategoryView" bundle:nil] autorelease];
+            categoryViewController.delegate = self;
+            [self.navigationController pushViewController:categoryViewController animated:YES];
+        }
+    } else if (indexPath.section == 1) {
+        FoursquareViewController *foursquareViewController = [[[FoursquareViewController alloc] initWithNibName:@"FoursquareView" bundle:nil] autorelease];
+        foursquareViewController.delegate = self;
+        [self.navigationController pushViewController:foursquareViewController animated:YES];
     }
 }
 
@@ -391,19 +412,10 @@
             return;
         }
         
-        UIActivityIndicatorView *activityIndicator = (UIActivityIndicatorView *)[self.locatingCell viewWithTag:1];
-        UILabel *cellLabel = (UILabel *)[self.locatingCell viewWithTag:2];
-        UIImageView *checkCrossImage = (UIImageView *)[self.locatingCell viewWithTag:3];
-        
-        [activityIndicator stopAnimating];
-        checkCrossImage.image = [UIImage imageNamed:@"green-check.png"];
-        checkCrossImage.hidden = NO;
-        
-        cellLabel.textColor = [UIColor blackColor];
         CLPlacemark *placemark = [placemarks objectAtIndex:0];
         self.address = [[ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO) autorelease] stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
-        cellLabel.text = self.address;
         
+        [self updateAddressCellWithAddress:self.address];
         [self setPostEnabledState];
         [super stopLoading];
     }];
@@ -504,5 +516,23 @@
         [self dismissKeyboard:nil];
     }
 }
+
+#pragma mark - foursquare viewcontroller delegate -
+
+- (void)foursquareViewController:(FoursquareViewController *)foursqaureViewController
+        didSelectFoursquareVenue:(FoursquareVenue *)foursquareVenue
+{
+    self.coords = foursquareVenue.locationCoords;
+    self.submissionTitle = foursquareVenue.name;
+    self.website = [foursquareVenue.venueURL absoluteString];
+    self.address = [foursquareVenue fullAddress];
+    
+    [self updateAddressCellWithAddress:self.address];
+    
+    [self.tableView reloadData];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 @end
