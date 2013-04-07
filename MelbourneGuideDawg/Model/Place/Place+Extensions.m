@@ -54,10 +54,10 @@
 {
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Place" inManagedObjectContext:[NSManagedObjectContext sharedInstance]];
     
-    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entity];
     
-    NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category.filterSelected == %@", [NSNumber numberWithBool:YES]];
@@ -77,10 +77,10 @@
 {
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Place" inManagedObjectContext:[NSManagedObjectContext sharedInstance]];
     
-    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entity];
     
-    NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     
     return [[NSManagedObjectContext sharedInstance] executeFetchRequest:request error:nil];
@@ -88,7 +88,7 @@
 
 + (void)submitWithDetails:(NSDictionary *)details image:(UIImage *)image success:(void (^)())success failure:(void (^)(NSString *error))failure
 {
-    AFHTTPClient *client = [[[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kServerBaseURL]] autorelease];
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kServerBaseURL]];
     [client setAuthorizationHeaderWithUsername:kUploadUsername password:kUploadPassword];
     client.parameterEncoding = AFJSONParameterEncoding;
     
@@ -97,7 +97,7 @@
         [formData appendPartWithFileData:imageData name:@"place[image]" fileName:@"image.png" mimeType:@"image/png"];
     }];
     
-    AFHTTPRequestOperation *operation = [[[AFHTTPRequestOperation alloc] initWithRequest:request] autorelease];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         success();

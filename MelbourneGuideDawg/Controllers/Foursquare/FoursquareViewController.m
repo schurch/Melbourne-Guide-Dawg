@@ -7,8 +7,9 @@
 //
 
 #import "FoursquareViewController.h"
-#import "Foursquare2.h"
 #import "FoursquareVenue.h"
+#import "AFHTTPClient.h"
+#import "AFJSONRequestOperation.h"
 
 typedef enum {
     FoursquareViewControllerModeLoading,
@@ -17,9 +18,10 @@ typedef enum {
 } FoursquareViewControllerMode;
 
 @interface FoursquareViewController ()
-@property (nonatomic, assign) FoursquareViewControllerMode currentViewControllerMode;
-@property (nonatomic, retain) NSMutableArray *foursquareLocations;
-@property (nonatomic, retain) NSString *errorMessage;
+@property (nonatomic) FoursquareViewControllerMode currentViewControllerMode;
+@property (nonatomic, strong) NSMutableArray *foursquareLocations;
+@property (nonatomic, strong) NSString *errorMessage;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 - (void)fetchNearbyLocations;
 @end
 
@@ -32,19 +34,13 @@ typedef enum {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Locations";
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [_tableView release];
-    [_poweredByFoursquareCell release];
-    [_foursquareLocations release];
-    [_errorMessage release];
-    
-    [super dealloc];
-}
 
 #pragma mark - view lifecycle -
 
@@ -82,25 +78,21 @@ typedef enum {
 - (void)fetchNearbyLocations
 {
     self.currentViewControllerMode = FoursquareViewControllerModeLoading;
-    self.foursquareLocations = [[[NSMutableArray alloc] init] autorelease];
+    self.foursquareLocations = [[NSMutableArray alloc] init];
     
-    UIActivityIndicatorView * activityView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] autorelease];
-    UIBarButtonItem *loadingViewItem = [[[UIBarButtonItem alloc] initWithCustomView:activityView] autorelease];
+    UIActivityIndicatorView * activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    UIBarButtonItem *loadingViewItem = [[UIBarButtonItem alloc] initWithCustomView:activityView];
     [activityView startAnimating];
     
-    UIBarButtonItem *fixedSpaceItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+    UIBarButtonItem *fixedSpaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                                                                     target:nil
-                                                                                    action:nil] autorelease];
+                                                                                    action:nil];
     [fixedSpaceItem setWidth:8];
     
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:fixedSpaceItem, loadingViewItem, nil];
     
     [self.tableView reloadData];
-    
-    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
+    [self.locationManager startUpdatingLocation];
 }
 
 #pragma mark - table view data source
@@ -121,7 +113,7 @@ typedef enum {
 {
     if (self.currentViewControllerMode == FoursquareViewControllerModeLoading) {
         if (indexPath.row == 0) {
-            UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
+            UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
             cell.textLabel.textColor = [UIColor grayColor];
             cell.textLabel.text = @"Searching for nearby locations...";
@@ -132,7 +124,7 @@ typedef enum {
         }
     } else if (self.currentViewControllerMode == FoursquareViewControllerModeDisplayingError) {
         if (indexPath.row == 0) {
-            UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
+            UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
             cell.textLabel.textColor = [UIColor grayColor];
             cell.textLabel.text = self.errorMessage;
@@ -152,7 +144,7 @@ typedef enum {
             
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:locationCellIdentifier];
             if (cell == nil) {
-                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:locationCellIdentifier] autorelease];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:locationCellIdentifier];
                 cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
                 cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
             }
@@ -186,60 +178,55 @@ typedef enum {
 
 #pragma mark - Location manager delegate -
 
+#define BASE_FOURSQUARE_URL @"https://api.foursquare.com"
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
     [manager stopUpdatingLocation];
     
-    [Foursquare2 searchVenuesNearByLatitude:@(newLocation.coordinate.latitude)
-								  longitude:@(newLocation.coordinate.longitude)
-								 accuracyLL:nil
-								   altitude:nil
-								accuracyAlt:nil
-									  query:nil
-									  limit:nil
-									 intent:intentCheckin
-                                     radius:@(500)
-								   callback:^(BOOL success, id result){
-									   if (success) {
-                                           self.currentViewControllerMode = FoursquareViewControllerModeDisplayingResults;
-                                           
-                                           //-- Build array of venues
-                                           NSArray *venuesData = [result valueForKeyPath:@"response.venues"];
-                                           for (NSDictionary *venueData in venuesData) {
-                                               FoursquareVenue *venue = [[[FoursquareVenue alloc] initWithDictionary:venueData] autorelease];
-                                               [self.foursquareLocations addObject:venue];
-                                           }
-                                           
-                                           [self.tableView reloadData];
-                                           
-                                           //-- Reset location button
-                                           self.navigationItem.rightBarButtonItems = @[[Utils generateButtonItemWithImageName:@"locate-btn.png" target:self selector:@selector(fetchNearbyLocations)]];
-									   }
-                                       else {
-                                           self.currentViewControllerMode = FoursquareViewControllerModeDisplayingError;
-                                           self.errorMessage = @"Unable to fetch locations.";
-                                           [self.tableView reloadData];
-                                           
-                                           //-- Reset location button
-                                           self.navigationItem.rightBarButtonItems = @[[Utils generateButtonItemWithImageName:@"locate-btn.png" target:self selector:@selector(fetchNearbyLocations)]];
-                                       }
-								   }];
-    [manager release];
+    NSString *urlString = [NSString stringWithFormat:@"%@/v2/venues/search?client_id=%@&client_secret=%@&v=20130117&locale=en&ll=%@,%@&radius=500", BASE_FOURSQUARE_URL, kFoursquareOauthKey, kFoursquareOauthSecret, @(newLocation.coordinate.latitude), @(newLocation.coordinate.longitude)];
+    NSURL *requestURL = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:requestURL];
+    
+    AFJSONRequestOperation *requestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        self.currentViewControllerMode = FoursquareViewControllerModeDisplayingResults;
+        
+        //-- Build array of venues
+        NSArray *venuesData = [JSON valueForKeyPath:@"response.venues"];
+        for (NSDictionary *venueData in venuesData) {
+            FoursquareVenue *venue = [[FoursquareVenue alloc] initWithDictionary:venueData];
+            [self.foursquareLocations addObject:venue];
+        }
+        
+        [self.tableView reloadData];
+        
+        //-- Reset location button
+        self.navigationItem.rightBarButtonItems = @[[Utils generateButtonItemWithImageName:@"locate-btn.png" target:self selector:@selector(fetchNearbyLocations)]];
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        self.currentViewControllerMode = FoursquareViewControllerModeDisplayingError;
+        self.errorMessage = @"Unable to fetch locations.";
+        [self.tableView reloadData];
+        
+        //-- Reset location button
+        self.navigationItem.rightBarButtonItems = @[[Utils generateButtonItemWithImageName:@"locate-btn.png" target:self selector:@selector(fetchNearbyLocations)]];
+    }];
+    
+    [requestOperation start];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-    UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Location services are not enabled. To enable this feature go to iOS Settings > Privacy > Location Services and enable them for the 'Melbourne' app." delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil] autorelease];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was a problem finding your location. To enable location services go to iOS Settings > Privacy > Location Services and enable them for the 'Melbourne' app." delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil];
     [alertView show];
     
     self.currentViewControllerMode = FoursquareViewControllerModeDisplayingError;
-    self.errorMessage = @"Location servies are not enabled.";
+    self.errorMessage = @"Unable to find your location.";
     [self.tableView reloadData];
     
     //-- Reset location button
     self.navigationItem.rightBarButtonItems = @[[Utils generateButtonItemWithImageName:@"locate-btn.png" target:self selector:@selector(fetchNearbyLocations)]];
     
-    [manager release];
 }
 
 @end

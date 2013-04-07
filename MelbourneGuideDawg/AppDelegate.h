@@ -10,9 +10,9 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (nonatomic, retain) UIWindow *window;
-@property (nonatomic, retain) UITabBarController *tabBarController;
-@property (nonatomic, retain) IBOutlet UIImageView *tabImageView;
+@property (nonatomic, strong) UIWindow *window;
+@property (nonatomic, strong) UITabBarController *tabBarController;
+@property (nonatomic, strong) IBOutlet UIImageView *tabImageView;
 
 - (void)takePhoto;
 

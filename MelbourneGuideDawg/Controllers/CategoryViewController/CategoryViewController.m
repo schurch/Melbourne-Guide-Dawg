@@ -30,13 +30,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    [_tableView release];
-    [_pleaseSyncMessage release];
-    [_managedObjectContext release];
-    [_categories release];
-    [_placesViewController release];
     
-    [super dealloc];
 }
 
 #pragma mark - View lifecycle -
@@ -45,7 +39,7 @@
 {
     [super viewDidLoad];
     
-    self.placesViewController = [[[PlacesViewController alloc] initWithNibName:@"PlacesView" bundle:nil] autorelease];
+    self.placesViewController = [[PlacesViewController alloc] initWithNibName:@"PlacesView" bundle:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(refreshView) 
@@ -101,7 +95,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     Category *category = [self.categories objectAtIndex:indexPath.row];

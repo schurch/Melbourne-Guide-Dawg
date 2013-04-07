@@ -19,13 +19,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_webview release];
-    [_url release];
-    
-    [super dealloc];
-}
 
 #pragma mark - View lifecycle
 
@@ -51,7 +44,6 @@
     [self.webview stringByEvaluatingJavaScriptFromString:@"document.open();document.close()"];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.url]];
     [self.webview loadRequest:request];
-    [request release];
 }
 
 #pragma mark - Methods -

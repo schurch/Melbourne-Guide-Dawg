@@ -64,7 +64,7 @@
 
 - (NSArray *)sortedPlaces
 {
-    NSSortDescriptor *sortNameDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
+    NSSortDescriptor *sortNameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     NSArray *sortDescriptors = @[sortNameDescriptor];
     
     return [self.places sortedArrayUsingDescriptors:sortDescriptors];
@@ -76,10 +76,10 @@
 {
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Category" inManagedObjectContext:[NSManagedObjectContext sharedInstance]];
     
-    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entity];
     
-    NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     [request setSortDescriptors:@[sortDescriptor]];
     
     if (predicate) {

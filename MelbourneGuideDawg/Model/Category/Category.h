@@ -13,10 +13,10 @@
 
 @interface Category : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * categoryId;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * filterSelected;
-@property (nonatomic, retain) NSSet *places;
+@property (nonatomic, strong) NSNumber * categoryId;
+@property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSNumber * filterSelected;
+@property (nonatomic, strong) NSSet *places;
 @end
 
 @interface Category (CoreDataGeneratedAccessors)

@@ -44,23 +44,6 @@
 
 #pragma mark - Memory management -
 
-- (void)dealloc 
-{
-    [_syncLabel release];
-    [_syncActivityIndicator release];
-    [_syncArrow release];
-    [_syncBackground release];
-    [_syncTickCrossImage release];
-    [_introScrollView release];
-    [_introductionView release];
-    [_introHeaderLabel release];
-    [_introTextLabel release];
-    [_syncButton release];
-    [_pullToSyncHelper release];
-    [_syncManager release];
-    
-    [super dealloc];
-}
 
 #pragma mark - View lifecycle
 
@@ -80,7 +63,6 @@
     UIView *bottomPadding = [[UIView alloc] initWithFrame:CGRectMake(0, paddingYOffset, 320, 400)];
     bottomPadding.backgroundColor = [UIColor blackColor];
     [self.introScrollView addSubview:bottomPadding];
-    [bottomPadding release];
     
     BOOL shownHelper = [[NSUserDefaults standardUserDefaults] boolForKey:kShownHelperUserSettingsKey];
     if (!shownHelper) {
@@ -99,7 +81,7 @@
     self.syncLabel.text = PULL_TO_SYNC_TEXT;
     self.syncTickCrossImage.hidden = YES;
     
-    self.syncManager = [[[SyncManager alloc] init] autorelease];
+    self.syncManager = [[SyncManager alloc] init];
 }
 
 - (void)viewDidUnload
@@ -123,7 +105,7 @@
 
 - (IBAction)visitWebsite:(id)sender
 {
-    UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Visit website?" message:@"Open Safari to view our website?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Open Safari", nil] autorelease];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Visit website?" message:@"Open Safari to view our website?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Open Safari", nil];
     [alertView show];
 }
 
@@ -137,7 +119,6 @@
                                               cancelButtonTitle:@"OK" 
                                               otherButtonTitles:nil];
         [alert show];
-        [alert release];
         return;
     }
     
@@ -148,7 +129,6 @@
     [composer setToRecipients:[NSArray arrayWithObject:@"info@melbourneguidedawg.com"]];
     
     [self presentModalViewController:composer animated:YES];
-    [composer release];  
 }
 
 - (IBAction)hideSyncButton:(id)sender

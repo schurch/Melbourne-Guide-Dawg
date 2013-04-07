@@ -25,9 +25,6 @@
 - (void)dealloc
 {
     _delegate = nil;
-    [_tableView release];
-    [_categories release];
-    [super dealloc];
 }
 
 #pragma mark - view lifecycle -
@@ -89,7 +86,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
     {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     Category *category = [self.categories objectAtIndex:indexPath.row];

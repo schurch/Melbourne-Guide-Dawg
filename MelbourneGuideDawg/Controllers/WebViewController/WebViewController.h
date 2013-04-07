@@ -11,7 +11,7 @@
 
 @interface WebViewController : PlaceViewController
 
-@property (nonatomic, retain) IBOutlet UIWebView *webview; 
-@property (nonatomic, retain) NSString *url;
+@property (nonatomic, strong) IBOutlet UIWebView *webview; 
+@property (nonatomic, strong) NSString *url;
 
 @end

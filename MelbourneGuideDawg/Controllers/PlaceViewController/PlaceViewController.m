@@ -20,11 +20,6 @@
     return self;
 }
 
-- (void)dealloc 
-{   
-    [_managedObjectContext release];    
-    [super dealloc];
-}
 
 #pragma mark - View lifecycle -
 

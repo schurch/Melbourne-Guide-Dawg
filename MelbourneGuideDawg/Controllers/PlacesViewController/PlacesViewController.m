@@ -30,14 +30,6 @@
 
 #pragma mark - memory management -
 
-- (void)dealloc 
-{
-    [_places release];
-    [_category release];
-    [_tableView release];
-    
-    [super dealloc];
-}
 
 #pragma mark - View lifecycle -
 
@@ -126,7 +118,6 @@
     PlaceDetailViewController *placeDetailViewController = [[PlaceDetailViewController alloc] initWithNibName:@"PlaceDetailView" bundle:nil];
     placeDetailViewController.place = [self.places objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:placeDetailViewController animated:YES];
-    [placeDetailViewController release];     
 }
 
 @end

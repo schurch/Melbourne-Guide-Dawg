@@ -15,20 +15,20 @@
 
 @interface PlaceDetailViewController : PlaceViewController<CommentViewControllerDelegate>
 
-@property (nonatomic, retain) WebViewController *webViewController;
-@property (nonatomic, retain) Place *place;
-@property (nonatomic, retain) IBOutlet UIButton *imageButton;
-@property (nonatomic, retain) IBOutlet UILabel *titleLabel;
-@property (nonatomic, retain) IBOutlet UILabel *locationLabel;
-@property (nonatomic, retain) IBOutlet UILabel *textLabel;
-@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, retain) IBOutlet UIButton *viewOnMapButton;
-@property (nonatomic, retain) IBOutlet UIView *detailActionsView;
-@property (nonatomic, retain) IBOutlet UIButton *viewWebsiteButton;
-@property (nonatomic, retain) IBOutlet UILabel *likesLabel;
-@property (nonatomic, retain) IBOutlet UILabel *commentsLabel;
-@property (nonatomic, retain) IBOutlet UIButton *likeButton;
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *loadingActivityIndicator;
+@property (nonatomic, strong) WebViewController *webViewController;
+@property (nonatomic, strong) Place *place;
+@property (nonatomic, strong) IBOutlet UIButton *imageButton;
+@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *locationLabel;
+@property (nonatomic, strong) IBOutlet UILabel *textLabel;
+@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) IBOutlet UIButton *viewOnMapButton;
+@property (nonatomic, strong) IBOutlet UIView *detailActionsView;
+@property (nonatomic, strong) IBOutlet UIButton *viewWebsiteButton;
+@property (nonatomic, strong) IBOutlet UILabel *likesLabel;
+@property (nonatomic, strong) IBOutlet UILabel *commentsLabel;
+@property (nonatomic, strong) IBOutlet UIButton *likeButton;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *loadingActivityIndicator;
 
 - (IBAction)visitWebSite:(id)sender;
 - (IBAction)showImage:(id)sender;

@@ -14,9 +14,9 @@
 @protocol FoursquareViewControllerDelegate;
 
 @interface FoursquareViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
-@property (nonatomic, assign) id<FoursquareViewControllerDelegate> delegate;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) IBOutlet UITableViewCell *poweredByFoursquareCell;
+@property (nonatomic, weak) id<FoursquareViewControllerDelegate> delegate;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UITableViewCell *poweredByFoursquareCell;
 @end
 
 @protocol FoursquareViewControllerDelegate <NSObject>

@@ -17,10 +17,10 @@
     BOOL _animatingToAnnotation;
 }
 
-@property (nonatomic, retain) NSNumber *selectedPlaceId;
-@property (nonatomic, retain) IBOutlet MKMapView *map;
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain) NSArray *places;
+@property (nonatomic, strong) NSNumber *selectedPlaceId;
+@property (nonatomic, strong) IBOutlet MKMapView *map;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSArray *places;
 @property (nonatomic, assign) CLLocationCoordinate2D location;
 
 - (void)zoomToSite;

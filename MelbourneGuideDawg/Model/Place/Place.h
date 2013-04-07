@@ -13,18 +13,18 @@
 
 @interface Place : NSManagedObject
 
-@property (nonatomic, retain) NSString * address;
-@property (nonatomic, retain) NSDate * date;
-@property (nonatomic, retain) NSString * imageFileName;
-@property (nonatomic, retain) NSString * cellImageFileName;
-@property (nonatomic, retain) NSNumber * lat;
-@property (nonatomic, retain) NSNumber * lng;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * placeId;
-@property (nonatomic, retain) NSString * smallImageFileName;
-@property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) NSString * url;
-@property (nonatomic, retain) NSString * retinaImageFileName;
-@property (nonatomic, retain) Category *category;
+@property (nonatomic, strong) NSString * address;
+@property (nonatomic, strong) NSDate * date;
+@property (nonatomic, strong) NSString * imageFileName;
+@property (nonatomic, strong) NSString * cellImageFileName;
+@property (nonatomic, strong) NSNumber * lat;
+@property (nonatomic, strong) NSNumber * lng;
+@property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSNumber * placeId;
+@property (nonatomic, strong) NSString * smallImageFileName;
+@property (nonatomic, strong) NSString * text;
+@property (nonatomic, strong) NSString * url;
+@property (nonatomic, strong) NSString * retinaImageFileName;
+@property (nonatomic, strong) Category *category;
 
 @end

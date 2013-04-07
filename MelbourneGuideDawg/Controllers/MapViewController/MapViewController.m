@@ -15,7 +15,7 @@
 
 
 @interface MapViewController()
-@property (nonatomic, retain) FilterViewController *filterViewController;
+@property (nonatomic, strong) FilterViewController *filterViewController;
 - (void)resetMapLocationWithAnimation:(BOOL)animate location:(CLLocationCoordinate2D)location zoom:(double)zoom;
 - (void)filter:(id)sender;
 - (void)locate:(id)sender;
@@ -45,13 +45,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    [_filterViewController release];
-    [_selectedPlaceId release];
-    [_map release];
-    [_managedObjectContext release];
-    [_places release];
     
-    [super dealloc];
 }
 
 #pragma mark - View lifecycle -
@@ -76,7 +70,7 @@
                                    options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) 
                                    context:nil];
     
-    self.filterViewController = [[[FilterViewController alloc] initWithNibName:@"FilterView" bundle:nil] autorelease];
+    self.filterViewController = [[FilterViewController alloc] initWithNibName:@"FilterView" bundle:nil];
     self.filterViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     self.filterViewController.delegate = self;
 
@@ -168,7 +162,7 @@
         
         if (annotationView == nil) 
         {
-            annotationView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
+            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             
             UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
             annotationView.rightCalloutAccessoryView = rightButton;
@@ -193,7 +187,6 @@
     
         thumbImageView.frame = CGRectMake(0,0,30,30);
         annotationView.leftCalloutAccessoryView = thumbImageView;
-        [thumbImageView release];
         
         return annotationView;
     }
@@ -208,7 +201,6 @@
         PlaceDetailViewController *placeDetailViewController = [[PlaceDetailViewController alloc] initWithNibName:@"PlaceDetailView" bundle:nil];
         placeDetailViewController.place = view.annotation;
         [self.navigationController pushViewController:placeDetailViewController animated:YES];
-        [placeDetailViewController release];     
     }
 }
 

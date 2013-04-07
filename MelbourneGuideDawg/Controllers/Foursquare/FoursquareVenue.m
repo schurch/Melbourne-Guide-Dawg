@@ -37,25 +37,12 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_foursquareId release];
-    [_name release];
-    [_venueURL release];
-    [_address release];
-    [_city release];
-    [_country release];
-    [_postCode release];
-    [_state release];
-    
-    [super dealloc];
-}
 
 #pragma mark - methods -
 
 - (NSString *)fullAddress
 {
-    NSMutableString *address = [[[NSMutableString alloc] init] autorelease];
+    NSMutableString *address = [[NSMutableString alloc] init];
     
     if (self.address) {
         [address appendFormat:@"%@, ", self.address];

@@ -14,15 +14,15 @@
 
 @interface CommentViewController : UIViewController<UITextFieldDelegate>
 
-@property (nonatomic, assign) id<CommentViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<CommentViewControllerDelegate> delegate;
 @property (nonatomic, assign) int placeID;
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *loadingIndicator;
-@property (nonatomic, assign) IBOutlet UITableViewCell *commentCell;
-@property (nonatomic, retain) IBOutlet UIButton *postButton;
-@property (nonatomic, retain) IBOutlet UITextField *commentBox;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) IBOutlet UIView *usernameView;
-@property (nonatomic, retain) IBOutlet UITextField *usernameTextField;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@property (nonatomic, weak) IBOutlet UITableViewCell *commentCell;
+@property (nonatomic, strong) IBOutlet UIButton *postButton;
+@property (nonatomic, strong) IBOutlet UITextField *commentBox;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIView *usernameView;
+@property (nonatomic, strong) IBOutlet UITextField *usernameTextField;
 
 - (IBAction)postComment:(id)sender;
 - (IBAction)textFieldTextChanged:(id)sender;

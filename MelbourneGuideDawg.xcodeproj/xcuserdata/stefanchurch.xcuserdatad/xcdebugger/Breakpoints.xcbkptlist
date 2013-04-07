@@ -7,32 +7,6 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "MelbourneGuideDawg/Controllers/Foursquare/FoursquareViewController.m"
-         timestampString = "385801570.321077"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "213"
-         endingLineNumber = "213"
-         landmarkName = "-locationManager:didUpdateToLocation:fromLocation:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "MelbourneGuideDawg/Controllers/Foursquare/FoursquareViewController.m"
-         timestampString = "385801570.321077"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "214"
-         endingLineNumber = "214"
-         landmarkName = "-locationManager:didUpdateToLocation:fromLocation:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "MelbourneGuideDawg/Controllers/Foursquare/FoursquareVenue.m"
          timestampString = "385800369.312798"
          startingColumnNumber = "9223372036854775807"
@@ -43,41 +17,80 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "MelbourneGuideDawg/Controllers/Foursquare/FoursquareViewController.m"
-         timestampString = "385801656.962155"
+         filePath = "MelbourneGuideDawg/Controllers/Foursquare/FoursquareVenue.m"
+         timestampString = "386978735.911045"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "219"
-         endingLineNumber = "219"
-         landmarkName = "-locationManager:didUpdateToLocation:fromLocation:"
+         startingLineNumber = "45"
+         endingLineNumber = "45"
+         landmarkName = "-fullAddress"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "MelbourneGuideDawg/Controllers/Foursquare/FoursquareViewController.m"
-         timestampString = "385801673.849694"
+         filePath = "MelbourneGuideDawg/Codebase/ThirdParty/Foursquare2/FSRequester.m"
+         timestampString = "386979276.480374"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "203"
-         endingLineNumber = "203"
-         landmarkName = "-locationManager:didUpdateToLocation:fromLocation:"
+         startingLineNumber = "31"
+         endingLineNumber = "31"
+         landmarkName = "-handleConnectionError:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "MelbourneGuideDawg/Controllers/Foursquare/FoursquareViewController.m"
-         timestampString = "385801714.622736"
+         filePath = "MelbourneGuideDawg/Codebase/ThirdParty/Foursquare2/FSRequester.m"
+         timestampString = "386979296.344756"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "191"
-         endingLineNumber = "191"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
+         landmarkName = "-makeAsyncRequest:target:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "MelbourneGuideDawg/Codebase/ThirdParty/Foursquare2/FSRequester.m"
+         timestampString = "386980018.676722"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "153"
+         endingLineNumber = "153"
+         landmarkName = "-connection:didFailWithError:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "MelbourneGuideDawg/Codebase/ThirdParty/Foursquare2/Foursquare2.m"
+         timestampString = "386980604.061442"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "985"
+         endingLineNumber = "985"
+         landmarkName = "+constructRequestUrlForMethod:params:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "MelbourneGuideDawg/Controllers/Foursquare/FoursquareViewController.m"
+         timestampString = "386985977.794443"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "187"
+         endingLineNumber = "187"
          landmarkName = "-locationManager:didUpdateToLocation:fromLocation:"
          landmarkType = "5">
       </FileBreakpoint>

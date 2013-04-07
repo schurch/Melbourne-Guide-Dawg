@@ -12,9 +12,9 @@
 
 @interface PlacesViewController : PlaceViewController
 
-@property (nonatomic, retain) NSArray *places;
-@property (nonatomic, retain) Category *category;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, assign) IBOutlet UITableViewCell *tableViewCell;
+@property (nonatomic, strong) NSArray *places;
+@property (nonatomic, strong) Category *category;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableViewCell *tableViewCell;
 
 @end

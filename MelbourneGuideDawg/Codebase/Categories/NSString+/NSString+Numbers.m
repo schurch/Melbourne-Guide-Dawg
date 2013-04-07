@@ -16,7 +16,7 @@
         return [NSString stringWithFormat:@"%i", number];
     }
     
-    NSNumberFormatter *numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setPositiveFormat:@"#,###"];
     return [NSString stringWithFormat:@"%@", [numberFormatter stringFromNumber:[NSNumber numberWithInt:number]]];
 }

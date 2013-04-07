@@ -16,18 +16,18 @@
 
 @interface SubmissionViewController : PullRefreshTableViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CategoryViewControllerProtocol, UIAlertViewDelegate, FoursquareViewControllerDelegate>
 
-@property (nonatomic, assign) IBOutlet UITableViewCell *tableCell;
-@property (nonatomic, retain) IBOutlet UITableViewCell *locatingCell;
-@property (nonatomic, retain) IBOutlet UITableViewCell *mainBodyTextCell;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) IBOutlet UIToolbar *keyboardInputAccessoryView;
-@property (nonatomic, retain) UIGestureRecognizer *tapRecognizer;
-@property (nonatomic, retain) NSString *submissionTitle;
-@property (nonatomic, retain) NSString *website;
-@property (nonatomic, retain) NSString *text;
-@property (nonatomic, retain) NSString *address;
-@property (nonatomic, retain) UIImage *photo;
-@property (nonatomic, retain) UIImage *photoThumbnail;
+@property (nonatomic, weak) IBOutlet UITableViewCell *tableCell;
+@property (nonatomic, strong) IBOutlet UITableViewCell *locatingCell;
+@property (nonatomic, strong) IBOutlet UITableViewCell *mainBodyTextCell;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIToolbar *keyboardInputAccessoryView;
+@property (nonatomic, strong) UIGestureRecognizer *tapRecognizer;
+@property (nonatomic, strong) NSString *submissionTitle;
+@property (nonatomic, strong) NSString *website;
+@property (nonatomic, strong) NSString *text;
+@property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) UIImage *photo;
+@property (nonatomic, strong) UIImage *photoThumbnail;
 @property (nonatomic, assign) CLLocationCoordinate2D coords;
 
 - (void)resetView;

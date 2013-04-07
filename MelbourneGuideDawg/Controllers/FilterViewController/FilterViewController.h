@@ -20,10 +20,10 @@
     BOOL _filterChanged;
 }
 
-@property (nonatomic, assign) id<FilterProtocol> delegate;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) IBOutlet UINavigationBar *navBar;
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain) NSArray *categories;
+@property (nonatomic, weak) id<FilterProtocol> delegate;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UINavigationBar *navBar;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSArray *categories;
 
 @end

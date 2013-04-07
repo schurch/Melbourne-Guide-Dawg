@@ -66,9 +66,9 @@
 }
 
 - (void)setupStrings{
-  textPull = [[NSString alloc] initWithString:@"Pull down to Geotag..."];
-  textRelease = [[NSString alloc] initWithString:@"Release to Geotag..."];
-  textLoading = [[NSString alloc] initWithString:@"Geotagging..."];
+  textPull = @"Pull down to Geotag...";
+  textRelease = @"Release to Geotag...";
+  textLoading = @"Geotagging...";
 }
 
 - (void)addPullToRefreshHeader {
@@ -173,15 +173,5 @@
     // Implemented in sublcass
 }
 
-- (void)dealloc {
-    [refreshHeaderView release];
-    [refreshLabel release];
-    [refreshArrow release];
-    [refreshSpinner release];
-    [textPull release];
-    [textRelease release];
-    [textLoading release];
-    [super dealloc];
-}
 
 @end
