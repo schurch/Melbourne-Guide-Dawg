@@ -12,9 +12,9 @@
 
 @property (nonatomic, assign) BOOL posting;
 @property (nonatomic, assign) int commentID;
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSDate *date;
-@property (nonatomic, retain) NSString *text;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSString *text;
 
 - (id)initWithData:(NSDictionary *)data;
 - (NSString *)timeSinceText;

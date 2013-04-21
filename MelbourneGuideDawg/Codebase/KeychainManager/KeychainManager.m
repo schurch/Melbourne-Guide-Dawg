@@ -9,7 +9,7 @@
 #import "SFHFKeychainUtils.h"
 
 @interface KeychainManager()
-@property (nonatomic, retain) NSString *serviceName;
+@property (nonatomic, strong) NSString *serviceName;
 @end
 
 @implementation KeychainManager
@@ -73,9 +73,5 @@
 
 #pragma mark - Memory Management -
 
-- (void)dealloc {
-    [_serviceName release];
-    [super dealloc];
-}
 
 @end

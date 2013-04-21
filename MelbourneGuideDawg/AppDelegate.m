@@ -40,14 +40,6 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 #pragma mark - init / dealloc 
 
-- (void)dealloc
-{
-    [_window release];
-    [_tabBarController release];
-    [_tabImageView release];
-    
-    [super dealloc];
-}
 
 #pragma mark - application delegate -
 
@@ -71,28 +63,28 @@ void uncaughtExceptionHandler(NSException *exception) {
     }
     
     //configure views
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    HomeViewController *homeViewController = [[[HomeViewController alloc] initWithNibName:@"HomeView" bundle:nil] autorelease];
+    HomeViewController *homeViewController = [[HomeViewController alloc] initWithNibName:@"HomeView" bundle:nil];
 
-    CategoryViewController *categoryViewController = [[[CategoryViewController alloc] initWithNibName:@"CategoryView" bundle:nil] autorelease];
-    UINavigationController *placesNavigationController = [[[UINavigationController alloc] initWithRootViewController:categoryViewController] autorelease];    
+    CategoryViewController *categoryViewController = [[CategoryViewController alloc] initWithNibName:@"CategoryView" bundle:nil];
+    UINavigationController *placesNavigationController = [[UINavigationController alloc] initWithRootViewController:categoryViewController];    
     placesNavigationController.navigationBar.tintColor = [UIColor blackColor];
     
-    MapViewController *mapViewController = [[[MapViewController alloc] initWithNibName:@"MapView" bundle:nil] autorelease];
-    UINavigationController *mapNavigationController = [[[UINavigationController alloc] initWithRootViewController:mapViewController] autorelease];
+    MapViewController *mapViewController = [[MapViewController alloc] initWithNibName:@"MapView" bundle:nil];
+    UINavigationController *mapNavigationController = [[UINavigationController alloc] initWithRootViewController:mapViewController];
     
     
-    SubmissionViewController *submissionViewController = [[[SubmissionViewController alloc] initWithNibName:@"SubmissionView" bundle:nil] autorelease];
-    UINavigationController *submissionNavController = [[[UINavigationController alloc] initWithRootViewController:submissionViewController] autorelease];
+    SubmissionViewController *submissionViewController = [[SubmissionViewController alloc] initWithNibName:@"SubmissionView" bundle:nil];
+    UINavigationController *submissionNavController = [[UINavigationController alloc] initWithRootViewController:submissionViewController];
     
     
     //tabbar and customization
-    self.tabImageView = [[[UIImageView alloc] init] autorelease];
+    self.tabImageView = [[UIImageView alloc] init];
     self.tabImageView.image = [UIImage imageNamed:@"t-bar-1.png"];
     self.tabImageView.frame = CGRectMake(0, self.window.frame.size.height - 49, 320, 49);
     
-    self.tabBarController = [[[UITabBarController alloc] init] autorelease];
+    self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:homeViewController, placesNavigationController, mapNavigationController, submissionNavController, nil];
     self.tabBarController.delegate = self;
     [self.tabBarController.view addSubview:self.tabImageView];
@@ -120,7 +112,6 @@ void uncaughtExceptionHandler(NSException *exception) {
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"This operation is not supported on this device." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
-        [alert release];
     }
 }
 
@@ -174,7 +165,6 @@ void uncaughtExceptionHandler(NSException *exception) {
     hud.labelText = @"Processing image..";
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-        [picker release];
         
         UIImage *resizedImage = nil;
         if (image.size.width > image.size.height) {

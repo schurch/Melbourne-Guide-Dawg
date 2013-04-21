@@ -6,27 +6,26 @@
 //
 //
 
+#import <AddressBookUI/AddressBookUI.h>
+#import <QuartzCore/QuartzCore.h>
 #import "SubmissionViewController.h"
 #import "AppDelegate.h"
-#import <AddressBookUI/AddressBookUI.h>
 #import "NSString+HTML.h"
 #import "Category.h"
 #import "Place.h"
 #import "Place+Extensions.h"
 #import "NSManagedObject+Entity.h"
 #import "MBProgressHUD.h"
-#import <QuartzCore/QuartzCore.h>
-
+#import "FoursquareVenue.h"
 
 #define TITLE_TEXTFIELD_TAG 100
 #define WEBSITE_TEXTFIELD_TAG 101
-
 #define ALERTVIEW_SUCCESS_TAG 200
-
 #define CATEGORY_DEFAULT_TEXT @"Category"
 
 @interface SubmissionViewController ()
-@property (nonatomic, retain) Category *category;
+@property (nonatomic, strong) Category *category;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 - (void)resetLocatingCell;
 - (void)showLocationCellError;
 - (void)setPostEnabledState;
@@ -43,34 +42,25 @@
     if (self) {
         self.title = NSLocalizedString(@"Submit", @"Submit");
         self.tabBarItem.image = [UIImage imageNamed:@"submit-tab.png"];
+        
+        // Configure location manager
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [_category release];
-    [_locatingCell release];
-    [_mainBodyTextCell release];
-    [_keyboardInputAccessoryView release];
-    [_tapRecognizer release];
-    [_submissionTitle release];
-    [_website release];
-    [_text release];
-    [_address release];
-    [_photo release];
-    [_photoThumbnail release];
-    
-    [super dealloc];
-}
+
+#pragma mark - view lifecycle -
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.tapRecognizer = [[[UITapGestureRecognizer alloc]
+    self.tapRecognizer = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
-                                   action:@selector(dismissKeyboard:)] autorelease];
+                                   action:@selector(dismissKeyboard:)];
     
     [[NSBundle mainBundle] loadNibNamed:@"LocationCell" owner:self options:nil];
     [[NSBundle mainBundle] loadNibNamed:@"LargeTextCell" owner:self options:nil];
@@ -136,10 +126,7 @@
 
 - (void)fetchLocation
 {
-    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
+    [self.locationManager startUpdatingLocation];
 }
 
 - (IBAction)dismissKeyboard:(id)sender
@@ -149,7 +136,6 @@
     
     if (self.tableView.contentInset.bottom == 216) {
         self.tableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0);
-        [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
     }
 }
 
@@ -180,6 +166,21 @@
     checkCrossImage.hidden = NO;
     
     [self setPostEnabledState];
+}
+
+- (void)updateAddressCellWithAddress:(NSString *)address
+{
+    UIActivityIndicatorView *activityIndicator = (UIActivityIndicatorView *)[self.locatingCell viewWithTag:1];
+    [activityIndicator stopAnimating];
+    
+    UILabel *cellLabel = (UILabel *)[self.locatingCell viewWithTag:2];
+    UIImageView *checkCrossImage = (UIImageView *)[self.locatingCell viewWithTag:3];
+    
+    checkCrossImage.image = [UIImage imageNamed:@"green-check.png"];
+    checkCrossImage.hidden = NO;
+    
+    cellLabel.textColor = [UIColor blackColor];
+    cellLabel.text = address;
 }
 
 - (IBAction)post:(id)sender
@@ -213,13 +214,13 @@
     [Place submitWithDetails:details image:self.photo success:^{
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.view.window.userInteractionEnabled = YES;
-        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Thank you" message:@"Thank you for your submission. All details need to be reviewed and approved before being added to the app." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Thank you" message:@"Thank you for your submission. All details need to be reviewed and approved before being added to the app." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         alertview.tag = ALERTVIEW_SUCCESS_TAG;
         [alertview show];
     } failure:^(NSString *error) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.view.window.userInteractionEnabled = YES;
-        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error submitting your place. Please try again later." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error submitting your place. Please try again later." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [alertview show];
     }];
 }
@@ -234,28 +235,28 @@
 {
     BOOL titleSet = self.submissionTitle && ![[self.submissionTitle stringByRemovingNewLinesAndWhitespace] isEqualToString:@""];
     if (!titleSet) {
-        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Title" message:@"Please enter a title." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Please enter a title." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [alertview show];
         return NO;
     }
     
     BOOL categorySet = self.category != nil;
     if (!categorySet) {
-        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Category" message:@"Please select a category." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Category" message:@"Please select a category." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [alertview show];
         return NO;
     }
     
     BOOL addressSet = self.address && ![[self.address stringByRemovingNewLinesAndWhitespace] isEqualToString:@""];
     if (!addressSet) {
-        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Address" message:@"The address cannot be found. Please make sure you have location services enabled and an active internet connection." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Address" message:@"The address cannot be found. Please make sure you have location services enabled and an active internet connection." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [alertview show];
         return NO;
     }
     
     BOOL textSet = self.text && ![[self.text stringByRemovingNewLinesAndWhitespace] isEqualToString:@""];
     if (!textSet) {
-        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Text" message:@"Please enter some text." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Text" message:@"Please enter some text." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [alertview show];
         return NO;
     }
@@ -271,15 +272,6 @@
 }
 
 #pragma mark - Table view data source
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 2 && indexPath.row == 0) {
-        return 130;
-    } else {
-        return 44;
-    }
-}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -320,7 +312,7 @@
             textField.tag = TITLE_TEXTFIELD_TAG;
             textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
         } else if (indexPath.row == 1) {
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             if (!self.category) {
                 cell.textLabel.font = [UIFont systemFontOfSize:16];
                 cell.textLabel.textColor = [UIColor lightGrayColor];
@@ -364,13 +356,28 @@
 
 #pragma mark - Table view delegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 2 && indexPath.row == 0) {
+        return 130;
+    } else {
+        return 44;
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0 && indexPath.row == 1) {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        SubmitCategoryViewController *categoryViewController = [[[SubmitCategoryViewController alloc] initWithNibName:@"SubmitCategoryView" bundle:nil] autorelease];
-        categoryViewController.delegate = self;
-        [self.navigationController pushViewController:categoryViewController animated:YES];
+    if (indexPath.section == 0) {
+        if (indexPath.row == 1) {
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            SubmitCategoryViewController *categoryViewController = [[SubmitCategoryViewController alloc] initWithNibName:@"SubmitCategoryView" bundle:nil];
+            categoryViewController.delegate = self;
+            [self.navigationController pushViewController:categoryViewController animated:YES];
+        }
+    } else if (indexPath.section == 1) {
+        FoursquareViewController *foursquareViewController = [[FoursquareViewController alloc] initWithNibName:@"FoursquareView" bundle:nil];
+        foursquareViewController.delegate = self;
+        [self.navigationController pushViewController:foursquareViewController animated:YES];
     }
 }
 
@@ -382,9 +389,8 @@
     
     self.coords = newLocation.coordinate;
     
-    CLGeocoder * geoCoder = [[[CLGeocoder alloc] init] autorelease];
-    [geoCoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks, NSError *error)
-    {
+    CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
+    [geoCoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error) {
             NSLog(@"Error occured reverse geocoding.");
             [self showLocationCellError];
@@ -392,24 +398,14 @@
             return;
         }
         
-        UIActivityIndicatorView *activityIndicator = (UIActivityIndicatorView *)[self.locatingCell viewWithTag:1];
-        UILabel *cellLabel = (UILabel *)[self.locatingCell viewWithTag:2];
-        UIImageView *checkCrossImage = (UIImageView *)[self.locatingCell viewWithTag:3];
-        
-        [activityIndicator stopAnimating];
-        checkCrossImage.image = [UIImage imageNamed:@"green-check.png"];
-        checkCrossImage.hidden = NO;
-        
-        cellLabel.textColor = [UIColor blackColor];
         CLPlacemark *placemark = [placemarks objectAtIndex:0];
-        self.address = [[ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO) autorelease] stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
-        cellLabel.text = self.address;
+        self.address = [ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO) stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
         
+        [self updateAddressCellWithAddress:self.address];
         [self setPostEnabledState];
         [super stopLoading];
     }];
     
-    [manager release];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -417,7 +413,6 @@
     NSLog(@"Error occured fetching coords.");
     [super stopLoading];
     [self showLocationCellError];
-    [manager release];
 }
 
 #pragma mark - TextField delegate -
@@ -453,7 +448,6 @@
     self.tableView.contentInset =  UIEdgeInsetsMake(0, 0, 216, 0);
     NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:2];
     [self.tableView scrollToRowAtIndexPath:selectedIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-//    self.tableView.scrollEnabled = NO;
 }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -506,5 +500,25 @@
         [self dismissKeyboard:nil];
     }
 }
+
+#pragma mark - foursquare viewcontroller delegate -
+
+- (void)foursquareViewController:(FoursquareViewController *)foursqaureViewController
+        didSelectFoursquareVenue:(FoursquareVenue *)foursquareVenue
+{
+    self.coords = foursquareVenue.locationCoords;
+    self.submissionTitle = foursquareVenue.name;
+    self.address = [foursquareVenue fullAddress];
+    
+    NSString *website = [[foursquareVenue.venueURL absoluteString] length] > 0 ? [foursquareVenue.venueURL absoluteString] : @"http://";
+    self.website = website;
+    
+    [self updateAddressCellWithAddress:self.address];
+    
+    [self.tableView reloadData];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 @end

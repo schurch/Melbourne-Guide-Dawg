@@ -13,7 +13,7 @@
 + (UIImage *)imageWithImage:(UIImage *)image withRect:(CGRect)rect
 {
     CGImageRef cr = CGImageCreateWithImageInRect([image CGImage], rect);
-    UIImage* cropped = [[[UIImage alloc] initWithCGImage:cr] autorelease];
+    UIImage* cropped = [[UIImage alloc] initWithCGImage:cr];
     CGImageRelease(cr);
     return cropped;
 }

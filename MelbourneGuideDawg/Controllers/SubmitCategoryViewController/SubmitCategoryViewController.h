@@ -15,8 +15,8 @@
 
 @interface SubmitCategoryViewController : UIViewController
 
-@property (nonatomic, assign) id<CategoryViewControllerProtocol> delegate;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) NSArray *categories;
+@property (nonatomic, weak) id<CategoryViewControllerProtocol> delegate;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *categories;
 
 @end

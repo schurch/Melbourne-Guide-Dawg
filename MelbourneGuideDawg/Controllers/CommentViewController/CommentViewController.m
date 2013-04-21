@@ -15,7 +15,7 @@
 {
     BOOL _postingComment;
 }
-@property (nonatomic, retain) NSMutableArray *comments;
+@property (nonatomic, strong) NSMutableArray *comments;
 - (void)fetchComments;
 - (void)reloadComments;
 - (void)configure:(id)sender;
@@ -36,18 +36,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_postButton release];
-    [_tableView release];
-    [_commentBox release];
-    [_comments release];
-    [_usernameView release];
-    [_usernameTextField release];
-    [_loadingIndicator release];
-    
-    [super dealloc];
-}
 
 #pragma mark - view lifecycle -
 
@@ -113,7 +101,7 @@
             username = kDefaultCommentUsername;
         }
         
-        Comment *newComment = [[[Comment alloc] init] autorelease];
+        Comment *newComment = [[Comment alloc] init];
         newComment.text = self.commentBox.text;
         newComment.name = username;
         newComment.posting = YES;
@@ -135,7 +123,7 @@
             _postingComment = NO;
         } failure:^(NSString *error) {
             
-            UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"Unable to post comment" message:@"There was a problem posting your comment. Please try again later." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] autorelease];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Unable to post comment" message:@"There was a problem posting your comment. Please try again later." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
             [alertView show];
             
             [self.comments removeLastObject];
@@ -172,7 +160,7 @@
         [self reloadComments];
     } failure:^(NSString *error) {
         [self.loadingIndicator stopAnimating];
-        UIAlertView *alertview = [[[UIAlertView alloc] initWithTitle:@"Unable to fetch comments" message:@"There was an issue fetching the comments. Please try again later." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] autorelease];
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Unable to fetch comments" message:@"There was an issue fetching the comments. Please try again later." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
         [alertview show];
     }];
 }

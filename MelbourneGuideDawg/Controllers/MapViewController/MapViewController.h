@@ -10,10 +10,13 @@
 #import <MapKit/MapKit.h>
 #import "FilterViewController.h"
 
-#define METERS_PER_MILE 1609.344
-
 @interface MapViewController : UIViewController<FilterProtocol>
 
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSNumber *selectedPlaceId;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSArray *places;
+@property (nonatomic, assign) CLLocationCoordinate2D location;
+
+- (void)refreshView;
 
 @end

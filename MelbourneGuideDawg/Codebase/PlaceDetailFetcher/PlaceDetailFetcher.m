@@ -21,7 +21,6 @@ static NSString *kFetchDetailsPath = @"places/%i/details?device_id=%@";
 static NSString *kLikePlacePath = @"places/%i/like?device_id=%@";
 static NSString *kUnlikePlacePath = @"places/%i/unlike?device_id=%@";
 static NSString *kCommentsPath = @"places/%i/comments.json";
-static NSString *kPostCommentPath = @"places/%i/comments";
 
 #pragma mark - general fetch -
 
@@ -49,7 +48,7 @@ static NSString *kPostCommentPath = @"places/%i/comments";
 
 + (void)likePlaceWithID:(int)ID success:(void (^)())success failure:(void (^)(NSString *error))failure
 {
-    AFHTTPClient *client = [[[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kServerBaseURL]] autorelease];
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kServerBaseURL]];
     
     NSString *path = [NSString stringWithFormat:kLikePlacePath, ID, [Utils deviceID]];
     [client postPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -63,7 +62,7 @@ static NSString *kPostCommentPath = @"places/%i/comments";
 
 + (void)unlikePlaceWithID:(int)ID success:(void (^)())success failure:(void (^)(NSString *error))failure
 {
-    AFHTTPClient *client = [[[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kServerBaseURL]] autorelease];
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kServerBaseURL]];
     
     NSString *path = [NSString stringWithFormat:kUnlikePlacePath, ID, [Utils deviceID]];
     [client postPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -92,7 +91,7 @@ static NSString *kPostCommentPath = @"places/%i/comments";
         @"comment[place_id]" : [NSNumber numberWithInt:ID]
     };
     
-    AFHTTPClient *client = [[[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kServerBaseURL]] autorelease];
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kServerBaseURL]];
     [client setParameterEncoding:AFJSONParameterEncoding];
     [client setAuthorizationHeaderWithUsername:kUploadUsername password:kUploadPassword];
     
@@ -100,11 +99,11 @@ static NSString *kPostCommentPath = @"places/%i/comments";
     NSMutableURLRequest *request = [client multipartFormRequestWithMethod:@"POST" path:postPath parameters:details constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
     }];
     
-    AFHTTPRequestOperation *operation = [[[AFHTTPRequestOperation alloc] initWithRequest:request] autorelease];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Successfully posted comment.");
-        NSString *responseString = [[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding] autorelease];
+        NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSArray *comments = [self generateCommmentsFromResponse:[responseString JSONValue]];
         success(comments);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -117,7 +116,7 @@ static NSString *kPostCommentPath = @"places/%i/comments";
 
 + (void)fetchCommentsForPlaceID:(int)ID success:(void (^)(NSArray *comments))success failure:(void (^)(NSString *error))failure
 {
-    AFHTTPClient *client = [[[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kServerBaseURL]] autorelease];
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kServerBaseURL]];
     [client setParameterEncoding:AFJSONParameterEncoding];
     [client setAuthorizationHeaderWithUsername:kUploadUsername password:kUploadPassword];
     NSString *commentsPath = [NSString stringWithFormat:kCommentsPath, ID];
@@ -144,7 +143,7 @@ static NSString *kPostCommentPath = @"places/%i/comments";
 {
     NSMutableArray *comments = [NSMutableArray array];
     for (NSDictionary *commentData in responseJSON) {
-        Comment *comment = [[[Comment alloc] initWithData:commentData] autorelease];
+        Comment *comment = [[Comment alloc] initWithData:commentData];
         [comments addObject:comment];
     }
     

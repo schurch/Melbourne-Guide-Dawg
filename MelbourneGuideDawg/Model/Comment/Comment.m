@@ -23,7 +23,7 @@
         self.text = [NSString validStringOrNil:[data objectForKey:@"body"]];
         self.posting = NO;
 
-        NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";         //2012-09-14T09:17:26Z
         dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
         NSString *dateString = [NSString validStringOrNil:[data objectForKey:@"created_at"]];
@@ -33,20 +33,13 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_name release];
-    [_date release];
-    [_text release];
-    [super dealloc];
-}
 
 #pragma mark - methods -
 
 - (NSString *)timeSinceText
 {
     
-    NSCalendar *calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [calendar components:NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit
                                                fromDate:self.date
                                                  toDate:[NSDate date]

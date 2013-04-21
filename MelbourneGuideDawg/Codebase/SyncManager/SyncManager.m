@@ -37,12 +37,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    
-    [super dealloc];
-}
-
 #pragma mark - Public methods -
 
 - (void)syncWithCompletionBlock:(void (^)())completionBlock errorBlock:(void (^)(NSError *))errorBlock progressBlock:(void (^)(NSString *))progressBlock
@@ -166,12 +160,6 @@
             } completionBlock:^(NSArray *operations) {
                 [self syncSuccessWithCompletionBlock:completionBlock];  
             }];
-            
-            
-            [imageDownloadOperations release];
-            [imageFetchClient release];
-
-            
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
             [self syncFailedWithError:error andErrorBlock:errorBlock];
         }];   

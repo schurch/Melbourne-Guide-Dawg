@@ -30,12 +30,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     _delegate = nil;
-    [_tableView release];
-    [_navBar release];
-    [_managedObjectContext release];
-    [_categories release];
     
-    [super dealloc];
 }
 
 #pragma mark - View lifecycle -
@@ -104,7 +99,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) 
     {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     Category *category = [self.categories objectAtIndex:indexPath.row];

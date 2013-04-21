@@ -26,12 +26,12 @@
     [button setFrame:CGRectMake(0.0f, 0.0f, image.size.width, image.size.height)];
     [button setImage:image forState:UIControlStateNormal];
     [button addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
-    return [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
+    return [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
 + (NSString *)deviceID
 {
-    KeychainManager *keychain = [[[KeychainManager alloc] initWithServiceName:kBundleID] autorelease];
+    KeychainManager *keychain = [[KeychainManager alloc] initWithServiceName:kBundleID];
     NSString *key = @".deviceID";
     if ([keychain itemExistsForKey:key]) {
         return [keychain itemForKey:key];
@@ -39,8 +39,7 @@
         NSString *uuid = nil;
         CFUUIDRef theUUID = CFUUIDCreate(kCFAllocatorDefault);
         if (theUUID) {
-            uuid = NSMakeCollectable(CFUUIDCreateString(kCFAllocatorDefault, theUUID));
-            [uuid autorelease];
+            uuid = CFBridgingRelease(CFUUIDCreateString(kCFAllocatorDefault, theUUID));
             CFRelease(theUUID);
         }
         [keychain writeItem:uuid forKey:key];

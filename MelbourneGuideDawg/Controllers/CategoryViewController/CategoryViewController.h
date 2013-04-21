@@ -13,11 +13,11 @@
 
 @interface CategoryViewController : UIViewController
 
-@property (nonatomic, assign) IBOutlet UITableViewCell *tableViewCell;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) IBOutlet UIImageView *pleaseSyncMessage;
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain) NSArray *categories;
-@property (nonatomic, retain) PlacesViewController *placesViewController;
+@property (nonatomic, weak) IBOutlet UITableViewCell *tableViewCell;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIImageView *pleaseSyncMessage;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSArray *categories;
+@property (nonatomic, strong) PlacesViewController *placesViewController;
 
 @end

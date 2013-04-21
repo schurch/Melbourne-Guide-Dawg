@@ -19,7 +19,7 @@
     BOOL _perfomingFetchRequest;
     int _likes;
 }
-@property (nonatomic, retain) FullScreenImageViewer *imageViewer;
+@property (nonatomic, strong) FullScreenImageViewer *imageViewer;
 - (void)selectLikeButton;
 - (void)deselectLikeButton;
 @end
@@ -33,31 +33,11 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)  {
-        self.imageViewer = [[[FullScreenImageViewer alloc] init] autorelease];
+        self.imageViewer = [[FullScreenImageViewer alloc] init];
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [_webViewController release];
-    [_place release];
-    [_imageButton release];
-    [_titleLabel release];
-    [_locationLabel release];
-    [_textLabel release];
-    [_scrollView release];
-    [_viewOnMapButton release];
-    [_detailActionsView release];
-    [_viewWebsiteButton release];
-    [_likesLabel release];
-    [_commentsLabel release];
-    [_likeButton release];
-    [_loadingActivityIndicator release];
-    [_imageViewer release];
-    
-    [super dealloc];
-}
 
 #pragma mark - View lifecycle -
 
@@ -67,7 +47,7 @@
     
     self.navigationItem.leftBarButtonItem = [Utils generateButtonItemWithImageName:@"back-btn.png" target:self selector:@selector(back:)];
     
-    self.webViewController = [[[WebViewController alloc] initWithNibName:@"WebView" bundle:nil] autorelease];
+    self.webViewController = [[WebViewController alloc] initWithNibName:@"WebView" bundle:nil];
     
     self.likesLabel.text = @"0 likes";
     self.commentsLabel.text = @"0 comments";
@@ -219,7 +199,7 @@
 
 - (IBAction)comment:(id)sender
 {
-    CommentViewController *commentController = [[[CommentViewController alloc] initWithNibName:@"CommentView" bundle:nil] autorelease];
+    CommentViewController *commentController = [[CommentViewController alloc] initWithNibName:@"CommentView" bundle:nil];
     commentController.placeID = [self.place.placeId intValue];
     commentController.delegate = self;
     [self.navigationController pushViewController:commentController animated:YES];

@@ -15,8 +15,9 @@
 
 
 @interface MapViewController()
-@property (nonatomic, retain) FilterViewController *filterViewController;
+@property (nonatomic, strong) FilterViewController *filterViewController;
 - (void)filter:(id)sender;
+- (void)locate:(id)sender;
 @end
 
 @implementation MapViewController
@@ -35,29 +36,21 @@
     return self;
 }
 
-#pragma mark - Memory management -
-
-- (void)dealloc 
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    [_filterViewController release];
-    [_managedObjectContext release];
-    
-    [super dealloc];
-}
-
 #pragma mark - View lifecycle -
 
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
-    
 
     self.navigationItem.leftBarButtonItem = [Utils generateButtonItemWithImageName:@"locate-btn.png" target:self selector:@selector(locate:)];
     self.navigationItem.rightBarButtonItem = [Utils generateButtonItemWithImageName:@"filter-btn.png" target:self selector:@selector(filter:)];
     
-    self.filterViewController = [[[FilterViewController alloc] initWithNibName:@"FilterView" bundle:nil] autorelease];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshView) 
+                                                 name:kSyncCompleteNotificaton
+                                               object:nil];
+    
+    self.filterViewController = [[FilterViewController alloc] initWithNibName:@"FilterView" bundle:nil];
     self.filterViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     self.filterViewController.delegate = self;
 
@@ -67,11 +60,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Methods - 
@@ -81,9 +70,9 @@
     
 }
 
-- (void)locate:(id)sender
+- (void)locate:(id)sender 
 {
-    
+
 }
 
 - (void)filter:(id)sender 
